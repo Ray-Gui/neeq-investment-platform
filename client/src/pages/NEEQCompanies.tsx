@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, Filter, TrendingUp, Users, DollarSign, BarChart3 } from "lucide-react";
-import { NEEQ_COMPANIES_REAL, companiesByIndustry, companiesStats } from "../data/neeq-companies-real";
+import { HEALTHCARE_COMPANIES, healthcareCompaniesByIndustry, healthcareCompaniesStats } from "../data/healthcare-companies-674";
 
 interface Company {
   id: number;
@@ -48,8 +48,8 @@ export default function NEEQCompanies() {
     const fetchCompanies = async () => {
       try {
         setLoading(true);
-        // 使用真实的新三板企业数据库
-        const mockData: Company[] = (NEEQ_COMPANIES_REAL || []) as Company[];
+        // 使用 674 家医疗健康企业数据
+        const mockData: Company[] = (HEALTHCARE_COMPANIES || []) as Company[];
 
         setCompanies(mockData);
         setLoading(false);
@@ -145,6 +145,8 @@ export default function NEEQCompanies() {
     healthcare: companies.filter(c => c.sector === "医疗健康").length,
     energy: companies.filter(c => c.sector === "新能源").length,
     ai: companies.filter(c => c.sector === "人工智能").length,
+    byIndustry: healthcareCompaniesStats.byIndustry,
+    byStatus: healthcareCompaniesStats.byBSEStatus,
   };
   const statuses = ["全部", "已上市", "申报中", "辅导中", "未申报"];
 
