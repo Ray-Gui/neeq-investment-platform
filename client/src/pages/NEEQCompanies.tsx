@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, Filter, TrendingUp, Users, DollarSign, BarChart3 } from "lucide-react";
-import { NEEQ_COMPANIES_EXTENDED, companiesByIndustry, companiesStats } from "../data/neeq-companies-extended";
+import { NEEQ_COMPANIES_REAL, companiesByIndustry, companiesStats } from "../data/neeq-companies-real";
 
 interface Company {
   id: number;
@@ -48,8 +48,8 @@ export default function NEEQCompanies() {
     const fetchCompanies = async () => {
       try {
         setLoading(true);
-        // 使用扩展的企业数据库
-        const mockData: Company[] = (NEEQ_COMPANIES_EXTENDED || []) as Company[];
+        // 使用真实的新三板企业数据库
+        const mockData: Company[] = (NEEQ_COMPANIES_REAL || []) as Company[];
 
         setCompanies(mockData);
         setLoading(false);
