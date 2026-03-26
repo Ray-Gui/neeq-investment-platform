@@ -1,0 +1,10 @@
+.git
+.gitignore
+README.md
+node_modules
+.pnpm-store
+.manus-logs
+*.log
+.DS_Store
+.env.local
+.env.*.local
