@@ -82,7 +82,7 @@ export default function Dashboard() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/">
+                <Link href="/bse">
                   <a className="flex items-center justify-between p-4 bg-cyan-500/10 border border-cyan-500/30 rounded-lg hover:bg-cyan-500/20 transition-colors group">
                     <div>
                       <h3 className="font-semibold text-white mb-1">完整研究报告</h3>
@@ -91,7 +91,7 @@ export default function Dashboard() {
                     <ArrowRight className="text-cyan-400 group-hover:translate-x-1 transition-transform" size={20} />
                   </a>
                 </Link>
-                <Link href="/">
+                <Link href="/bse">
                   <a className="flex items-center justify-between p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg hover:bg-blue-500/20 transition-colors group">
                     <div>
                       <h3 className="font-semibold text-white mb-1">数据分析工具</h3>
