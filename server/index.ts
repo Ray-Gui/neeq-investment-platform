@@ -3,7 +3,8 @@ import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import pg from "pg";
-import { neeqCompaniesData, companiesBySetor, companiesByScore } from "./neeq-companies-data.js";
+import { neeqCompaniesData, companiesBySetor, companiesByScore, allNeeqCompanies, companiesStats } from "./neeq-companies-data.js";
+import { neeqCompaniesDataExtended } from "./neeq-companies-data-extended.js";
 
 const { Pool } = pg;
 
