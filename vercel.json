@@ -1,7 +1,8 @@
 {
   "version": 2,
   "buildCommand": "pnpm build",
-  "outputDirectory": "dist/public",
+  "outputDirectory": "dist",
+  "installCommand": "pnpm install",
   "env": {
     "NODE_ENV": "production"
   },
@@ -45,7 +46,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/public/index.html"
     }
   ]
 }
