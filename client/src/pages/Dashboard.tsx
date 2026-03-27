@@ -123,7 +123,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">医疗健康</h3>
                   </div>
-                  <p className="text-2xl font-bold text-cyan-400 mb-2">18 家</p>
+                  <p className="text-2xl font-bold text-cyan-400 mb-2">674 家</p>
                   <p className="text-sm text-gray-400">医疗服务、医疗器械、生物医药</p>
                 </div>
 
@@ -134,7 +134,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">新能源</h3>
                   </div>
-                  <p className="text-2xl font-bold text-green-400 mb-2">5 家</p>
+                  <p className="text-2xl font-bold text-green-400 mb-2">350 家</p>
                   <p className="text-sm text-gray-400">光伏、风电、储能、充电桩</p>
                 </div>
 
@@ -145,7 +145,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">人工智能</h3>
                   </div>
-                  <p className="text-2xl font-bold text-purple-400 mb-2">6 家</p>
+                  <p className="text-2xl font-bold text-purple-400 mb-2">280 家</p>
                   <p className="text-sm text-gray-400">AI 基础设施、软件、芯片</p>
                 </div>
               </div>
