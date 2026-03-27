@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { Star, Filter, Search } from "lucide-react";
+import { useLocation } from "wouter";
+import { Star, Filter, Search, ExternalLink } from "lucide-react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Tooltip } from "recharts";
 import scoringData from "../data/scoring-system-data.json";
 
@@ -21,6 +22,7 @@ interface ScoringItem {
 }
 
 export default function ScoringSystem() {
+  const [, navigate] = useLocation();
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedSector, setSelectedSector] = useState<string>("全部");
   const [sortBy, setSortBy] = useState<"score" | "financial" | "growth">("score");
@@ -201,7 +203,18 @@ export default function ScoringSystem() {
                         <td className="py-3 px-3 text-gray-300 font-semibold">
                           #{(currentPage - 1) * pageSize + index + 1}
                         </td>
-                        <td className="py-3 px-3 text-white font-semibold">{item.short_name}</td>
+                        <td className="py-3 px-3">
+                          <div className="flex items-center gap-1">
+                            <span className="text-white font-semibold">{item.short_name}</span>
+                            <button
+                              onClick={(e) => { e.stopPropagation(); navigate(`/company/${encodeURIComponent(item.code)}`); }}
+                              className="text-cyan-500 hover:text-cyan-300 transition-colors"
+                              title="查看详情"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </td>
                         <td className="py-3 px-3 text-gray-400 text-xs">{item.code}</td>
                         <td className="py-3 px-3 text-gray-400 text-xs">{item.industry}</td>
                         <td className={`py-3 px-3 text-right font-bold ${getScoreColor(item.overall_score)}`}>
@@ -246,7 +259,15 @@ export default function ScoringSystem() {
             {selectedCompany && (
               <>
                 <div className={`bg-slate-800/50 backdrop-blur-sm border rounded-lg p-6 ${getScoreBgColor(selectedCompany.overall_score)}`}>
-                  <h3 className="text-lg font-semibold text-white mb-1">{selectedCompany.short_name}</h3>
+                  <div className="flex justify-between items-start mb-1">
+                    <h3 className="text-lg font-semibold text-white">{selectedCompany.short_name}</h3>
+                    <button
+                      onClick={() => navigate(`/company/${encodeURIComponent(selectedCompany.code)}`)}
+                      className="flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 px-2 py-1 rounded transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />查看完整详情
+                    </button>
+                  </div>
                   <p className="text-sm text-slate-400 mb-4">{selectedCompany.code} | {selectedCompany.sector} · {selectedCompany.industry}</p>
                   <div className="text-center mb-4">
                     <div className={`text-5xl font-bold ${getScoreColor(selectedCompany.overall_score)}`}>

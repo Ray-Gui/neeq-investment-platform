@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { Award, TrendingUp, Target, Filter, Search } from "lucide-react";
+import { useLocation } from "wouter";
+import { Award, TrendingUp, Target, Filter, Search, ExternalLink } from "lucide-react";
 import investmentData from "../data/investment-decision-data.json";
 
 interface InvestmentItem {
@@ -19,6 +20,7 @@ interface InvestmentItem {
 }
 
 export default function InvestmentDecision() {
+  const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterSector, setFilterSector] = useState("全部");
   const [filterRating, setFilterRating] = useState("全部");
@@ -150,7 +152,7 @@ export default function InvestmentDecision() {
         {/* 企业列表 */}
         <div className="space-y-3">
           {pagedData.map((company, index) => (
-            <div key={company.company_id} className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-lg p-5">
+            <div key={company.company_id} className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-lg p-5 hover:border-cyan-500/40 transition-colors">
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -162,7 +164,15 @@ export default function InvestmentDecision() {
                       {company.investment_rating}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{company.short_name}</h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-bold text-white">{company.short_name}</h3>
+                    <button
+                      onClick={() => navigate(`/company/${encodeURIComponent(company.code)}`)}
+                      className="flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 px-2 py-1 rounded transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />详情
+                    </button>
+                  </div>
                   <p className="text-sm text-slate-400">{company.code} | {company.sector}</p>
                 </div>
                 <div className="text-right">

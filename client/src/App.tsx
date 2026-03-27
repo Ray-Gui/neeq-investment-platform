@@ -13,6 +13,7 @@ import CompanyScoring from "./pages/CompanyScoring";
 import ListingPotential from "./pages/ListingPotential";
 import DealerOpportunities from "./pages/DealerOpportunities";
 import InvestmentDecision from "./pages/InvestmentDecision";
+import CompanyDetail from "./pages/CompanyDetail";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -28,6 +29,7 @@ function Router() {
       <Route path={"/listing-potential"} component={ListingPotential} />
       <Route path={"/dealer-opportunities"} component={DealerOpportunities} />
       <Route path={"/investment-decision"} component={InvestmentDecision} />
+      <Route path={"/company/:code"} component={CompanyDetail} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
