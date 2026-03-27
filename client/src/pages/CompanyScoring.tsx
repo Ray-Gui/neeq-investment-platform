@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search, Star, TrendingUp, AlertCircle } from "lucide-react";
 import scoringData from "../data/scoring-system-data.json";
 
 export default function CompanyScoring() {
-  const [searchTerm, setSearchTerm] = React.useState("");;
-  const [filterRating, setFilterRating] = React.useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterRating, setFilterRating] = useState("all");
 
   const filtered = scoringData
     .filter(c => c.short_name.includes(searchTerm) || c.code.includes(searchTerm))

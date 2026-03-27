@@ -1,9 +1,10 @@
 import { Search, TrendingUp, AlertCircle, Zap } from "lucide-react";
+import React, { useState } from "react";
 import marketData from "../data/market-making-data.json";
 
 export default function DealerOpportunities() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [filterRisk, setFilterRisk] = React.useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterRisk, setFilterRisk] = useState("all");
 
   const filtered = marketData
     .filter(c => c.short_name.includes(searchTerm) || c.code.includes(searchTerm))

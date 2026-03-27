@@ -4,10 +4,10 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, L
 import financialData from "../data/financial-analysis-complete.json";
 
 export default function FinancialAnalysis() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [selectedCompanies, setSelectedCompanies] = React.useState<any[]>([]);
-  const [selectedSector, setSelectedSector] = React.useState("医疗健康");
-  const [analysisMode, setAnalysisMode] = React.useState<"single" | "comparison" | "industry">("single");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCompanies, setSelectedCompanies] = useState<any[]>([]);
+  const [selectedSector, setSelectedSector] = useState("医疗健康");
+  const [analysisMode, setAnalysisMode] = useState<"single" | "comparison" | "industry">("single");
 
   // 按行业分类
   const companiesBySector = useMemo(() => {

@@ -1,10 +1,11 @@
 import { Search, TrendingUp, AlertCircle, CheckCircle } from "lucide-react";
+import React, { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from "recharts";
 import listingData from "../data/listing-potential-data.json";
 
 export default function ListingPotential() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortBy, setSortBy] = React.useState("probability");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("probability");
 
   const filtered = listingData.filter(c => 
     c.short_name.includes(searchTerm) || c.code.includes(searchTerm)
