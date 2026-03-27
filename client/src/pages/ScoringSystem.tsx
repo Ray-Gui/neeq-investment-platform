@@ -5,7 +5,7 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadius
 import scoringData from "../data/scoring-system-data.json";
 
 interface ScoringItem {
-  company_id: number;
+  rank: number;
   code: string;
   short_name: string;
   sector: string;
@@ -13,12 +13,17 @@ interface ScoringItem {
   financial_health: number;
   growth_potential: number;
   market_competitiveness: number;
-  risk_assessment: number;
-  overall_score: number;
-  rating: string;
-  investment_advice: string;
-  key_strengths: string[];
-  key_risks: string[];
+  risk_control: number;
+  total_score: number;
+  roe?: number;
+  gross_margin?: number;
+  net_margin?: number;
+  revenue_growth?: number;
+  net_profit_growth?: number;
+  market_cap?: number;
+  pe_ttm?: number;
+  pb?: number;
+  score_breakdown?: any;
 }
 
 export default function ScoringSystem() {
@@ -47,7 +52,7 @@ export default function ScoringSystem() {
       filtered = filtered.filter((d) => d.sector === selectedSector);
     }
     filtered = [...filtered].sort((a, b) => {
-      if (sortBy === "score") return b.overall_score - a.overall_score;
+      if (sortBy === "score") return b.total_score - a.total_score;
       if (sortBy === "financial") return b.financial_health - a.financial_health;
       if (sortBy === "growth") return b.growth_potential - a.growth_potential;
       return 0;
@@ -59,7 +64,6 @@ export default function ScoringSystem() {
   const pagedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   const getScoreColor = (score: number) => {
-    if (score >= 85) return "text-red-400";
     if (score >= 75) return "text-green-400";
     if (score >= 60) return "text-yellow-400";
     if (score >= 45) return "text-orange-400";
@@ -67,23 +71,37 @@ export default function ScoringSystem() {
   };
 
   const getScoreBgColor = (score: number) => {
-    if (score >= 85) return "bg-red-500/10 border-red-500/30";
     if (score >= 75) return "bg-green-500/10 border-green-500/30";
     if (score >= 60) return "bg-yellow-500/10 border-yellow-500/30";
     if (score >= 45) return "bg-orange-500/10 border-orange-500/30";
     return "bg-gray-500/10 border-gray-500/30";
   };
 
-  const getRatingColor = (rating: string) => {
-    if (rating.startsWith("A")) return "text-green-400";
-    if (rating.startsWith("B")) return "text-blue-400";
-    if (rating.startsWith("C")) return "text-yellow-400";
+  const getRating = (score: number) => {
+    if (score >= 70) return "A";
+    if (score >= 60) return "B+";
+    if (score >= 50) return "B";
+    if (score >= 40) return "C+";
+    return "C";
+  };
+
+  const getRatingColor = (score: number) => {
+    if (score >= 70) return "text-green-400";
+    if (score >= 55) return "text-blue-400";
+    if (score >= 40) return "text-yellow-400";
     return "text-gray-400";
   };
 
-  const getAdviceColor = (advice: string) => {
-    if (advice === "强烈推荐" || advice === "推荐") return "bg-green-500/20 text-green-400";
-    if (advice === "中性") return "bg-yellow-500/20 text-yellow-400";
+  const getAdvice = (score: number) => {
+    if (score >= 70) return "强烈推荐";
+    if (score >= 55) return "推荐";
+    if (score >= 40) return "中性";
+    return "谨慎";
+  };
+
+  const getAdviceColor = (score: number) => {
+    if (score >= 55) return "bg-green-500/20 text-green-400";
+    if (score >= 40) return "bg-yellow-500/20 text-yellow-400";
     return "bg-red-500/20 text-red-400";
   };
 
@@ -92,8 +110,8 @@ export default function ScoringSystem() {
         { dimension: "财务健康度", value: selectedCompany.financial_health },
         { dimension: "成长潜力", value: selectedCompany.growth_potential },
         { dimension: "市场竞争力", value: selectedCompany.market_competitiveness },
-        { dimension: "风险评估", value: selectedCompany.risk_assessment },
-        { dimension: "综合评分", value: selectedCompany.overall_score },
+        { dimension: "风险控制", value: selectedCompany.risk_control },
+        { dimension: "综合评分", value: selectedCompany.total_score },
       ]
     : [];
 
@@ -102,7 +120,7 @@ export default function ScoringSystem() {
     (scoringData as ScoringItem[]).forEach((d) => {
       if (!stats[d.sector]) stats[d.sector] = { count: 0, avgScore: 0 };
       stats[d.sector].count++;
-      stats[d.sector].avgScore += d.overall_score;
+      stats[d.sector].avgScore += d.total_score;
     });
     return Object.entries(stats).map(([sector, data]) => ({
       sector,
@@ -194,9 +212,9 @@ export default function ScoringSystem() {
                   <tbody>
                     {pagedData.map((item, index) => (
                       <tr
-                        key={item.company_id}
+                        key={item.code}
                         className={`border-b border-slate-700 hover:bg-slate-700/30 transition-colors cursor-pointer ${
-                          selectedCompany?.company_id === item.company_id ? "bg-slate-700/40" : ""
+                          selectedCompany?.code === item.code ? "bg-slate-700/40" : ""
                         }`}
                         onClick={() => setSelectedCompany(item)}
                       >
@@ -217,13 +235,13 @@ export default function ScoringSystem() {
                         </td>
                         <td className="py-3 px-3 text-gray-400 text-xs">{item.code}</td>
                         <td className="py-3 px-3 text-gray-400 text-xs">{item.industry}</td>
-                        <td className={`py-3 px-3 text-right font-bold ${getScoreColor(item.overall_score)}`}>
-                          {item.overall_score.toFixed(1)}
+                        <td className={`py-3 px-3 text-right font-bold ${getScoreColor(item.total_score)}`}>
+                          {item.total_score.toFixed(1)}
                         </td>
-                        <td className={`py-3 px-3 font-bold ${getRatingColor(item.rating)}`}>{item.rating}</td>
+                        <td className={`py-3 px-3 font-bold ${getRatingColor(item.total_score)}`}>{getRating(item.total_score)}</td>
                         <td className="py-3 px-3">
-                          <span className={`px-2 py-0.5 rounded text-xs font-bold ${getAdviceColor(item.investment_advice)}`}>
-                            {item.investment_advice}
+                          <span className={`px-2 py-0.5 rounded text-xs font-bold ${getAdviceColor(item.total_score)}`}>
+                            {getAdvice(item.total_score)}
                           </span>
                         </td>
                       </tr>
@@ -258,7 +276,7 @@ export default function ScoringSystem() {
           <div className="space-y-6">
             {selectedCompany && (
               <>
-                <div className={`bg-slate-800/50 backdrop-blur-sm border rounded-lg p-6 ${getScoreBgColor(selectedCompany.overall_score)}`}>
+                <div className={`bg-slate-800/50 backdrop-blur-sm border rounded-lg p-6 ${getScoreBgColor(selectedCompany.total_score)}`}>
                   <div className="flex justify-between items-start mb-1">
                     <h3 className="text-lg font-semibold text-white">{selectedCompany.short_name}</h3>
                     <button
@@ -270,14 +288,14 @@ export default function ScoringSystem() {
                   </div>
                   <p className="text-sm text-slate-400 mb-4">{selectedCompany.code} | {selectedCompany.sector} · {selectedCompany.industry}</p>
                   <div className="text-center mb-4">
-                    <div className={`text-5xl font-bold ${getScoreColor(selectedCompany.overall_score)}`}>
-                      {selectedCompany.overall_score.toFixed(1)}
+                    <div className={`text-5xl font-bold ${getScoreColor(selectedCompany.total_score)}`}>
+                      {selectedCompany.total_score.toFixed(1)}
                     </div>
                     <p className="text-sm text-slate-400 mt-1">综合评分</p>
                     <div className="flex justify-center gap-3 mt-2">
-                      <span className={`text-lg font-bold ${getRatingColor(selectedCompany.rating)}`}>{selectedCompany.rating}</span>
-                      <span className={`px-2 py-0.5 rounded text-sm font-bold ${getAdviceColor(selectedCompany.investment_advice)}`}>
-                        {selectedCompany.investment_advice}
+                      <span className={`text-lg font-bold ${getRatingColor(selectedCompany.total_score)}`}>{getRating(selectedCompany.total_score)}</span>
+                      <span className={`px-2 py-0.5 rounded text-sm font-bold ${getAdviceColor(selectedCompany.total_score)}`}>
+                        {getAdvice(selectedCompany.total_score)}
                       </span>
                     </div>
                   </div>
@@ -286,7 +304,7 @@ export default function ScoringSystem() {
                       { label: "财务健康度", value: selectedCompany.financial_health, color: "bg-blue-500" },
                       { label: "成长潜力", value: selectedCompany.growth_potential, color: "bg-green-500" },
                       { label: "市场竞争力", value: selectedCompany.market_competitiveness, color: "bg-yellow-500" },
-                      { label: "风险评估", value: selectedCompany.risk_assessment, color: "bg-purple-500" },
+                      { label: "风险控制", value: selectedCompany.risk_control, color: "bg-purple-500" },
                     ].map(({ label, value, color }) => (
                       <div key={label}>
                         <div className="flex justify-between mb-1">
@@ -318,28 +336,52 @@ export default function ScoringSystem() {
                 </div>
 
                 <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">投资分析</h3>
-                  <div className="mb-3">
-                    <p className="text-sm font-semibold text-green-400 mb-2">核心优势</p>
-                    <ul className="space-y-1">
-                      {selectedCompany.key_strengths.map((s, i) => (
-                        <li key={i} className="text-sm text-gray-300 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-green-400 rounded-full flex-shrink-0" />
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
+                  <h3 className="text-lg font-semibold text-white mb-4">评分计算依据</h3>
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-slate-300 mb-2">真实财务数据（来源：东方财富）</p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">ROE</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.roe != null ? (selectedCompany.score_breakdown.financial_health.components.roe as number).toFixed(2) + '%' : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">毛利率</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.gross_margin != null ? (selectedCompany.score_breakdown.financial_health.components.gross_margin as number).toFixed(2) + '%' : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">净利率</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.net_margin != null ? (selectedCompany.score_breakdown.financial_health.components.net_margin as number).toFixed(2) + '%' : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">营收增长</span>
+                        <span className={`font-bold ml-2 ${((selectedCompany.score_breakdown?.growth_potential?.components?.revenue_growth as number) ?? 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>{selectedCompany.score_breakdown?.growth_potential?.components?.revenue_growth != null ? (selectedCompany.score_breakdown.growth_potential.components.revenue_growth as number).toFixed(2) + '%' : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">净利润增长</span>
+                        <span className={`font-bold ml-2 ${((selectedCompany.score_breakdown?.growth_potential?.components?.net_profit_growth as number) ?? 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>{selectedCompany.score_breakdown?.growth_potential?.components?.net_profit_growth != null ? (selectedCompany.score_breakdown.growth_potential.components.net_profit_growth as number).toFixed(2) + '%' : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">PE(TTM)</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.risk_control?.components?.pe_ttm != null ? (selectedCompany.score_breakdown.risk_control.components.pe_ttm as number).toFixed(2) : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">PB</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.pb != null ? (selectedCompany.score_breakdown.financial_health.components.pb as number).toFixed(2) : 'N/A'}</span>
+                      </div>
+                      <div className="bg-slate-700/50 rounded p-2">
+                        <span className="text-slate-400">市值</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.market_competitiveness?.components?.market_cap != null ? ((selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number) >= 10000 ? ((selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number)/10000).toFixed(1)+'亿' : (selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number).toFixed(0)+'万') : 'N/A'}</span>
+                      </div>
+                    </div>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-red-400 mb-2">主要风险</p>
-                    <ul className="space-y-1">
-                      {selectedCompany.key_risks.map((r, i) => (
-                        <li key={i} className="text-sm text-gray-300 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-red-400 rounded-full flex-shrink-0" />
-                          {r}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-sm font-semibold text-cyan-400 mb-2">综合评分公式</p>
+                    <p className="text-xs text-gray-400 bg-slate-700/50 rounded p-3 leading-relaxed">
+                      综合评分 = 财务健康度 × 35% + 成长潜力 × 30% + 市场竞争力 × 25% + 风险控制 × 10%<br/>
+                      = {selectedCompany.financial_health.toFixed(1)} × 35% + {selectedCompany.growth_potential.toFixed(1)} × 30% + {selectedCompany.market_competitiveness.toFixed(1)} × 25% + {selectedCompany.risk_control.toFixed(1)} × 10%<br/>
+                      = {(selectedCompany.financial_health * 0.35).toFixed(1)} + {(selectedCompany.growth_potential * 0.30).toFixed(1)} + {(selectedCompany.market_competitiveness * 0.25).toFixed(1)} + {(selectedCompany.risk_control * 0.10).toFixed(1)}<br/>
+                      = <strong className="text-white">{selectedCompany.total_score.toFixed(1)}</strong>
+                    </p>
                   </div>
                 </div>
               </>
