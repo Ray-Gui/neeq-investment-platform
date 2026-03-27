@@ -1,12 +1,11 @@
 import React, { useMemo } from "react";
-import { useParams, useLocation } from "wouter";
+import { useParams } from "wouter";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line
 } from "recharts";
 import {
-  ArrowLeft, Building2, Calendar, TrendingUp,
-  Shield, Award, Target, BarChart3, Activity, CheckCircle, Zap
+  ArrowLeft, Building2, TrendingUp, Shield, Award, Target, BarChart3, Activity, CheckCircle, Zap
 } from "lucide-react";
 import companiesData from "../data/companies.json";
 import scoringData from "../data/scoring-system-data.json";
@@ -100,41 +99,22 @@ const adviceBadge = (rec: string): "green" | "blue" | "yellow" | "red" | "gray" 
 // ── main component ────────────────────────────────────────────────────────────
 export default function CompanyDetail() {
   const params = useParams<{ code: string }>();
-  const [, navigate] = useLocation();
   const code = decodeURIComponent(params.code ?? "");
 
-  const company = useMemo(
-    () => (companiesData as any[]).find((c) => c.code === code),
-    [code]
-  );
-  const scoring = useMemo(
-    () => (scoringData as any[]).find((c) => c.code === code),
-    [code]
-  );
-  const financial = useMemo(
-    () => (financialData as any[]).find((c) => c.code === code),
-    [code]
-  );
-  const listing = useMemo(
-    () => (listingData as any[]).find((c) => c.code === code),
-    [code]
-  );
-  const market = useMemo(
-    () => (marketData as any[]).find((c) => c.code === code),
-    [code]
-  );
-  const investment = useMemo(
-    () => (investmentData as any[]).find((c) => c.code === code),
-    [code]
-  );
+  const company    = useMemo(() => (companiesData as any[]).find((c) => c.code === code), [code]);
+  const scoring    = useMemo(() => (scoringData as any[]).find((c) => c.code === code), [code]);
+  const financial  = useMemo(() => (financialData as any[]).find((c) => c.code === code), [code]);
+  const listing    = useMemo(() => (listingData as any[]).find((c) => c.code === code), [code]);
+  const market     = useMemo(() => (marketData as any[]).find((c) => c.code === code), [code]);
+  const investment = useMemo(() => (investmentData as any[]).find((c) => c.code === code), [code]);
 
   if (!company && !scoring) {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-400 text-lg mb-4">未找到企业数据：{code}</p>
-          <button onClick={() => navigate("/scoring")} className="text-cyan-400 hover:underline">
-            返回评分系统
+          <button onClick={() => history.back()} className="text-cyan-400 hover:underline">
+            返回
           </button>
         </div>
       </div>
@@ -142,14 +122,14 @@ export default function CompanyDetail() {
   }
 
   const displayCompany = company || scoring;
-  const totalScore = scoring?.total_score ?? company?.total_score ?? 0;
+  const totalScore = scoring?.total_score ?? 0;
 
   // 雷达图数据
   const radarData = scoring ? [
-    { dimension: "财务健康", value: scoring.financial_health },
-    { dimension: "成长潜力", value: scoring.growth_potential },
-    { dimension: "市场竞争力", value: scoring.market_competitiveness },
-    { dimension: "风险控制", value: scoring.risk_control },
+    { dimension: "财务健康", value: scoring.financial_health ?? 0 },
+    { dimension: "成长潜力", value: scoring.growth_potential ?? 0 },
+    { dimension: "市场竞争力", value: scoring.market_competitiveness ?? 0 },
+    { dimension: "风险控制", value: scoring.risk_control ?? 0 },
   ] : [];
 
   // 财务趋势数据
@@ -160,6 +140,13 @@ export default function CompanyDetail() {
     毛利率: +((d.gross_margin ?? 0) * 100).toFixed(1),
     ROE: +(d.roe ?? 0).toFixed(1),
   }));
+
+  // 评分分解
+  const sb = scoring?.score_breakdown;
+  const fhComp = sb?.financial_health?.components ?? {};
+  const gpComp = sb?.growth_potential?.components ?? {};
+  const mcComp = sb?.market_competitiveness?.components ?? {};
+  const rcComp = sb?.risk_control?.components ?? {};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -188,17 +175,14 @@ export default function CompanyDetail() {
         <SectionCard title="企业基本信息" icon={<Building2 className="w-5 h-5" />}>
           <div className="flex flex-wrap gap-2 mb-4">
             <Badge text={displayCompany.sector} type="blue" />
-            <Badge text={displayCompany.industry} type="gray" />
+            <Badge text={displayCompany.industry ?? "N/A"} type="gray" />
             {investment?.recommendation && (
               <Badge text={investment.recommendation} type={adviceBadge(investment.recommendation)} />
             )}
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatBox label="证券代码" value={code} />
-            <StatBox
-              label="挂牌日期"
-              value={company?.listing_date ? company.listing_date.slice(0, 10) : (listing?.listing_date?.slice(0, 10) ?? "N/A")}
-            />
+            <StatBox label="挂牌日期" value={company?.listing_date?.slice(0, 10) ?? listing?.listing_date?.slice(0, 10) ?? "N/A"} />
             <StatBox label="市值" value={fmtCap(company?.market_cap)} />
             <StatBox label="细分行业" value={displayCompany.sub_industry ?? displayCompany.industry ?? "N/A"} />
           </div>
@@ -214,36 +198,34 @@ export default function CompanyDetail() {
                     {totalScore.toFixed(1)}
                   </div>
                   <p className="text-slate-400 mt-1">综合评分 / 100</p>
-                  <div className="flex justify-center gap-2 mt-2">
-                    <span className={`text-xl font-bold ${scoreColor(totalScore)}`}>
-                      {ratingLabel(totalScore)} 级
-                    </span>
-                  </div>
+                  <span className={`text-xl font-bold ${scoreColor(totalScore)}`}>
+                    {ratingLabel(totalScore)} 级
+                  </span>
                 </div>
 
                 <ScoreBar
                   label="财务健康度（权重 35%）"
                   score={scoring.financial_health}
                   color={scoreColor(scoring.financial_health)}
-                  explain={`ROE=${fmtNum(scoring.score_breakdown?.financial_health?.components?.roe, '%')}，毛利率=${fmtNum(scoring.score_breakdown?.financial_health?.components?.gross_margin, '%')}，净利率=${fmtNum(scoring.score_breakdown?.financial_health?.components?.net_margin, '%')}`}
+                  explain={`ROE=${fmtNum(fhComp.roe, '%')}，毛利率=${fmtNum(fhComp.gross_margin, '%')}，净利率=${fmtNum(fhComp.net_margin, '%')}`}
                 />
                 <ScoreBar
                   label="成长潜力（权重 30%）"
                   score={scoring.growth_potential}
                   color={scoreColor(scoring.growth_potential)}
-                  explain={`营收增长=${fmtNum(scoring.score_breakdown?.growth_potential?.components?.revenue_growth, '%')}，净利润增长=${fmtNum(scoring.score_breakdown?.growth_potential?.components?.net_profit_growth, '%')}`}
+                  explain={`营收增长=${fmtNum(gpComp.revenue_growth, '%')}，净利润增长=${fmtNum(gpComp.net_profit_growth, '%')}`}
                 />
                 <ScoreBar
                   label="市场竞争力（权重 25%）"
                   score={scoring.market_competitiveness}
                   color={scoreColor(scoring.market_competitiveness)}
-                  explain={`市值=${fmtCap(scoring.score_breakdown?.market_competitiveness?.components?.market_cap)}，毛利率=${fmtNum(scoring.score_breakdown?.market_competitiveness?.components?.gross_margin, '%')}`}
+                  explain={`市值=${fmtCap(mcComp.market_cap)}，毛利率=${fmtNum(mcComp.gross_margin, '%')}`}
                 />
                 <ScoreBar
                   label="风险控制（权重 10%）"
                   score={scoring.risk_control}
                   color={scoreColor(scoring.risk_control)}
-                  explain={`PE(TTM)=${fmtNum(scoring.score_breakdown?.risk_control?.components?.pe_ttm)}，PB=${fmtNum(scoring.score_breakdown?.financial_health?.components?.pb)}`}
+                  explain={`PE(TTM)=${fmtNum(rcComp.pe_ttm)}，净利润增长=${fmtNum(rcComp.net_profit_growth, '%')}`}
                 />
               </div>
 
@@ -372,36 +354,22 @@ export default function CompanyDetail() {
               <div>
                 <p className="text-xs text-cyan-400 font-semibold mb-3">上市概率计算依据</p>
                 <div className="space-y-3">
-                  <div>
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="text-slate-400">盈利能力评分（权重 40%）</span>
-                      <span className="text-white font-bold">{listing.profitability_score?.toFixed(1)}</span>
+                  {[
+                    { label: "盈利能力评分（权重 40%）", score: listing.profitability_score, explain: listing.score_explanation?.profitability, color: "bg-blue-500" },
+                    { label: "成长性评分（权重 35%）", score: listing.growth_score, explain: listing.score_explanation?.growth, color: "bg-green-500" },
+                    { label: "市场潜力评分（权重 25%）", score: listing.market_potential_score, explain: listing.score_explanation?.market, color: "bg-yellow-500" },
+                  ].map(({ label, score, explain, color }) => (
+                    <div key={label}>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-400">{label}</span>
+                        <span className="text-white font-bold">{score?.toFixed(1) ?? "N/A"}</span>
+                      </div>
+                      <div className="w-full bg-slate-700 rounded-full h-2">
+                        <div className={`${color} h-2 rounded-full`} style={{ width: `${Math.min(100, score ?? 0)}%` }} />
+                      </div>
+                      {explain && <p className="text-xs text-slate-500 mt-1">{explain}</p>}
                     </div>
-                    <div className="w-full bg-slate-700 rounded-full h-2">
-                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${Math.min(100, listing.profitability_score ?? 0)}%` }} />
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">{listing.score_explanation?.profitability}</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="text-slate-400">成长性评分（权重 35%）</span>
-                      <span className="text-white font-bold">{listing.growth_score?.toFixed(1)}</span>
-                    </div>
-                    <div className="w-full bg-slate-700 rounded-full h-2">
-                      <div className="bg-green-500 h-2 rounded-full" style={{ width: `${Math.min(100, listing.growth_score ?? 0)}%` }} />
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">{listing.score_explanation?.growth}</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="text-slate-400">市场潜力评分（权重 25%）</span>
-                      <span className="text-white font-bold">{listing.market_potential_score?.toFixed(1)}</span>
-                    </div>
-                    <div className="w-full bg-slate-700 rounded-full h-2">
-                      <div className="bg-yellow-500 h-2 rounded-full" style={{ width: `${Math.min(100, listing.market_potential_score ?? 0)}%` }} />
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">{listing.score_explanation?.market}</p>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="bg-slate-700/50 rounded p-3 mt-3 text-xs text-slate-300">
@@ -440,7 +408,7 @@ export default function CompanyDetail() {
 
             <div className="bg-slate-700/50 rounded-lg p-4 text-xs text-slate-300">
               <p className="text-cyan-400 font-semibold mb-2">流动性评分计算依据</p>
-              <p>{market.score_explanation?.liquidity}</p>
+              {market.score_explanation?.liquidity && <p>{market.score_explanation.liquidity}</p>}
               {market.score_explanation?.arbitrage && (
                 <p className="mt-1 text-yellow-400">套利机会：{market.score_explanation.arbitrage}</p>
               )}
@@ -457,12 +425,14 @@ export default function CompanyDetail() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <div className="text-center mb-4">
-                  <div className={`text-5xl font-bold ${scoreColor(investment.investment_score)}`}>
-                    {investment.investment_score?.toFixed(1)}
+                  <div className={`text-5xl font-bold ${scoreColor(investment.investment_score ?? 0)}`}>
+                    {investment.investment_score?.toFixed(1) ?? "N/A"}
                   </div>
                   <p className="text-slate-400 mt-1">投资综合评分</p>
                   <div className="flex justify-center gap-2 mt-2">
-                    <Badge text={investment.recommendation} type={adviceBadge(investment.recommendation)} />
+                    {investment.recommendation && (
+                      <Badge text={investment.recommendation} type={adviceBadge(investment.recommendation)} />
+                    )}
                     {investment.investment_period && (
                       <Badge text={investment.investment_period} type="gray" />
                     )}
@@ -482,12 +452,12 @@ export default function CompanyDetail() {
               <div>
                 <div className="bg-slate-700/50 rounded-lg p-4 text-xs text-slate-300">
                   <p className="text-cyan-400 font-semibold mb-2">投资评分计算公式</p>
-                  <p>{investment.score_explanation?.formula}</p>
+                  {investment.score_explanation?.formula && <p>{investment.score_explanation.formula}</p>}
                   <div className="mt-2 space-y-1">
-                    <p>综合评分贡献：{investment.score_explanation?.total_score}</p>
-                    <p>上市潜力贡献：{investment.score_explanation?.listing}</p>
-                    <p>做市机会贡献：{investment.score_explanation?.market}</p>
-                    <p>估值贡献：{investment.score_explanation?.valuation}</p>
+                    {investment.score_explanation?.total_score && <p>综合评分贡献：{investment.score_explanation.total_score}</p>}
+                    {investment.score_explanation?.listing && <p>上市潜力贡献：{investment.score_explanation.listing}</p>}
+                    {investment.score_explanation?.market && <p>做市机会贡献：{investment.score_explanation.market}</p>}
+                    {investment.score_explanation?.valuation && <p>估值贡献：{investment.score_explanation.valuation}</p>}
                   </div>
                   <p className="mt-2 text-white font-bold text-sm">
                     = {investment.investment_score?.toFixed(1)} 分
@@ -499,14 +469,14 @@ export default function CompanyDetail() {
                     { label: "财务健康", value: investment.financial_health },
                     { label: "成长潜力", value: investment.growth_potential },
                     { label: "市场竞争力", value: investment.market_competitiveness },
-                  ].map(({ label, value }) => value != null && (
+                  ].filter(({ value }) => value != null).map(({ label, value }) => (
                     <div key={label}>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="text-slate-400">{label}</span>
-                        <span className={`font-bold ${scoreColor(value)}`}>{value.toFixed(1)}</span>
+                        <span className={`font-bold ${scoreColor(value!)}`}>{value!.toFixed(1)}</span>
                       </div>
                       <div className="w-full bg-slate-700 rounded-full h-1.5">
-                        <div className={`${scoreColor(value).replace("text-", "bg-")} h-1.5 rounded-full`} style={{ width: `${Math.min(100, value)}%` }} />
+                        <div className={`${scoreColor(value!).replace("text-", "bg-")} h-1.5 rounded-full`} style={{ width: `${Math.min(100, value!)}%` }} />
                       </div>
                     </div>
                   ))}
