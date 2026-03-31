@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const DATA_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663407868224/SXZSyASYZlpGUQXM.json";
+export const DATA_URL = "/data_v4_fixed.json";
 export const ANALYTICS_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663106941819/L3jdtkWk9JZNhxFtGdcAp9/analytics_v2_a5337511.json";
 
 export function fmt(v: number | undefined | null, decimals = 2, suffix = ""): string {
