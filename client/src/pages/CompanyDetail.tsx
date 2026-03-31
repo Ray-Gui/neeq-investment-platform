@@ -24,11 +24,13 @@ const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
   return Number(v).toFixed(digits) + suffix;
 };
 
+// revenue/net_profit 单位为万元（akshare 原始数据已转换）
 const fmtRevenue = (v: number | null | undefined): string => {
   if (v == null) return "/";
-  if (v >= 1e8) return (v / 1e8).toFixed(2) + " 亿";
-  if (v >= 1e4) return (v / 1e4).toFixed(0) + " 万";
-  return v.toFixed(0) + " 元";
+  // v 单位为万元
+  if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";
+  if (v >= 1) return v.toFixed(0) + " 万";
+  return v.toFixed(2) + " 万";
 };
 
 const fmtDate = (s: string | null | undefined): string => {
@@ -53,7 +55,7 @@ function calcScores(finData: any[]) {
   const profitability = Math.round(roeScore + gmScore + nmScore);
 
   const rvgScore = latest.revenue_growth != null ? Math.min(15, Math.max(0, (latest.revenue_growth / 40) * 15)) : 0;
-  const npgScore = latest.profit_growth != null ? Math.min(15, Math.max(0, (latest.profit_growth / 40) * 15)) : 0;
+  const npgScore = latest.net_profit_growth != null ? Math.min(15, Math.max(0, (latest.net_profit_growth / 40) * 15)) : 0;
   const growth = Math.round(rvgScore + npgScore);
 
   const drScore = latest.debt_ratio != null ? Math.min(10, ((100 - latest.debt_ratio) / 60) * 10) : 0;
@@ -168,8 +170,8 @@ export default function CompanyDetail() {
       .sort((a, b) => (a.fiscal_year ?? 0) - (b.fiscal_year ?? 0))
       .map((d) => ({
         year: d.fiscal_year,
-        营收: d.revenue != null ? +(d.revenue / 1e8).toFixed(3) : null,
-        净利润: d.net_profit != null ? +(d.net_profit / 1e8).toFixed(3) : null,
+        营收: d.revenue != null ? +(d.revenue / 10000).toFixed(3) : null,
+        净利润: d.net_profit != null ? +(d.net_profit / 10000).toFixed(3) : null,
         毛利率: d.gross_margin != null ? +d.gross_margin.toFixed(2) : null,
         净利率: d.net_margin != null ? +d.net_margin.toFixed(2) : null,
         ROE: d.roe != null ? +d.roe.toFixed(2) : null,
@@ -316,7 +318,7 @@ export default function CompanyDetail() {
                   sub={latestFin.revenue_growth != null ? `同比 ${fmt(latestFin.revenue_growth, "%", 1)}` : "同比 /"} />
                 <StatBox label="净利润" value={fmtRevenue(latestFin.net_profit)}
                   color={(latestFin.net_profit ?? 0) >= 0 ? "text-green-400" : "text-red-400"}
-                  sub={latestFin.profit_growth != null ? `同比 ${fmt(latestFin.profit_growth, "%", 1)}` : "同比 /"} />
+                  sub={latestFin.net_profit_growth != null ? `同比 ${fmt(latestFin.net_profit_growth, "%", 1)}` : "同比 /"} />
                 <StatBox label="毛利率" value={fmt(latestFin.gross_margin, "%", 1)} color="text-yellow-400"
                   sub={industryBench.gross_margin != null ? `行业均值 ${fmt(industryBench.gross_margin, "%", 1)}` : "行业均值 /"} />
                 <StatBox label="净利率" value={fmt(latestFin.net_margin, "%", 1)} color="text-purple-400"
@@ -402,7 +404,7 @@ export default function CompanyDetail() {
                       <td className={`text-right py-1.5 px-2 ${(row.debt_ratio ?? 0) > 70 ? "text-red-400" : "text-orange-400"}`}>{fmt(row.debt_ratio, "%", 1)}</td>
                       <td className="text-right text-slate-300 py-1.5 px-2">{fmt(row.current_ratio, "x", 2)}</td>
                       <td className={`text-right py-1.5 px-2 ${pctColor(row.revenue_growth)}`}>{fmt(row.revenue_growth, "%", 1)}</td>
-                      <td className={`text-right py-1.5 px-2 ${pctColor(row.profit_growth)}`}>{fmt(row.profit_growth, "%", 1)}</td>
+                      <td className={`text-right py-1.5 px-2 ${pctColor(row.net_profit_growth)}`}>{fmt(row.net_profit_growth, "%", 1)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -460,8 +462,8 @@ export default function CompanyDetail() {
               latestFin?.net_profit != null && latestFin.net_profit < 0
                 ? { level: "red", text: `${latestYear} 年度净利润为负（${fmtRevenue(latestFin.net_profit)}），公司处于亏损状态` }
                 : null,
-              latestFin?.profit_growth != null && latestFin.profit_growth < -30
-                ? { level: "yellow", text: `净利润同比下滑 ${Math.abs(latestFin.profit_growth).toFixed(1)}%，盈利能力出现较大下滑` }
+              latestFin?.net_profit_growth != null && latestFin.net_profit_growth < -30
+                ? { level: "yellow", text: `净利润同比下滑 ${Math.abs(latestFin.net_profit_growth).toFixed(1)}%，盈利能力出现较大下滑` }
                 : null,
               latestFin?.revenue_growth != null && latestFin.revenue_growth < -10
                 ? { level: "yellow", text: `营收同比下滑 ${Math.abs(latestFin.revenue_growth).toFixed(1)}%，需关注业务增长压力` }

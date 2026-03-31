@@ -20,11 +20,13 @@ const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
   return Number(v).toFixed(digits) + suffix;
 };
 
+// revenue/net_profit 单位为万元（akshare 原始数据已转换）
 const fmtRevenue = (v: number | null | undefined): string => {
   if (v == null) return "/";
-  if (v >= 1e8) return (v / 1e8).toFixed(2) + " 亿";
-  if (v >= 1e4) return (v / 1e4).toFixed(0) + " 万";
-  return v.toFixed(0);
+  // v 单位为万元
+  if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";
+  if (v >= 1) return v.toFixed(0) + " 万";
+  return v.toFixed(2) + " 万";
 };
 
 const pctColor = (v: number | null | undefined): string => {
@@ -113,9 +115,9 @@ function FinancialTable({ data }: { data: any[] }) {
                   <span>{trendIcon(row.revenue_growth)} {fmt(row.revenue_growth, "%", 1)}</span>
                 ) : "/"}
               </td>
-              <td className={`text-right py-2 px-2 ${pctColor(row.profit_growth)}`}>
-                {row.profit_growth != null ? (
-                  <span>{trendIcon(row.profit_growth)} {fmt(row.profit_growth, "%", 1)}</span>
+              <td className={`text-right py-2 px-2 ${pctColor(row.net_profit_growth)}`}>
+                {row.net_profit_growth != null ? (
+                  <span>{trendIcon(row.net_profit_growth)} {fmt(row.net_profit_growth, "%", 1)}</span>
                 ) : "/"}
               </td>
             </tr>
@@ -181,8 +183,8 @@ export default function FinancialAnalysis() {
       .sort((a: any, b: any) => (a.fiscal_year ?? 0) - (b.fiscal_year ?? 0))
       .map((d: any) => ({
         year: d.fiscal_year,
-        营收: d.revenue != null ? +(d.revenue / 1e8).toFixed(3) : null,
-        净利润: d.net_profit != null ? +(d.net_profit / 1e8).toFixed(3) : null,
+        营收: d.revenue != null ? +(d.revenue / 10000).toFixed(3) : null,
+        净利润: d.net_profit != null ? +(d.net_profit / 10000).toFixed(3) : null,
         毛利率: d.gross_margin != null ? +d.gross_margin.toFixed(2) : null,
         净利率: d.net_margin != null ? +d.net_margin.toFixed(2) : null,
         ROE: d.roe != null ? +d.roe.toFixed(2) : null,
