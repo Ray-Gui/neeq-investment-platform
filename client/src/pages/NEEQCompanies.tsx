@@ -1,430 +1,371 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { Search, Filter, TrendingUp, Users, DollarSign, BarChart3, ChevronDown, ChevronUp } from "lucide-react";
-import { allCompanies } from "../data/all-companies";
-import { investmentScores } from "../data/investment-scores";
-import { financialDataByCompany } from "../data/financial-data";
+import React, { useState, useMemo, useEffect } from "react";
+import {
+  Search, ChevronLeft, ChevronRight, Building2, Info, Loader2,
+} from "lucide-react";
 
-interface Company {
-  id: number;
-  code: string;
-  name: string;
-  short_name: string;
-  industry: string;
-  sector: string;
-  province: string;
-  city: string;
-  founded_year: number;
-  main_business: string;
-  neeq_listing_date: string;
-  neeq_layer: string;
-  bse_listing_status: string;
-  bse_listing_date?: string;
+// ── 工具函数 ────────────────────────────────────────────────────
+const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
+  if (v == null || isNaN(Number(v))) return "/";
+  return Number(v).toFixed(digits) + suffix;
+};
+
+const fmtCap = (v: number | null | undefined): string => {
+  if (v == null) return "/";
+  if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";
+  return v.toFixed(0) + " 万";
+};
+
+const fmtRevenue = (v: number | null | undefined): string => {
+  if (v == null) return "/";
+  if (v >= 1e8) return (v / 1e8).toFixed(2) + " 亿";
+  if (v >= 1e4) return (v / 1e4).toFixed(0) + " 万";
+  return v.toFixed(0);
+};
+
+function getLatestFin(company: any) {
+  const fd = company.financial_data;
+  if (!fd || !Array.isArray(fd) || fd.length === 0) return null;
+  return [...fd].sort((a: any, b: any) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0))[0];
 }
 
-interface FinancialData {
-  fiscal_year: number;
-  revenue: number;
-  net_profit: number;
-  gross_margin: number;
-  net_margin: number;
-  roe: number;
+function calcScore(company: any): number | null {
+  const fin = getLatestFin(company);
+  if (!fin) return null;
+  const roeScore = fin.roe != null ? Math.min(35, (fin.roe / 30) * 35) : 0;
+  const gmScore = fin.gross_margin != null ? Math.min(15, (fin.gross_margin / 60) * 15) : 0;
+  const nmScore = fin.net_margin != null ? Math.min(10, (fin.net_margin / 25) * 10) : 0;
+  const rvgScore = fin.revenue_growth != null ? Math.min(15, Math.max(0, (fin.revenue_growth / 40) * 15)) : 0;
+  const npgScore = fin.net_profit_growth != null ? Math.min(15, Math.max(0, (fin.net_profit_growth / 40) * 15)) : 0;
+  const drScore = fin.debt_ratio != null ? Math.min(10, ((100 - fin.debt_ratio) / 60) * 10) : 0;
+  const crScore = fin.current_ratio != null ? Math.min(10, (fin.current_ratio / 3) * 10) : 0;
+  const revScore = fin.revenue != null ? Math.min(15, (Math.log10(fin.revenue + 1) / 9) * 15) : 0;
+  return Math.min(100, Math.round(roeScore + gmScore + nmScore + rvgScore + npgScore + drScore + crScore + revScore));
 }
+
+function calcSectorStats(companies: any[]) {
+  const withFin = companies.filter((c) => getLatestFin(c));
+  if (withFin.length === 0) return null;
+  const avgROE = withFin.reduce((s: number, c: any) => s + (getLatestFin(c)?.roe ?? 0), 0) / withFin.length;
+  const avgGM = withFin.reduce((s: number, c: any) => s + (getLatestFin(c)?.gross_margin ?? 0), 0) / withFin.length;
+  return { avgROE, avgGM, withFinCount: withFin.length };
+}
+
+const sectorColor: Record<string, string> = {
+  "医疗健康": "text-green-400 bg-green-500/10 border-green-500/30",
+  "新能源": "text-yellow-400 bg-yellow-500/10 border-yellow-500/30",
+  "人工智能": "text-blue-400 bg-blue-500/10 border-blue-500/30",
+};
+
+const scoreColor = (s: number | null): string => {
+  if (s == null) return "text-slate-500";
+  if (s >= 70) return "text-green-400";
+  if (s >= 55) return "text-cyan-400";
+  if (s >= 40) return "text-yellow-400";
+  return "text-red-400";
+};
 
 export default function NEEQCompanies() {
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [selectedSector, setSelectedSector] = useState<string>("全部");
-  const [selectedStatus, setSelectedStatus] = useState<string>("全部");
+  const [companies, setCompanies] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [sector, setSector] = useState("全部");
+  const [sortBy, setSortBy] = useState<"name" | "cap" | "score" | "roe" | "revenue">("cap");
+  const [sortDir, setSortDir] = useState<"desc" | "asc">("desc");
   const [page, setPage] = useState(1);
-  const [expandedCompany, setExpandedCompany] = useState<number | null>(null);
-  const [sortBy, setSortBy] = useState<string>("name");
+  const [showOnlyWithFin, setShowOnlyWithFin] = useState(false);
+  const PAGE_SIZE = 20;
 
-  const itemsPerPage = 10;
-
-  // 获取所有行业和状态
-  const sectors = useMemo(() => {
-    const unique = new Set(allCompanies.map(c => c.sector));
-    return ["全部", ...Array.from(unique).sort()];
+  // 异步加载完整公司数据（含财务数据）
+  useEffect(() => {
+    fetch("/neeq-companies.json")
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data: any[]) => {
+        setCompanies(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoadError(e.message);
+        setLoading(false);
+      });
   }, []);
 
-  const statuses = useMemo(() => {
-    const unique = new Set(allCompanies.map(c => c.bse_listing_status));
-    return ["全部", ...Array.from(unique).sort()];
-  }, []);
+  const sectorStats = useMemo(() => {
+    return ["医疗健康", "新能源", "人工智能"].map((s) => {
+      const sectorCompanies = companies.filter((c) => c.sector === s);
+      return { sector: s, count: sectorCompanies.length, stats: calcSectorStats(sectorCompanies) };
+    });
+  }, [companies]);
 
-  // 过滤和排序企业
-  const filteredCompanies = useMemo(() => {
-    let result = allCompanies;
-
-    // 按关键词搜索
-    if (searchKeyword) {
-      const keyword = searchKeyword.toLowerCase();
-      result = result.filter(
-        c =>
-          c.short_name.toLowerCase().includes(keyword) ||
-          c.name.toLowerCase().includes(keyword) ||
-          c.code.includes(keyword) ||
-          c.industry.toLowerCase().includes(keyword)
-      );
+  const filtered = useMemo(() => {
+    let list = companies;
+    if (sector !== "全部") list = list.filter((c) => c.sector === sector);
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      list = list.filter((c) => c.name?.toLowerCase().includes(q) || c.code?.includes(q));
     }
+    if (showOnlyWithFin) list = list.filter((c) => getLatestFin(c) != null);
 
-    // 按行业筛选
-    if (selectedSector !== "全部") {
-      result = result.filter(c => c.sector === selectedSector);
-    }
-
-    // 按上市状态筛选
-    if (selectedStatus !== "全部") {
-      result = result.filter(c => c.bse_listing_status === selectedStatus);
-    }
-
-    // 排序
-    result.sort((a, b) => {
-      if (sortBy === "name") return a.short_name.localeCompare(b.short_name);
-      if (sortBy === "founded") return b.founded_year - a.founded_year;
-      if (sortBy === "code") return a.code.localeCompare(b.code);
-      return 0;
+    list = [...list].sort((a, b) => {
+      let va: number | null = null, vb: number | null = null;
+      if (sortBy === "cap") { va = a.market_cap_wan ?? null; vb = b.market_cap_wan ?? null; }
+      else if (sortBy === "score") { va = calcScore(a); vb = calcScore(b); }
+      else if (sortBy === "roe") { va = getLatestFin(a)?.roe ?? null; vb = getLatestFin(b)?.roe ?? null; }
+      else if (sortBy === "revenue") { va = getLatestFin(a)?.revenue ?? null; vb = getLatestFin(b)?.revenue ?? null; }
+      else { return (a.name ?? "").localeCompare(b.name ?? ""); }
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      return sortDir === "desc" ? vb - va : va - vb;
     });
 
-    return result;
-  }, [searchKeyword, selectedSector, selectedStatus, sortBy]);
+    return list;
+  }, [companies, search, sector, sortBy, sortDir, showOnlyWithFin]);
 
-  // 分页
-  const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
-  const paginatedCompanies = filteredCompanies.slice(
-    (page - 1) * itemsPerPage,
-    page * itemsPerPage
-  );
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  // 获取企业评分
-  const getCompanyScore = (companyId: number) => {
-    return investmentScores.find(s => s.company_id === companyId);
-  };
-
-  // 获取企业财务数据
-  const getCompanyFinancials = (companyId: number) => {
-    return financialDataByCompany[companyId] || [];
-  };
-
-  // 统计信息
-  const stats = useMemo(() => {
-    const sectorStats: Record<string, number> = {};
-    const statusStats: Record<string, number> = {};
-
-    allCompanies.forEach(c => {
-      sectorStats[c.sector] = (sectorStats[c.sector] || 0) + 1;
-      statusStats[c.bse_listing_status] = (statusStats[c.bse_listing_status] || 0) + 1;
-    });
-
-    return { sectorStats, statusStats };
-  }, []);
-
-  const handleReset = () => {
-    setSearchKeyword("");
-    setSelectedSector("全部");
-    setSelectedStatus("全部");
+  const handleSort = (key: typeof sortBy) => {
+    if (sortBy === key) setSortDir((d) => (d === "desc" ? "asc" : "desc"));
+    else { setSortBy(key); setSortDir("desc"); }
     setPage(1);
   };
 
+  const SortIcon = ({ k }: { k: typeof sortBy }) => (
+    <span className="text-slate-500 ml-1">
+      {sortBy === k ? (sortDir === "desc" ? "↓" : "↑") : "↕"}
+    </span>
+  );
+
+  const totalCount = companies.length;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 p-6">
-      <div className="max-w-7xl mx-auto">
-        {/* 标题 */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">📈 新三板企业库</h1>
-          <p className="text-slate-400">
-            {filteredCompanies.length} 家企业 | 共 {allCompanies.length} 家
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="border-b border-slate-700 px-6 py-4">
+        <h1 className="text-xl font-bold text-white flex items-center gap-2">
+          <Building2 className="w-6 h-6 text-cyan-400" />
+          新三板企业库
+          <span className="text-sm font-normal text-slate-400 ml-2">
+            三大行业 · {loading ? "加载中..." : `${totalCount} 家真实挂牌公司`} · 来源：东方财富 + akshare
+          </span>
+        </h1>
+      </div>
 
-        {/* 统计卡片 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
-            <p className="text-slate-400 text-sm">总企业数</p>
-            <p className="text-2xl font-bold text-white">{allCompanies.length}</p>
+      <div className="max-w-7xl mx-auto px-6 py-6">
+
+        {/* 加载状态 */}
+        {loading && (
+          <div className="flex items-center justify-center py-24">
+            <Loader2 className="w-8 h-8 text-cyan-400 animate-spin mr-3" />
+            <span className="text-slate-400 text-lg">正在加载 1909 家公司数据...</span>
           </div>
-          <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
-            <p className="text-slate-400 text-sm">医疗健康</p>
-            <p className="text-2xl font-bold text-green-500">{stats.sectorStats["医疗健康"] || 0}</p>
-          </div>
-          <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
-            <p className="text-slate-400 text-sm">新能源</p>
-            <p className="text-2xl font-bold text-yellow-500">{stats.sectorStats["新能源"] || 0}</p>
-          </div>
-          <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
-            <p className="text-slate-400 text-sm">人工智能</p>
-            <p className="text-2xl font-bold text-purple-500">{stats.sectorStats["人工智能"] || 0}</p>
-          </div>
-        </div>
+        )}
 
-        {/* 搜索和筛选 */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="relative">
-            <Search className="absolute left-3 top-3 text-slate-400" size={20} />
-            <input
-              type="text"
-              placeholder="搜索企业名称或代码..."
-              value={searchKeyword}
-              onChange={(e) => {
-                setSearchKeyword(e.target.value);
-                setPage(1);
-              }}
-              className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-green-500"
-            />
-          </div>
-
-          <select
-            value={selectedSector}
-            onChange={(e) => {
-              setSelectedSector(e.target.value);
-              setPage(1);
-            }}
-            className="px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-green-500"
-          >
-            {sectors.map(sector => (
-              <option key={sector} value={sector}>
-                {sector}
-              </option>
-            ))}
-          </select>
-
-          <select
-            value={selectedStatus}
-            onChange={(e) => {
-              setSelectedStatus(e.target.value);
-              setPage(1);
-            }}
-            className="px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-green-500"
-          >
-            {statuses.map(status => (
-              <option key={status} value={status}>
-                {status}
-              </option>
-            ))}
-          </select>
-
-          <button
-            onClick={handleReset}
-            className="px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white hover:bg-slate-500 transition"
-          >
-            重置筛选
-          </button>
-        </div>
-
-        {/* 排序选项 */}
-        <div className="flex gap-2 mb-6">
-          <button
-            onClick={() => setSortBy("name")}
-            className={`px-4 py-2 rounded-lg transition ${
-              sortBy === "name"
-                ? "bg-green-600 text-white"
-                : "bg-slate-700 border border-slate-600 text-white"
-            }`}
-          >
-            按名称
-          </button>
-          <button
-            onClick={() => setSortBy("founded")}
-            className={`px-4 py-2 rounded-lg transition ${
-              sortBy === "founded"
-                ? "bg-green-600 text-white"
-                : "bg-slate-700 border border-slate-600 text-white"
-            }`}
-          >
-            按成立年份
-          </button>
-          <button
-            onClick={() => setSortBy("code")}
-            className={`px-4 py-2 rounded-lg transition ${
-              sortBy === "code"
-                ? "bg-green-600 text-white"
-                : "bg-slate-700 border border-slate-600 text-white"
-            }`}
-          >
-            按代码
-          </button>
-        </div>
-
-        {/* 企业列表 */}
-        <div className="space-y-3">
-          {paginatedCompanies.length > 0 ? (
-            paginatedCompanies.map((company) => {
-              const score = getCompanyScore(company.id);
-              const financials = getCompanyFinancials(company.id);
-              const isExpanded = expandedCompany === company.id;
-
-              return (
-                <div
-                  key={company.id}
-                  className="bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:border-slate-500 transition"
-                >
-                  <div
-                    className="flex items-center justify-between cursor-pointer"
-                    onClick={() => setExpandedCompany(isExpanded ? null : company.id)}
-                  >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-white">{company.short_name}</h3>
-                        <span className="text-sm text-slate-400">{company.code}</span>
-                        <span className="text-xs bg-slate-600 px-2 py-1 rounded text-slate-200">
-                          {company.industry}
-                        </span>
-                        <span className={`text-xs px-2 py-1 rounded ${
-                          company.sector === "医疗健康" ? "bg-green-900/30 text-green-300" :
-                          company.sector === "新能源" ? "bg-yellow-900/30 text-yellow-300" :
-                          "bg-purple-900/30 text-purple-300"
-                        }`}>
-                          {company.sector}
-                        </span>
-                      </div>
-                      <p className="text-sm text-slate-400">
-                        {company.province} {company.city} | 成立于 {company.founded_year} | {company.bse_listing_status}
-                      </p>
-                    </div>
-
-                    {score && (
-                      <div className="text-right mr-4">
-                        <div className="text-2xl font-bold text-green-500">{score.overall_score.toFixed(1)}</div>
-                        <p className="text-xs text-slate-400">综合评分</p>
-                      </div>
-                    )}
-
-                    {isExpanded ? (
-                      <ChevronUp className="text-slate-400" />
-                    ) : (
-                      <ChevronDown className="text-slate-400" />
-                    )}
-                  </div>
-
-                  {/* 展开详情 */}
-                  {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-slate-600">
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                        <div>
-                          <p className="text-slate-400 text-sm">企业名称</p>
-                          <p className="text-white font-semibold">{company.name}</p>
-                        </div>
-                        <div>
-                          <p className="text-slate-400 text-sm">新三板层级</p>
-                          <p className="text-white font-semibold">{company.neeq_layer}</p>
-                        </div>
-                        <div>
-                          <p className="text-slate-400 text-sm">挂牌日期</p>
-                          <p className="text-white font-semibold">{company.neeq_listing_date}</p>
-                        </div>
-                        <div>
-                          <p className="text-slate-400 text-sm">北交所状态</p>
-                          <p className="text-white font-semibold">{company.bse_listing_status}</p>
-                        </div>
-                      </div>
-
-                      <div className="mb-4">
-                        <p className="text-slate-400 text-sm mb-2">主营业务</p>
-                        <p className="text-white text-sm">{company.main_business}</p>
-                      </div>
-
-                      {score && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                          <div>
-                            <p className="text-slate-400 text-sm">财务健康度</p>
-                            <p className="text-green-500 font-bold">{score.financial_health}</p>
-                          </div>
-                          <div>
-                            <p className="text-slate-400 text-sm">成长潜力</p>
-                            <p className="text-blue-500 font-bold">{score.growth_potential}</p>
-                          </div>
-                          <div>
-                            <p className="text-slate-400 text-sm">市场竞争力</p>
-                            <p className="text-purple-500 font-bold">{score.market_competitiveness}</p>
-                          </div>
-                          <div>
-                            <p className="text-slate-400 text-sm">风险评估</p>
-                            <p className="text-orange-500 font-bold">{score.risk_assessment}</p>
-                          </div>
-                        </div>
-                      )}
-
-                      {financials.length > 0 && (
-                        <div>
-                          <p className="text-slate-400 text-sm mb-2">近年财务数据</p>
-                          <div className="overflow-x-auto">
-                            <table className="w-full text-sm">
-                              <thead>
-                                <tr className="border-b border-slate-600">
-                                  <th className="text-left text-slate-400 py-2">年份</th>
-                                  <th className="text-right text-slate-400 py-2">收入 (万元)</th>
-                                  <th className="text-right text-slate-400 py-2">净利润 (万元)</th>
-                                  <th className="text-right text-slate-400 py-2">毛利率</th>
-                                  <th className="text-right text-slate-400 py-2">净利率</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {financials.slice(0, 3).map((f) => (
-                                  <tr key={f.fiscal_year} className="border-b border-slate-700">
-                                    <td className="text-white py-2">{f.fiscal_year}</td>
-                                    <td className="text-right text-green-500">{(f.revenue / 10000).toFixed(0)}</td>
-                                    <td className="text-right text-blue-500">{(f.net_profit / 10000).toFixed(0)}</td>
-                                    <td className="text-right text-yellow-500">{(f.gross_margin * 100).toFixed(1)}%</td>
-                                    <td className="text-right text-purple-500">{(f.net_margin * 100).toFixed(1)}%</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-slate-400">未找到匹配的企业</p>
-            </div>
-          )}
-        </div>
-
-        {/* 分页 */}
-        {totalPages > 1 && (
-          <div className="flex justify-center gap-2 mt-6">
+        {loadError && (
+          <div className="bg-red-900/30 border border-red-500/30 rounded-xl p-6 text-center">
+            <p className="text-red-400 font-medium">数据加载失败：{loadError}</p>
             <button
-              onClick={() => setPage(Math.max(1, page - 1))}
-              disabled={page === 1}
-              className="px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white disabled:opacity-50"
+              onClick={() => { setLoading(true); setLoadError(null); fetch("/neeq-companies.json").then(r => r.json()).then(d => { setCompanies(d); setLoading(false); }).catch(e => { setLoadError(e.message); setLoading(false); }); }}
+              className="mt-3 px-4 py-2 bg-red-600 text-white rounded-lg text-sm hover:bg-red-500"
             >
-              上一页
-            </button>
-            <div className="flex items-center gap-2">
-              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                const pageNum = Math.max(1, page - 2) + i;
-                return (
-                  <button
-                    key={pageNum}
-                    onClick={() => setPage(pageNum)}
-                    className={`px-3 py-2 rounded-lg ${
-                      page === pageNum
-                        ? "bg-green-600 text-white"
-                        : "bg-slate-700 border border-slate-600 text-white"
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              onClick={() => setPage(Math.min(totalPages, page + 1))}
-              disabled={page === totalPages}
-              className="px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white disabled:opacity-50"
-            >
-              下一页
+              重试
             </button>
           </div>
         )}
 
-        <p className="text-center text-slate-400 text-sm mt-4">
-          第 {page} / {totalPages} 页，共 {filteredCompanies.length} 条结果
-        </p>
+        {!loading && !loadError && (
+          <>
+            {/* 行业统计卡片 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {sectorStats.map(({ sector: s, count, stats }) => (
+                <button
+                  key={s}
+                  onClick={() => { setSector(sector === s ? "全部" : s); setPage(1); }}
+                  className={`bg-slate-800/60 border rounded-xl p-5 text-left transition-all hover:scale-[1.01] ${
+                    sector === s ? "border-cyan-500 bg-slate-700/60" : "border-slate-700"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`px-2 py-0.5 rounded border text-xs font-semibold ${sectorColor[s]}`}>{s}</span>
+                    <span className="text-2xl font-bold text-white">{count}</span>
+                  </div>
+                  <div className="text-xs text-slate-500 mb-2">家挂牌公司</div>
+                  {stats ? (
+                    <div className="grid grid-cols-3 gap-2 text-xs">
+                      <div>
+                        <div className="text-slate-500">均值ROE</div>
+                        <div className="text-blue-400 font-medium">{fmt(stats.avgROE, "%", 1)}</div>
+                      </div>
+                      <div>
+                        <div className="text-slate-500">均值毛利率</div>
+                        <div className="text-yellow-400 font-medium">{fmt(stats.avgGM, "%", 1)}</div>
+                      </div>
+                      <div>
+                        <div className="text-slate-500">有财务数据</div>
+                        <div className="text-cyan-400 font-medium">{stats.withFinCount} 家</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-xs text-slate-600">财务数据抓取中...</div>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* 搜索 + 筛选栏 */}
+            <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4 mb-5 flex flex-wrap gap-3 items-center">
+              <div className="relative flex-1 min-w-48">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+                  placeholder="搜索公司名称或代码..."
+                  className="w-full pl-9 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 text-sm"
+                />
+              </div>
+              <div className="flex gap-2">
+                {["全部", "医疗健康", "新能源", "人工智能"].map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => { setSector(s); setPage(1); }}
+                    className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                      sector === s ? "bg-cyan-600 text-white" : "bg-slate-700 text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+              <label className="flex items-center gap-2 text-sm text-slate-400 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showOnlyWithFin}
+                  onChange={(e) => { setShowOnlyWithFin(e.target.checked); setPage(1); }}
+                  className="rounded"
+                />
+                仅显示有财务数据
+              </label>
+              <div className="text-sm text-slate-500 ml-auto">
+                共 <span className="text-white font-medium">{filtered.length}</span> 家
+              </div>
+            </div>
+
+            {/* 数据表格 */}
+            <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden mb-5">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-700 bg-slate-800/80">
+                      <th className="text-left text-slate-400 py-3 px-4">公司名称</th>
+                      <th className="text-left text-slate-400 py-3 px-3">代码</th>
+                      <th className="text-left text-slate-400 py-3 px-3">行业</th>
+                      <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("cap")}>
+                        市值 <SortIcon k="cap" />
+                      </th>
+                      <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("revenue")}>
+                        营收 <SortIcon k="revenue" />
+                      </th>
+                      <th className="text-right text-slate-400 py-3 px-3">净利润</th>
+                      <th className="text-right text-slate-400 py-3 px-3">毛利率</th>
+                      <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("roe")}>
+                        ROE <SortIcon k="roe" />
+                      </th>
+                      <th className="text-right text-slate-400 py-3 px-3">负债率</th>
+                      <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("score")}>
+                        评分 <SortIcon k="score" />
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paged.map((c: any) => {
+                      const fin = getLatestFin(c);
+                      const score = calcScore(c);
+                      return (
+                        <tr key={c.id} className="border-b border-slate-800 hover:bg-slate-700/30 transition-colors">
+                          <td className="py-3 px-4">
+                            <div className="text-white font-medium text-sm">{c.name}</div>
+                            {fin && <div className="text-xs text-slate-500">{fin.fiscal_year}年数据</div>}
+                          </td>
+                          <td className="py-3 px-3 text-slate-400 text-xs font-mono">{c.code}</td>
+                          <td className="py-3 px-3">
+                            <span className={`px-2 py-0.5 rounded border text-xs ${sectorColor[c.sector] ?? "bg-slate-700 text-slate-300 border-slate-600"}`}>
+                              {c.sector}
+                            </span>
+                          </td>
+                          <td className="text-right py-3 px-3 text-cyan-400 text-sm">{fmtCap(c.market_cap_wan)}</td>
+                          <td className="text-right py-3 px-3 text-slate-300 text-sm">{fin ? fmtRevenue(fin.revenue) : "/"}</td>
+                          <td className={`text-right py-3 px-3 text-sm ${fin && (fin.net_profit ?? 0) >= 0 ? "text-green-400" : "text-red-400"}`}>
+                            {fin ? fmtRevenue(fin.net_profit) : "/"}
+                          </td>
+                          <td className="text-right py-3 px-3 text-yellow-400 text-sm">{fin ? fmt(fin.gross_margin, "%", 1) : "/"}</td>
+                          <td className="text-right py-3 px-3 text-blue-400 text-sm">{fin ? fmt(fin.roe, "%", 1) : "/"}</td>
+                          <td className={`text-right py-3 px-3 text-sm ${fin && (fin.debt_ratio ?? 0) > 70 ? "text-red-400" : "text-orange-400"}`}>
+                            {fin ? fmt(fin.debt_ratio, "%", 1) : "/"}
+                          </td>
+                          <td className={`text-right py-3 px-3 font-bold text-sm ${scoreColor(score)}`}>
+                            {score != null ? score : "/"}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                    {paged.length === 0 && (
+                      <tr>
+                        <td colSpan={10} className="text-center text-slate-500 py-12">没有符合条件的公司</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* 分页 */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-between mb-6">
+                <div className="text-sm text-slate-500">
+                  第 {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} 条，共 {filtered.length} 条
+                </div>
+                <div className="flex items-center gap-2">
+                  <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1}
+                    className="p-2 rounded-lg bg-slate-700 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  {Array.from({ length: Math.min(7, totalPages) }, (_, i) => {
+                    let p: number;
+                    if (totalPages <= 7) p = i + 1;
+                    else if (page <= 4) p = i + 1;
+                    else if (page >= totalPages - 3) p = totalPages - 6 + i;
+                    else p = page - 3 + i;
+                    return (
+                      <button key={p} onClick={() => setPage(p)}
+                        className={`w-9 h-9 rounded-lg text-sm ${page === p ? "bg-cyan-600 text-white" : "bg-slate-700 text-slate-400 hover:text-white"}`}>
+                        {p}
+                      </button>
+                    );
+                  })}
+                  <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                    className="p-2 rounded-lg bg-slate-700 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* 数据说明 */}
+            <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-4 text-xs text-slate-500">
+              <div className="flex items-start gap-2">
+                <Info className="w-4 h-4 text-cyan-500/70 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-slate-400 font-medium mb-1">数据说明</p>
+                  <p>公司列表来源：东方财富新三板数据，按医疗健康、新能源、人工智能三个行业关键词分类。财务数据来源：同花顺财务摘要接口（akshare），覆盖 2020–2024 年度真实财报。无法获取的数据统一显示为 /。评分基于 ROE、毛利率、净利率、营收增速、利润增速、负债率、流动比率、营收规模等真实指标综合计算，满分 100 分，仅供参考，不构成投资建议。</p>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
