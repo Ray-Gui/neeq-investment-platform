@@ -15,11 +15,12 @@ const fmtCap = (v: number | null | undefined): string => {
   return v.toFixed(0) + " 万";
 };
 
+// 数据单位为万元
 const fmtRevenue = (v: number | null | undefined): string => {
   if (v == null) return "/";
-  if (v >= 1e8) return (v / 1e8).toFixed(2) + " 亿";
-  if (v >= 1e4) return (v / 1e4).toFixed(0) + " 万";
-  return v.toFixed(0);
+  if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";  // >=1亿
+  if (v >= 1) return v.toFixed(0) + " 万";               // >=1万元
+  return v.toFixed(2) + " 万";
 };
 
 function getLatestFin(company: any) {
