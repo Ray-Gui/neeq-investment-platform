@@ -71,7 +71,7 @@ export default function CompanyDetailModal({ company, companies, analytics, onCl
     const all = peers.filter(p => p.first_day_return_pct != null);
     const buckets: Record<string, number> = {};
     all.forEach(p => {
-      const v = (p.first_day_return_pct!) * 100;
+      const v = (p.first_day_return_pct!);
       let b: string;
       if (v < -10) b = "<-10%";
       else if (v < 0) b = "-10~0%";
@@ -161,7 +161,7 @@ export default function CompanyDetailModal({ company, companies, analytics, onCl
   const tierColor = c.neeq_tier === "精选层" ? "amber" : c.neeq_tier === "创新层" ? "blue" : "default";
 
   // ── Performance Summary ───────────────────────────────────────
-  const fdReturn = c.first_day_return_pct != null ? c.first_day_return_pct * 100 : null;
+  const fdReturn = c.first_day_return_pct != null ? c.first_day_return_pct : null;
   const capChange = c.cap_change_pct;
 
   const typeStyle = {
@@ -390,9 +390,9 @@ export default function CompanyDetailModal({ company, companies, analytics, onCl
                 <div className="bg-card border border-border/50 rounded-lg p-3">
                   <div className="text-[10px] text-muted-foreground mb-1">本公司首日涨幅</div>
                   <div className={cn("text-sm font-mono font-bold", (c.first_day_return_pct || 0) >= 0 ? "text-green-500" : "text-red-500")}>
-                    {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct * 100) : "—"}
+                    {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct) : "—"}
                   </div>
-                  <div className="text-[10px] text-muted-foreground mt-0.5">行业均值 {fmtPct(peerAvgFD * 100)}</div>
+                  <div className="text-[10px] text-muted-foreground mt-0.5">行业均值 {fmtPct(peerAvgFD)}</div>
                 </div>
                 <div className="bg-card border border-border/50 rounded-lg p-3">
                   <div className="text-[10px] text-muted-foreground mb-1">行业破发率</div>
@@ -439,7 +439,7 @@ export default function CompanyDetailModal({ company, companies, analytics, onCl
                       <Tooltip contentStyle={{ background: 'var(--popover)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 11 }} />
                       <Bar dataKey="count" name="公司数" radius={[3, 3, 0, 0]}>
                         {peerFDData.map((d, i) => {
-                          const fd = (c.first_day_return_pct || 0) * 100;
+                          const fd = (c.first_day_return_pct || 0);
                           const inBucket = (
                             (d.name === "<-10%" && fd < -10) ||
                             (d.name === "-10~0%" && fd >= -10 && fd < 0) ||

@@ -46,7 +46,7 @@ export default function DataTableTab({ companies, analytics }: Props) {
       c.neeq_duration_years?.toFixed(1) || "", c.neeq_tier || "",
       c.issue_price?.toFixed(2) || "", c.listing_market_cap_yi?.toFixed(2) || "",
       c.issue_pe?.toFixed(1) || "",
-      c.first_day_return_pct != null ? (c.first_day_return_pct * 100).toFixed(1) : "",
+      c.first_day_return_pct != null ? (c.first_day_return_pct).toFixed(1) : "",
       c.one_year_market_cap_yi?.toFixed(2) || "",
       c.cap_change_pct?.toFixed(1) || "",
       c.last_round_date || "", c.last_round_valuation_wan?.toFixed(0) || "",
@@ -202,7 +202,7 @@ export default function DataTableTab({ companies, analytics }: Props) {
                   <td className="px-3 py-2 text-right font-mono font-medium">{fmtYi(c.listing_market_cap_yi)}</td>
                   <td className="px-3 py-2 text-right font-mono">{c.issue_pe ? `${c.issue_pe.toFixed(1)}x` : "—"}</td>
                   <td className={cn("px-3 py-2 text-right font-mono font-medium", (c.first_day_return_pct ?? 0) >= 0 ? "text-green-500" : "text-red-500")}>
-                    {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct * 100) : "—"}
+                    {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct) : "—"}
                   </td>
                   <td className="px-3 py-2 text-right font-mono">{fmtYi(c.one_year_market_cap_yi)}</td>
                   <td className={cn("px-3 py-2 text-right font-mono font-medium", (c.cap_change_pct ?? 0) >= 0 ? "text-green-500" : "text-red-500")}>

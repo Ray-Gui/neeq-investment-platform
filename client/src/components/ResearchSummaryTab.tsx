@@ -50,12 +50,12 @@ export default function ResearchSummaryTab({ analytics, companies = [] }: Props)
 
   // First-day return distribution
   const fdData = [
-    { name: "<-10%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 < -10).length, neg: true },
-    { name: "-10~0%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 >= -10 && c.first_day_return_pct * 100 < 0).length, neg: true },
-    { name: "0~10%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 >= 0 && c.first_day_return_pct * 100 < 10).length, neg: false },
-    { name: "10~30%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 >= 10 && c.first_day_return_pct * 100 < 30).length, neg: false },
-    { name: "30~100%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 >= 30 && c.first_day_return_pct * 100 < 100).length, neg: false },
-    { name: ">100%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct * 100 >= 100).length, neg: false },
+    { name: "<-10%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct < -10).length, neg: true },
+    { name: "-10~0%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct >= -10 && c.first_day_return_pct < 0).length, neg: true },
+    { name: "0~10%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct >= 0 && c.first_day_return_pct < 10).length, neg: false },
+    { name: "10~30%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct >= 10 && c.first_day_return_pct < 30).length, neg: false },
+    { name: "30~100%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct >= 30 && c.first_day_return_pct < 100).length, neg: false },
+    { name: ">100%", count: companies.filter(c => c.first_day_return_pct != null && c.first_day_return_pct >= 100).length, neg: false },
   ];
 
   // 1-year performance distribution

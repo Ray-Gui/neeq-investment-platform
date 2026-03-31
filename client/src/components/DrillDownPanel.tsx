@@ -66,7 +66,7 @@ export default function DrillDownPanel({ dimension, value, companies, analytics 
   const fdDist = useMemo(() => {
     const buckets: Record<string, number> = { "<-10%": 0, "-10~0%": 0, "0~10%": 0, "10~30%": 0, "30~50%": 0, "50~100%": 0, ">100%": 0 };
     peers.filter(c => c.first_day_return_pct != null).forEach(c => {
-      const v = (c.first_day_return_pct!) * 100;
+      const v = (c.first_day_return_pct!);
       if (v < -10) buckets["<-10%"]++;
       else if (v < 0) buckets["-10~0%"]++;
       else if (v < 10) buckets["0~10%"]++;
@@ -86,7 +86,7 @@ export default function DrillDownPanel({ dimension, value, companies, analytics 
       if (!map[y]) map[y] = { count: 0, capSum: 0, capN: 0, fdSum: 0, fdN: 0 };
       map[y].count++;
       if (c.listing_market_cap_yi) { map[y].capSum += c.listing_market_cap_yi; map[y].capN++; }
-      if (c.first_day_return_pct != null) { map[y].fdSum += c.first_day_return_pct * 100; map[y].fdN++; }
+      if (c.first_day_return_pct != null) { map[y].fdSum += c.first_day_return_pct; map[y].fdN++; }
     });
     return Object.entries(map)
       .filter(([y]) => y !== "未知")
@@ -118,7 +118,7 @@ export default function DrillDownPanel({ dimension, value, companies, analytics 
     return {
       count: peers.length,
       avgCap: withCap.length > 0 ? withCap.reduce((s, c) => s + (c.listing_market_cap_yi || 0), 0) / withCap.length : 0,
-      avgFD: withFD.length > 0 ? withFD.reduce((s, c) => s + (c.first_day_return_pct || 0) * 100, 0) / withFD.length : 0,
+      avgFD: withFD.length > 0 ? withFD.reduce((s, c) => s + (c.first_day_return_pct || 0), 0) / withFD.length : 0,
       avgChange: withChange.length > 0 ? withChange.reduce((s, c) => s + (c.cap_change_pct || 0), 0) / withChange.length : 0,
       bustPct: peers.length > 0 ? peers.filter(c => c.is_bust).length / peers.length * 100 : 0,
       avgPE: withPE.length > 0 ? withPE.reduce((s, c) => s + (c.issue_pe || 0), 0) / withPE.length : 0,
@@ -290,7 +290,7 @@ export default function DrillDownPanel({ dimension, value, companies, analytics 
                       <td className="px-3 py-2 text-right font-mono">{c.listing_market_cap_yi ? fmtYi(c.listing_market_cap_yi) : "—"}</td>
                       <td className="px-3 py-2 text-right font-mono">{c.issue_pe ? `${c.issue_pe.toFixed(1)}x` : "—"}</td>
                       <td className={cn("px-3 py-2 text-right font-mono", c.first_day_return_pct != null ? ((c.first_day_return_pct >= 0) ? "text-green-500" : "text-red-500") : "text-muted-foreground")}>
-                        {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct * 100) : "—"}
+                        {c.first_day_return_pct != null ? fmtPct(c.first_day_return_pct) : "—"}
                       </td>
                       <td className={cn("px-3 py-2 text-right font-mono", c.cap_change_pct != null ? ((c.cap_change_pct >= 0) ? "text-green-500" : "text-red-500") : "text-muted-foreground")}>
                         {c.cap_change_pct != null ? fmtPct(c.cap_change_pct) : "—"}

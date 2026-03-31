@@ -88,7 +88,7 @@ export default function PerformanceTab({ companies, analytics }: Props) {
   // First day distribution from filtered data
   const fdBuckets: Record<string, number> = {};
   fdData.forEach(c => {
-    const v = (c.first_day_return_pct || 0) * 100;
+    const v = (c.first_day_return_pct || 0);
     let bucket: string;
     if (v < -20) bucket = "<-20%";
     else if (v < -10) bucket = "-20~-10%";
@@ -462,7 +462,7 @@ export default function PerformanceTab({ companies, analytics }: Props) {
               <Scatter
                 data={filteredCompanies
                   .filter(c => c.first_day_return_pct != null && c.cap_change_pct != null)
-                  .map(c => ({ name: c.name, fd: (c.first_day_return_pct || 0) * 100, change: c.cap_change_pct }))
+                  .map(c => ({ name: c.name, fd: (c.first_day_return_pct || 0), change: c.cap_change_pct }))
                   .filter(d => d.fd >= -30 && d.fd <= 200)
                 }
                 fill="#D4A843"
@@ -482,7 +482,7 @@ export default function PerformanceTab({ companies, analytics }: Props) {
               <div key={c.bse_code} className="flex items-center gap-2 p-2 bg-red-500/5 border border-red-500/20 rounded-md">
                 <span className="text-xs font-mono text-muted-foreground">{c.bse_code}</span>
                 <span className="text-xs font-medium truncate">{c.name}</span>
-                <span className="text-xs font-mono text-red-500 ml-auto flex-shrink-0">{fmtPct((c.first_day_return_pct || 0) * 100)}</span>
+                <span className="text-xs font-mono text-red-500 ml-auto flex-shrink-0">{fmtPct((c.first_day_return_pct || 0))}</span>
               </div>
             ))}
           </div>
