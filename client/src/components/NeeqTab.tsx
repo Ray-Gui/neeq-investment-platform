@@ -55,12 +55,14 @@ export default function NeeqTab({ companies, analytics }: Props) {
   const tierData = (neeq_tier_stats || []).filter(t => t.tier && t.count > 0);
 
   // Scatter: neeq duration vs IPO cap
-  const scatterData = (scatter?.neeq_vs_cap || []).slice(0, 200).map(d => ({
-    x: +d.x.toFixed(1),
-    y: +d.y.toFixed(2),
-    change: d.change,
-    name: d.name,
-  }));
+  const scatterData = (scatter?.neeq_vs_cap || []).slice(0, 200)
+    .filter(d => d.x != null && d.y != null)
+    .map(d => ({
+      x: +d.x.toFixed(1),
+      y: +d.y.toFixed(2),
+      change: d.change,
+      name: d.name,
+    }));
 
   // Duration group performance
   const durGroupData = (neeq_duration_stats || []).filter(g => g.count > 0);

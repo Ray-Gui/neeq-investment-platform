@@ -63,11 +63,13 @@ export default function PETab({ companies, analytics }: Props) {
   const yearlyPE = (yearly_stats || []).filter(y => y.avg_issue_pe > 0);
 
   // PE vs first day return scatter
-  const peScatter = (scatter?.pe_vs_fd || []).slice(0, 200).map(d => ({
-    x: +d.x.toFixed(1),
-    y: +(d.y * 100).toFixed(1),
-    name: d.name,
-  }));
+  const peScatter = (scatter?.pe_vs_fd || []).slice(0, 200)
+    .filter(d => d.x != null && d.y != null)
+    .map(d => ({
+      x: +d.x.toFixed(1),
+      y: +(d.y * 100).toFixed(1),
+      name: d.name,
+    }));
 
   // Top/bottom PE companies
   const topPE = [...withPE].sort((a, b) => (b.issue_pe || 0) - (a.issue_pe || 0)).slice(0, 15);

@@ -21,7 +21,7 @@ const Tip = ({ active, payload, label }: any) => {
         <div key={i} className="flex gap-2 items-center">
           <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: p.color }} />
           <span className="text-muted-foreground">{p.name}:</span>
-          <span className="font-mono">{typeof p.value === 'number' ? p.value.toFixed(1) : p.value}</span>
+          <span className="font-mono">{typeof p.value === 'number' && p.value != null ? p.value.toFixed(1) : (p.value ?? '—')}</span>
         </div>
       ))}
     </div>
@@ -108,9 +108,9 @@ export default function PerformanceTab({ companies, analytics }: Props) {
     .filter(d => parseInt(String(d.year)) >= yearFrom && parseInt(String(d.year)) <= yearTo)
     .map(y => ({
       year: y.year,
-      avg_change: +y.avg_cap_change.toFixed(1),
-      avg_fd: +(y.avg_first_day_return * 100).toFixed(1),
-      bust_pct: +y.bust_pct.toFixed(1),
+      avg_change: y.avg_cap_change != null ? +y.avg_cap_change.toFixed(1) : null,
+      avg_fd: y.avg_first_day_return != null ? +y.avg_first_day_return.toFixed(1) : null,
+      bust_pct: y.bust_pct != null ? +y.bust_pct.toFixed(1) : null,
       count: y.count,
     })), [yearly_stats, yearFrom, yearTo]);
 
@@ -119,7 +119,7 @@ export default function PerformanceTab({ companies, analytics }: Props) {
     .filter(b => parseInt(String(b.year)) >= yearFrom && parseInt(String(b.year)) <= yearTo)
     .map(b => ({
       year: b.year,
-      bust_pct: +b.bust_pct.toFixed(1),
+      bust_pct: b.bust_pct != null ? +b.bust_pct.toFixed(1) : null,
       bust: b.bust,
       total: b.total,
     })), [bust_by_year, yearFrom, yearTo]);
@@ -297,7 +297,7 @@ export default function PerformanceTab({ companies, analytics }: Props) {
                 return (
                   <div className="bg-popover border border-border rounded-lg p-3 text-xs shadow-xl">
                     <div className="font-medium mb-1">{label}年</div>
-                    <div>破发率: {d.bust_pct.toFixed(1)}%</div>
+                    <div>破发率: {d.bust_pct != null ? d.bust_pct.toFixed(1) : '—'}%</div>
                     <div>破发数: {d.bust}家 / {d.total}家</div>
                   </div>
                 );
