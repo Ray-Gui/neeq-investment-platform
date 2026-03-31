@@ -9,13 +9,17 @@ import {
   AlertTriangle, CheckCircle, Info, DollarSign,
 } from "lucide-react";
 import dataV4Raw from "../../public/data_v4_fixed.json";
+import neeqCompaniesRaw from "../../public/neeq-companies.json";
 
 const dataV4 = dataV4Raw as any[];
+const neeqCompanies = neeqCompaniesRaw as any[];
 
-// 从 dataV4 读取真实财务数据
+// 从 dataV4 或 neeq-companies 读取真实财务数据
 function getFinDataByCode(code: string): any[] {
-  const company = dataV4.find((c) => c.bse_code === code);
-  return company?.financial_data ?? [];
+  const bseCompany = dataV4.find((c) => c.bse_code === code);
+  if (bseCompany) return bseCompany?.financial_data ?? [];
+  const neeqCompany = neeqCompanies.find((c) => c.code === code);
+  return neeqCompany?.financial_data ?? [];
 }
 
 // ── 工具函数 ────────────────────────────────────────────────────
@@ -145,13 +149,31 @@ export default function CompanyDetail() {
   const params = useParams<{ code: string }>();
   const code = decodeURIComponent(params.code ?? "");
 
-  const company = useMemo(
-    () => dataV4.find((c) => c.bse_code === code || c.bse_code === code.replace(".BSE", "")),
-    [code]
-  );
+  const company = useMemo(() => {
+    // 先在北交所数据中查找
+    const bseCompany = dataV4.find((c) => c.bse_code === code || c.bse_code === code.replace(".BSE", ""));
+    if (bseCompany) return bseCompany;
+    // 再在新三板企业库中查找
+    const neeqCompany = neeqCompanies.find((c) => c.code === code);
+    if (neeqCompany) {
+      // 适配字段名称以兼容现有模板
+      return {
+        ...neeqCompany,
+        bse_code: neeqCompany.code,
+        name: neeqCompany.name || neeqCompany.short_name,
+        industry: neeqCompany.industry || neeqCompany.sector,
+        province: neeqCompany.province,
+        region: neeqCompany.province,
+        bse_listing_date: neeqCompany.bse_listing_date,
+        neeq_listing_date: neeqCompany.neeq_listing_date,
+        neeq_tier: neeqCompany.neeq_layer,
+      };
+    }
+    return undefined;
+  }, [code]);
 
   const finData: any[] = useMemo(() => {
-    const bseCode = company?.bse_code ?? code.replace(".BSE", "");
+    const bseCode = company?.bse_code ?? code;
     return getFinDataByCode(bseCode);
   }, [company, code]);
 
