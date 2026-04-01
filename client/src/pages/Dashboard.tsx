@@ -63,7 +63,7 @@ export default function Dashboard() {
                     <BarChart3 className="text-cyan-400" size={20} />
                     <span className="text-gray-400 text-sm">已上市企业</span>
                   </div>
-                  <p className="text-2xl font-bold text-white">298+</p>
+                  <p className="text-2xl font-bold text-white">298 家</p>
                 </div>
                 <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
                   <div className="flex items-center gap-3 mb-2">
@@ -71,13 +71,15 @@ export default function Dashboard() {
                     <span className="text-gray-400 text-sm">平均涨幅</span>
                   </div>
                   <p className="text-2xl font-bold text-green-400">+43.5%</p>
+                  <p className="text-xs text-gray-500 mt-1">上市后一年均值（263家）</p>
                 </div>
                 <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
                   <div className="flex items-center gap-3 mb-2">
                     <Zap className="text-yellow-400" size={20} />
                     <span className="text-gray-400 text-sm">首日涨幅</span>
                   </div>
-                  <p className="text-2xl font-bold text-yellow-400">+80.1%</p>
+                  <p className="text-2xl font-bold text-yellow-400">+81.9%</p>
+                  <p className="text-xs text-gray-500 mt-1">基于298家真实数据</p>
                 </div>
               </div>
 
@@ -123,7 +125,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">医疗健康</h3>
                   </div>
-                  <p className="text-2xl font-bold text-cyan-400 mb-2">674 家</p>
+                  <p className="text-2xl font-bold text-cyan-400 mb-2">386 家</p>
                   <p className="text-sm text-gray-400">医疗服务、医疗器械、生物医药</p>
                 </div>
 
@@ -134,7 +136,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">新能源</h3>
                   </div>
-                  <p className="text-2xl font-bold text-green-400 mb-2">350 家</p>
+                  <p className="text-2xl font-bold text-green-400 mb-2">159 家</p>
                   <p className="text-sm text-gray-400">光伏、风电、储能、充电桩</p>
                 </div>
 
@@ -145,7 +147,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="font-semibold text-white">人工智能</h3>
                   </div>
-                  <p className="text-2xl font-bold text-purple-400 mb-2">280 家</p>
+                  <p className="text-2xl font-bold text-purple-400 mb-2">1,342 家</p>
                   <p className="text-sm text-gray-400">AI 基础设施、软件、芯片</p>
                 </div>
               </div>

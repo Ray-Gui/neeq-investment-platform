@@ -12,20 +12,18 @@ interface MarketItem {
   liquidity_score: number;
   opportunity_level: string;
   arbitrage_opportunity: string;
-  upside: number;
+  upside?: number | null;
   risk_level: string;
-  pe_ttm?: number;
-  pb?: number;
-  market_cap?: number;
-  roe?: number;
-  gross_margin?: number;
-  revenue_growth?: number;
-  listing_date?: string;
-  score_explanation?: {
-    liquidity: string;
-    arbitrage: string;
-    risk: string;
-  };
+  market_cap?: number | null;
+  roe?: number | null;
+  gross_margin?: number | null;
+  revenue_growth?: number | null;
+  revenue?: number | null;
+  net_profit?: number | null;
+  debt_ratio?: number | null;
+  current_ratio?: number | null;
+  fiscal_year?: number | null;
+  score_explanation?: string;
 }
 
 export default function DealerOpportunities() {
@@ -189,18 +187,18 @@ export default function DealerOpportunities() {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
                   <div className="bg-slate-700/50 rounded p-3">
-                    <p className="text-xs text-slate-400">PB（市净率）</p>
-                    <p className={`text-lg font-bold ${(company.pb ?? 1) < 1 ? 'text-red-400' : 'text-white'}`}>
-                      {company.pb != null ? company.pb.toFixed(2) : 'N/A'}
+                    <p className="text-xs text-slate-400">ROE</p>
+                    <p className={`text-lg font-bold ${(company.roe ?? 0) >= 10 ? 'text-green-400' : (company.roe ?? 0) >= 0 ? 'text-yellow-400' : 'text-red-400'}`}>
+                      {company.roe != null ? company.roe.toFixed(1) + '%' : 'N/A'}
                     </p>
                   </div>
                   <div className="bg-slate-700/50 rounded p-3">
-                    <p className="text-xs text-slate-400">PE(TTM)</p>
-                    <p className="text-lg font-bold text-white">{company.pe_ttm != null ? company.pe_ttm.toFixed(2) : 'N/A'}</p>
+                    <p className="text-xs text-slate-400">负债率</p>
+                    <p className={`text-lg font-bold ${(company.debt_ratio ?? 50) < 50 ? 'text-green-400' : (company.debt_ratio ?? 50) < 70 ? 'text-yellow-400' : 'text-red-400'}`}>{company.debt_ratio != null ? company.debt_ratio.toFixed(1) + '%' : 'N/A'}</p>
                   </div>
                   <div className="bg-slate-700/50 rounded p-3">
                     <p className="text-xs text-slate-400">上升空间</p>
-                    <p className="text-lg font-bold text-green-400">+{company.upside.toFixed(1)}%</p>
+                    <p className="text-lg font-bold text-green-400">{company.upside != null ? (company.upside >= 0 ? '+' : '') + company.upside.toFixed(1) + '%' : 'N/A'}</p>
                   </div>
                   <div className="bg-slate-700/50 rounded p-3">
                     <p className="text-xs text-slate-400">风险等级</p>
@@ -229,12 +227,12 @@ export default function DealerOpportunities() {
                           <span className="text-white font-bold">{company.market_cap != null ? (company.market_cap >= 10000 ? (company.market_cap/10000).toFixed(1)+'亿' : company.market_cap.toFixed(0)+'万') : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PB（市净率）</span>
-                          <span className={`font-bold ${(company.pb ?? 1) < 1 ? 'text-red-400' : 'text-white'}`}>{company.pb != null ? company.pb.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">负债率</span>
+                          <span className={`font-bold ${(company.debt_ratio ?? 50) < 50 ? 'text-green-400' : (company.debt_ratio ?? 50) < 70 ? 'text-yellow-400' : 'text-red-400'}`}>{company.debt_ratio != null ? company.debt_ratio.toFixed(1) + '%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PE(TTM)</span>
-                          <span className="text-white font-bold">{company.pe_ttm != null ? company.pe_ttm.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">流动比率</span>
+                          <span className="text-white font-bold">{company.current_ratio != null ? company.current_ratio.toFixed(2) + 'x' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
                           <span className="text-slate-400">ROE</span>
@@ -249,8 +247,8 @@ export default function DealerOpportunities() {
                           <span className={`font-bold ${(company.revenue_growth ?? 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>{company.revenue_growth != null ? company.revenue_growth.toFixed(2) + '%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">挂牌日期</span>
-                          <span className="text-white font-bold">{company.listing_date ?? 'N/A'}</span>
+                          <span className="text-slate-400">财务年度</span>
+                          <span className="text-white font-bold">{company.fiscal_year ?? 'N/A'}</span>
                         </div>
                       </div>
                     </div>
@@ -259,27 +257,23 @@ export default function DealerOpportunities() {
                         <div className="space-y-2 text-xs">
                           <div className="bg-blue-500/10 border border-blue-500/20 rounded p-2">
                             <p className="text-blue-400 font-semibold mb-1">流动性评分 = {company.liquidity_score.toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.liquidity}</p>
                           </div>
                           <div className="bg-yellow-500/10 border border-yellow-500/20 rounded p-2">
-                            <p className="text-yellow-400 font-semibold mb-1">套利机会判断：{company.arbitrage_opportunity}</p>
-                            <p className="text-slate-300">{company.score_explanation.arbitrage}</p>
+                            <p className="text-yellow-400 font-semibold mb-1">套利机会：{company.arbitrage_opportunity} | 风险：{company.risk_level}</p>
                           </div>
-                          <div className="bg-green-500/10 border border-green-500/20 rounded p-2">
-                            <p className="text-green-400 font-semibold mb-1">风险评级：{company.risk_level}</p>
-                            <p className="text-slate-300">{company.score_explanation.risk}</p>
+                          <div className="bg-slate-700/50 rounded p-2">
+                            <p className="text-slate-300">{company.score_explanation}</p>
                           </div>
                         </div>
                       )}
-                      <div className="mt-3 bg-slate-700/50 rounded p-2 text-xs">
-                        <p className="text-cyan-400 font-semibold mb-1">上升空间计算</p>
-                        <p className="text-slate-300">
-                          {(company.pb ?? 1) < 1
-                            ? `PB=${company.pb?.toFixed(2)}，低于净资产，理论上升空间 = (1/PB - 1) × 100% = +${company.upside.toFixed(1)}%`
-                            : `基于行业平均PE估值，预计上升空间 = +${company.upside.toFixed(1)}%`
-                          }
-                        </p>
-                      </div>
+                      {company.upside != null && (
+                        <div className="mt-3 bg-slate-700/50 rounded p-2 text-xs">
+                          <p className="text-cyan-400 font-semibold mb-1">上升空间评估</p>
+                          <p className="text-slate-300">
+                            基于ROE={company.roe?.toFixed(1)}%和行业折现率（在8%），合理PB估算上升空间 = {company.upside >= 0 ? '+' : ''}{company.upside.toFixed(1)}%
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -20,21 +20,18 @@ interface InvestmentItem {
   financial_health: number;
   growth_potential: number;
   market_competitiveness: number;
-  roe?: number;
-  gross_margin?: number;
-  revenue_growth?: number;
-  net_profit_growth?: number;
-  market_cap?: number;
-  pe_ttm?: number;
-  pb?: number;
-  listing_date?: string;
-  score_explanation?: {
-    formula: string;
-    total_score: string;
-    listing: string;
-    market: string;
-    valuation: string;
-  };
+  roe?: number | null;
+  gross_margin?: number | null;
+  net_margin?: number | null;
+  revenue_growth?: number | null;
+  net_profit_growth?: number | null;
+  revenue?: number | null;
+  net_profit?: number | null;
+  market_cap?: number | null;
+  debt_ratio?: number | null;
+  current_ratio?: number | null;
+  fiscal_year?: number | null;
+  score_explanation?: string;
 }
 
 export default function InvestmentDecision() {
@@ -225,8 +222,8 @@ export default function InvestmentDecision() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 text-sm">
                     <span className="text-slate-400">投资评分：<span className={`font-bold ${getScoreColor(company.investment_score)}`}>{company.investment_score.toFixed(1)}</span></span>
-                    <span className="text-slate-400">市值：<span className="text-white font-bold">{company.market_cap != null ? (company.market_cap >= 10000 ? (company.market_cap/10000).toFixed(1)+'亿' : company.market_cap.toFixed(0)+'万') : 'N/A'}</span></span>
-                    <span className="text-slate-400">PE：<span className="text-white font-bold">{company.pe_ttm != null ? company.pe_ttm.toFixed(1) : 'N/A'}</span></span>
+                    <span className="text-slate-400">市値：<span className="text-white font-bold">{company.market_cap != null ? (company.market_cap >= 10000 ? (company.market_cap/10000).toFixed(1)+'亿' : company.market_cap.toFixed(0)+'万') : 'N/A'}</span></span>
+                    <span className="text-slate-400">负债率：<span className="text-white font-bold">{company.debt_ratio != null ? company.debt_ratio.toFixed(1)+'%' : 'N/A'}</span></span>
                   </div>
                   <button
                     onClick={() => setExpandedCode(expandedCode === company.code ? null : company.code)}
@@ -266,16 +263,20 @@ export default function InvestmentDecision() {
                           <span className="text-white font-bold">{company.market_cap != null ? (company.market_cap >= 10000 ? (company.market_cap/10000).toFixed(1)+'亿' : company.market_cap.toFixed(0)+'万') : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PE(TTM)</span>
-                          <span className="text-white font-bold">{company.pe_ttm != null ? company.pe_ttm.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">净利率</span>
+                          <span className="text-white font-bold">{company.net_margin != null ? company.net_margin.toFixed(1)+'%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PB</span>
-                          <span className="text-white font-bold">{company.pb != null ? company.pb.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">负债率</span>
+                          <span className={`font-bold ${(company.debt_ratio ?? 50) < 50 ? 'text-green-400' : (company.debt_ratio ?? 50) < 70 ? 'text-yellow-400' : 'text-red-400'}`}>{company.debt_ratio != null ? company.debt_ratio.toFixed(1)+'%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">挂牌日期</span>
-                          <span className="text-white font-bold">{company.listing_date ?? 'N/A'}</span>
+                          <span className="text-slate-400">流动比率</span>
+                          <span className="text-white font-bold">{company.current_ratio != null ? company.current_ratio.toFixed(2)+'x' : 'N/A'}</span>
+                        </div>
+                        <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
+                          <span className="text-slate-400">财务年度</span>
+                          <span className="text-white font-bold">{company.fiscal_year ?? 'N/A'}</span>
                         </div>
                       </div>
                     </div>
@@ -284,19 +285,18 @@ export default function InvestmentDecision() {
                         <div className="space-y-2 text-xs mb-3">
                           <div className="bg-blue-500/10 border border-blue-500/20 rounded p-2">
                             <p className="text-blue-400 font-semibold mb-1">综合评分（×40%）= {(company.total_score * 0.4).toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.total_score}</p>
                           </div>
                           <div className="bg-green-500/10 border border-green-500/20 rounded p-2">
                             <p className="text-green-400 font-semibold mb-1">上市潜力（×30%）= {(company.listing_probability * 0.3).toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.listing}</p>
                           </div>
                           <div className="bg-yellow-500/10 border border-yellow-500/20 rounded p-2">
                             <p className="text-yellow-400 font-semibold mb-1">做市机会（×20%）= {(company.liquidity_score * 0.2).toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.market}</p>
                           </div>
                           <div className="bg-purple-500/10 border border-purple-500/20 rounded p-2">
-                            <p className="text-purple-400 font-semibold mb-1">估值评分（×10%）= {(company.valuation_score * 0.1).toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.valuation}</p>
+                            <p className="text-purple-400 font-semibold mb-1">估値评分（×10%）= {(company.valuation_score * 0.1).toFixed(1)}</p>
+                          </div>
+                          <div className="bg-slate-700/50 rounded p-2">
+                            <p className="text-slate-300">{company.score_explanation}</p>
                           </div>
                         </div>
                       )}

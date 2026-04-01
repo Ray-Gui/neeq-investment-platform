@@ -15,20 +15,20 @@ interface ListingItem {
   profitability_score: number;
   growth_score: number;
   market_potential_score: number;
-  estimated_ipo_price: number;
-  roe?: number;
-  gross_margin?: number;
-  revenue_growth?: number;
-  net_profit_growth?: number;
-  market_cap?: number;
-  pe_ttm?: number;
-  pb?: number;
-  listing_date?: string;
-  score_explanation?: {
-    profitability: string;
-    growth: string;
-    market: string;
-  };
+  estimated_ipo_price?: number | null;
+  estimated_pe?: number | null;
+  roe?: number | null;
+  gross_margin?: number | null;
+  net_margin?: number | null;
+  revenue_growth?: number | null;
+  net_profit_growth?: number | null;
+  revenue?: number | null;
+  net_profit?: number | null;
+  market_cap?: number | null;
+  debt_ratio?: number | null;
+  current_ratio?: number | null;
+  fiscal_year?: number | null;
+  score_explanation?: string;
 }
 
 export default function ListingPotential() {
@@ -250,16 +250,20 @@ export default function ListingPotential() {
                           <span className="text-white font-bold">{company.market_cap != null ? (company.market_cap >= 10000 ? (company.market_cap/10000).toFixed(1)+'亿' : company.market_cap.toFixed(0)+'万') : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PE(TTM)</span>
-                          <span className="text-white font-bold">{company.pe_ttm != null ? company.pe_ttm.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">负债率</span>
+                          <span className="text-white font-bold">{company.debt_ratio != null ? company.debt_ratio.toFixed(1) + '%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">PB</span>
-                          <span className="text-white font-bold">{company.pb != null ? company.pb.toFixed(2) : 'N/A'}</span>
+                          <span className="text-slate-400">净利率</span>
+                          <span className="text-white font-bold">{company.net_margin != null ? company.net_margin.toFixed(1) + '%' : 'N/A'}</span>
                         </div>
                         <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
-                          <span className="text-slate-400">挂牌日期</span>
-                          <span className="text-white font-bold">{company.listing_date ?? 'N/A'}</span>
+                          <span className="text-slate-400">流动比率</span>
+                          <span className="text-white font-bold">{company.current_ratio != null ? company.current_ratio.toFixed(2) + 'x' : 'N/A'}</span>
+                        </div>
+                        <div className="flex justify-between bg-slate-700/50 rounded px-2 py-1">
+                          <span className="text-slate-400">财务年度</span>
+                          <span className="text-white font-bold">{company.fiscal_year ?? 'N/A'}</span>
                         </div>
                       </div>
                     </div>
@@ -268,16 +272,16 @@ export default function ListingPotential() {
                       {company.score_explanation && (
                         <div className="space-y-2 text-xs">
                           <div className="bg-blue-500/10 border border-blue-500/20 rounded p-2">
-                            <p className="text-blue-400 font-semibold mb-1">盈利能力（×40%）= {company.profitability_score.toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.profitability}</p>
+                            <p className="text-blue-400 font-semibold mb-1">盈利能力评分 = {company.profitability_score.toFixed(1)}</p>
                           </div>
                           <div className="bg-green-500/10 border border-green-500/20 rounded p-2">
-                            <p className="text-green-400 font-semibold mb-1">成长性（×35%）= {company.growth_score.toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.growth}</p>
+                            <p className="text-green-400 font-semibold mb-1">成长性评分 = {company.growth_score.toFixed(1)}</p>
                           </div>
                           <div className="bg-yellow-500/10 border border-yellow-500/20 rounded p-2">
-                            <p className="text-yellow-400 font-semibold mb-1">市场潜力（×25%）= {company.market_potential_score.toFixed(1)}</p>
-                            <p className="text-slate-300">{company.score_explanation.market}</p>
+                            <p className="text-yellow-400 font-semibold mb-1">市场潜力评分 = {company.market_potential_score.toFixed(1)}</p>
+                          </div>
+                          <div className="bg-slate-700/50 rounded p-2">
+                            <p className="text-slate-300">{company.score_explanation}</p>
                           </div>
                         </div>
                       )}
@@ -292,10 +296,13 @@ export default function ListingPotential() {
                       </div>
                     </div>
                   </div>
-                  <div className="bg-slate-700/30 rounded p-3 text-xs">
-                    <p className="text-slate-400">预计IPO价格：<span className="text-green-400 font-bold">¥{company.estimated_ipo_price.toFixed(2)}</span>
-                    <span className="text-slate-500 ml-2">（基于当前市值和行业估值倍数估算）</span></p>
-                  </div>
+                  {company.estimated_ipo_price != null && (
+                    <div className="bg-slate-700/30 rounded p-3 text-xs">
+                      <p className="text-slate-400">预计IPO价格：<span className="text-green-400 font-bold">¥{company.estimated_ipo_price.toFixed(2)}</span>
+                      {company.estimated_pe && <span className="text-slate-500 ml-2">（基于{company.estimated_pe}x PE估算）</span>}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

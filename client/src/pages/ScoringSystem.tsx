@@ -361,16 +361,16 @@ export default function ScoringSystem() {
                         <span className={`font-bold ml-2 ${((selectedCompany.score_breakdown?.growth_potential?.components?.net_profit_growth as number) ?? 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>{selectedCompany.score_breakdown?.growth_potential?.components?.net_profit_growth != null ? (selectedCompany.score_breakdown.growth_potential.components.net_profit_growth as number).toFixed(2) + '%' : 'N/A'}</span>
                       </div>
                       <div className="bg-slate-700/50 rounded p-2">
-                        <span className="text-slate-400">PE(TTM)</span>
-                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.risk_control?.components?.pe_ttm != null ? (selectedCompany.score_breakdown.risk_control.components.pe_ttm as number).toFixed(2) : 'N/A'}</span>
+                        <span className="text-slate-400">负债率</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.debt_ratio != null ? (selectedCompany.score_breakdown.financial_health.components.debt_ratio as number).toFixed(1) + '%' : 'N/A'}</span>
                       </div>
                       <div className="bg-slate-700/50 rounded p-2">
-                        <span className="text-slate-400">PB</span>
-                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.pb != null ? (selectedCompany.score_breakdown.financial_health.components.pb as number).toFixed(2) : 'N/A'}</span>
+                        <span className="text-slate-400">流动比率</span>
+                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.financial_health?.components?.current_ratio != null ? (selectedCompany.score_breakdown.financial_health.components.current_ratio as number).toFixed(2) + 'x' : 'N/A'}</span>
                       </div>
                       <div className="bg-slate-700/50 rounded p-2">
-                        <span className="text-slate-400">市值</span>
-                        <span className="text-white font-bold ml-2">{selectedCompany.score_breakdown?.market_competitiveness?.components?.market_cap != null ? ((selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number) >= 10000 ? ((selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number)/10000).toFixed(1)+'亿' : (selectedCompany.score_breakdown.market_competitiveness.components.market_cap as number).toFixed(0)+'万') : 'N/A'}</span>
+                        <span className="text-slate-400">市値</span>
+                        <span className="text-white font-bold ml-2">{(selectedCompany as any).market_cap != null ? ((selectedCompany as any).market_cap as number).toFixed(1)+'亿' : 'N/A'}</span>
                       </div>
                     </div>
                   </div>
