@@ -269,7 +269,7 @@ export default function IndustryBenchmark() {
                   <tr className="border-b border-gray-700">
                     <th className="text-left text-gray-400 font-medium px-4 py-3">公司</th>
                     {[
-                      { key: 'revenue', label: '营收(万)', tip: '越高越好' },
+                      { key: 'revenue', label: '营收(亿元)', tip: '越高越好' },
                       { key: 'gross_margin', label: '毛利率%', tip: '越高越好' },
                       { key: 'net_margin', label: '净利率%', tip: '越高越好' },
                       { key: 'roe', label: 'ROE%', tip: '越高越好' },
