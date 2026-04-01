@@ -4,15 +4,57 @@ import {
   Legend, ResponsiveContainer, RadarChart, Radar, PolarGrid,
   PolarAngleAxis, PolarRadiusAxis, ReferenceLine,
 } from "recharts";
-import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target } from "lucide-react";
-// ── 读取北交所公司数据（真实财务数据已内嵌于 financial_data 字段）──
-import dataV4 from "../../public/data_v4_fixed.json";
+import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target, Info } from "lucide-react";
 
-// 从 dataV4 构建 code -> financial_data 的映射（替代旧的模拟数据）
-function getFinDataByCode(code: string): any[] {
-  const company = (dataV4 as any[]).find((c) => c.bse_code === code);
-  return company?.financial_data ?? [];
+// ── 读取北交所公司数据（298家）──
+import dataV4 from "../../public/data_v4_fixed.json";
+// ── 读取新三板公司数据（1887家）──
+import neeqData from "../../public/neeq-companies.json";
+
+// ── 统一数据格式 ─────────────────────────────────────────────────
+interface CompanyRecord {
+  code: string;
+  name: string;
+  industry: string;
+  financial_data: FinancialRow[];
+  source: "bse" | "neeq"; // 北交所 or 新三板
 }
+
+interface FinancialRow {
+  fiscal_year: number;
+  revenue?: number | null;
+  net_profit?: number | null;
+  gross_margin?: number | null;
+  net_margin?: number | null;
+  roe?: number | null;
+  debt_ratio?: number | null;
+  current_ratio?: number | null;
+  quick_ratio?: number | null;
+  revenue_growth?: number | null;
+  net_profit_growth?: number | null;
+  eps?: number | null;
+  bvps?: number | null;
+  inventory_turnover?: number | null;
+  ar_days?: number | null;
+}
+
+// 构建统一公司列表
+const allCompanies: CompanyRecord[] = [
+  ...(dataV4 as any[]).map((c) => ({
+    code: c.bse_code,
+    name: c.name,
+    industry: c.industry ?? "其他",
+    financial_data: (c.financial_data ?? []) as FinancialRow[],
+    source: "bse" as const,
+  })),
+  ...(neeqData as any[]).map((c) => ({
+    code: c.code,
+    name: c.name ?? c.short_name,
+    industry: c.industry ?? "其他",
+    financial_data: (c.financial_data ?? []) as FinancialRow[],
+    source: "neeq" as const,
+  })),
+];
 
 // ── 工具函数 ────────────────────────────────────────────────────
 const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
@@ -20,10 +62,8 @@ const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
   return Number(v).toFixed(digits) + suffix;
 };
 
-// revenue/net_profit 单位为万元（akshare 原始数据已转换）
 const fmtRevenue = (v: number | null | undefined): string => {
   if (v == null) return "/";
-  // v 单位为万元
   if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";
   if (v >= 1) return v.toFixed(0) + " 万";
   return v.toFixed(2) + " 万";
@@ -42,20 +82,61 @@ const trendIcon = (v: number | null | undefined) => {
 };
 
 // ── 行业均值计算 ─────────────────────────────────────────────────
-function calcIndustryAvg(companies: any[], year: number) {
+function calcIndustryAvg(companies: CompanyRecord[], year: number) {
   const metrics = ["gross_margin", "net_margin", "roe", "debt_ratio", "current_ratio", "revenue_growth", "net_profit_growth"];
   const result: Record<string, number | null> = {};
   for (const m of metrics) {
     const vals = companies
       .map((c) => {
-        const fd = getFinDataByCode(c.bse_code);
-        const row = fd.find((r: any) => r.fiscal_year === year);
-        return row?.[m] ?? null;
+        const row = c.financial_data.find((r) => r.fiscal_year === year);
+        return (row as any)?.[m] ?? null;
       })
-      .filter((v) => v != null) as number[];
+      .filter((v) => v != null && !isNaN(v) && Math.abs(v) < 500) as number[];
     result[m] = vals.length > 0 ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
   }
   return result;
+}
+
+// ── 三年趋势摘要计算 ─────────────────────────────────────────────
+function calcThreeYearSummary(finData: FinancialRow[]) {
+  const sorted = [...finData].sort((a, b) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0));
+  const recent3 = sorted.slice(0, 3);
+  if (recent3.length === 0) return null;
+
+  const latest = recent3[0];
+  const oldest = recent3[recent3.length - 1];
+
+  // 营收复合增长率（CAGR）
+  let revCagr: number | null = null;
+  if (recent3.length >= 2 && latest.revenue && oldest.revenue && oldest.revenue > 0) {
+    const years = (latest.fiscal_year ?? 0) - (oldest.fiscal_year ?? 0);
+    if (years > 0) {
+      revCagr = (Math.pow(latest.revenue / oldest.revenue, 1 / years) - 1) * 100;
+    }
+  }
+
+  // 平均ROE
+  const roeVals = recent3.map(r => r.roe).filter(v => v != null && Math.abs(v!) < 500) as number[];
+  const avgRoe = roeVals.length > 0 ? roeVals.reduce((a, b) => a + b, 0) / roeVals.length : null;
+
+  // 平均毛利率
+  const gmVals = recent3.map(r => r.gross_margin).filter(v => v != null && Math.abs(v!) < 200) as number[];
+  const avgGm = gmVals.length > 0 ? gmVals.reduce((a, b) => a + b, 0) / gmVals.length : null;
+
+  // 盈利趋势（最近3年净利润是否持续增长）
+  let profitTrend: "improving" | "declining" | "stable" | null = null;
+  if (recent3.length >= 2) {
+    const profits = recent3.map(r => r.net_profit).filter(v => v != null) as number[];
+    if (profits.length >= 2) {
+      const first = profits[profits.length - 1];
+      const last = profits[0];
+      if (last > first * 1.1) profitTrend = "improving";
+      else if (last < first * 0.9) profitTrend = "declining";
+      else profitTrend = "stable";
+    }
+  }
+
+  return { revCagr, avgRoe, avgGm, profitTrend, yearsCount: recent3.length };
 }
 
 // ── 组件：指标卡片 ───────────────────────────────────────────────
@@ -74,8 +155,63 @@ function MetricCard({
   );
 }
 
+// ── 组件：三年趋势摘要卡片 ──────────────────────────────────────
+function ThreeYearSummaryCard({ finData }: { finData: FinancialRow[] }) {
+  const summary = calcThreeYearSummary(finData);
+  if (!summary) return null;
+
+  const sorted = [...finData].sort((a, b) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0));
+  const years = sorted.slice(0, 3).map(r => r.fiscal_year).filter(Boolean).reverse();
+
+  return (
+    <div className="bg-gradient-to-r from-slate-800/80 to-slate-800/40 border border-cyan-500/30 rounded-xl p-5 mb-6">
+      <div className="flex items-center gap-2 mb-4">
+        <TrendingUp className="w-5 h-5 text-cyan-400" />
+        <h3 className="text-base font-semibold text-white">近三年财务趋势摘要</h3>
+        <span className="text-xs text-slate-500">({years.join("、")} 年)</span>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="text-center">
+          <div className="text-xs text-slate-400 mb-1">营收复合增长率 (CAGR)</div>
+          <div className={`text-2xl font-bold ${summary.revCagr != null ? (summary.revCagr >= 0 ? "text-green-400" : "text-red-400") : "text-slate-400"}`}>
+            {summary.revCagr != null ? `${summary.revCagr >= 0 ? "+" : ""}${summary.revCagr.toFixed(1)}%` : "/"}
+          </div>
+          <div className="text-xs text-slate-500 mt-1">年均复合增长</div>
+        </div>
+        <div className="text-center">
+          <div className="text-xs text-slate-400 mb-1">平均 ROE</div>
+          <div className={`text-2xl font-bold ${summary.avgRoe != null ? (summary.avgRoe >= 15 ? "text-green-400" : summary.avgRoe >= 8 ? "text-yellow-400" : "text-red-400") : "text-slate-400"}`}>
+            {summary.avgRoe != null ? `${summary.avgRoe.toFixed(1)}%` : "/"}
+          </div>
+          <div className="text-xs text-slate-500 mt-1">≥15% 为优质</div>
+        </div>
+        <div className="text-center">
+          <div className="text-xs text-slate-400 mb-1">平均毛利率</div>
+          <div className={`text-2xl font-bold ${summary.avgGm != null ? (summary.avgGm >= 40 ? "text-green-400" : summary.avgGm >= 20 ? "text-yellow-400" : "text-orange-400") : "text-slate-400"}`}>
+            {summary.avgGm != null ? `${summary.avgGm.toFixed(1)}%` : "/"}
+          </div>
+          <div className="text-xs text-slate-500 mt-1">≥40% 为高毛利</div>
+        </div>
+        <div className="text-center">
+          <div className="text-xs text-slate-400 mb-1">盈利趋势</div>
+          <div className={`text-xl font-bold ${
+            summary.profitTrend === "improving" ? "text-green-400" :
+            summary.profitTrend === "declining" ? "text-red-400" :
+            summary.profitTrend === "stable" ? "text-yellow-400" : "text-slate-400"
+          }`}>
+            {summary.profitTrend === "improving" ? "📈 持续改善" :
+             summary.profitTrend === "declining" ? "📉 持续下滑" :
+             summary.profitTrend === "stable" ? "➡️ 基本稳定" : "/"}
+          </div>
+          <div className="text-xs text-slate-500 mt-1">近{summary.yearsCount}年净利润变化</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── 组件：财务指标表格 ───────────────────────────────────────────
-function FinancialTable({ data }: { data: any[] }) {
+function FinancialTable({ data }: { data: FinancialRow[] }) {
   if (!data || data.length === 0) {
     return <div className="text-slate-500 text-sm py-4 text-center">暂无财务数据</div>;
   }
@@ -135,8 +271,6 @@ export default function FinancialAnalysis() {
   const [activeTab, setActiveTab] = useState<"overview" | "trend" | "compare" | "radar">("overview");
   const [selectedYear, setSelectedYear] = useState(2024);
 
-  const allCompanies = useMemo(() => (dataV4 as any[]), []);
-
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
     const q = searchQuery.toLowerCase();
@@ -144,53 +278,75 @@ export default function FinancialAnalysis() {
       .filter(
         (c) =>
           c.name?.toLowerCase().includes(q) ||
-          c.bse_code?.includes(q) ||
+          c.code?.includes(q) ||
           c.industry?.toLowerCase().includes(q)
       )
-      .slice(0, 10);
-  }, [searchQuery, allCompanies]);
+      .slice(0, 12);
+  }, [searchQuery]);
 
   const selectedCompanies = useMemo(
-    () => allCompanies.filter((c) => selectedCodes.includes(c.bse_code)),
-    [selectedCodes, allCompanies]
+    () => allCompanies.filter((c) => selectedCodes.includes(c.code)),
+    [selectedCodes]
   );
 
   const primaryCompany = selectedCompanies[0] ?? null;
-  const primaryFinData = primaryCompany
-    ? getFinDataByCode(primaryCompany.bse_code)
-    : [];
+  const primaryFinData: FinancialRow[] = primaryCompany?.financial_data ?? [];
 
   const industryPeers = useMemo(() => {
     if (!primaryCompany) return [];
     return allCompanies.filter(
-      (c) => c.industry === primaryCompany.industry && c.bse_code !== primaryCompany.bse_code
+      (c) => c.industry === primaryCompany.industry && c.code !== primaryCompany.code
     );
-  }, [primaryCompany, allCompanies]);
+  }, [primaryCompany]);
 
   const industryAvg = useMemo(
-    () => calcIndustryAvg([primaryCompany, ...industryPeers].filter(Boolean), selectedYear),
+    () => calcIndustryAvg([primaryCompany, ...industryPeers].filter(Boolean) as CompanyRecord[], selectedYear),
     [primaryCompany, industryPeers, selectedYear]
   );
 
   const latestData = useMemo(() => {
     if (!primaryFinData.length) return null;
-    return [...primaryFinData].sort((a: any, b: any) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0))[0];
+    return [...primaryFinData].sort((a, b) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0))[0];
+  }, [primaryFinData]);
+
+  // 近三年数据（用于趋势图）
+  const recentThreeYears = useMemo(() => {
+    if (!primaryFinData.length) return [];
+    return [...primaryFinData]
+      .sort((a, b) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0))
+      .slice(0, 3)
+      .reverse();
   }, [primaryFinData]);
 
   const trendData = useMemo(() => {
     if (!primaryFinData.length) return [];
     return [...primaryFinData]
-      .sort((a: any, b: any) => (a.fiscal_year ?? 0) - (b.fiscal_year ?? 0))
-      .map((d: any) => ({
+      .sort((a, b) => (a.fiscal_year ?? 0) - (b.fiscal_year ?? 0))
+      .map((d) => ({
         year: d.fiscal_year,
         营收: d.revenue != null ? +(d.revenue / 10000).toFixed(3) : null,
         净利润: d.net_profit != null ? +(d.net_profit / 10000).toFixed(3) : null,
-        毛利率: d.gross_margin != null ? +d.gross_margin.toFixed(2) : null,
-        净利率: d.net_margin != null ? +d.net_margin.toFixed(2) : null,
-        ROE: d.roe != null ? +d.roe.toFixed(2) : null,
+        毛利率: d.gross_margin != null && Math.abs(d.gross_margin) < 200 ? +d.gross_margin.toFixed(2) : null,
+        净利率: d.net_margin != null && Math.abs(d.net_margin) < 500 ? +d.net_margin.toFixed(2) : null,
+        ROE: d.roe != null && Math.abs(d.roe) < 500 ? +d.roe.toFixed(2) : null,
         资产负债率: d.debt_ratio != null ? +d.debt_ratio.toFixed(2) : null,
       }));
   }, [primaryFinData]);
+
+  // 近三年趋势数据
+  const trendData3Y = useMemo(() => {
+    return recentThreeYears.map((d) => ({
+      year: d.fiscal_year,
+      营收: d.revenue != null ? +(d.revenue / 10000).toFixed(3) : null,
+      净利润: d.net_profit != null ? +(d.net_profit / 10000).toFixed(3) : null,
+      毛利率: d.gross_margin != null && Math.abs(d.gross_margin) < 200 ? +d.gross_margin.toFixed(2) : null,
+      净利率: d.net_margin != null && Math.abs(d.net_margin) < 500 ? +d.net_margin.toFixed(2) : null,
+      ROE: d.roe != null && Math.abs(d.roe) < 500 ? +d.roe.toFixed(2) : null,
+      资产负债率: d.debt_ratio != null ? +d.debt_ratio.toFixed(2) : null,
+      营收增速: d.revenue_growth != null ? +d.revenue_growth.toFixed(2) : null,
+      净利增速: d.net_profit_growth != null && Math.abs(d.net_profit_growth) < 500 ? +d.net_profit_growth.toFixed(2) : null,
+    }));
+  }, [recentThreeYears]);
 
   const compareData = useMemo(() => {
     if (selectedCompanies.length < 2) return [];
@@ -203,9 +359,8 @@ export default function FinancialAnalysis() {
     return metrics.map(({ key, label }) => {
       const row: Record<string, any> = { metric: label };
       for (const c of selectedCompanies) {
-        const fd = getFinDataByCode(c.bse_code);
-        const yr = fd.find((r: any) => r.fiscal_year === selectedYear);
-        row[c.name ?? c.bse_code] = yr?.[key] ?? null;
+        const yr = c.financial_data.find((r) => r.fiscal_year === selectedYear);
+        row[c.name ?? c.code] = (yr as any)?.[key] ?? null;
       }
       return row;
     });
@@ -213,7 +368,7 @@ export default function FinancialAnalysis() {
 
   const radarData = useMemo(() => {
     if (!primaryCompany || !latestData) return [];
-    const normalize = (v: number | null, min: number, max: number) => {
+    const normalize = (v: number | null | undefined, min: number, max: number) => {
       if (v == null) return 0;
       return Math.max(0, Math.min(100, ((v - min) / (max - min)) * 100));
     };
@@ -240,14 +395,19 @@ export default function FinancialAnalysis() {
     setSelectedCodes((prev) => prev.filter((c) => c !== code));
   };
 
+  const availableYears = useMemo(() => {
+    if (!primaryFinData.length) return [2020, 2021, 2022, 2023, 2024];
+    return [...new Set(primaryFinData.map(r => r.fiscal_year).filter(Boolean))].sort() as number[];
+  }, [primaryFinData]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="border-b border-slate-700 px-6 py-4">
+      <div className="bg-slate-900/80 border-b border-slate-700 px-6 py-4">
         <h1 className="text-xl font-bold text-white flex items-center gap-2">
           <BarChart3 className="w-6 h-6 text-cyan-400" />
           财务分析
           <span className="text-sm font-normal text-slate-400 ml-2">
-            基于北交所 298 家公司真实财报数据（2020–2024）
+            北交所 298 家 + 新三板 1887 家 · 多年真实财报数据
           </span>
         </h1>
       </div>
@@ -257,7 +417,7 @@ export default function FinancialAnalysis() {
         <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-5 mb-6">
           <div className="flex items-center gap-3 mb-4">
             <h2 className="text-base font-semibold text-white">选择分析标的</h2>
-            <span className="text-xs text-slate-500">最多同时选择 5 家公司进行对比分析</span>
+            <span className="text-xs text-slate-500">支持北交所 + 新三板共 2185 家企业 · 最多同时选择 5 家对比</span>
           </div>
           <div className="relative mb-4">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -270,19 +430,23 @@ export default function FinancialAnalysis() {
             />
             {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 z-20 bg-slate-800 border border-slate-600 rounded-lg mt-1 shadow-xl max-h-64 overflow-y-auto">
-                {searchResults.map((c: any) => {
-                  const fd = getFinDataByCode(c.bse_code);
-                  const latest = fd.length > 0 ? fd[fd.length - 1] : null;
+                {searchResults.map((c) => {
+                  const latest = c.financial_data.length > 0
+                    ? [...c.financial_data].sort((a, b) => (b.fiscal_year ?? 0) - (a.fiscal_year ?? 0))[0]
+                    : null;
                   return (
                     <button
-                      key={c.bse_code}
-                      onClick={() => addCompany(c.bse_code)}
+                      key={c.code}
+                      onClick={() => addCompany(c.code)}
                       className="w-full text-left px-4 py-3 hover:bg-slate-700 border-b border-slate-700 last:border-0 transition-colors"
                     >
                       <div className="flex justify-between items-start">
                         <div>
                           <span className="text-white font-medium text-sm">{c.name}</span>
-                          <span className="text-slate-400 text-xs ml-2">{c.bse_code}</span>
+                          <span className="text-slate-400 text-xs ml-2">{c.code}</span>
+                          <span className={`text-xs ml-2 px-1.5 py-0.5 rounded ${c.source === "bse" ? "bg-blue-500/20 text-blue-400" : "bg-cyan-500/20 text-cyan-400"}`}>
+                            {c.source === "bse" ? "北交所" : "新三板"}
+                          </span>
                         </div>
                         <div className="text-right">
                           <span className="text-xs text-cyan-400">{c.industry}</span>
@@ -301,20 +465,21 @@ export default function FinancialAnalysis() {
           </div>
           {selectedCodes.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {selectedCompanies.map((c: any, i: number) => (
+              {selectedCompanies.map((c, i) => (
                 <div
-                  key={c.bse_code}
+                  key={c.code}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm"
                   style={{ borderColor: COLORS[i], backgroundColor: COLORS[i] + "20", color: COLORS[i] }}
                 >
                   <span>{c.name}</span>
-                  <span className="text-xs opacity-70">{c.bse_code}</span>
-                  <button onClick={() => removeCompany(c.bse_code)} className="ml-1 opacity-70 hover:opacity-100 text-lg leading-none">×</button>
+                  <span className="text-xs opacity-70">{c.code}</span>
+                  <span className="text-xs opacity-50">{c.source === "bse" ? "北交所" : "新三板"}</span>
+                  <button onClick={() => removeCompany(c.code)} className="ml-1 opacity-70 hover:opacity-100 text-lg leading-none">×</button>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-slate-500 text-sm">请搜索并选择公司开始分析</div>
+            <div className="text-slate-500 text-sm">请搜索并选择公司开始分析（支持北交所和新三板企业）</div>
           )}
         </div>
 
@@ -322,15 +487,19 @@ export default function FinancialAnalysis() {
           <div className="bg-slate-800/40 border border-slate-700 rounded-xl p-12 text-center">
             <BarChart3 className="w-16 h-16 text-slate-600 mx-auto mb-4" />
             <p className="text-slate-400 text-lg mb-2">选择公司开始财务分析</p>
-            <p className="text-slate-500 text-sm">支持多公司横向对比 · 5年财务趋势 · 行业均值对标 · 综合能力雷达图</p>
+            <p className="text-slate-500 text-sm">支持多公司横向对比 · 近三年财务趋势 · 行业均值对标 · 综合能力雷达图</p>
+            <p className="text-slate-500 text-sm mt-1">覆盖北交所 298 家 + 新三板 1887 家，共 2185 家企业</p>
           </div>
         )}
 
         {primaryCompany && (
           <>
+            {/* 近三年趋势摘要卡片 */}
+            <ThreeYearSummaryCard finData={primaryFinData} />
+
             <div className="flex items-center gap-2 mb-4">
               <span className="text-slate-400 text-sm">基准年份：</span>
-              {[2020, 2021, 2022, 2023, 2024].map((y) => (
+              {availableYears.map((y) => (
                 <button
                   key={y}
                   onClick={() => setSelectedYear(y)}
@@ -362,8 +531,8 @@ export default function FinancialAnalysis() {
               <div>
                 {latestData ? (
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <MetricCard label="营业收入（最新年）" value={fmtRevenue(latestData.revenue)} sub={latestData.revenue_growth != null ? `同比 ${fmt(latestData.revenue_growth, "%", 1)}` : "同比 /"} color="text-cyan-400" />
-                    <MetricCard label="净利润（最新年）" value={fmtRevenue(latestData.net_profit)} sub={latestData.profit_growth != null ? `同比 ${fmt(latestData.profit_growth, "%", 1)}` : "同比 /"} color={(latestData.net_profit ?? 0) >= 0 ? "text-green-400" : "text-red-400"} />
+                    <MetricCard label={`营业收入（${latestData.fiscal_year}年）`} value={fmtRevenue(latestData.revenue)} sub={latestData.revenue_growth != null ? `同比 ${fmt(latestData.revenue_growth, "%", 1)}` : "同比 /"} color="text-cyan-400" />
+                    <MetricCard label={`净利润（${latestData.fiscal_year}年）`} value={fmtRevenue(latestData.net_profit)} sub={latestData.net_profit_growth != null ? `同比 ${fmt(latestData.net_profit_growth, "%", 1)}` : "同比 /"} color={(latestData.net_profit ?? 0) >= 0 ? "text-green-400" : "text-red-400"} />
                     <MetricCard label="毛利率" value={fmt(latestData.gross_margin, "%", 1)} sub={industryAvg.gross_margin != null ? `行业均值 ${fmt(industryAvg.gross_margin, "%", 1)}` : "行业均值 /"} color="text-yellow-400" />
                     <MetricCard label="净利率" value={fmt(latestData.net_margin, "%", 1)} sub={industryAvg.net_margin != null ? `行业均值 ${fmt(industryAvg.net_margin, "%", 1)}` : "行业均值 /"} color="text-purple-400" />
                     <MetricCard label="ROE（净资产收益率）" value={fmt(latestData.roe, "%", 1)} sub={industryAvg.roe != null ? `行业均值 ${fmt(industryAvg.roe, "%", 1)}` : "行业均值 /"} color="text-blue-400" hint="ROE > 15% 为优质" />
@@ -379,8 +548,8 @@ export default function FinancialAnalysis() {
                 <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-5">
                   <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
                     <Shield className="w-4 h-4 text-cyan-400" />
-                    历史财务数据明细（2020–2024）
-                    <span className="text-xs text-slate-500 font-normal ml-2">来源：同花顺财务摘要</span>
+                    历史财务数据明细（{availableYears[0]}–{availableYears[availableYears.length - 1]}）
+                    <span className="text-xs text-slate-500 font-normal ml-2">来源：东方财富财务摘要</span>
                   </h3>
                   <FinancialTable data={primaryFinData} />
                 </div>
@@ -395,8 +564,52 @@ export default function FinancialAnalysis() {
                   </div>
                 ) : (
                   <>
+                    {/* 近三年趋势（重点展示） */}
+                    {trendData3Y.length >= 2 && (
+                      <div className="bg-slate-800/60 border border-cyan-500/20 rounded-xl p-5">
+                        <div className="flex items-center gap-2 mb-4">
+                          <h3 className="text-sm font-semibold text-white">近三年营收 & 净利润趋势（亿元）</h3>
+                          <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded">重点</span>
+                        </div>
+                        <ResponsiveContainer width="100%" height={280}>
+                          <BarChart data={trendData3Y} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="year" stroke="#94a3b8" tick={{ fontSize: 12 }} />
+                            <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} />
+                            <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", borderRadius: "8px" }} formatter={(v: any, name: string) => [v != null ? `${v} 亿` : "/", name]} />
+                            <Legend />
+                            <Bar dataKey="营收" fill="#06b6d4" radius={[3, 3, 0, 0]} />
+                            <Bar dataKey="净利润" fill="#10b981" radius={[3, 3, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    )}
+
+                    {/* 近三年增速趋势 */}
+                    {trendData3Y.length >= 2 && (
+                      <div className="bg-slate-800/60 border border-cyan-500/20 rounded-xl p-5">
+                        <div className="flex items-center gap-2 mb-4">
+                          <h3 className="text-sm font-semibold text-white">近三年营收 & 净利润增速（%）</h3>
+                          <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded">重点</span>
+                        </div>
+                        <ResponsiveContainer width="100%" height={240}>
+                          <BarChart data={trendData3Y} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="year" stroke="#94a3b8" tick={{ fontSize: 12 }} />
+                            <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} />
+                            <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", borderRadius: "8px" }} formatter={(v: any, name: string) => [v != null ? `${v}%` : "/", name]} />
+                            <Legend />
+                            <ReferenceLine y={0} stroke="#64748b" />
+                            <Bar dataKey="营收增速" fill="#06b6d4" radius={[3, 3, 0, 0]} />
+                            <Bar dataKey="净利增速" fill="#10b981" radius={[3, 3, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    )}
+
+                    {/* 全历史趋势 */}
                     <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-5">
-                      <h3 className="text-sm font-semibold text-white mb-4">营收 & 净利润趋势（亿元）</h3>
+                      <h3 className="text-sm font-semibold text-white mb-4">全历史营收 & 净利润趋势（亿元）</h3>
                       <ResponsiveContainer width="100%" height={280}>
                         <BarChart data={trendData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -409,13 +622,14 @@ export default function FinancialAnalysis() {
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
+
                     <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-5">
                       <h3 className="text-sm font-semibold text-white mb-4">盈利能力趋势（%）</h3>
                       <ResponsiveContainer width="100%" height={280}>
                         <LineChart data={trendData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                           <XAxis dataKey="year" stroke="#94a3b8" tick={{ fontSize: 12 }} />
-                          <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} />
+                          <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} domain={['auto', 'auto']} />
                           <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", borderRadius: "8px" }} formatter={(v: any, name: string) => [v != null ? `${v}%` : "/", name]} />
                           <Legend />
                           <ReferenceLine y={15} stroke="#10b981" strokeDasharray="4 4" label={{ value: "ROE 15%", fill: "#10b981", fontSize: 10 }} />
@@ -463,8 +677,8 @@ export default function FinancialAnalysis() {
                           <YAxis type="category" dataKey="metric" stroke="#94a3b8" tick={{ fontSize: 12 }} width={80} />
                           <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", borderRadius: "8px" }} formatter={(v: any, name: string) => [v != null ? `${v}%` : "/", name]} />
                           <Legend />
-                          {selectedCompanies.map((c: any, i: number) => (
-                            <Bar key={c.bse_code} dataKey={c.name ?? c.bse_code} fill={COLORS[i]} radius={[0, 3, 3, 0]} />
+                          {selectedCompanies.map((c, i) => (
+                            <Bar key={c.code} dataKey={c.name ?? c.code} fill={COLORS[i]} radius={[0, 3, 3, 0]} />
                           ))}
                         </BarChart>
                       </ResponsiveContainer>
@@ -476,8 +690,8 @@ export default function FinancialAnalysis() {
                           <thead>
                             <tr className="border-b border-slate-700">
                               <th className="text-left text-slate-400 py-2 px-3">指标</th>
-                              {selectedCompanies.map((c: any, i: number) => (
-                                <th key={c.bse_code} className="text-right py-2 px-3" style={{ color: COLORS[i] }}>{c.name}</th>
+                              {selectedCompanies.map((c, i) => (
+                                <th key={c.code} className="text-right py-2 px-3" style={{ color: COLORS[i] }}>{c.name}</th>
                               ))}
                               <th className="text-right text-slate-500 py-2 px-3">行业均值</th>
                             </tr>
@@ -492,14 +706,13 @@ export default function FinancialAnalysis() {
                               { key: "debt_ratio", label: "资产负债率", fmtFn: (v: any) => fmt(v, "%", 1) },
                               { key: "current_ratio", label: "流动比率", fmtFn: (v: any) => fmt(v, "x", 2) },
                               { key: "revenue_growth", label: "营收增速", fmtFn: (v: any) => fmt(v, "%", 1) },
-                              { key: "profit_growth", label: "净利增速", fmtFn: (v: any) => fmt(v, "%", 1) },
+                              { key: "net_profit_growth", label: "净利增速", fmtFn: (v: any) => fmt(v, "%", 1) },
                             ].map(({ key, label, fmtFn }) => (
                               <tr key={key} className="border-b border-slate-800 hover:bg-slate-800/30">
                                 <td className="text-slate-400 py-2 px-3">{label}</td>
-                                {selectedCompanies.map((c: any) => {
-                                  const fd = getFinDataByCode(c.bse_code);
-                                  const yr = fd.find((r: any) => r.fiscal_year === selectedYear);
-                                  return <td key={c.bse_code} className="text-right text-white py-2 px-3">{yr ? fmtFn(yr[key]) : "/"}</td>;
+                                {selectedCompanies.map((c) => {
+                                  const yr = c.financial_data.find((r) => r.fiscal_year === selectedYear);
+                                  return <td key={c.code} className="text-right text-white py-2 px-3">{yr ? fmtFn((yr as any)[key]) : "/"}</td>;
                                 })}
                                 <td className="text-right text-slate-500 py-2 px-3">{fmtFn((industryAvg as any)[key])}</td>
                               </tr>
