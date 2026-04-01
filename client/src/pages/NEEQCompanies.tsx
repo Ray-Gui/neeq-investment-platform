@@ -266,6 +266,7 @@ export default function NEEQCompanies() {
                       <th className="text-left text-slate-400 py-3 px-3">行业</th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("cap")}>
                         市值 <SortIcon k="cap" />
+                        <span className="text-yellow-500 text-xs ml-1" title="标注*的市值为估算值（行业PE/PS法），协议转让股票无连续竞价，东方财富不提供实时市值">*估算</span>
                       </th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("revenue")}>
                         营收 <SortIcon k="revenue" />
@@ -297,7 +298,17 @@ export default function NEEQCompanies() {
                               {c.sector}
                             </span>
                           </td>
-                          <td className="text-right py-3 px-3 text-cyan-400 text-sm">{fmtCap(c.market_cap_wan)}</td>
+                          <td className="text-right py-3 px-3 text-sm">
+                            <span className={c.market_cap_estimated ? 'text-yellow-400' : 'text-cyan-400'}>
+                              {fmtCap(c.market_cap_wan)}
+                            </span>
+                            {c.market_cap_estimated && c.market_cap_wan && (
+                              <span
+                                className="ml-1 text-xs text-yellow-500 cursor-help"
+                                title={c.market_cap_note || `估算方法：${c.market_cap_method}`}
+                              >*</span>
+                            )}
+                          </td>
                           <td className="text-right py-3 px-3 text-slate-300 text-sm">{fin ? fmtRevenue(fin.revenue) : "/"}</td>
                           <td className={`text-right py-3 px-3 text-sm ${fin && (fin.net_profit ?? 0) >= 0 ? "text-green-400" : "text-red-400"}`}>
                             {fin ? fmtRevenue(fin.net_profit) : "/"}
