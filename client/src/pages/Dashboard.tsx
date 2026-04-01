@@ -281,40 +281,82 @@ export default function Dashboard() {
                       <ArrowRight className="text-purple-400 group-hover:translate-x-1 transition-transform" size={20} />
                     </a>
                   </Link>
+                  <Link href="/industry-benchmark">
+                    <a className="flex items-center justify-between p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg hover:bg-orange-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">🎯 行业对标分析</h3>
+                        <p className="text-sm text-gray-400">1887家 · 分位数排名 · 行业龙头vs尾部 · 景气趋势</p>
+                      </div>
+                      <ArrowRight className="text-orange-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
+                  <Link href="/inventory-risk">
+                    <a className="flex items-center justify-between p-4 bg-red-500/10 border border-red-500/30 rounded-lg hover:bg-red-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">🛡️ 库存风险监控</h3>
+                        <p className="text-sm text-gray-400">1887家 · 退市风险评分 · Beta估算 · 连亏预警</p>
+                      </div>
+                      <ArrowRight className="text-red-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
+                  <Link href="/spread-analysis">
+                    <a className="flex items-center justify-between p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg hover:bg-yellow-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">📐 做市价差分析仪</h3>
+                        <p className="text-sm text-gray-400">1887家 · 价差空间估算 · 竞争程度 · 做市机会识别</p>
+                      </div>
+                      <ArrowRight className="text-yellow-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Next Steps */}
             <div className="bg-slate-800/30 border border-slate-700 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-white mb-4">🚀 后续规划</h3>
+              <h3 className="text-xl font-bold text-white mb-2">🗺️ 平台路线图</h3>
+              <p className="text-sm text-gray-400 mb-5">下一阶段待开发功能，持续深化新三板做市商研究能力</p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-semibold">1</div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-semibold text-sm">Q2</div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">企业评分系统</h4>
-                    <p className="text-sm text-gray-400">多维度评分，识别优质投资标的</p>
+                    <h4 className="font-semibold text-white mb-1">股权结构分析</h4>
+                    <p className="text-sm text-gray-400">控股股东持股比例、机构持股、限售股解禁时间表</p>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-semibold">2</div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-semibold text-sm">Q2</div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">上市潜力评估</h4>
-                    <p className="text-sm text-gray-400">预测上市可能性和时间窗口</p>
+                    <h4 className="font-semibold text-white mb-1">定增融资追踪</h4>
+                    <p className="text-sm text-gray-400">历次定向增发价格、融资金额、认购方背景分析</p>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-semibold">3</div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-semibold text-sm">Q3</div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">做市商机会识别</h4>
-                    <p className="text-sm text-gray-400">识别流动性机会和交易机会</p>
+                    <h4 className="font-semibold text-white mb-1">关联公司网络</h4>
+                    <p className="text-sm text-gray-400">识别上市公司子公司/关联方，挖掘资产注入预期</p>
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-semibold">4</div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-semibold text-sm">Q3</div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">投资决策支持</h4>
-                    <p className="text-sm text-gray-400">综合评分和投资建议</p>
+                    <h4 className="font-semibold text-white mb-1">实时行情接入</h4>
+                    <p className="text-sm text-gray-400">接入新三板实时成交数据，计算真实买卖价差和换手率</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-semibold text-sm">Q4</div>
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">辅导备案监控</h4>
+                    <p className="text-sm text-gray-400">自动追踪证监会辅导备案公告，识别转板预期标的</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-slate-700/30 border border-slate-600/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-semibold text-sm">Q4</div>
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">投资组合管理</h4>
+                    <p className="text-sm text-gray-400">做市库存组合风险敞口监控、行业集中度预警</p>
                   </div>
                 </div>
               </div>

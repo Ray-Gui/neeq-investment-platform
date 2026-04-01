@@ -17,6 +17,9 @@ import CompanyDetail from "./pages/CompanyDetail";
 import BSEListingTracker from "./pages/BSEListingTracker";
 import TrendRating from "./pages/TrendRating";
 import LiquidityScore from "./pages/LiquidityScore";
+import IndustryBenchmark from "./pages/IndustryBenchmark";
+import InventoryRisk from "./pages/InventoryRisk";
+import SpreadAnalysis from "./pages/SpreadAnalysis";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -36,6 +39,9 @@ function Router() {
       <Route path={"/bse-listing-tracker"} component={BSEListingTracker} />
       <Route path={"/trend-rating"} component={TrendRating} />
       <Route path={"/liquidity-score"} component={LiquidityScore} />
+      <Route path={"/industry-benchmark"} component={IndustryBenchmark} />
+      <Route path={"/inventory-risk"} component={InventoryRisk} />
+      <Route path={"/spread-analysis"} component={SpreadAnalysis} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
