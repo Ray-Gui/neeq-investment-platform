@@ -14,6 +14,9 @@ import ListingPotential from "./pages/ListingPotential";
 import DealerOpportunities from "./pages/DealerOpportunities";
 import InvestmentDecision from "./pages/InvestmentDecision";
 import CompanyDetail from "./pages/CompanyDetail";
+import BSEListingTracker from "./pages/BSEListingTracker";
+import TrendRating from "./pages/TrendRating";
+import LiquidityScore from "./pages/LiquidityScore";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -30,6 +33,9 @@ function Router() {
       <Route path={"/dealer-opportunities"} component={DealerOpportunities} />
       <Route path={"/investment-decision"} component={InvestmentDecision} />
       <Route path={"/company/:code"} component={CompanyDetail} />
+      <Route path={"/bse-listing-tracker"} component={BSEListingTracker} />
+      <Route path={"/trend-rating"} component={TrendRating} />
+      <Route path={"/liquidity-score"} component={LiquidityScore} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

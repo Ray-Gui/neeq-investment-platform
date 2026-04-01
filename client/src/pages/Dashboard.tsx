@@ -249,6 +249,40 @@ export default function Dashboard() {
                   </Link>
                 </div>
               </div>
+
+              {/* 新增功能 */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-white mb-4">🆕 新增研究功能</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Link href="/bse-listing-tracker">
+                    <a className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">🚀 北交所转板追踪</h3>
+                        <p className="text-sm text-gray-400">844家候选企业 · 三条件筛选 · 趋势评级</p>
+                      </div>
+                      <ArrowRight className="text-emerald-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
+                  <Link href="/trend-rating">
+                    <a className="flex items-center justify-between p-4 bg-cyan-500/10 border border-cyan-500/30 rounded-lg hover:bg-cyan-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">📈 三年财务趋势评级</h3>
+                        <p className="text-sm text-gray-400">1850家 · CAGR分级 · 盈利改善 · 现金流质量</p>
+                      </div>
+                      <ArrowRight className="text-cyan-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
+                  <Link href="/liquidity-score">
+                    <a className="flex items-center justify-between p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg hover:bg-purple-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">💧 流动性评分体系</h3>
+                        <p className="text-sm text-gray-400">1887家 · 做市机会识别 · 五维度评分</p>
+                      </div>
+                      <ArrowRight className="text-purple-400 group-hover:translate-x-1 transition-transform" size={20} />
+                    </a>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Next Steps */}
