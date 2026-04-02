@@ -5,7 +5,12 @@ import {
   Legend, ResponsiveContainer, RadarChart, Radar, PolarGrid,
   PolarAngleAxis, PolarRadiusAxis, ReferenceLine,
 } from "recharts";
-import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target, Info, ArrowLeft } from "lucide-react";
+import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target, Info, ArrowLeft, Award, Building2, ChevronDown, ChevronUp, Flame, Crown } from "lucide-react";
+import { ScatterChart, Scatter, ZAxis } from "recharts";
+
+// ── 行业基准数据 ──
+import industryBenchmarkRaw from "../data/industry-benchmark-data.json";
+const industryBenchmark = industryBenchmarkRaw as Record<string, any>;
 
 // ── 读取北交所公司数据（298家）──
 import dataV4 from "../../public/data_v4_fixed.json";
@@ -265,7 +270,509 @@ function FinancialTable({ data }: { data: FinancialRow[] }) {
   );
 }
 
-// ── 主页面 ───────────────────────────────────────────────────────
+// ── 行业分析面板 ───────────────────────────────────────────────
+const SECTOR_CONFIG: Record<string, { color: string; bg: string; border: string; accent: string; icon: string }> = {
+  "医疗健康": { color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/30", accent: "#10b981", icon: "🏥" },
+  "新能源": { color: "text-yellow-400", bg: "bg-yellow-500/10", border: "border-yellow-500/30", accent: "#f59e0b", icon: "⚡" },
+  "人工智能": { color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/30", accent: "#3b82f6", icon: "🤖" },
+};
+
+function fmtWan(v: number | null | undefined): string {
+  if (v == null) return "/";
+  if (v >= 100000000) return (v / 100000000).toFixed(2) + " 亿";
+  if (v >= 10000) return (v / 10000).toFixed(2) + " 亿";
+  if (v >= 1) return v.toFixed(0) + " 万";
+  return v.toFixed(2) + " 万";
+}
+
+// 分位条形组件
+function PercentileBar({ p25, p50, p75, unit = "%" }: { p25: number; p50: number; p75: number; unit?: string }) {
+  return (
+    <div className="flex items-center gap-2 text-xs">
+      <span className="text-slate-500 w-8 text-right">{p25.toFixed(1)}{unit}</span>
+      <div className="flex-1 relative h-4 bg-slate-700 rounded-full overflow-hidden">
+        {/* P25-P75 区间 */}
+        <div className="absolute h-full bg-cyan-500/30 rounded-full" style={{ left: "0%", width: "50%" }} />
+        {/* P50 中位线 */}
+        <div className="absolute h-full w-0.5 bg-cyan-400" style={{ left: "50%" }} />
+      </div>
+      <span className="text-cyan-400 font-medium w-12">{p50.toFixed(1)}{unit}</span>
+      <span className="text-slate-500 w-8">{p75.toFixed(1)}{unit}</span>
+    </div>
+  );
+}
+
+// 分位数表格行
+function DistRow({ label, p25, p50, p75, p90, mean, unit = "%", reverse = false }: {
+  label: string; p25: number; p50: number; p75: number; p90: number; mean: number; unit?: string; reverse?: boolean;
+}) {
+  const medColor = reverse
+    ? (p50 > 60 ? "text-red-400" : p50 > 40 ? "text-yellow-400" : "text-green-400")
+    : (p50 > 30 ? "text-green-400" : p50 > 10 ? "text-yellow-400" : "text-orange-400");
+  return (
+    <tr className="border-b border-slate-800 hover:bg-slate-800/20">
+      <td className="py-2 px-3 text-slate-400 text-xs">{label}</td>
+      <td className="py-2 px-3 text-right text-xs text-slate-500">{p25.toFixed(1)}{unit}</td>
+      <td className={`py-2 px-3 text-right text-sm font-bold ${medColor}`}>{p50.toFixed(1)}{unit}</td>
+      <td className="py-2 px-3 text-right text-xs text-slate-400">{p75.toFixed(1)}{unit}</td>
+      <td className="py-2 px-3 text-right text-xs text-slate-500">{p90.toFixed(1)}{unit}</td>
+      <td className="py-2 px-3 text-right text-xs text-cyan-400">{mean.toFixed(1)}{unit}</td>
+    </tr>
+  );
+}
+
+function IndustryAnalysisPanel() {
+  const [activeSector, setActiveSector] = useState<string>("医疗健康");
+  const [topMetric, setTopMetric] = useState<"gross_margin" | "roe" | "revenue">("gross_margin");
+  const [expandedSection, setExpandedSection] = useState<string | null>("overview");
+
+  const sectors = ["医疗健康", "新能源", "人工智能"];
+  const data = industryBenchmark[activeSector];
+  const cfg = SECTOR_CONFIG[activeSector];
+
+  const topCompanies = useMemo(() => {
+    if (!data?.companies) return [];
+    const sorted = [...data.companies].sort((a: any, b: any) => {
+      const va = a[topMetric] ?? -Infinity;
+      const vb = b[topMetric] ?? -Infinity;
+      return vb - va;
+    });
+    // 去重名（去掉“已切换”的重复公司）
+    const seen = new Set<string>();
+    const result: any[] = [];
+    for (const c of sorted) {
+      const baseName = c.name.replace("（已切换）", "");
+      if (!seen.has(baseName)) {
+        seen.add(baseName);
+        result.push(c);
+      }
+      if (result.length >= 10) break;
+    }
+    return result;
+  }, [data, topMetric]);
+
+  const growthTrendData = useMemo(() => {
+    if (!data?.growth_trend) return [];
+    return data.growth_trend.map((t: any) => ({
+      year: t.year,
+      "均均营收（亿）": t.avg_revenue_yi,
+      "增速%": t.growth_rate,
+    }));
+  }, [data]);
+
+  const metricDistData = useMemo(() => {
+    if (!data) return [];
+    return [
+      { name: "P10", 毛利率: data.gross_margin_stats.p10, ROE: data.roe_stats.p10, 负债率: data.debt_ratio_stats.p10 },
+      { name: "P25", 毛利率: data.gross_margin_stats.p25, ROE: data.roe_stats.p25, 负债率: data.debt_ratio_stats.p25 },
+      { name: "P50", 毛利率: data.gross_margin_stats.p50, ROE: data.roe_stats.p50, 负债率: data.debt_ratio_stats.p50 },
+      { name: "P75", 毛利率: data.gross_margin_stats.p75, ROE: data.roe_stats.p75, 负债率: data.debt_ratio_stats.p75 },
+      { name: "P90", 毛利率: data.gross_margin_stats.p90, ROE: data.roe_stats.p90, 负债率: data.debt_ratio_stats.p90 },
+    ];
+  }, [data]);
+
+  const topMetricLabel = { gross_margin: "毛利率", roe: "ROE", revenue: "营收规模" }[topMetric];
+  const topMetricUnit = topMetric === "revenue" ? "" : "%";
+
+  const toggleSection = (s: string) => setExpandedSection(prev => prev === s ? null : s);
+
+  if (!data) return null;
+
+  return (
+    <div className="space-y-5">
+      {/* 页面标题 */}
+      <div className="flex items-center gap-3 mb-1">
+        <div className="flex items-center gap-2">
+          <BarChart3 className="w-5 h-5 text-cyan-400" />
+          <h2 className="text-lg font-bold text-white">行业全景分析</h2>
+        </div>
+        <span className="text-xs text-slate-500">| 基于新三板真实财报数据 · 三大行业对比</span>
+      </div>
+
+      {/* 行业切换标签 */}
+      <div className="flex gap-2">
+        {sectors.map(s => {
+          const c = SECTOR_CONFIG[s];
+          const cnt = industryBenchmark[s]?.company_count ?? 0;
+          return (
+            <button
+              key={s}
+              onClick={() => setActiveSector(s)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${
+                activeSector === s
+                  ? `${c.bg} ${c.border} ${c.color} shadow-lg`
+                  : "bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white"
+              }`}
+            >
+              <span>{c.icon}</span>
+              <span>{s}</span>
+              <span className="text-xs opacity-70">{cnt}家</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 行业概览卡片 */}
+      <div className={`border rounded-xl p-5 ${cfg.bg} ${cfg.border}`}>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">{cfg.icon}</span>
+            <div>
+              <h3 className={`text-lg font-bold ${cfg.color}`}>{activeSector}</h3>
+              <p className="text-xs text-slate-500">新三板挂牌企业 · 真实财报数据</p>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className={`text-3xl font-bold ${cfg.color}`}>{data.company_count}</div>
+            <div className="text-xs text-slate-500">家挂牌公司</div>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { label: "毛利率中位数", value: `${data.gross_margin_stats.p50.toFixed(1)}%`, sub: `均値 ${data.gross_margin_stats.mean.toFixed(1)}%`, color: "text-yellow-400" },
+            { label: "ROE 中位数", value: `${data.roe_stats.p50.toFixed(1)}%`, sub: `均値 ${data.roe_stats.mean.toFixed(1)}%`, color: "text-blue-400" },
+            { label: "负债率中位数", value: `${data.debt_ratio_stats.p50.toFixed(1)}%`, sub: `P75 ${data.debt_ratio_stats.p75.toFixed(1)}%`, color: "text-orange-400" },
+            { label: "最近年均均营收", value: `${growthTrendData[growthTrendData.length-1]?.['均均营收（亿）']?.toFixed(2) ?? '/'}  亿`, sub: `增速 ${growthTrendData[growthTrendData.length-1]?.['增速%'] ?? '/'}%`, color: (growthTrendData[growthTrendData.length-1]?.['增速%'] ?? 0) >= 0 ? "text-green-400" : "text-red-400" },
+          ].map(({ label, value, sub, color }) => (
+            <div key={label} className="bg-slate-800/60 rounded-lg p-3 text-center">
+              <div className="text-xs text-slate-400 mb-1">{label}</div>
+              <div className={`text-lg font-bold ${color}`}>{value}</div>
+              <div className="text-xs text-slate-500 mt-0.5">{sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 展开收起：指标分位分布 */}
+      <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden">
+        <button
+          onClick={() => toggleSection("dist")}
+          className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-700/30 transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <Activity className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm font-semibold text-white">行业指标分位分布（P25 / 中位数P50 / P75 / P90）</span>
+          </div>
+          {expandedSection === "dist" ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+        </button>
+        {expandedSection === "dist" && (
+          <div className="px-5 pb-5">
+            <p className="text-xs text-slate-500 mb-3">
+              P25 = 行业内排名前 25% 的门槛；P50 = 中位数（行业中间水平）；P75 = 行业内排名前 25% 的优秀水平；P90 = 行业领先水平。超过 P75 即为行业优秀企业。
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-slate-700">
+                    <th className="text-left py-2 px-3 text-slate-400">指标</th>
+                    <th className="text-right py-2 px-3 text-slate-500">P25</th>
+                    <th className="text-right py-2 px-3 text-cyan-400 font-bold">P50 中位数</th>
+                    <th className="text-right py-2 px-3 text-slate-400">P75</th>
+                    <th className="text-right py-2 px-3 text-slate-500">P90</th>
+                    <th className="text-right py-2 px-3 text-slate-400">均値</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <DistRow label="毛利率" p25={data.gross_margin_stats.p25} p50={data.gross_margin_stats.p50} p75={data.gross_margin_stats.p75} p90={data.gross_margin_stats.p90} mean={data.gross_margin_stats.mean} />
+                  <DistRow label="净利率" p25={data.net_margin_stats.p25} p50={data.net_margin_stats.p50} p75={data.net_margin_stats.p75} p90={data.net_margin_stats.p90} mean={data.net_margin_stats.mean} />
+                  <DistRow label="ROE（净资产收益率）" p25={data.roe_stats.p25} p50={data.roe_stats.p50} p75={data.roe_stats.p75} p90={data.roe_stats.p90} mean={data.roe_stats.mean} />
+                  <DistRow label="资产负债率" p25={data.debt_ratio_stats.p25} p50={data.debt_ratio_stats.p50} p75={data.debt_ratio_stats.p75} p90={data.debt_ratio_stats.p90} mean={data.debt_ratio_stats.mean} reverse />
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs text-slate-400 mb-2">毛利率分位分布图</p>
+                <ResponsiveContainer width="100%" height={160}>
+                  <BarChart data={metricDistData} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="name" stroke="#9ca3af" tick={{ fontSize: 10 }} />
+                    <YAxis stroke="#9ca3af" tick={{ fontSize: 10 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", fontSize: 11 }}
+                      formatter={(v: any) => [`${v?.toFixed(1)}%`, "毛利率"]} />
+                    <Bar dataKey="毛利率" fill="#f59e0b" radius={[3, 3, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-2">ROE 分位分布图</p>
+                <ResponsiveContainer width="100%" height={160}>
+                  <BarChart data={metricDistData} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="name" stroke="#9ca3af" tick={{ fontSize: 10 }} />
+                    <YAxis stroke="#9ca3af" tick={{ fontSize: 10 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", fontSize: 11 }}
+                      formatter={(v: any) => [`${v?.toFixed(1)}%`, "ROE"]} />
+                    <Bar dataKey="ROE" fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 展开收起：行业增长趋势 */}
+      <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden">
+        <button
+          onClick={() => toggleSection("trend")}
+          className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-700/30 transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm font-semibold text-white">行业增长趋势（2023–2025）</span>
+          </div>
+          {expandedSection === "trend" ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+        </button>
+        {expandedSection === "trend" && (
+          <div className="px-5 pb-5">
+            <p className="text-xs text-slate-500 mb-4">行业内所有公司平均营收及同比增速，反映整个行业的宏观局面。</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs text-slate-400 mb-2">行业均均营收（亿元）</p>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={growthTrendData} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="year" stroke="#9ca3af" tick={{ fontSize: 11 }} />
+                    <YAxis stroke="#9ca3af" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", fontSize: 11 }}
+                      formatter={(v: any) => [`${v?.toFixed(2)} 亿`, "均均营收"]} />
+                    <Bar dataKey="均均营收（亿）" fill={cfg.accent} radius={[3, 3, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <div>
+                <p className="text-xs text-slate-400 mb-2">行业营收增速（%）</p>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={growthTrendData} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="year" stroke="#9ca3af" tick={{ fontSize: 11 }} />
+                    <YAxis stroke="#9ca3af" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569", fontSize: 11 }}
+                      formatter={(v: any) => [`${v?.toFixed(1)}%`, "增速"]} />
+                    <ReferenceLine y={0} stroke="#64748b" />
+                    <Bar dataKey="增速%" fill={growthTrendData[growthTrendData.length-1]?.['增速%'] >= 0 ? "#10b981" : "#ef4444"} radius={[3, 3, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            {/* 趋势解读 */}
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+              {growthTrendData.map((t: any) => {
+                const rate = t['增速%'];
+                const isPos = rate >= 0;
+                return (
+                  <div key={t.year} className={`p-3 rounded-lg border text-center ${
+                    isPos ? "bg-green-500/10 border-green-500/20" : "bg-red-500/10 border-red-500/20"
+                  }`}>
+                    <div className="text-xs text-slate-400 mb-1">{t.year} 年</div>
+                    <div className={`text-xl font-bold ${isPos ? "text-green-400" : "text-red-400"}`}>
+                      {isPos ? "+" : ""}{rate.toFixed(1)}%
+                    </div>
+                    <div className="text-xs text-slate-500">均均营收 {t['均均营收（亿）']?.toFixed(2)} 亿</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 展开收起：行业领先企业排行 */}
+      <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden">
+        <button
+          onClick={() => toggleSection("top")}
+          className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-700/30 transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <Crown className="w-4 h-4 text-yellow-400" />
+            <span className="text-sm font-semibold text-white">行业领先企业排行（TOP 10）</span>
+          </div>
+          {expandedSection === "top" ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+        </button>
+        {expandedSection === "top" && (
+          <div className="px-5 pb-5">
+            <div className="flex gap-2 mb-4">
+              {([
+                { key: "gross_margin", label: "毛利率 TOP10", color: "text-yellow-400" },
+                { key: "roe", label: "ROE TOP10", color: "text-blue-400" },
+                { key: "revenue", label: "营收规模 TOP10", color: "text-cyan-400" },
+              ] as const).map(({ key, label, color }) => (
+                <button
+                  key={key}
+                  onClick={() => setTopMetric(key)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    topMetric === key ? `bg-slate-600 ${color}` : "bg-slate-700/60 text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className="space-y-2">
+              {topCompanies.map((c: any, i: number) => {
+                const val = c[topMetric];
+                const displayVal = topMetric === "revenue" ? fmtWan(val) : `${val?.toFixed(1)}%`;
+                const maxVal = topCompanies[0]?.[topMetric] ?? 1;
+                const barWidth = maxVal > 0 ? Math.max(5, (val / maxVal) * 100) : 5;
+                const rankColor = i === 0 ? "text-yellow-400" : i === 1 ? "text-slate-300" : i === 2 ? "text-orange-400" : "text-slate-500";
+                return (
+                  <div key={c.code} className="flex items-center gap-3 group">
+                    <span className={`text-sm font-bold w-6 text-center ${rankColor}`}>{i + 1}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-white text-sm">{c.name.replace("（已切换）", "")}</span>
+                          <span className="text-slate-500 text-xs font-mono">{c.code}</span>
+                          {c[`${topMetric}_pct`] != null && (
+                            <span className="text-xs bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded">
+                              超过 {c[`${topMetric}_pct`].toFixed(0)}% 的公司
+                            </span>
+                          )}
+                        </div>
+                        <span className={`text-sm font-bold ${
+                          topMetric === "gross_margin" ? "text-yellow-400" :
+                          topMetric === "roe" ? "text-blue-400" : "text-cyan-400"
+                        }`}>{displayVal}</span>
+                      </div>
+                      <div className="w-full bg-slate-700 rounded-full h-1.5">
+                        <div
+                          className={`h-1.5 rounded-full transition-all ${
+                            topMetric === "gross_margin" ? "bg-yellow-500" :
+                            topMetric === "roe" ? "bg-blue-500" : "bg-cyan-500"
+                          }`}
+                          style={{ width: `${barWidth}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 展开收起：行业健康度全景 */}
+      <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden">
+        <button
+          onClick={() => toggleSection("health")}
+          className="w-full flex items-center justify-between px-5 py-4 hover:bg-slate-700/30 transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <Shield className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm font-semibold text-white">行业财务健康度全景</span>
+          </div>
+          {expandedSection === "health" ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+        </button>
+        {expandedSection === "health" && (
+          <div className="px-5 pb-5">
+            <p className="text-xs text-slate-500 mb-4">以下分析基于行业内所有有财务数据的公司，展示行业整体财务健康水平。</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* 盈利能力健康度 */}
+              <div className="bg-slate-700/40 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Flame className="w-4 h-4 text-yellow-400" />
+                  <span className="text-sm font-medium text-white">盈利能力</span>
+                </div>
+                <div className="space-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">毛利率中位数</span>
+                    <span className="text-yellow-400 font-medium">{data.gross_margin_stats.p50.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">净利率中位数</span>
+                    <span className="text-purple-400 font-medium">{data.net_margin_stats.p50.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">ROE 中位数</span>
+                    <span className="text-blue-400 font-medium">{data.roe_stats.p50.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">ROE P75 优秀门槛</span>
+                    <span className="text-green-400 font-medium">{data.roe_stats.p75.toFixed(1)}%</span>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-slate-600 text-slate-500">
+                    超过 P75 即为行业优秀盈利能力
+                  </div>
+                </div>
+              </div>
+              {/* 负债风险 */}
+              <div className="bg-slate-700/40 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Shield className="w-4 h-4 text-orange-400" />
+                  <span className="text-sm font-medium text-white">负债风险</span>
+                </div>
+                <div className="space-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">负债率 P25 （低负债）</span>
+                    <span className="text-green-400 font-medium">{data.debt_ratio_stats.p25.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">负债率中位数</span>
+                    <span className="text-yellow-400 font-medium">{data.debt_ratio_stats.p50.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">负债率 P75 （偏高门槛）</span>
+                    <span className="text-orange-400 font-medium">{data.debt_ratio_stats.p75.toFixed(1)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">负债率 P90 （高风险门槛）</span>
+                    <span className="text-red-400 font-medium">{data.debt_ratio_stats.p90.toFixed(1)}%</span>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-slate-600 text-slate-500">
+                    超过 P75 负债率需警惕偏高负债
+                  </div>
+                </div>
+              </div>
+              {/* 营收规模分布 */}
+              <div className="bg-slate-700/40 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Building2 className="w-4 h-4 text-cyan-400" />
+                  <span className="text-sm font-medium text-white">营收规模</span>
+                </div>
+                <div className="space-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">营收 P25 （小型）</span>
+                    <span className="text-slate-300 font-medium">{fmtWan(data.revenue_stats.p25)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">营收中位数</span>
+                    <span className="text-cyan-400 font-medium">{fmtWan(data.revenue_stats.p50)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">营收 P75 （优秀）</span>
+                    <span className="text-green-400 font-medium">{fmtWan(data.revenue_stats.p75)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">营收 P90 （领先）</span>
+                    <span className="text-yellow-400 font-medium">{fmtWan(data.revenue_stats.p90)}</span>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-slate-600 text-slate-500">
+                    达到 P75 营收即为行业优秀规模
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 说明注脚 */}
+      <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-4 text-xs text-slate-500">
+        <div className="flex items-start gap-2">
+          <Info className="w-4 h-4 text-cyan-500/70 mt-0.5 flex-shrink-0" />
+          <div>
+            <span className="text-slate-400 font-medium">数据说明：</span>
+            以上行业分析基于新三板挂牌公司真实财报数据，涵盖医疗健康 {industryBenchmark['医疗健康']?.company_count} 家、新能源 {industryBenchmark['新能源']?.company_count} 家、人工智能 {industryBenchmark['人工智能']?.company_count} 家。分位数数据反映行业内真实分布，中位数（P50）为行业中间水平。如需分析具体公司，请在上方搜索框中输入公司名称或代码。
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── 主页面 ───────────────────────────────────────────────
 export default function FinancialAnalysis() {
   const [, navigate] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
@@ -493,12 +1000,7 @@ export default function FinancialAnalysis() {
         </div>
 
         {selectedCodes.length === 0 && (
-          <div className="bg-slate-800/40 border border-slate-700 rounded-xl p-12 text-center">
-            <BarChart3 className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400 text-lg mb-2">选择公司开始财务分析</p>
-            <p className="text-slate-500 text-sm">支持多公司横向对比 · 近三年财务趋势 · 行业均值对标 · 综合能力雷达图</p>
-            <p className="text-slate-500 text-sm mt-1">覆盖北交所 298 家 + 新三板 1887 家，共 2185 家企业</p>
-          </div>
+          <IndustryAnalysisPanel />
         )}
 
         {primaryCompany && (
