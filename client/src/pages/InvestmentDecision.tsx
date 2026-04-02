@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
-import { Award, Target, Filter, Search, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { Award, Target, Filter, Search, ExternalLink, ChevronDown, ChevronUp, ArrowLeft } from "lucide-react";
 import investmentData from "../data/investment-decision-data.json";
 
 interface InvestmentItem {
@@ -95,6 +95,15 @@ export default function InvestmentDecision() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
       <div className="max-w-7xl mx-auto">
+        <div className="mb-4">
+          <button
+            onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>返回</span>
+          </button>
+        </div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
             <Target className="w-8 h-8 text-blue-400" />

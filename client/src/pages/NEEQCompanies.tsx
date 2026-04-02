@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
+import { useLocation } from "wouter";
 import {
-  Search, ChevronLeft, ChevronRight, Building2, Info, Loader2,
+  Search, ChevronLeft, ChevronRight, Building2, Info, Loader2, ArrowLeft,
 } from "lucide-react";
 
 // ── 工具函数 ────────────────────────────────────────────────────
@@ -66,6 +67,7 @@ const scoreColor = (s: number | null): string => {
 };
 
 export default function NEEQCompanies() {
+  const [, navigate] = useLocation();
   const [companies, setCompanies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -145,7 +147,14 @@ export default function NEEQCompanies() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="border-b border-slate-700 px-6 py-4">
+      <div className="border-b border-slate-700 px-6 py-4 flex items-center gap-4">
+        <button
+          onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+          className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors flex-shrink-0"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">返回</span>
+        </button>
         <h1 className="text-xl font-bold text-white flex items-center gap-2">
           <Building2 className="w-6 h-6 text-cyan-400" />
           新三板企业库

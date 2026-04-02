@@ -1,4 +1,6 @@
 import { useState, useMemo } from 'react';
+import { useLocation } from 'wouter';
+import { ArrowLeft } from 'lucide-react';
 import riskData from '../data/inventory-risk-data.json';
 
 interface RiskRecord {
@@ -76,8 +78,20 @@ export default function InventoryRisk() {
     return betas.length ? (betas.reduce((a, b) => a + b, 0) / betas.length).toFixed(2) : '-';
   }, []);
 
+  const [, navigate] = useLocation();
+
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
+      {/* 返回按钮 */}
+      <div className="mb-4">
+        <button
+          onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+        >
+          <ArrowLeft size={18} />
+          <span>返回</span>
+        </button>
+      </div>
       {/* 标题 */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-white mb-1">🛡️ 库存风险监控</h1>

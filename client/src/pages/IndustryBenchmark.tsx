@@ -1,4 +1,6 @@
 import { useState, useMemo } from 'react';
+import { useLocation } from 'wouter';
+import { ArrowLeft } from 'lucide-react';
 import benchmarkData from '../data/industry-benchmark-data.json';
 
 interface CompanyRanking {
@@ -153,8 +155,20 @@ export default function IndustryBenchmark() {
     return 'text-red-400';
   };
 
+  const [, navigate] = useLocation();
+
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
+      {/* 返回按钮 */}
+      <div className="mb-4">
+        <button
+          onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+        >
+          <ArrowLeft size={18} />
+          <span>返回</span>
+        </button>
+      </div>
       {/* 标题 */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-white mb-1">📊 行业对标分析</h1>

@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Search, ChevronLeft, ChevronRight, TrendingUp, TrendingDown, Minus, Info, CheckCircle2, XCircle } from "lucide-react";
 import listingData from "../data/bse-listing-tracker.json";
+import { useLocation } from "wouter";
 
 const PAGE_SIZE = 20;
 
@@ -59,6 +60,7 @@ export default function BSEListingTracker() {
   const [page, setPage] = useState(1);
   const [expandedCode, setExpandedCode] = useState<string | null>(null);
 
+  const [, navigate] = useLocation();
   const companies: any[] = (listingData as any).companies || [];
   const meta = listingData as any;
 
@@ -107,12 +109,13 @@ export default function BSEListingTracker() {
       <div className="max-w-screen-xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/">
-            <a className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-              <ArrowLeft size={20} />
-              <span>返回首页</span>
-            </a>
-          </Link>
+          <button
+            onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate("/"); } }}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft size={20} />
+            <span>返回</span>
+          </button>
         </div>
 
         <div className="mb-8">

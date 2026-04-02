@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Search } from "lucide-react";
+import { useLocation } from "wouter";
+import { Search, ArrowLeft } from "lucide-react";
 import scoringData from "../data/scoring-system-data.json";
 
 // 使用 any 类型避免 JSON 字段不一致的 TS 错误
@@ -24,6 +25,7 @@ type ScoringItem = {
 };
 
 export default function CompanyScoring() {
+  const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterRating, setFilterRating] = useState("all");
 
@@ -42,6 +44,15 @@ export default function CompanyScoring() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
       <div className="max-w-7xl mx-auto">
+        <div className="mb-4">
+          <button
+            onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>返回</span>
+          </button>
+        </div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">评分系统</h1>
           <p className="text-slate-400">多维度评分、投资建议</p>

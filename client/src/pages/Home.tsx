@@ -65,9 +65,9 @@ export default function Home() {
       <header className="border-b border-border/50 sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
         <div className="container py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <a href="/" className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center flex-shrink-0 hover:bg-primary/30 transition-colors">
+            <button onClick={() => { if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; } }} className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center flex-shrink-0 hover:bg-primary/30 transition-colors">
               <span className="text-primary text-sm font-bold">北</span>
-            </a>
+            </button>
             <div className="min-w-0">
               <h1 className="text-base font-semibold text-foreground truncate">北交所上市企业研究报告</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">

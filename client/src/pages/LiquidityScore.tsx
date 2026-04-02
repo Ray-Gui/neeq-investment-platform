@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowLeft, Search, ChevronLeft, ChevronRight, Droplets, AlertTriangle, Zap, Shield } from "lucide-react";
 import liquidityData from "../data/liquidity-score-data.json";
 
@@ -60,6 +60,7 @@ export default function LiquidityScore() {
   const [page, setPage] = useState(1);
   const [expandedCode, setExpandedCode] = useState<string | null>(null);
 
+  const [, navigate] = useLocation();
   const companies: any[] = (liquidityData as any).companies || [];
   const meta = liquidityData as any;
 
@@ -105,12 +106,13 @@ export default function LiquidityScore() {
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
       <div className="max-w-screen-xl mx-auto px-4 py-8">
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/">
-            <a className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-              <ArrowLeft size={20} />
-              <span>返回首页</span>
-            </a>
-          </Link>
+          <button
+            onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate("/"); } }}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft size={20} />
+            <span>返回</span>
+          </button>
         </div>
 
         <div className="mb-8">

@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from "react";
+import { useLocation } from "wouter";
 import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   Legend, ResponsiveContainer, RadarChart, Radar, PolarGrid,
   PolarAngleAxis, PolarRadiusAxis, ReferenceLine,
 } from "recharts";
-import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target, Info } from "lucide-react";
+import { Search, TrendingUp, TrendingDown, BarChart3, Activity, Shield, Target, Info, ArrowLeft } from "lucide-react";
 
 // ── 读取北交所公司数据（298家）──
 import dataV4 from "../../public/data_v4_fixed.json";
@@ -266,6 +267,7 @@ function FinancialTable({ data }: { data: FinancialRow[] }) {
 
 // ── 主页面 ───────────────────────────────────────────────────────
 export default function FinancialAnalysis() {
+  const [, navigate] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<"overview" | "trend" | "compare" | "radar">("overview");
@@ -402,7 +404,14 @@ export default function FinancialAnalysis() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="bg-slate-900/80 border-b border-slate-700 px-6 py-4">
+      <div className="bg-slate-900/80 border-b border-slate-700 px-6 py-4 flex items-center gap-4">
+        <button
+          onClick={() => { if (window.history.length > 1) { window.history.back(); } else { navigate('/'); } }}
+          className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors flex-shrink-0"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">返回</span>
+        </button>
         <h1 className="text-xl font-bold text-white flex items-center gap-2">
           <BarChart3 className="w-6 h-6 text-cyan-400" />
           财务分析
