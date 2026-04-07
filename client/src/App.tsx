@@ -24,6 +24,10 @@ import ComplianceLibrary from "./pages/ComplianceLibrary";
 import FairValueModel from "./pages/FairValueModel";
 import TransferCaseDB from "./pages/TransferCaseDB";
 import AStockBenchmark from "./pages/AStockBenchmark";
+import GeoDistribution from "./pages/GeoDistribution";
+import SubTrackAnalysis from "./pages/SubTrackAnalysis";
+import TransferSimilarity from "./pages/TransferSimilarity";
+import BusinessProfile from "./pages/BusinessProfile";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -50,6 +54,10 @@ function Router() {
       <Route path={"/fair-value"} component={FairValueModel} />
       <Route path={"/transfer-cases"} component={TransferCaseDB} />
       <Route path={"/a-stock-benchmark"} component={AStockBenchmark} />
+      <Route path={"/geo-distribution"} component={GeoDistribution} />
+      <Route path={"/sub-track"} component={SubTrackAnalysis} />
+      <Route path={"/transfer-similarity"} component={TransferSimilarity} />
+      <Route path={"/business-profile"} component={BusinessProfile} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

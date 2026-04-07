@@ -1,0 +1,506 @@
+[
+  {
+    "province": "广东",
+    "company_count": 431,
+    "transfer_count": 54,
+    "transfer_rate": 12.5,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 332,
+      "医疗健康": 81,
+      "新能源": 18
+    },
+    "avg_score": 52.9,
+    "avg_roe": 45.6,
+    "avg_gross_margin": 32.1,
+    "avg_revenue_growth": 54.9,
+    "policy_tags": [
+      "粤港澳大湾区政策",
+      "深圳先行示范区",
+      "制造业数字化转型补贴",
+      "南沙自贸区"
+    ],
+    "cities": [
+      "深圳",
+      "广州",
+      "东莞",
+      "佛山",
+      "珠海"
+    ]
+  },
+  {
+    "province": "北京",
+    "company_count": 302,
+    "transfer_count": 42,
+    "transfer_rate": 13.9,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 235,
+      "医疗健康": 58,
+      "新能源": 9
+    },
+    "avg_score": 52.7,
+    "avg_roe": 51.0,
+    "avg_gross_margin": 34.1,
+    "avg_revenue_growth": 56.8,
+    "policy_tags": [
+      "中关村科技园政策",
+      "北交所总部所在地",
+      "国家科技创新中心",
+      "高新技术企业认定优惠"
+    ],
+    "cities": [
+      "北京"
+    ]
+  },
+  {
+    "province": "江苏",
+    "company_count": 214,
+    "transfer_count": 27,
+    "transfer_rate": 12.6,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 47,
+      "人工智能": 154,
+      "新能源": 13
+    },
+    "avg_score": 54.0,
+    "avg_roe": 25.1,
+    "avg_gross_margin": 34.6,
+    "avg_revenue_growth": 48.5,
+    "policy_tags": [
+      "苏南国家自主创新示范区",
+      "新能源产业链补贴",
+      "外资研发中心政策",
+      "制造业强省战略"
+    ],
+    "cities": [
+      "南京",
+      "苏州",
+      "无锡",
+      "常州",
+      "南通"
+    ]
+  },
+  {
+    "province": "浙江",
+    "company_count": 199,
+    "transfer_count": 35,
+    "transfer_rate": 17.6,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 155,
+      "新能源": 8,
+      "医疗健康": 36
+    },
+    "avg_score": 53.2,
+    "avg_roe": 12.4,
+    "avg_gross_margin": 34.5,
+    "avg_revenue_growth": 54.8,
+    "policy_tags": [
+      "数字经济示范区",
+      "专精特新企业支持",
+      "民营经济发展政策",
+      "新能源汽车产业链"
+    ],
+    "cities": [
+      "杭州",
+      "宁波",
+      "温州",
+      "嘉兴",
+      "绍兴"
+    ]
+  },
+  {
+    "province": "上海",
+    "company_count": 174,
+    "transfer_count": 20,
+    "transfer_rate": 11.5,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 133,
+      "医疗健康": 36,
+      "新能源": 5
+    },
+    "avg_score": 52.8,
+    "avg_roe": 20.0,
+    "avg_gross_margin": 27.7,
+    "avg_revenue_growth": 69.2,
+    "policy_tags": [
+      "科创板优先推荐",
+      "临港新片区政策",
+      "浦东新区改革开放",
+      "生物医药产业集群"
+    ],
+    "cities": [
+      "上海"
+    ]
+  },
+  {
+    "province": "山东",
+    "company_count": 74,
+    "transfer_count": 25,
+    "transfer_rate": 33.8,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 16,
+      "新能源": 8,
+      "人工智能": 50
+    },
+    "avg_score": 53.5,
+    "avg_roe": 14.9,
+    "avg_gross_margin": 30.5,
+    "avg_revenue_growth": 48.7,
+    "policy_tags": [
+      "黄河流域生态保护",
+      "新旧动能转换",
+      "海洋经济发展",
+      "新能源产业基地"
+    ],
+    "cities": [
+      "济南",
+      "青岛",
+      "烟台",
+      "潍坊"
+    ]
+  },
+  {
+    "province": "四川",
+    "company_count": 64,
+    "transfer_count": 12,
+    "transfer_rate": 18.8,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 47,
+      "医疗健康": 14,
+      "新能源": 3
+    },
+    "avg_score": 53.0,
+    "avg_roe": 16.8,
+    "avg_gross_margin": 35.9,
+    "avg_revenue_growth": 43.5,
+    "policy_tags": [
+      "成渝双城经济圈",
+      "西部大开发政策",
+      "电子信息产业基地",
+      "新能源汽车配套"
+    ],
+    "cities": [
+      "成都",
+      "绵阳",
+      "德阳"
+    ]
+  },
+  {
+    "province": "湖北",
+    "company_count": 64,
+    "transfer_count": 17,
+    "transfer_rate": 26.6,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 52,
+      "医疗健康": 12
+    },
+    "avg_score": 53.6,
+    "avg_roe": 23.5,
+    "avg_gross_margin": 36.5,
+    "avg_revenue_growth": 51.4,
+    "policy_tags": [
+      "武汉光谷科技创新",
+      "中部崛起战略",
+      "生物医药产业园",
+      "东湖高新区政策"
+    ],
+    "cities": [
+      "武汉",
+      "宜昌",
+      "襄阳"
+    ]
+  },
+  {
+    "province": "安徽",
+    "company_count": 45,
+    "transfer_count": 9,
+    "transfer_rate": 20.0,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 31,
+      "医疗健康": 12,
+      "新能源": 2
+    },
+    "avg_score": 50.6,
+    "avg_roe": 223.9,
+    "avg_gross_margin": 30.2,
+    "avg_revenue_growth": 59.9,
+    "policy_tags": [
+      "合肥综合性国家科学中心",
+      "新能源汽车产业链",
+      "量子信息产业",
+      "长三角一体化"
+    ],
+    "cities": [
+      "合肥",
+      "芜湖",
+      "马鞍山"
+    ]
+  },
+  {
+    "province": "福建",
+    "company_count": 45,
+    "transfer_count": 9,
+    "transfer_rate": 20.0,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 35,
+      "医疗健康": 9,
+      "新能源": 1
+    },
+    "avg_score": 52.0,
+    "avg_roe": 74.3,
+    "avg_gross_margin": 32.3,
+    "avg_revenue_growth": 49.1,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "福州",
+      "厦门",
+      "泉州"
+    ]
+  },
+  {
+    "province": "陕西",
+    "company_count": 38,
+    "transfer_count": 13,
+    "transfer_rate": 34.2,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 30,
+      "医疗健康": 8
+    },
+    "avg_score": 52.7,
+    "avg_roe": 8.2,
+    "avg_gross_margin": 33.1,
+    "avg_revenue_growth": 43.8,
+    "policy_tags": [
+      "西部大开发政策",
+      "秦创原创新驱动平台",
+      "军民融合产业",
+      "能源化工基地"
+    ],
+    "cities": [
+      "西安",
+      "咸阳",
+      "宝鸡"
+    ]
+  },
+  {
+    "province": "河南",
+    "company_count": 35,
+    "transfer_count": 12,
+    "transfer_rate": 34.3,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 4,
+      "人工智能": 28,
+      "新能源": 3
+    },
+    "avg_score": 54.9,
+    "avg_roe": 27.2,
+    "avg_gross_margin": 38.2,
+    "avg_revenue_growth": 44.3,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "郑州",
+      "洛阳",
+      "新乡"
+    ]
+  },
+  {
+    "province": "湖南",
+    "company_count": 35,
+    "transfer_count": 10,
+    "transfer_rate": 28.6,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 23,
+      "医疗健康": 9,
+      "新能源": 3
+    },
+    "avg_score": 54.2,
+    "avg_roe": 35.7,
+    "avg_gross_margin": 23.8,
+    "avg_revenue_growth": 43.8,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "长沙",
+      "株洲",
+      "湘潭"
+    ]
+  },
+  {
+    "province": "辽宁",
+    "company_count": 27,
+    "transfer_count": 9,
+    "transfer_rate": 33.3,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 7,
+      "人工智能": 18,
+      "新能源": 2
+    },
+    "avg_score": 52.8,
+    "avg_roe": 116.6,
+    "avg_gross_margin": 40.4,
+    "avg_revenue_growth": 46.2,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "沈阳",
+      "大连",
+      "鞍山"
+    ]
+  },
+  {
+    "province": "重庆",
+    "company_count": 27,
+    "transfer_count": 5,
+    "transfer_rate": 18.5,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 22,
+      "新能源": 3,
+      "医疗健康": 2
+    },
+    "avg_score": 53.4,
+    "avg_roe": 150.3,
+    "avg_gross_margin": 32.8,
+    "avg_revenue_growth": 48.2,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "重庆"
+    ]
+  },
+  {
+    "province": "河北",
+    "company_count": 27,
+    "transfer_count": 6,
+    "transfer_rate": 22.2,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 7,
+      "人工智能": 19,
+      "新能源": 1
+    },
+    "avg_score": 51.1,
+    "avg_roe": 3.3,
+    "avg_gross_margin": 34.2,
+    "avg_revenue_growth": 46.8,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "石家庄",
+      "唐山",
+      "保定"
+    ]
+  },
+  {
+    "province": "江西",
+    "company_count": 14,
+    "transfer_count": 4,
+    "transfer_rate": 28.6,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 9,
+      "医疗健康": 5
+    },
+    "avg_score": 53.8,
+    "avg_roe": -8.8,
+    "avg_gross_margin": 41.9,
+    "avg_revenue_growth": 42.7,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "南昌",
+      "赣州",
+      "九江"
+    ]
+  },
+  {
+    "province": "云南",
+    "company_count": 13,
+    "transfer_count": 3,
+    "transfer_rate": 23.1,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "人工智能": 7,
+      "医疗健康": 4,
+      "新能源": 2
+    },
+    "avg_score": 48.5,
+    "avg_roe": -2.5,
+    "avg_gross_margin": 36.2,
+    "avg_revenue_growth": 56.0,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "昆明",
+      "曲靖"
+    ]
+  },
+  {
+    "province": "贵州",
+    "company_count": 9,
+    "transfer_count": 0,
+    "transfer_rate": 0.0,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "新能源": 1,
+      "医疗健康": 2,
+      "人工智能": 6
+    },
+    "avg_score": 48.2,
+    "avg_roe": 0.9,
+    "avg_gross_margin": -17.2,
+    "avg_revenue_growth": 57.8,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "贵阳",
+      "遵义"
+    ]
+  },
+  {
+    "province": "天津",
+    "company_count": 5,
+    "transfer_count": 2,
+    "transfer_rate": 40.0,
+    "top_sector": "人工智能",
+    "sector_distribution": {
+      "医疗健康": 1,
+      "人工智能": 3,
+      "新能源": 1
+    },
+    "avg_score": 56.1,
+    "avg_roe": -12.2,
+    "avg_gross_margin": 34.1,
+    "avg_revenue_growth": 77.9,
+    "policy_tags": [
+      "地方产业政策支持"
+    ],
+    "cities": [
+      "天津"
+    ]
+  }
+]

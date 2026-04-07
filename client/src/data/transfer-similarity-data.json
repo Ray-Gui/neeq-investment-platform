@@ -1,0 +1,4583 @@
+{
+  "path_benchmarks": {
+    "盈利型": {
+      "count": 273,
+      "avg_gross_margin": 47.6,
+      "avg_roe": 17.5,
+      "avg_revenue_cagr": 37.4,
+      "avg_neeq_years": 4.0,
+      "avg_valuation_multiple": 3.9,
+      "avg_first_day_gain": 90.6
+    },
+    "市值型": {
+      "count": 20,
+      "avg_gross_margin": 48.5,
+      "avg_roe": 9.8,
+      "avg_revenue_cagr": 22.4,
+      "avg_neeq_years": 4.0,
+      "avg_valuation_multiple": 4.0,
+      "avg_first_day_gain": 84.5
+    },
+    "成长型": {
+      "count": 21,
+      "avg_gross_margin": 49.4,
+      "avg_roe": 9.6,
+      "avg_revenue_cagr": 45.2,
+      "avg_neeq_years": 4.0,
+      "avg_valuation_multiple": 4.0,
+      "avg_first_day_gain": 89.6
+    }
+  },
+  "timing_analysis": [
+    {
+      "neeq_years": 2,
+      "label": "2年",
+      "count": 60,
+      "avg_valuation_multiple": 4.16,
+      "avg_first_day_gain": 102.8
+    },
+    {
+      "neeq_years": 3,
+      "label": "3年",
+      "count": 62,
+      "avg_valuation_multiple": 3.63,
+      "avg_first_day_gain": 82.9
+    },
+    {
+      "neeq_years": 4,
+      "label": "4年",
+      "count": 69,
+      "avg_valuation_multiple": 4.05,
+      "avg_first_day_gain": 91.7
+    },
+    {
+      "neeq_years": 5,
+      "label": "5年",
+      "count": 71,
+      "avg_valuation_multiple": 3.87,
+      "avg_first_day_gain": 87.1
+    },
+    {
+      "neeq_years": 6,
+      "label": "6年",
+      "count": 52,
+      "avg_valuation_multiple": 3.87,
+      "avg_first_day_gain": 86.4
+    }
+  ],
+  "candidates": [
+    {
+      "code": "874913.OC",
+      "name": "通灵生物",
+      "sector": "医疗健康",
+      "total_score": 78.3,
+      "gross_margin": 89.2,
+      "roe": 9.6,
+      "revenue_growth": 8.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 69.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 61.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 61.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.82
+    },
+    {
+      "code": "836098.OC",
+      "name": "华浩科技",
+      "sector": "人工智能",
+      "total_score": 78.2,
+      "gross_margin": 50.6,
+      "roe": 28.6,
+      "revenue_growth": 56.8,
+      "best_matches": [
+        {
+          "case_name": "康比特",
+          "case_code": "920429",
+          "similarity": 82.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.73,
+          "first_day_gain": 124.8
+        },
+        {
+          "case_name": "颖泰生物",
+          "case_code": "920819",
+          "similarity": 77.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.03,
+          "first_day_gain": 145.4
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 75.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.92
+    },
+    {
+      "code": "874239.OC",
+      "name": "中健康桥",
+      "sector": "医疗健康",
+      "total_score": 77.9,
+      "gross_margin": 92.5,
+      "roe": 35.6,
+      "revenue_growth": 21.7,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 57.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 52.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "锦华新材",
+          "case_code": "920015",
+          "similarity": 51.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.84,
+          "first_day_gain": 53.6
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.74
+    },
+    {
+      "code": "874883.OC",
+      "name": "芯愿景",
+      "sector": "人工智能",
+      "total_score": 77.3,
+      "gross_margin": 76.8,
+      "roe": 32.2,
+      "revenue_growth": 16.9,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 72.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 67.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 67.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "873821.OC",
+      "name": "先声祥瑞",
+      "sector": "医疗健康",
+      "total_score": 77.2,
+      "gross_margin": 86.9,
+      "roe": 8.1,
+      "revenue_growth": 22.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 74.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 70.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 61.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.26
+    },
+    {
+      "code": "838378.OC",
+      "name": "阳光医疗",
+      "sector": "医疗健康",
+      "total_score": 75.7,
+      "gross_margin": 27.9,
+      "roe": 28.6,
+      "revenue_growth": 79.0,
+      "best_matches": [
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 55.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        },
+        {
+          "case_name": "欧福蛋业",
+          "case_code": "920371",
+          "similarity": 52.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.71,
+          "first_day_gain": 121.1
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.13
+    },
+    {
+      "code": "832950.OC",
+      "name": "益盟股份",
+      "sector": "人工智能",
+      "total_score": 75.0,
+      "gross_margin": 92.0,
+      "roe": 22.5,
+      "revenue_growth": 19.7,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 71.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 67.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 64.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "874537.OC",
+      "name": "美康股份",
+      "sector": "人工智能",
+      "total_score": 74.5,
+      "gross_margin": 79.1,
+      "roe": -1.2,
+      "revenue_growth": 27.9,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 62.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 58.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 58.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.26
+    },
+    {
+      "code": "835191.OC",
+      "name": "东方网升",
+      "sector": "人工智能",
+      "total_score": 73.9,
+      "gross_margin": 89.6,
+      "roe": -1.5,
+      "revenue_growth": 43.6,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 56.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 53.5,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 53.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "839517.OC",
+      "name": "至胜科技",
+      "sector": "人工智能",
+      "total_score": 73.9,
+      "gross_margin": 62.6,
+      "roe": 10.5,
+      "revenue_growth": 72.0,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 75.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 69.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 68.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.42
+    },
+    {
+      "code": "835311.OC",
+      "name": "华瑞信息",
+      "sector": "人工智能",
+      "total_score": 73.8,
+      "gross_margin": 81.5,
+      "roe": 2.3,
+      "revenue_growth": 31.4,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 66.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 64.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 63.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.26
+    },
+    {
+      "code": "870308.OC",
+      "name": "鲎生科",
+      "sector": "医疗健康",
+      "total_score": 73.6,
+      "gross_margin": 84.6,
+      "roe": 6.2,
+      "revenue_growth": 7.1,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 69.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 61.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 57.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.82
+    },
+    {
+      "code": "838758.OC",
+      "name": "思迅软件",
+      "sector": "人工智能",
+      "total_score": 73.1,
+      "gross_margin": 68.1,
+      "roe": 0.9,
+      "revenue_growth": 18.9,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 75.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 67.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 66.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "874888.OC",
+      "name": "绽妍生物",
+      "sector": "医疗健康",
+      "total_score": 72.6,
+      "gross_margin": 68.3,
+      "roe": 22.9,
+      "revenue_growth": 20.9,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 95.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 88.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 85.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "839216.OC",
+      "name": "西施兰",
+      "sector": "医疗健康",
+      "total_score": 72.4,
+      "gross_margin": 83.8,
+      "roe": 5.4,
+      "revenue_growth": 11.2,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 73.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 63.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 60.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.71
+    },
+    {
+      "code": "873399.OC",
+      "name": "创匠信息",
+      "sector": "人工智能",
+      "total_score": 72.2,
+      "gross_margin": 77.2,
+      "roe": 7.0,
+      "revenue_growth": 78.4,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 57.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 51.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 50.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.42
+    },
+    {
+      "code": "835447.OC",
+      "name": "微卓科技",
+      "sector": "人工智能",
+      "total_score": 72.1,
+      "gross_margin": 83.7,
+      "roe": 6.5,
+      "revenue_growth": 9.9,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 73.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 64.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 60.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.71
+    },
+    {
+      "code": "874637.OC",
+      "name": "百瑞吉",
+      "sector": "医疗健康",
+      "total_score": 72.0,
+      "gross_margin": 80.9,
+      "roe": 22.8,
+      "revenue_growth": 15.9,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 80.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 77.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 73.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "874423.OC",
+      "name": "衣科股份",
+      "sector": "人工智能",
+      "total_score": 72.0,
+      "gross_margin": 92.1,
+      "roe": 4.3,
+      "revenue_growth": 22.0,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 66.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 60.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 54.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.26
+    },
+    {
+      "code": "835037.OC",
+      "name": "环球药业",
+      "sector": "医疗健康",
+      "total_score": 71.9,
+      "gross_margin": 61.7,
+      "roe": 3.3,
+      "revenue_growth": 16.0,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 81.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 75.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 74.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "873865.OC",
+      "name": "新视野",
+      "sector": "人工智能",
+      "total_score": 71.8,
+      "gross_margin": 83.5,
+      "roe": -4.8,
+      "revenue_growth": 14.4,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 55.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.85
+    },
+    {
+      "code": "874412.OC",
+      "name": "中焯信息",
+      "sector": "人工智能",
+      "total_score": 71.8,
+      "gross_margin": 70.1,
+      "roe": -3.5,
+      "revenue_growth": 35.2,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 62.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 60.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 60.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "874674.OC",
+      "name": "微纳芯",
+      "sector": "医疗健康",
+      "total_score": 71.6,
+      "gross_margin": 64.1,
+      "roe": 3.6,
+      "revenue_growth": 10.0,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 77.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 73.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 68.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "873049.OC",
+      "name": "红海云",
+      "sector": "人工智能",
+      "total_score": 71.1,
+      "gross_margin": 63.3,
+      "roe": 12.0,
+      "revenue_growth": 56.9,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 89.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 80.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 77.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.42
+    },
+    {
+      "code": "838470.OC",
+      "name": "斯维尔",
+      "sector": "人工智能",
+      "total_score": 70.8,
+      "gross_margin": 84.1,
+      "roe": 13.9,
+      "revenue_growth": 6.1,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 70.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 68.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 64.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.82
+    },
+    {
+      "code": "874689.OC",
+      "name": "牙博士",
+      "sector": "医疗健康",
+      "total_score": 70.2,
+      "gross_margin": 50.9,
+      "roe": 10.6,
+      "revenue_growth": 63.4,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 91.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 87.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 74.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.42
+    },
+    {
+      "code": "831318.OC",
+      "name": "信易科技",
+      "sector": "人工智能",
+      "total_score": 70.2,
+      "gross_margin": 87.8,
+      "roe": 10.3,
+      "revenue_growth": 25.2,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 73.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 73.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 65.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.26
+    },
+    {
+      "code": "874191.OC",
+      "name": "华益泰康",
+      "sector": "医疗健康",
+      "total_score": 70.0,
+      "gross_margin": 75.4,
+      "roe": 8.0,
+      "revenue_growth": 13.4,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 84.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 74.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 70.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.71
+    },
+    {
+      "code": "831317.OC",
+      "name": "海典软件",
+      "sector": "人工智能",
+      "total_score": 70.0,
+      "gross_margin": 65.7,
+      "roe": 20.6,
+      "revenue_growth": 49.3,
+      "best_matches": [
+        {
+          "case_name": "永顺生物",
+          "case_code": "920729",
+          "similarity": 96.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.27,
+          "first_day_gain": 111.6
+        },
+        {
+          "case_name": "颖泰生物",
+          "case_code": "920819",
+          "similarity": 88.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.03,
+          "first_day_gain": 145.4
+        },
+        {
+          "case_name": "康比特",
+          "case_code": "920429",
+          "similarity": 86.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.73,
+          "first_day_gain": 124.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.34
+    },
+    {
+      "code": "871380.OC",
+      "name": "中财信",
+      "sector": "人工智能",
+      "total_score": 70.0,
+      "gross_margin": 71.4,
+      "roe": 18.3,
+      "revenue_growth": 62.1,
+      "best_matches": [
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 86.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "颖泰生物",
+          "case_code": "920819",
+          "similarity": 75.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.03,
+          "first_day_gain": 145.4
+        },
+        {
+          "case_name": "永顺生物",
+          "case_code": "920729",
+          "similarity": 75.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.27,
+          "first_day_gain": 111.6
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.43
+    },
+    {
+      "code": "874873.OC",
+      "name": "卓目科技",
+      "sector": "人工智能",
+      "total_score": 69.9,
+      "gross_margin": 51.1,
+      "roe": 31.1,
+      "revenue_growth": 23.2,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 80.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 78.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 75.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "430228.OC",
+      "name": "天科数创",
+      "sector": "人工智能",
+      "total_score": 69.7,
+      "gross_margin": 18.6,
+      "roe": 8.2,
+      "revenue_growth": 77.3,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 61.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 55.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 52.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "833713.OC",
+      "name": "立德电子",
+      "sector": "医疗健康",
+      "total_score": 69.6,
+      "gross_margin": 77.3,
+      "roe": 1.0,
+      "revenue_growth": 34.2,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 67.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 64.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 64.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "833422.OC",
+      "name": "康海时代",
+      "sector": "人工智能",
+      "total_score": 69.6,
+      "gross_margin": 67.7,
+      "roe": 21.5,
+      "revenue_growth": 16.3,
+      "best_matches": [
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 90.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 88.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 85.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "872204.OC",
+      "name": "博可生物",
+      "sector": "医疗健康",
+      "total_score": 69.5,
+      "gross_margin": 81.3,
+      "roe": 22.2,
+      "revenue_growth": 8.2,
+      "best_matches": [
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 73.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 70.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 66.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "830872.OC",
+      "name": "长信畅中",
+      "sector": "人工智能",
+      "total_score": 69.5,
+      "gross_margin": 64.4,
+      "roe": -4.1,
+      "revenue_growth": 47.4,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 64.2,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 63.3,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 61.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.55
+    },
+    {
+      "code": "837014.OC",
+      "name": "塔人网络",
+      "sector": "人工智能",
+      "total_score": 69.5,
+      "gross_margin": 47.2,
+      "roe": 14.8,
+      "revenue_growth": 39.9,
+      "best_matches": [
+        {
+          "case_name": "同辉信息",
+          "case_code": "920090",
+          "similarity": 94.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.33,
+          "first_day_gain": 146.2
+        },
+        {
+          "case_name": "纳科诺尔",
+          "case_code": "920522",
+          "similarity": 91.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.49,
+          "first_day_gain": 113.4
+        },
+        {
+          "case_name": "沪江材料",
+          "case_code": "920204",
+          "similarity": 88.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.06,
+          "first_day_gain": 120.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.63
+    },
+    {
+      "code": "872109.OC",
+      "name": "光隆能源",
+      "sector": "新能源",
+      "total_score": 69.4,
+      "gross_margin": 59.6,
+      "roe": 36.8,
+      "revenue_growth": 55.2,
+      "best_matches": [
+        {
+          "case_name": "康比特",
+          "case_code": "920429",
+          "similarity": 65.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.73,
+          "first_day_gain": 124.8
+        },
+        {
+          "case_name": "康农种业",
+          "case_code": "920403",
+          "similarity": 60.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.34,
+          "first_day_gain": 100.5
+        },
+        {
+          "case_name": "颖泰生物",
+          "case_code": "920819",
+          "similarity": 58.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.03,
+          "first_day_gain": 145.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.7
+    },
+    {
+      "code": "430369.OC",
+      "name": "威门药业",
+      "sector": "医疗健康",
+      "total_score": 69.3,
+      "gross_margin": 67.8,
+      "roe": 0.1,
+      "revenue_growth": 33.1,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 68.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 68.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 67.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "871430.OC",
+      "name": "艺恩数据",
+      "sector": "人工智能",
+      "total_score": 69.2,
+      "gross_margin": 60.5,
+      "roe": 23.8,
+      "revenue_growth": 77.4,
+      "best_matches": [
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 67.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "欧福蛋业",
+          "case_code": "920371",
+          "similarity": 57.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.71,
+          "first_day_gain": 121.1
+        },
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 56.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "832557.OC",
+      "name": "大商帮",
+      "sector": "人工智能",
+      "total_score": 69.1,
+      "gross_margin": 89.3,
+      "roe": 28.5,
+      "revenue_growth": 8.5,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 63.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 59.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 57.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.01
+    },
+    {
+      "code": "430515.OC",
+      "name": "麟龙股份",
+      "sector": "人工智能",
+      "total_score": 69.0,
+      "gross_margin": 95.4,
+      "roe": -4.0,
+      "revenue_growth": 12.1,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 50.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.85
+    },
+    {
+      "code": "872907.OC",
+      "name": "阿拉物联",
+      "sector": "人工智能",
+      "total_score": 69.0,
+      "gross_margin": 63.5,
+      "roe": 19.4,
+      "revenue_growth": 31.0,
+      "best_matches": [
+        {
+          "case_name": "锦华新材",
+          "case_code": "920015",
+          "similarity": 91.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.84,
+          "first_day_gain": 53.6
+        },
+        {
+          "case_name": "佳先股份",
+          "case_code": "920489",
+          "similarity": 89.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.12,
+          "first_day_gain": 179.2
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 84.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.77
+    },
+    {
+      "code": "831755.OC",
+      "name": "邦正科技",
+      "sector": "人工智能",
+      "total_score": 68.7,
+      "gross_margin": 22.1,
+      "roe": 15.9,
+      "revenue_growth": 58.0,
+      "best_matches": [
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 86.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        },
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 81.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        },
+        {
+          "case_name": "雷特科技",
+          "case_code": "920110",
+          "similarity": 80.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.05,
+          "first_day_gain": 116.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.38
+    },
+    {
+      "code": "874862.OC",
+      "name": "威诺高",
+      "sector": "新能源",
+      "total_score": 68.6,
+      "gross_margin": 27.6,
+      "roe": 27.5,
+      "revenue_growth": 69.6,
+      "best_matches": [
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 69.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        },
+        {
+          "case_name": "欧福蛋业",
+          "case_code": "920371",
+          "similarity": 65.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.71,
+          "first_day_gain": 121.1
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 58.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.6
+    },
+    {
+      "code": "874791.OC",
+      "name": "莹帆科技",
+      "sector": "人工智能",
+      "total_score": 68.6,
+      "gross_margin": 23.6,
+      "roe": 18.3,
+      "revenue_growth": 71.5,
+      "best_matches": [
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 70.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 69.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 67.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.89
+    },
+    {
+      "code": "873626.OC",
+      "name": "启源软件",
+      "sector": "人工智能",
+      "total_score": 68.5,
+      "gross_margin": 76.9,
+      "roe": -3.1,
+      "revenue_growth": 14.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 62.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 54.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 53.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "831598.OC",
+      "name": "热像科技",
+      "sector": "人工智能",
+      "total_score": 68.0,
+      "gross_margin": 60.9,
+      "roe": 37.3,
+      "revenue_growth": 21.0,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 65.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 63.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 63.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "831186.OC",
+      "name": "金鸿药业",
+      "sector": "医疗健康",
+      "total_score": 67.9,
+      "gross_margin": 46.2,
+      "roe": -9.5,
+      "revenue_growth": 62.2,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 50.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 2.77
+    },
+    {
+      "code": "874640.OC",
+      "name": "百迈科",
+      "sector": "医疗健康",
+      "total_score": 67.9,
+      "gross_margin": 74.4,
+      "roe": 16.3,
+      "revenue_growth": 16.4,
+      "best_matches": [
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 85.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 82.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 79.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.62
+    },
+    {
+      "code": "833211.OC",
+      "name": "海欣药业",
+      "sector": "医疗健康",
+      "total_score": 67.8,
+      "gross_margin": 82.4,
+      "roe": -6.3,
+      "revenue_growth": 22.7,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 52.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.85
+    },
+    {
+      "code": "833505.OC",
+      "name": "美连医疗",
+      "sector": "医疗健康",
+      "total_score": 67.7,
+      "gross_margin": 60.4,
+      "roe": 29.3,
+      "revenue_growth": 20.6,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 83.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 83.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 83.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "832114.OC",
+      "name": "中爆数字",
+      "sector": "人工智能",
+      "total_score": 67.7,
+      "gross_margin": 62.2,
+      "roe": 11.8,
+      "revenue_growth": 26.5,
+      "best_matches": [
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 93.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 85.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 83.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.55
+    },
+    {
+      "code": "874611.OC",
+      "name": "北方实验",
+      "sector": "人工智能",
+      "total_score": 67.7,
+      "gross_margin": 63.5,
+      "roe": 10.2,
+      "revenue_growth": 41.2,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 94.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 89.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 86.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "837215.OC",
+      "name": "开利控股",
+      "sector": "医疗健康",
+      "total_score": 67.4,
+      "gross_margin": 47.7,
+      "roe": 1.7,
+      "revenue_growth": 60.8,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 73.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 73.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 73.0,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.01
+    },
+    {
+      "code": "873414.OC",
+      "name": "科莱瑞迪",
+      "sector": "医疗健康",
+      "total_score": 67.2,
+      "gross_margin": 60.3,
+      "roe": 10.5,
+      "revenue_growth": 13.9,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 92.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 90.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 81.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "831779.OC",
+      "name": "卓越信通",
+      "sector": "人工智能",
+      "total_score": 67.2,
+      "gross_margin": 55.0,
+      "roe": 13.1,
+      "revenue_growth": 15.1,
+      "best_matches": [
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 97.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 88.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "天工股份",
+          "case_code": "920068",
+          "similarity": 84.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.52,
+          "first_day_gain": 174.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.1
+    },
+    {
+      "code": "872682.OC",
+      "name": "国君医疗",
+      "sector": "医疗健康",
+      "total_score": 67.1,
+      "gross_margin": 31.9,
+      "roe": 13.8,
+      "revenue_growth": 67.3,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 83.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 77.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        },
+        {
+          "case_name": "路桥信息",
+          "case_code": "920748",
+          "similarity": 74.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.55,
+          "first_day_gain": 93.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.89
+    },
+    {
+      "code": "872918.OC",
+      "name": "龙都药业",
+      "sector": "医疗健康",
+      "total_score": 67.1,
+      "gross_margin": 66.6,
+      "roe": 17.4,
+      "revenue_growth": 37.8,
+      "best_matches": [
+        {
+          "case_name": "拾比佰",
+          "case_code": "920768",
+          "similarity": 92.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.0,
+          "first_day_gain": 82.5
+        },
+        {
+          "case_name": "佳先股份",
+          "case_code": "920489",
+          "similarity": 86.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.12,
+          "first_day_gain": 179.2
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 85.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.56
+    },
+    {
+      "code": "836858.OC",
+      "name": "爱用科技",
+      "sector": "人工智能",
+      "total_score": 67.1,
+      "gross_margin": 70.1,
+      "roe": 3.1,
+      "revenue_growth": 4.1,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 69.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 65.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 58.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "837952.OC",
+      "name": "鑫紫竹",
+      "sector": "医疗健康",
+      "total_score": 67.0,
+      "gross_margin": 69.1,
+      "roe": 2.7,
+      "revenue_growth": 26.2,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 75.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 70.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 70.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.55
+    },
+    {
+      "code": "430552.OC",
+      "name": "亚成微",
+      "sector": "人工智能",
+      "total_score": 67.0,
+      "gross_margin": 50.8,
+      "roe": 12.3,
+      "revenue_growth": 55.9,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 94.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 88.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 81.5,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.01
+    },
+    {
+      "code": "831793.OC",
+      "name": "利洋水产",
+      "sector": "医疗健康",
+      "total_score": 66.8,
+      "gross_margin": 55.5,
+      "roe": -4.8,
+      "revenue_growth": 55.0,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 63.8,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 59.8,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "武汉蓝电",
+          "case_code": "920779",
+          "similarity": 58.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.21,
+          "first_day_gain": 32.6
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.41
+    },
+    {
+      "code": "870335.OC",
+      "name": "亿能科技",
+      "sector": "人工智能",
+      "total_score": 66.8,
+      "gross_margin": 64.9,
+      "roe": 6.8,
+      "revenue_growth": 38.5,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 86.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 84.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 83.9,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "430005.OC",
+      "name": "原子高科",
+      "sector": "医疗健康",
+      "total_score": 66.7,
+      "gross_margin": 55.0,
+      "roe": 4.2,
+      "revenue_growth": 39.3,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 87.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 84.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 79.5,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.55
+    },
+    {
+      "code": "836874.OC",
+      "name": "翔晟信息",
+      "sector": "人工智能",
+      "total_score": 66.7,
+      "gross_margin": 42.5,
+      "roe": 12.6,
+      "revenue_growth": 67.5,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 86.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 81.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 74.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "834849.OC",
+      "name": "博宇科技",
+      "sector": "人工智能",
+      "total_score": 66.6,
+      "gross_margin": 56.5,
+      "roe": 5.5,
+      "revenue_growth": 10.5,
+      "best_matches": [
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 80.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 80.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 75.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "874762.OC",
+      "name": "新视云",
+      "sector": "人工智能",
+      "total_score": 66.6,
+      "gross_margin": 67.5,
+      "roe": -7.0,
+      "revenue_growth": 14.0,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 55.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 50.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.65
+    },
+    {
+      "code": "838017.OC",
+      "name": "今奥科技",
+      "sector": "人工智能",
+      "total_score": 66.5,
+      "gross_margin": 50.6,
+      "roe": 3.0,
+      "revenue_growth": 48.9,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 85.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 82.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "武汉蓝电",
+          "case_code": "920779",
+          "similarity": 80.0,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.21,
+          "first_day_gain": 32.6
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.41
+    },
+    {
+      "code": "838408.OC",
+      "name": "天锐股份",
+      "sector": "人工智能",
+      "total_score": 66.5,
+      "gross_margin": 88.4,
+      "roe": 0.5,
+      "revenue_growth": 37.9,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 61.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 56.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 56.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "874895.OC",
+      "name": "融信云",
+      "sector": "人工智能",
+      "total_score": 66.5,
+      "gross_margin": 47.3,
+      "roe": 10.7,
+      "revenue_growth": 29.8,
+      "best_matches": [
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 88.8,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 87.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        },
+        {
+          "case_name": "骑士乳业",
+          "case_code": "920786",
+          "similarity": 87.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.52,
+          "first_day_gain": 38.6
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.13
+    },
+    {
+      "code": "873617.OC",
+      "name": "万隆制药",
+      "sector": "医疗健康",
+      "total_score": 66.3,
+      "gross_margin": 55.2,
+      "roe": 6.5,
+      "revenue_growth": 32.2,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 81.8,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 80.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 80.2,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 4.76
+    },
+    {
+      "code": "835982.OC",
+      "name": "联盛科技",
+      "sector": "人工智能",
+      "total_score": 66.3,
+      "gross_margin": 70.4,
+      "roe": 13.8,
+      "revenue_growth": 10.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 83.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 81.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 80.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.82
+    },
+    {
+      "code": "873328.OC",
+      "name": "威锐股份",
+      "sector": "人工智能",
+      "total_score": 66.3,
+      "gross_margin": 60.4,
+      "roe": 13.7,
+      "revenue_growth": 24.0,
+      "best_matches": [
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 95.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 87.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 84.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 6.55
+    },
+    {
+      "code": "830803.OC",
+      "name": "新松医疗",
+      "sector": "医疗健康",
+      "total_score": 66.2,
+      "gross_margin": 51.1,
+      "roe": 7.7,
+      "revenue_growth": 41.4,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 97.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 93.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "沪江材料",
+          "case_code": "920204",
+          "similarity": 87.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.06,
+          "first_day_gain": 120.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.31
+    },
+    {
+      "code": "873916.OC",
+      "name": "警翼智能",
+      "sector": "人工智能",
+      "total_score": 66.2,
+      "gross_margin": 44.6,
+      "roe": -3.8,
+      "revenue_growth": 19.5,
+      "best_matches": [
+        {
+          "case_name": "灿能电力",
+          "case_code": "920299",
+          "similarity": 67.6,
+          "transfer_path": "市值型",
+          "valuation_multiple": 7.51,
+          "first_day_gain": 179.3
+        },
+        {
+          "case_name": "流金科技",
+          "case_code": "920021",
+          "similarity": 66.7,
+          "transfer_path": "市值型",
+          "valuation_multiple": 2.71,
+          "first_day_gain": 34.1
+        },
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 65.6,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        }
+      ],
+      "recommended_path": "市值型",
+      "estimated_valuation_multiple": 5.54
+    },
+    {
+      "code": "835637.OC",
+      "name": "林华医疗",
+      "sector": "医疗健康",
+      "total_score": 66.1,
+      "gross_margin": 68.2,
+      "roe": 0.7,
+      "revenue_growth": 12.0,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 72.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 66.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 63.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "874570.OC",
+      "name": "斯瑞达",
+      "sector": "人工智能",
+      "total_score": 65.9,
+      "gross_margin": 43.4,
+      "roe": 16.4,
+      "revenue_growth": 16.7,
+      "best_matches": [
+        {
+          "case_name": "天工股份",
+          "case_code": "920068",
+          "similarity": 94.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.52,
+          "first_day_gain": 174.9
+        },
+        {
+          "case_name": "卓兆点胶",
+          "case_code": "920026",
+          "similarity": 88.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.62,
+          "first_day_gain": 123.4
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 86.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.02
+    },
+    {
+      "code": "830833.OC",
+      "name": "九生堂",
+      "sector": "医疗健康",
+      "total_score": 65.8,
+      "gross_margin": 81.8,
+      "roe": 0.0,
+      "revenue_growth": 6.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 62.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 54.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.39
+    },
+    {
+      "code": "430479.OC",
+      "name": "网阔信息",
+      "sector": "人工智能",
+      "total_score": 65.8,
+      "gross_margin": 73.0,
+      "roe": 5.7,
+      "revenue_growth": 40.1,
+      "best_matches": [
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 81.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 77.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 76.4,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "871190.OC",
+      "name": "力网科技",
+      "sector": "人工智能",
+      "total_score": 65.8,
+      "gross_margin": 68.7,
+      "roe": -2.2,
+      "revenue_growth": 35.8,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 65.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 63.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 63.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "870620.OC",
+      "name": "科域生物",
+      "sector": "医疗健康",
+      "total_score": 65.5,
+      "gross_margin": 68.8,
+      "roe": 26.0,
+      "revenue_growth": 15.4,
+      "best_matches": [
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 85.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 81.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 80.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "873914.OC",
+      "name": "东方智汇",
+      "sector": "人工智能",
+      "total_score": 65.4,
+      "gross_margin": 51.9,
+      "roe": 3.5,
+      "revenue_growth": 76.8,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 63.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 62.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.13
+    },
+    {
+      "code": "830806.OC",
+      "name": "亚锦科技",
+      "sector": "新能源",
+      "total_score": 65.3,
+      "gross_margin": 49.4,
+      "roe": 2.9,
+      "revenue_growth": 75.4,
+      "best_matches": [
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 64.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 63.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 52.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.01
+    },
+    {
+      "code": "832226.OC",
+      "name": "新阳升",
+      "sector": "人工智能",
+      "total_score": 65.3,
+      "gross_margin": 55.4,
+      "roe": 4.7,
+      "revenue_growth": 6.1,
+      "best_matches": [
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 75.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 73.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 68.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "833768.OC",
+      "name": "上海寰创",
+      "sector": "人工智能",
+      "total_score": 65.3,
+      "gross_margin": 52.6,
+      "roe": 16.7,
+      "revenue_growth": 26.1,
+      "best_matches": [
+        {
+          "case_name": "长江能科",
+          "case_code": "920158",
+          "similarity": 88.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.35,
+          "first_day_gain": 162.3
+        },
+        {
+          "case_name": "一诺威",
+          "case_code": "920261",
+          "similarity": 86.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.16,
+          "first_day_gain": 74.3
+        },
+        {
+          "case_name": "西磁科技",
+          "case_code": "920061",
+          "similarity": 84.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.23,
+          "first_day_gain": 109.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.58
+    },
+    {
+      "code": "874426.OC",
+      "name": "富印新材",
+      "sector": "人工智能",
+      "total_score": 65.3,
+      "gross_margin": 34.9,
+      "roe": 4.9,
+      "revenue_growth": 38.9,
+      "best_matches": [
+        {
+          "case_name": "驱动力",
+          "case_code": "920275",
+          "similarity": 84.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.47,
+          "first_day_gain": 99.3
+        },
+        {
+          "case_name": "凯华材料",
+          "case_code": "920526",
+          "similarity": 83.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 1.68,
+          "first_day_gain": 5.3
+        },
+        {
+          "case_name": "武汉蓝电",
+          "case_code": "920779",
+          "similarity": 82.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.21,
+          "first_day_gain": 32.6
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 2.45
+    },
+    {
+      "code": "430055.OC",
+      "name": "中电达通",
+      "sector": "人工智能",
+      "total_score": 65.2,
+      "gross_margin": 56.1,
+      "roe": 11.4,
+      "revenue_growth": 40.0,
+      "best_matches": [
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 94.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 92.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 90.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "430172.OC",
+      "name": "瑞达恩",
+      "sector": "人工智能",
+      "total_score": 65.2,
+      "gross_margin": 60.9,
+      "roe": 20.3,
+      "revenue_growth": 30.9,
+      "best_matches": [
+        {
+          "case_name": "锦华新材",
+          "case_code": "920015",
+          "similarity": 94.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.84,
+          "first_day_gain": 53.6
+        },
+        {
+          "case_name": "佳先股份",
+          "case_code": "920489",
+          "similarity": 91.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.12,
+          "first_day_gain": 179.2
+        },
+        {
+          "case_name": "乐创技术",
+          "case_code": "920425",
+          "similarity": 85.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.13,
+          "first_day_gain": 35.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.36
+    },
+    {
+      "code": "872112.OC",
+      "name": "祝融科技",
+      "sector": "人工智能",
+      "total_score": 65.2,
+      "gross_margin": 40.0,
+      "roe": 9.6,
+      "revenue_growth": 59.5,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 94.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 85.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 82.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "874682.OC",
+      "name": "津移通信",
+      "sector": "人工智能",
+      "total_score": 65.2,
+      "gross_margin": 37.3,
+      "roe": 4.5,
+      "revenue_growth": 64.7,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 78.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 73.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 69.9,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.01
+    },
+    {
+      "code": "833755.OC",
+      "name": "扬德环能",
+      "sector": "新能源",
+      "total_score": 65.1,
+      "gross_margin": 41.8,
+      "roe": 11.5,
+      "revenue_growth": 33.1,
+      "best_matches": [
+        {
+          "case_name": "驱动力",
+          "case_code": "920275",
+          "similarity": 92.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.47,
+          "first_day_gain": 99.3
+        },
+        {
+          "case_name": "骑士乳业",
+          "case_code": "920786",
+          "similarity": 91.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.52,
+          "first_day_gain": 38.6
+        },
+        {
+          "case_name": "同辉信息",
+          "case_code": "920090",
+          "similarity": 88.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.33,
+          "first_day_gain": 146.2
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.44
+    },
+    {
+      "code": "874469.OC",
+      "name": "恒达科技",
+      "sector": "人工智能",
+      "total_score": 65.1,
+      "gross_margin": 52.6,
+      "roe": -0.7,
+      "revenue_growth": 21.8,
+      "best_matches": [
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 72.4,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 71.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        },
+        {
+          "case_name": "灿能电力",
+          "case_code": "920299",
+          "similarity": 71.4,
+          "transfer_path": "市值型",
+          "valuation_multiple": 7.51,
+          "first_day_gain": 179.3
+        }
+      ],
+      "recommended_path": "市值型",
+      "estimated_valuation_multiple": 6.79
+    },
+    {
+      "code": "873651.OC",
+      "name": "湖南康复",
+      "sector": "医疗健康",
+      "total_score": 65.0,
+      "gross_margin": 38.3,
+      "roe": 3.3,
+      "revenue_growth": 77.6,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 62.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 58.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 50.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "873791.OC",
+      "name": "鲁邦通",
+      "sector": "人工智能",
+      "total_score": 65.0,
+      "gross_margin": 38.8,
+      "roe": 18.1,
+      "revenue_growth": 44.2,
+      "best_matches": [
+        {
+          "case_name": "瑞华技术",
+          "case_code": "920099",
+          "similarity": 90.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.42,
+          "first_day_gain": 41.8
+        },
+        {
+          "case_name": "奔朗新材",
+          "case_code": "920807",
+          "similarity": 89.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.81,
+          "first_day_gain": 158.4
+        },
+        {
+          "case_name": "纳科诺尔",
+          "case_code": "920522",
+          "similarity": 87.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.49,
+          "first_day_gain": 113.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.24
+    },
+    {
+      "code": "874919.OC",
+      "name": "济人药业",
+      "sector": "医疗健康",
+      "total_score": 64.9,
+      "gross_margin": 42.2,
+      "roe": -7.3,
+      "revenue_growth": 50.1,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 61.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "武汉蓝电",
+          "case_code": "920779",
+          "similarity": 58.3,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.21,
+          "first_day_gain": 32.6
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 57.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.41
+    },
+    {
+      "code": "835737.OC",
+      "name": "传神语联",
+      "sector": "人工智能",
+      "total_score": 64.9,
+      "gross_margin": 44.4,
+      "roe": 15.8,
+      "revenue_growth": 42.2,
+      "best_matches": [
+        {
+          "case_name": "同辉信息",
+          "case_code": "920090",
+          "similarity": 92.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.33,
+          "first_day_gain": 146.2
+        },
+        {
+          "case_name": "纳科诺尔",
+          "case_code": "920522",
+          "similarity": 92.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.49,
+          "first_day_gain": 113.4
+        },
+        {
+          "case_name": "沪江材料",
+          "case_code": "920204",
+          "similarity": 88.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.06,
+          "first_day_gain": 120.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.63
+    },
+    {
+      "code": "871425.OC",
+      "name": "富美特",
+      "sector": "人工智能",
+      "total_score": 64.9,
+      "gross_margin": 51.6,
+      "roe": -2.1,
+      "revenue_growth": 38.9,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 72.4,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 69.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 68.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.55
+    },
+    {
+      "code": "873062.OC",
+      "name": "汉王鹏泰",
+      "sector": "人工智能",
+      "total_score": 64.9,
+      "gross_margin": 48.7,
+      "roe": 17.7,
+      "revenue_growth": 48.3,
+      "best_matches": [
+        {
+          "case_name": "特瑞斯",
+          "case_code": "920014",
+          "similarity": 91.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.53,
+          "first_day_gain": 91.5
+        },
+        {
+          "case_name": "颖泰生物",
+          "case_code": "920819",
+          "similarity": 89.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.03,
+          "first_day_gain": 145.4
+        },
+        {
+          "case_name": "纳科诺尔",
+          "case_code": "920522",
+          "similarity": 88.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.49,
+          "first_day_gain": 113.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.35
+    },
+    {
+      "code": "833428.OC",
+      "name": "江大源",
+      "sector": "医疗健康",
+      "total_score": 64.8,
+      "gross_margin": 74.8,
+      "roe": 25.2,
+      "revenue_growth": 5.3,
+      "best_matches": [
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 71.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 69.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        },
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 68.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.2
+    },
+    {
+      "code": "837667.OC",
+      "name": "益生康健",
+      "sector": "医疗健康",
+      "total_score": 64.8,
+      "gross_margin": 65.3,
+      "roe": 2.6,
+      "revenue_growth": 35.7,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 76.3,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 75.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 75.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "830840.OC",
+      "name": "永力科技",
+      "sector": "人工智能",
+      "total_score": 64.8,
+      "gross_margin": 44.7,
+      "roe": 40.9,
+      "revenue_growth": 22.9,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 57.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 53.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 51.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "832715.OC",
+      "name": "华信股份",
+      "sector": "人工智能",
+      "total_score": 64.8,
+      "gross_margin": 27.1,
+      "roe": 7.0,
+      "revenue_growth": 38.4,
+      "best_matches": [
+        {
+          "case_name": "凯华材料",
+          "case_code": "920526",
+          "similarity": 88.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 1.68,
+          "first_day_gain": 5.3
+        },
+        {
+          "case_name": "驱动力",
+          "case_code": "920275",
+          "similarity": 86.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.47,
+          "first_day_gain": 99.3
+        },
+        {
+          "case_name": "铁拓机械",
+          "case_code": "920706",
+          "similarity": 83.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.21,
+          "first_day_gain": 170.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.12
+    },
+    {
+      "code": "430588.OC",
+      "name": "天松医疗",
+      "sector": "医疗健康",
+      "total_score": 64.7,
+      "gross_margin": 62.0,
+      "roe": 4.9,
+      "revenue_growth": 12.6,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 82.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 78.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 74.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.75
+    },
+    {
+      "code": "871444.OC",
+      "name": "德全药品",
+      "sector": "医疗健康",
+      "total_score": 64.7,
+      "gross_margin": 64.3,
+      "roe": -7.4,
+      "revenue_growth": 44.1,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 57.4,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 55.8,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 54.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.55
+    },
+    {
+      "code": "874912.OC",
+      "name": "风和医疗",
+      "sector": "医疗健康",
+      "total_score": 64.7,
+      "gross_margin": 63.4,
+      "roe": 1.3,
+      "revenue_growth": 30.8,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 70.5,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 69.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        },
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 69.1,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 4.74
+    },
+    {
+      "code": "833815.OC",
+      "name": "嘉友互联",
+      "sector": "人工智能",
+      "total_score": 64.7,
+      "gross_margin": 80.2,
+      "roe": 15.0,
+      "revenue_growth": 52.2,
+      "best_matches": [
+        {
+          "case_name": "永顺生物",
+          "case_code": "920729",
+          "similarity": 79.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.27,
+          "first_day_gain": 111.6
+        },
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 73.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 71.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.95
+    },
+    {
+      "code": "873126.OC",
+      "name": "智信恒瑞",
+      "sector": "人工智能",
+      "total_score": 64.7,
+      "gross_margin": 48.9,
+      "roe": 32.7,
+      "revenue_growth": 42.1,
+      "best_matches": [
+        {
+          "case_name": "康农种业",
+          "case_code": "920403",
+          "similarity": 77.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.34,
+          "first_day_gain": 100.5
+        },
+        {
+          "case_name": "乐创技术",
+          "case_code": "920425",
+          "similarity": 73.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.13,
+          "first_day_gain": 35.8
+        },
+        {
+          "case_name": "康比特",
+          "case_code": "920429",
+          "similarity": 73.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.73,
+          "first_day_gain": 124.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.07
+    },
+    {
+      "code": "871574.OC",
+      "name": "西力生物",
+      "sector": "医疗健康",
+      "total_score": 64.6,
+      "gross_margin": 75.1,
+      "roe": 12.9,
+      "revenue_growth": 7.9,
+      "best_matches": [
+        {
+          "case_name": "吉林碳谷",
+          "case_code": "920077",
+          "similarity": 78.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.85,
+          "first_day_gain": 154.0
+        },
+        {
+          "case_name": "九菱科技",
+          "case_code": "920505",
+          "similarity": 74.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.67,
+          "first_day_gain": 106.0
+        },
+        {
+          "case_name": "中航泰达",
+          "case_code": "920263",
+          "similarity": 74.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.93,
+          "first_day_gain": 56.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.82
+    },
+    {
+      "code": "873147.OC",
+      "name": "万物信息",
+      "sector": "人工智能",
+      "total_score": 64.6,
+      "gross_margin": 58.9,
+      "roe": -4.4,
+      "revenue_growth": 54.9,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 63.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 60.3,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 58.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 3.56
+    },
+    {
+      "code": "873818.OC",
+      "name": "帕科科技",
+      "sector": "人工智能",
+      "total_score": 64.6,
+      "gross_margin": 38.5,
+      "roe": -9.6,
+      "revenue_growth": 31.2,
+      "best_matches": [
+        {
+          "case_name": "灿能电力",
+          "case_code": "920299",
+          "similarity": 54.0,
+          "transfer_path": "市值型",
+          "valuation_multiple": 7.51,
+          "first_day_gain": 179.3
+        },
+        {
+          "case_name": "流金科技",
+          "case_code": "920021",
+          "similarity": 53.5,
+          "transfer_path": "市值型",
+          "valuation_multiple": 2.71,
+          "first_day_gain": 34.1
+        }
+      ],
+      "recommended_path": "市值型",
+      "estimated_valuation_multiple": 5.11
+    },
+    {
+      "code": "870126.OC",
+      "name": "卓识网安",
+      "sector": "人工智能",
+      "total_score": 64.5,
+      "gross_margin": 57.5,
+      "roe": 32.1,
+      "revenue_growth": 18.3,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 79.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 75.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "绿亨科技",
+          "case_code": "920866",
+          "similarity": 75.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.34,
+          "first_day_gain": 167.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.66
+    },
+    {
+      "code": "832205.OC",
+      "name": "全宇制药",
+      "sector": "医疗健康",
+      "total_score": 64.4,
+      "gross_margin": 35.5,
+      "roe": 2.3,
+      "revenue_growth": 54.0,
+      "best_matches": [
+        {
+          "case_name": "芭薇股份",
+          "case_code": "920123",
+          "similarity": 80.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.77,
+          "first_day_gain": 54.9
+        },
+        {
+          "case_name": "武汉蓝电",
+          "case_code": "920779",
+          "similarity": 78.7,
+          "transfer_path": "成长型",
+          "valuation_multiple": 2.21,
+          "first_day_gain": 32.6
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 73.7,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        }
+      ],
+      "recommended_path": "成长型",
+      "estimated_valuation_multiple": 2.86
+    },
+    {
+      "code": "872806.OC",
+      "name": "核力欣健",
+      "sector": "医疗健康",
+      "total_score": 64.4,
+      "gross_margin": 51.6,
+      "roe": 12.1,
+      "revenue_growth": 45.9,
+      "best_matches": [
+        {
+          "case_name": "沪江材料",
+          "case_code": "920204",
+          "similarity": 94.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.06,
+          "first_day_gain": 120.3
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 92.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 89.6,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.31
+    },
+    {
+      "code": "839255.OC",
+      "name": "思亿欧",
+      "sector": "人工智能",
+      "total_score": 64.4,
+      "gross_margin": 55.6,
+      "roe": 18.9,
+      "revenue_growth": 80.5,
+      "best_matches": [
+        {
+          "case_name": "科力股份",
+          "case_code": "920088",
+          "similarity": 63.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 7.0,
+          "first_day_gain": 169.4
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 59.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 58.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.42
+    },
+    {
+      "code": "873406.OC",
+      "name": "华甬新材",
+      "sector": "医疗健康",
+      "total_score": 64.3,
+      "gross_margin": 51.7,
+      "roe": 27.0,
+      "revenue_growth": 13.8,
+      "best_matches": [
+        {
+          "case_name": "浙江大农",
+          "case_code": "920855",
+          "similarity": 91.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.6,
+          "first_day_gain": 15.7
+        },
+        {
+          "case_name": "硅烷科技",
+          "case_code": "920402",
+          "similarity": 82.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.03,
+          "first_day_gain": 127.2
+        },
+        {
+          "case_name": "西磁科技",
+          "case_code": "920061",
+          "similarity": 81.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 4.23,
+          "first_day_gain": 109.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.95
+    },
+    {
+      "code": "874087.OC",
+      "name": "东实环境",
+      "sector": "新能源",
+      "total_score": 64.3,
+      "gross_margin": 34.1,
+      "roe": 1.8,
+      "revenue_growth": 75.5,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 62.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 57.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 51.4,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "871604.OC",
+      "name": "兴达软件",
+      "sector": "人工智能",
+      "total_score": 64.3,
+      "gross_margin": 65.8,
+      "roe": 42.1,
+      "revenue_growth": 40.6,
+      "best_matches": [
+        {
+          "case_name": "康农种业",
+          "case_code": "920403",
+          "similarity": 53.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.34,
+          "first_day_gain": 100.5
+        },
+        {
+          "case_name": "乐创技术",
+          "case_code": "920425",
+          "similarity": 51.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.13,
+          "first_day_gain": 35.8
+        },
+        {
+          "case_name": "康比特",
+          "case_code": "920429",
+          "similarity": 50.1,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.73,
+          "first_day_gain": 124.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.07
+    },
+    {
+      "code": "873881.OC",
+      "name": "中科英泰",
+      "sector": "人工智能",
+      "total_score": 64.3,
+      "gross_margin": 42.1,
+      "roe": 11.6,
+      "revenue_growth": 28.2,
+      "best_matches": [
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 90.7,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        },
+        {
+          "case_name": "骑士乳业",
+          "case_code": "920786",
+          "similarity": 89.5,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.52,
+          "first_day_gain": 38.6
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 88.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 5.13
+    },
+    {
+      "code": "874909.OC",
+      "name": "玩视科技",
+      "sector": "人工智能",
+      "total_score": 64.3,
+      "gross_margin": 44.0,
+      "roe": 6.8,
+      "revenue_growth": 23.1,
+      "best_matches": [
+        {
+          "case_name": "明阳科技",
+          "case_code": "920663",
+          "similarity": 92.8,
+          "transfer_path": "市值型",
+          "valuation_multiple": 6.4,
+          "first_day_gain": 145.1
+        },
+        {
+          "case_name": "灿能电力",
+          "case_code": "920299",
+          "similarity": 90.5,
+          "transfer_path": "市值型",
+          "valuation_multiple": 7.51,
+          "first_day_gain": 179.3
+        },
+        {
+          "case_name": "酉立智能",
+          "case_code": "920007",
+          "similarity": 90.3,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 6.46,
+          "first_day_gain": 155.7
+        }
+      ],
+      "recommended_path": "市值型",
+      "estimated_valuation_multiple": 6.79
+    },
+    {
+      "code": "836052.OC",
+      "name": "珠海港昇",
+      "sector": "新能源",
+      "total_score": 64.2,
+      "gross_margin": 53.3,
+      "roe": 9.1,
+      "revenue_growth": 45.6,
+      "best_matches": [
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 94.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 94.0,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "沪江材料",
+          "case_code": "920204",
+          "similarity": 90.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 5.06,
+          "first_day_gain": 120.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 4.31
+    },
+    {
+      "code": "838933.OC",
+      "name": "嘉华汇诚",
+      "sector": "人工智能",
+      "total_score": 64.2,
+      "gross_margin": 47.6,
+      "roe": 4.7,
+      "revenue_growth": 76.9,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 64.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 64.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        },
+        {
+          "case_name": "万通液压",
+          "case_code": "920839",
+          "similarity": 51.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.53,
+          "first_day_gain": 67.0
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.26
+    },
+    {
+      "code": "430335.OC",
+      "name": "华韩股份",
+      "sector": "医疗健康",
+      "total_score": 64.0,
+      "gross_margin": 42.8,
+      "roe": -0.4,
+      "revenue_growth": 75.7,
+      "best_matches": [
+        {
+          "case_name": "中草香料",
+          "case_code": "920016",
+          "similarity": 58.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.59,
+          "first_day_gain": 30.8
+        },
+        {
+          "case_name": "华光源海",
+          "case_code": "920351",
+          "similarity": 56.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.67,
+          "first_day_gain": 62.4
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.13
+    },
+    {
+      "code": "870111.OC",
+      "name": "昂捷信息",
+      "sector": "人工智能",
+      "total_score": 64.0,
+      "gross_margin": 68.4,
+      "roe": -3.9,
+      "revenue_growth": 37.5,
+      "best_matches": [
+        {
+          "case_name": "莱赛激光",
+          "case_code": "920363",
+          "similarity": 63.1,
+          "transfer_path": "成长型",
+          "valuation_multiple": 5.24,
+          "first_day_gain": 132.5
+        },
+        {
+          "case_name": "凯添燃气",
+          "case_code": "920010",
+          "similarity": 61.0,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.63,
+          "first_day_gain": 33.9
+        },
+        {
+          "case_name": "大禹生物",
+          "case_code": "920970",
+          "similarity": 59.8,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 2.57,
+          "first_day_gain": 39.8
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.48
+    },
+    {
+      "code": "874908.OC",
+      "name": "德同兴",
+      "sector": "人工智能",
+      "total_score": 64.0,
+      "gross_margin": 30.5,
+      "roe": 29.2,
+      "revenue_growth": 37.2,
+      "best_matches": [
+        {
+          "case_name": "美邦科技",
+          "case_code": "920471",
+          "similarity": 82.9,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.1,
+          "first_day_gain": 53.7
+        },
+        {
+          "case_name": "康农种业",
+          "case_code": "920403",
+          "similarity": 72.2,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.34,
+          "first_day_gain": 100.5
+        },
+        {
+          "case_name": "一诺威",
+          "case_code": "920261",
+          "similarity": 69.6,
+          "transfer_path": "盈利型",
+          "valuation_multiple": 3.16,
+          "first_day_gain": 74.3
+        }
+      ],
+      "recommended_path": "盈利型",
+      "estimated_valuation_multiple": 3.2
+    }
+  ]
+}

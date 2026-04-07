@@ -1,0 +1,991 @@
+[
+  {
+    "id": 1,
+    "name": "医疗影像AI",
+    "sector": "医疗健康",
+    "company_count": 66,
+    "growth_trend": "高速增长",
+    "prosperity_score": 92.0,
+    "avg_gross_margin": 62.2,
+    "avg_roe": 26.7,
+    "avg_net_margin": 20.8,
+    "avg_revenue_growth": 33.4,
+    "avg_score": 67.7,
+    "leaders": [
+      {
+        "code": "874913.OC",
+        "name": "通灵生物",
+        "score": 78.3,
+        "gross_margin": 89.2
+      },
+      {
+        "code": "874239.OC",
+        "name": "中健康桥",
+        "score": 77.9,
+        "gross_margin": 92.5
+      },
+      {
+        "code": "873821.OC",
+        "name": "先声祥瑞",
+        "score": 77.2,
+        "gross_margin": 86.9
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 31.7
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 33.7
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 34.9
+      }
+    ],
+    "keywords": [
+      "影像",
+      "AI诊断",
+      "医学影像"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "基因检测",
+    "sector": "医疗健康",
+    "company_count": 44,
+    "growth_trend": "快速增长",
+    "prosperity_score": 83.2,
+    "avg_gross_margin": 48.9,
+    "avg_roe": 10.7,
+    "avg_net_margin": 14.8,
+    "avg_revenue_growth": 34.0,
+    "avg_score": 61.5,
+    "leaders": [
+      {
+        "code": "871194.OC",
+        "name": "博大制药",
+        "score": 63.3,
+        "gross_margin": 62.5
+      },
+      {
+        "code": "874379.OC",
+        "name": "舒友仪器",
+        "score": 63.3,
+        "gross_margin": 52.8
+      },
+      {
+        "code": "874066.OC",
+        "name": "德博尔",
+        "score": 63.0,
+        "gross_margin": 45.1
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 37.0
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 36.4
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 39.6
+      }
+    ],
+    "keywords": [
+      "基因",
+      "测序",
+      "NGS"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "医疗器械",
+    "sector": "医疗健康",
+    "company_count": 53,
+    "growth_trend": "稳健增长",
+    "prosperity_score": 57.2,
+    "avg_gross_margin": 39.4,
+    "avg_roe": 10.0,
+    "avg_net_margin": 3.0,
+    "avg_revenue_growth": 47.4,
+    "avg_score": 58.2,
+    "leaders": [
+      {
+        "code": "833269.OC",
+        "name": "华美牙科",
+        "score": 59.9,
+        "gross_margin": 39.8
+      },
+      {
+        "code": "832955.OC",
+        "name": "七丹药业",
+        "score": 59.8,
+        "gross_margin": 20.1
+      },
+      {
+        "code": "870450.OC",
+        "name": "益升医学",
+        "score": 59.8,
+        "gross_margin": 41.0
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 47.8
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 44.2
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 50.1
+      }
+    ],
+    "keywords": [
+      "器械",
+      "设备",
+      "仪器"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "生物医药",
+    "sector": "医疗健康",
+    "company_count": 51,
+    "growth_trend": "稳健增长",
+    "prosperity_score": 55.3,
+    "avg_gross_margin": 37.0,
+    "avg_roe": 26.3,
+    "avg_net_margin": -175.4,
+    "avg_revenue_growth": 47.8,
+    "avg_score": 55.3,
+    "leaders": [
+      {
+        "code": "874662.OC",
+        "name": "建工资源",
+        "score": 56.4,
+        "gross_margin": 23.6
+      },
+      {
+        "code": "831720.OC",
+        "name": "堡垒智能",
+        "score": 56.3,
+        "gross_margin": 48.8
+      },
+      {
+        "code": "837694.OC",
+        "name": "ST太和华",
+        "score": 56.3,
+        "gross_margin": 12.9
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 50.8
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 43.2
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 51.1
+      }
+    ],
+    "keywords": [
+      "生物",
+      "制药",
+      "药物"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "医疗服务",
+    "sector": "医疗健康",
+    "company_count": 70,
+    "growth_trend": "平稳",
+    "prosperity_score": 53.1,
+    "avg_gross_margin": 32.1,
+    "avg_roe": 6.4,
+    "avg_net_margin": -8.1,
+    "avg_revenue_growth": 52.7,
+    "avg_score": 51.8,
+    "leaders": [
+      {
+        "code": "430521.OC",
+        "name": "康捷医疗",
+        "score": 54.0,
+        "gross_margin": 32.6
+      },
+      {
+        "code": "835387.OC",
+        "name": "荣恩集团",
+        "score": 54.0,
+        "gross_margin": 54.8
+      },
+      {
+        "code": "836782.OC",
+        "name": "正大龙祥",
+        "score": 54.0,
+        "gross_margin": 3.0
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 55.2
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 54.3
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 52.7
+      }
+    ],
+    "keywords": [
+      "医院",
+      "诊所",
+      "服务"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "体外诊断",
+    "sector": "医疗健康",
+    "company_count": 86,
+    "growth_trend": "快速增长",
+    "prosperity_score": 83.3,
+    "avg_gross_margin": 27.9,
+    "avg_roe": 156.9,
+    "avg_net_margin": -425.4,
+    "avg_revenue_growth": 51.2,
+    "avg_score": 42.5,
+    "leaders": [
+      {
+        "code": "831448.OC",
+        "name": "贝欧特",
+        "score": 49.0,
+        "gross_margin": 41.1
+      },
+      {
+        "code": "872037.OC",
+        "name": "隆盛泰",
+        "score": 49.0,
+        "gross_margin": 62.3
+      },
+      {
+        "code": "874055.OC",
+        "name": "艾棣维欣",
+        "score": 49.0,
+        "gross_margin": 95.1
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 47.0
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 48.9
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 54.5
+      }
+    ],
+    "keywords": [
+      "诊断",
+      "试剂",
+      "检测"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "光伏组件",
+    "sector": "新能源",
+    "company_count": 15,
+    "growth_trend": "高速增长",
+    "prosperity_score": 86.7,
+    "avg_gross_margin": 43.3,
+    "avg_roe": 27.6,
+    "avg_net_margin": 19.2,
+    "avg_revenue_growth": 56.6,
+    "avg_score": 64.8,
+    "leaders": [
+      {
+        "code": "834084.OC",
+        "name": "聚能鼎力",
+        "score": 70.8,
+        "gross_margin": 61.7
+      },
+      {
+        "code": "872109.OC",
+        "name": "光隆能源",
+        "score": 69.4,
+        "gross_margin": 59.6
+      },
+      {
+        "code": "874862.OC",
+        "name": "威诺高",
+        "score": 68.6,
+        "gross_margin": 27.6
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 52.9
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 57.1
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 62.3
+      }
+    ],
+    "keywords": [
+      "光伏",
+      "组件",
+      "电池片"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "储能系统",
+    "sector": "新能源",
+    "company_count": 17,
+    "growth_trend": "高速增长",
+    "prosperity_score": 91.9,
+    "avg_gross_margin": 28.4,
+    "avg_roe": 15.8,
+    "avg_net_margin": 9.4,
+    "avg_revenue_growth": 57.0,
+    "avg_score": 59.8,
+    "leaders": [
+      {
+        "code": "874241.OC",
+        "name": "隆玛科技",
+        "score": 61.5,
+        "gross_margin": 25.8
+      },
+      {
+        "code": "831502.OC",
+        "name": "永强节能",
+        "score": 61.3,
+        "gross_margin": 25.0
+      },
+      {
+        "code": "874553.OC",
+        "name": "沛城科技",
+        "score": 61.3,
+        "gross_margin": 28.0
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 58.0
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 62.9
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 60.4
+      }
+    ],
+    "keywords": [
+      "储能",
+      "电池",
+      "BMS"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "充电桩",
+    "sector": "新能源",
+    "company_count": 10,
+    "growth_trend": "快速增长",
+    "prosperity_score": 84.9,
+    "avg_gross_margin": 24.3,
+    "avg_roe": 11.6,
+    "avg_net_margin": 4.9,
+    "avg_revenue_growth": 51.6,
+    "avg_score": 55.8,
+    "leaders": [
+      {
+        "code": "430596.OC",
+        "name": "新达通",
+        "score": 56.8,
+        "gross_margin": 36.1
+      },
+      {
+        "code": "871744.OC",
+        "name": "中投环保",
+        "score": 56.5,
+        "gross_margin": 45.4
+      },
+      {
+        "code": "874114.OC",
+        "name": "海雷股份",
+        "score": 56.5,
+        "gross_margin": 19.8
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 49.9
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 57.6
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 53.4
+      }
+    ],
+    "keywords": [
+      "充电",
+      "充电桩",
+      "充电站"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "风电设备",
+    "sector": "新能源",
+    "company_count": 13,
+    "growth_trend": "稳健增长",
+    "prosperity_score": 60.6,
+    "avg_gross_margin": 35.1,
+    "avg_roe": 17.9,
+    "avg_net_margin": -2.2,
+    "avg_revenue_growth": 54.8,
+    "avg_score": 53.0,
+    "leaders": [
+      {
+        "code": "874618.OC",
+        "name": "润奥供电",
+        "score": 54.4,
+        "gross_margin": 62.7
+      },
+      {
+        "code": "874350.OC",
+        "name": "华慧能源",
+        "score": 54.3,
+        "gross_margin": 44.2
+      },
+      {
+        "code": "873065.OC",
+        "name": "秦元热力",
+        "score": 54.2,
+        "gross_margin": 21.5
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 56.8
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 58.0
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 51.9
+      }
+    ],
+    "keywords": [
+      "风电",
+      "风机",
+      "叶片"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "氢能源",
+    "sector": "新能源",
+    "company_count": 9,
+    "growth_trend": "早期阶段",
+    "prosperity_score": 74.7,
+    "avg_gross_margin": 18.8,
+    "avg_roe": -12.4,
+    "avg_net_margin": 0.5,
+    "avg_revenue_growth": 48.6,
+    "avg_score": 47.0,
+    "leaders": [
+      {
+        "code": "875018.OC",
+        "name": "风华股份",
+        "score": 48.5,
+        "gross_margin": 7.9
+      },
+      {
+        "code": "838463.OC",
+        "name": "正信光电",
+        "score": 47.6,
+        "gross_margin": 8.9
+      },
+      {
+        "code": "832236.OC",
+        "name": "丰源股份",
+        "score": 47.4,
+        "gross_margin": 10.9
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 47.5
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 48.7
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 58.9
+      }
+    ],
+    "keywords": [
+      "氢能",
+      "燃料电池",
+      "制氢"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "新能源汽车配套",
+    "sector": "新能源",
+    "company_count": 19,
+    "growth_trend": "快速增长",
+    "prosperity_score": 81.1,
+    "avg_gross_margin": 5.0,
+    "avg_roe": 39.5,
+    "avg_net_margin": -244.6,
+    "avg_revenue_growth": 67.8,
+    "avg_score": 39.0,
+    "leaders": [
+      {
+        "code": "872555.OC",
+        "name": "汇能动力",
+        "score": 45.0,
+        "gross_margin": 7.5
+      },
+      {
+        "code": "872369.OC",
+        "name": "舜大能源",
+        "score": 44.1,
+        "gross_margin": 3.1
+      },
+      {
+        "code": "831501.OC",
+        "name": "远方动力",
+        "score": 43.5,
+        "gross_margin": 2.4
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 64.3
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 64.5
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 71.7
+      }
+    ],
+    "keywords": [
+      "汽车",
+      "电机",
+      "电控"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "工业软件",
+    "sector": "人工智能",
+    "company_count": 164,
+    "growth_trend": "稳健增长",
+    "prosperity_score": 66.2,
+    "avg_gross_margin": 60.6,
+    "avg_roe": 127.7,
+    "avg_net_margin": 22.7,
+    "avg_revenue_growth": 43.7,
+    "avg_score": 67.4,
+    "leaders": [
+      {
+        "code": "836098.OC",
+        "name": "华浩科技",
+        "score": 78.2,
+        "gross_margin": 50.6
+      },
+      {
+        "code": "837685.OC",
+        "name": "淘金互动",
+        "score": 78.0,
+        "gross_margin": 94.5
+      },
+      {
+        "code": "874883.OC",
+        "name": "芯愿景",
+        "score": 77.3,
+        "gross_margin": 76.8
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 40.6
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 48.2
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 41.3
+      }
+    ],
+    "keywords": [
+      "工业",
+      "ERP",
+      "MES",
+      "CAD"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "AI芯片",
+    "sector": "人工智能",
+    "company_count": 199,
+    "growth_trend": "高速增长",
+    "prosperity_score": 97.9,
+    "avg_gross_margin": 40.4,
+    "avg_roe": 50.0,
+    "avg_net_margin": 8.9,
+    "avg_revenue_growth": 45.5,
+    "avg_score": 60.4,
+    "leaders": [
+      {
+        "code": "870386.OC",
+        "name": "宏银信息",
+        "score": 63.0,
+        "gross_margin": 43.6
+      },
+      {
+        "code": "872286.OC",
+        "name": "上元智能",
+        "score": 63.0,
+        "gross_margin": 41.8
+      },
+      {
+        "code": "873437.OC",
+        "name": "天一恩华",
+        "score": 63.0,
+        "gross_margin": 37.3
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 41.2
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 51.9
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 46.9
+      }
+    ],
+    "keywords": [
+      "芯片",
+      "半导体",
+      "GPU"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "大数据服务",
+    "sector": "人工智能",
+    "company_count": 142,
+    "growth_trend": "快速增长",
+    "prosperity_score": 83.4,
+    "avg_gross_margin": 37.4,
+    "avg_roe": 57.2,
+    "avg_net_margin": -33.7,
+    "avg_revenue_growth": 50.4,
+    "avg_score": 57.2,
+    "leaders": [
+      {
+        "code": "839555.OC",
+        "name": "君信达科",
+        "score": 58.4,
+        "gross_margin": 22.2
+      },
+      {
+        "code": "870260.OC",
+        "name": "邦力达",
+        "score": 58.4,
+        "gross_margin": 38.0
+      },
+      {
+        "code": "872434.OC",
+        "name": "明易达",
+        "score": 58.4,
+        "gross_margin": 11.7
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 48.4
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 51.4
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 57.5
+      }
+    ],
+    "keywords": [
+      "数据",
+      "云计算",
+      "SaaS"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "智能制造",
+    "sector": "人工智能",
+    "company_count": 162,
+    "growth_trend": "快速增长",
+    "prosperity_score": 75.3,
+    "avg_gross_margin": 33.3,
+    "avg_roe": 20.6,
+    "avg_net_margin": -61.6,
+    "avg_revenue_growth": 51.2,
+    "avg_score": 54.6,
+    "leaders": [
+      {
+        "code": "873793.OC",
+        "name": "合通股份",
+        "score": 56.0,
+        "gross_margin": 17.8
+      },
+      {
+        "code": "430316.OC",
+        "name": "巨灵数科",
+        "score": 55.9,
+        "gross_margin": 11.9
+      },
+      {
+        "code": "833594.OC",
+        "name": "中斗科技",
+        "score": 55.9,
+        "gross_margin": 73.8
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 55.5
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 57.1
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 56.7
+      }
+    ],
+    "keywords": [
+      "智能制造",
+      "机器人",
+      "自动化"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "网络安全",
+    "sector": "人工智能",
+    "company_count": 216,
+    "growth_trend": "稳健增长",
+    "prosperity_score": 66.1,
+    "avg_gross_margin": 31.7,
+    "avg_roe": 11.5,
+    "avg_net_margin": -9.7,
+    "avg_revenue_growth": 49.9,
+    "avg_score": 51.5,
+    "leaders": [
+      {
+        "code": "838956.OC",
+        "name": "旋荣科技",
+        "score": 53.3,
+        "gross_margin": 20.9
+      },
+      {
+        "code": "872545.OC",
+        "name": "华锐高新",
+        "score": 53.3,
+        "gross_margin": 5.8
+      },
+      {
+        "code": "873097.OC",
+        "name": "信溢创",
+        "score": 53.3,
+        "gross_margin": 19.2
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 49.7
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 45.1
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 49.8
+      }
+    ],
+    "keywords": [
+      "安全",
+      "网络安全",
+      "信息安全"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "企业服务SaaS",
+    "sector": "人工智能",
+    "company_count": 203,
+    "growth_trend": "平稳",
+    "prosperity_score": 48.7,
+    "avg_gross_margin": 31.9,
+    "avg_roe": 14.2,
+    "avg_net_margin": -148.6,
+    "avg_revenue_growth": 51.6,
+    "avg_score": 47.6,
+    "leaders": [
+      {
+        "code": "838512.OC",
+        "name": "成德科技",
+        "score": 49.6,
+        "gross_margin": 15.1
+      },
+      {
+        "code": "838843.OC",
+        "name": "智趣互联",
+        "score": 49.6,
+        "gross_margin": 42.6
+      },
+      {
+        "code": "839655.OC",
+        "name": "威星电子",
+        "score": 49.6,
+        "gross_margin": 15.7
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 53.5
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 49.6
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 52.1
+      }
+    ],
+    "keywords": [
+      "SaaS",
+      "管理软件",
+      "ERP"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "AI应用",
+    "sector": "人工智能",
+    "company_count": 303,
+    "growth_trend": "高速增长",
+    "prosperity_score": 91.6,
+    "avg_gross_margin": 9.4,
+    "avg_roe": 20.4,
+    "avg_net_margin": -315.9,
+    "avg_revenue_growth": 84.6,
+    "avg_score": 39.7,
+    "leaders": [
+      {
+        "code": "872740.OC",
+        "name": "弘高科技",
+        "score": 45.5,
+        "gross_margin": 8.3
+      },
+      {
+        "code": "830905.OC",
+        "name": "成聪软件",
+        "score": 45.4,
+        "gross_margin": 59.3
+      },
+      {
+        "code": "836949.OC",
+        "name": "源启科技",
+        "score": 45.4,
+        "gross_margin": 50.4
+      }
+    ],
+    "trend_data": [
+      {
+        "year": 2022,
+        "revenue_growth": 88.4
+      },
+      {
+        "year": 2023,
+        "revenue_growth": 85.7
+      },
+      {
+        "year": 2024,
+        "revenue_growth": 85.8
+      }
+    ],
+    "keywords": [
+      "人工智能",
+      "机器学习",
+      "深度学习"
+    ]
+  }
+]

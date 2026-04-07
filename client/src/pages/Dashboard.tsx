@@ -183,6 +183,46 @@ const MODULES = {
       },
     ],
   },
+  deep_research: {
+    label: "深度研究",
+    icon: Brain,
+    color: "purple",
+    desc: "多维度深化研究：地理分布、赛道画像、转板套利、主营业务",
+    items: [
+      {
+        href: "/geo-distribution",
+        icon: "🗺️",
+        title: "地理分布与区域政策",
+        desc: "20个省份分布热力图 · 区域行业特色 · 转板成功率地区差异",
+        tags: ["省份分布", "区域政策", "转板成功率"],
+        color: "cyan",
+      },
+      {
+        href: "/sub-track",
+        icon: "⚡",
+        title: "细分赛道景气度追踪",
+        desc: "19个细分赛道 · 景气度评分 · 龙头企业识别 · 增速趋势",
+        tags: ["景气度", "赛道排名", "龙头识别"],
+        color: "amber",
+      },
+      {
+        href: "/transfer-similarity",
+        icon: "🎯",
+        title: "转板套利深化分析",
+        desc: "历史案例相似度匹配 · 最优转板时机模型 · 三路径财务对比",
+        tags: ["相似度匹配", "最优时机", "路径对比"],
+        color: "emerald",
+      },
+      {
+        href: "/business-profile",
+        icon: "🏭",
+        title: "主营业务深度画像",
+        desc: "5大主营赛道 · 热度地图 · 横向对比 · 赛道龙头排行",
+        tags: ["赛道热度", "横向对比", "龙头排行"],
+        color: "purple",
+      },
+    ],
+  },
   compliance: {
     label: "合规管理",
     icon: Shield,
@@ -229,6 +269,7 @@ const navColorMap: Record<string, { active: string; hover: string; icon: string;
   yellow:  { active: "bg-yellow-500/20 text-yellow-300 border-l-2 border-yellow-400", hover: "hover:bg-yellow-500/10 hover:text-yellow-300", icon: "text-yellow-400", dot: "bg-yellow-400" },
   emerald: { active: "bg-emerald-500/20 text-emerald-300 border-l-2 border-emerald-400", hover: "hover:bg-emerald-500/10 hover:text-emerald-300", icon: "text-emerald-400", dot: "bg-emerald-400" },
   blue:    { active: "bg-blue-500/20 text-blue-300 border-l-2 border-blue-400",    hover: "hover:bg-blue-500/10 hover:text-blue-300",    icon: "text-blue-400",    dot: "bg-blue-400" },
+  purple:  { active: "bg-purple-500/20 text-purple-300 border-l-2 border-purple-400", hover: "hover:bg-purple-500/10 hover:text-purple-300", icon: "text-purple-400", dot: "bg-purple-400" },
 };
 
 // ─── 主组件 ──────────────────────────────────────────────────────────────────
@@ -302,7 +343,7 @@ export default function Dashboard() {
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">功能模块</span>
-                <span className="text-white font-semibold">18 个</span>
+                <span className="text-white font-semibold">22 个</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">监管制度</span>
