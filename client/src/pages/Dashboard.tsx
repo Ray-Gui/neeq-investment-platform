@@ -347,6 +347,44 @@ export default function Dashboard() {
                   </Link>
                 </div>
               </div>
+
+              {/* 深度研究模块 */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <Brain size={18} className="text-purple-400" />
+                  深度研究
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Link href="/transfer-cases">
+                    <a className="flex items-center justify-between p-5 bg-green-500/10 border border-green-500/30 rounded-lg hover:bg-green-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">📊 历史转板案例数据库</h3>
+                        <p className="text-sm text-gray-400">北交所全量企业 · 三条路径分析 · 转板前财务画像 · 估值提升统计</p>
+                        <div className="flex gap-2 mt-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-300">盈利型路径</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">成长型路径</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-300">市值型路径</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="text-green-400 group-hover:translate-x-1 transition-transform flex-shrink-0" size={20} />
+                    </a>
+                  </Link>
+                  <Link href="/a-stock-benchmark">
+                    <a className="flex items-center justify-between p-5 bg-blue-500/10 border border-blue-500/30 rounded-lg hover:bg-blue-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">📈 A股可比公司对标</h3>
+                        <p className="text-sm text-gray-400">三大行业A股估值参考 · 动态折价率分析 · 行业景气度横向对比</p>
+                        <div className="flex gap-2 mt-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300">PE/PB/PS对标</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300">折价率分析</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300">行业景气度</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="text-blue-400 group-hover:translate-x-1 transition-transform flex-shrink-0" size={20} />
+                    </a>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Next Steps */}

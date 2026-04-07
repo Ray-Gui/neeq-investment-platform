@@ -22,6 +22,8 @@ import InventoryRisk from "./pages/InventoryRisk";
 import SpreadAnalysis from "./pages/SpreadAnalysis";
 import ComplianceLibrary from "./pages/ComplianceLibrary";
 import FairValueModel from "./pages/FairValueModel";
+import TransferCaseDB from "./pages/TransferCaseDB";
+import AStockBenchmark from "./pages/AStockBenchmark";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -46,6 +48,8 @@ function Router() {
       <Route path={"/spread-analysis"} component={SpreadAnalysis} />
       <Route path={"/compliance"} component={ComplianceLibrary} />
       <Route path={"/fair-value"} component={FairValueModel} />
+      <Route path={"/transfer-cases"} component={TransferCaseDB} />
+      <Route path={"/a-stock-benchmark"} component={AStockBenchmark} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
