@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, TrendingUp, Zap, Brain, BarChart3, Users } from "lucide-react";
+import { ArrowRight, TrendingUp, Zap, Brain, BarChart3, Users, Shield } from "lucide-react";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<"bse" | "neeq">("bse");
@@ -308,6 +308,37 @@ export default function Dashboard() {
                       <ArrowRight className="text-yellow-400 group-hover:translate-x-1 transition-transform" size={20} />
                     </a>
                   </Link>
+                </div>
+              </div>
+
+              {/* 合规管理 */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <Shield size={18} className="text-blue-400" />
+                  合规管理
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Link href="/compliance">
+                    <a className="flex items-center justify-between p-5 bg-blue-500/10 border border-blue-500/30 rounded-lg hover:bg-blue-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">🛡️ 合规管理库</h3>
+                        <p className="text-sm text-gray-400">10部监管制度全文 · 条款检索 · 15项合规自查清单</p>
+                        <div className="flex gap-2 mt-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300">做市业务规则</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-300">信息披露</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">北交所转板</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="text-blue-400 group-hover:translate-x-1 transition-transform flex-shrink-0" size={20} />
+                    </a>
+                  </Link>
+                  <div className="flex items-center p-5 bg-slate-800/50 border border-slate-700 rounded-lg">
+                    <div>
+                      <h3 className="font-semibold text-gray-400 mb-1">⚖️ 公允价值定价模型</h3>
+                      <p className="text-sm text-gray-500">PE/PB/PS三法估值 · 可比公司法 · 报价区间建议</p>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-gray-500 mt-2 inline-block">开发中</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -20,6 +20,7 @@ import LiquidityScore from "./pages/LiquidityScore";
 import IndustryBenchmark from "./pages/IndustryBenchmark";
 import InventoryRisk from "./pages/InventoryRisk";
 import SpreadAnalysis from "./pages/SpreadAnalysis";
+import ComplianceLibrary from "./pages/ComplianceLibrary";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -42,6 +43,7 @@ function Router() {
       <Route path={"/industry-benchmark"} component={IndustryBenchmark} />
       <Route path={"/inventory-risk"} component={InventoryRisk} />
       <Route path={"/spread-analysis"} component={SpreadAnalysis} />
+      <Route path={"/compliance"} component={ComplianceLibrary} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
