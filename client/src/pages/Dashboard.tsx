@@ -332,13 +332,19 @@ export default function Dashboard() {
                       <ArrowRight className="text-blue-400 group-hover:translate-x-1 transition-transform flex-shrink-0" size={20} />
                     </a>
                   </Link>
-                  <div className="flex items-center p-5 bg-slate-800/50 border border-slate-700 rounded-lg">
-                    <div>
-                      <h3 className="font-semibold text-gray-400 mb-1">⚖️ 公允价值定价模型</h3>
-                      <p className="text-sm text-gray-500">PE/PB/PS三法估值 · 可比公司法 · 报价区间建议</p>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-gray-500 mt-2 inline-block">开发中</span>
-                    </div>
-                  </div>
+                  <Link href="/fair-value">
+                    <a className="flex items-center justify-between p-5 bg-yellow-500/10 border border-yellow-500/30 rounded-lg hover:bg-yellow-500/20 transition-colors group">
+                      <div>
+                        <h3 className="font-semibold text-white mb-1">⚖️ 公允价值定价模型</h3>
+                        <p className="text-sm text-gray-400">PE/PB/PS三法估值 · 可比公司法 · 做市报价区间建议</p>
+                        <div className="flex gap-2 mt-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-300">三大行业</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300">报价区间</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="text-yellow-400 group-hover:translate-x-1 transition-transform flex-shrink-0" size={20} />
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
