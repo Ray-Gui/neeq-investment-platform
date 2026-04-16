@@ -1,0 +1,258 @@
+{
+  "软件和信息技术服务业": {
+    "industry_name": "软件和信息技术服务业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 654527777.78,
+      "avg_profit_3yr": 75467119.45,
+      "avg_revenue_last": 676250000.0,
+      "avg_profit_last": 88158716.67,
+      "avg_margin_last": 13.04,
+      "count": 12
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "软件和信息技术服务业",
+      "avg_revenue_3yr": 354580644.22,
+      "avg_profit_3yr": 41725535.18,
+      "avg_revenue_last": 366348333.55,
+      "avg_profit_last": 48742679.74,
+      "avg_margin_last": 11.14,
+      "sample_size": 25
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "软件和信息技术服务业",
+      "avg_revenue_3yr": 2423238608.16,
+      "avg_profit_3yr": 140908280.29,
+      "avg_revenue_last": 2503660141.55,
+      "avg_profit_last": 164605370.52,
+      "avg_margin_last": 16.26,
+      "sample_size": 32
+    }
+  },
+  "计算机、通信和其他电子设备制造业": {
+    "industry_name": "计算机、通信和其他电子设备制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 630111111.11,
+      "avg_profit_3yr": 79320722.22,
+      "avg_revenue_last": 745666666.67,
+      "avg_profit_last": 87205866.67,
+      "avg_margin_last": 11.7,
+      "count": 3
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "计算机、通信和其他电子设备制造业",
+      "avg_revenue_3yr": 392928315.75,
+      "avg_profit_3yr": 50460111.59,
+      "avg_revenue_last": 464987114.62,
+      "avg_profit_last": 55476269.51,
+      "avg_margin_last": 11.52,
+      "sample_size": 30
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "计算机、通信和其他电子设备制造业",
+      "avg_revenue_3yr": 1960489585.03,
+      "avg_profit_3yr": 275123792.73,
+      "avg_revenue_last": 2320022148.7,
+      "avg_profit_last": 302473403.1,
+      "avg_margin_last": 12.01,
+      "sample_size": 79
+    }
+  },
+  "化学原料和化学制品制造业": {
+    "industry_name": "化学原料和化学制品制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 696194444.45,
+      "avg_profit_3yr": 88070502.78,
+      "avg_revenue_last": 742833333.33,
+      "avg_profit_last": 101936183.33,
+      "avg_margin_last": 13.72,
+      "count": 6
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "化学原料和化学制品制造业",
+      "avg_revenue_3yr": 488120951.43,
+      "avg_profit_3yr": 53790049.45,
+      "avg_revenue_last": 520820751.02,
+      "avg_profit_last": 62258669.69,
+      "avg_margin_last": 13.2,
+      "sample_size": 50
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "化学原料和化学制品制造业",
+      "avg_revenue_3yr": 1392726579.19,
+      "avg_profit_3yr": 210215803.28,
+      "avg_revenue_last": 1486026979.22,
+      "avg_profit_last": 243311846.59,
+      "avg_margin_last": 16.46,
+      "sample_size": 43
+    }
+  },
+  "医药制造业": {
+    "industry_name": "医药制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 421277777.78,
+      "avg_profit_3yr": 72961155.56,
+      "avg_revenue_last": 473000000.0,
+      "avg_profit_last": 85400800.0,
+      "avg_margin_last": 18.06,
+      "count": 3
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "医药制造业",
+      "avg_revenue_3yr": 260465503.67,
+      "avg_profit_3yr": 36653567.56,
+      "avg_revenue_last": 292444058.84,
+      "avg_profit_last": 42902883.99,
+      "avg_margin_last": 16.37,
+      "sample_size": 28
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "医药制造业",
+      "avg_revenue_3yr": 1649515633.9,
+      "avg_profit_3yr": 187187203.27,
+      "avg_revenue_last": 1852034301.32,
+      "avg_profit_last": 219102024.72,
+      "avg_margin_last": 18.63,
+      "sample_size": 56
+    }
+  },
+  "其他制造业": {
+    "industry_name": "其他制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 479049393.33,
+      "avg_profit_3yr": 78730666.67,
+      "avg_revenue_last": 630000000.0,
+      "avg_profit_last": 98845220.0,
+      "avg_margin_last": 15.69,
+      "count": 5
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "其他制造业",
+      "avg_revenue_3yr": 264606327.71,
+      "avg_profit_3yr": 53928281.17,
+      "avg_revenue_last": 347984965.18,
+      "avg_profit_last": 67706181.62,
+      "avg_margin_last": 14.89,
+      "sample_size": 30
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "其他制造业",
+      "avg_revenue_3yr": 1241874193.84,
+      "avg_profit_3yr": 198360701.84,
+      "avg_revenue_last": 1633194307.33,
+      "avg_profit_last": 249039009.09,
+      "avg_margin_last": 18.77,
+      "sample_size": 81
+    }
+  },
+  "专用设备制造业": {
+    "industry_name": "专用设备制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 915277777.78,
+      "avg_profit_3yr": 129897388.89,
+      "avg_revenue_last": 1027666666.67,
+      "avg_profit_last": 149000000.0,
+      "avg_margin_last": 14.5,
+      "count": 3
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "专用设备制造业",
+      "avg_revenue_3yr": 486230849.69,
+      "avg_profit_3yr": 85504292.27,
+      "avg_revenue_last": 545936161.3,
+      "avg_profit_last": 98078488.39,
+      "avg_margin_last": 12.89,
+      "sample_size": 19
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "专用设备制造业",
+      "avg_revenue_3yr": 2208003822.79,
+      "avg_profit_3yr": 244976980.53,
+      "avg_revenue_last": 2479129269.44,
+      "avg_profit_last": 281003108.76,
+      "avg_margin_last": 17.24,
+      "sample_size": 95
+    }
+  },
+  "电气机械和器材制造业": {
+    "industry_name": "电气机械和器材制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 399833333.33,
+      "avg_profit_3yr": 49189516.67,
+      "avg_revenue_last": 459500000.0,
+      "avg_profit_last": 57640100.0,
+      "avg_margin_last": 12.54,
+      "count": 2
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "电气机械和器材制造业",
+      "avg_revenue_3yr": 256066186.15,
+      "avg_profit_3yr": 29569897.73,
+      "avg_revenue_last": 294278647.45,
+      "avg_profit_last": 34649900.57,
+      "avg_margin_last": 11.31,
+      "sample_size": 29
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "电气机械和器材制造业",
+      "avg_revenue_3yr": 1717166799.54,
+      "avg_profit_3yr": 110463170.61,
+      "avg_revenue_last": 1973417618.33,
+      "avg_profit_last": 129440348.91,
+      "avg_margin_last": 13.47,
+      "sample_size": 42
+    }
+  },
+  "汽车制造业": {
+    "industry_name": "汽车制造业",
+    "bse": {
+      "market": "北交所",
+      "avg_revenue_3yr": 2043000000.0,
+      "avg_profit_3yr": 134333333.33,
+      "avg_revenue_last": 2295000000.0,
+      "avg_profit_last": 157000000.0,
+      "avg_margin_last": 6.84,
+      "count": 1
+    },
+    "neeq": {
+      "market": "新三板",
+      "industry_name": "汽车制造业",
+      "avg_revenue_3yr": 1165870320.05,
+      "avg_profit_3yr": 89957914.94,
+      "avg_revenue_last": 1309678112.84,
+      "avg_profit_last": 105136917.96,
+      "avg_margin_last": 6.25,
+      "sample_size": 30
+    },
+    "a_stock": {
+      "market": "A股",
+      "industry_name": "汽车制造业",
+      "avg_revenue_3yr": 7072785621.74,
+      "avg_profit_3yr": 258378407.61,
+      "avg_revenue_last": 7945199707.25,
+      "avg_profit_last": 301975756.79,
+      "avg_margin_last": 7.15,
+      "sample_size": 86
+    }
+  }
+}
