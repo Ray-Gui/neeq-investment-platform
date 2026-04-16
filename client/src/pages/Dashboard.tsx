@@ -181,6 +181,14 @@ const MODULES = {
         tags: ["折价率", "PE/PB/PS", "景气度"],
         color: "indigo",
       },
+      {
+        href: "/pre-ipo-financial",
+        icon: "📊",
+        title: "上市前财务分析",
+        desc: "北交所公司上市前三年平均营收/利润 · 前一年详细数据 · 真实财务趋势",
+        tags: ["上市前三年", "财务趋势", "营收利润"],
+        color: "teal",
+      },
     ],
   },
   deep_research: {
