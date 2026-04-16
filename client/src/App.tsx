@@ -28,6 +28,7 @@ import GeoDistribution from "./pages/GeoDistribution";
 import SubTrackAnalysis from "./pages/SubTrackAnalysis";
 import TransferSimilarity from "./pages/TransferSimilarity";
 import BusinessProfile from "./pages/BusinessProfile";
+import PreIPOFinancial from "./pages/PreIPOFinancial";
 import PasswordProtect from "./pages/PasswordProtect";
 import { useState, useEffect } from "react";
 
@@ -58,6 +59,7 @@ function Router() {
       <Route path={"/sub-track"} component={SubTrackAnalysis} />
       <Route path={"/transfer-similarity"} component={TransferSimilarity} />
       <Route path={"/business-profile"} component={BusinessProfile} />
+      <Route path={"/pre-ipo-financial"} component={PreIPOFinancial} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
