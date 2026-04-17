@@ -925,14 +925,14 @@ export default function PreIPOFinancial() {
         </Tabs>
       </div>
 
-      {/* Company Detail Dialog */}
+      {/* Company Detail Dialog - Full Screen */}
       <Dialog open={!!selectedCompany} onOpenChange={() => setSelectedCompany(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto bg-slate-900 border-slate-700">
+        <DialogContent className="w-[95vw] max-w-[95vw] h-[90vh] overflow-auto bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-xl text-white">
+            <DialogTitle className="text-2xl text-white">
               {selectedCompany?.name}（{selectedCompany?.code}）
             </DialogTitle>
-            <DialogDescription className="text-slate-400">
+            <DialogDescription className="text-slate-400 text-base">
               {selectedCompany?.industry} · {selectedCompany?.region} · 上市日期 {selectedCompany?.listing_date}
             </DialogDescription>
           </DialogHeader>
@@ -940,45 +940,74 @@ export default function PreIPOFinancial() {
           {selectedCompany && (
             <div className="space-y-6">
               {/* Summary */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="bg-slate-800/50 rounded-lg p-3">
-                  <div className="text-xs text-slate-500">上市前一年营收</div>
-                  <div className="text-lg font-bold text-emerald-400">{formatNumber(selectedCompany.last_full_year.revenue)}</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-1">上市前一年营收</div>
+                  <div className="text-2xl font-bold text-emerald-400">{formatNumber(selectedCompany.last_full_year.revenue)}</div>
+                  <div className="text-xs text-slate-500 mt-1">{selectedCompany.last_full_year.year}年报</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-3">
-                  <div className="text-xs text-slate-500">上市前一年净利润</div>
-                  <div className={`text-lg font-bold ${(selectedCompany.last_full_year.net_profit || 0) >= 0 ? "text-blue-400" : "text-red-400"}`}>
+                <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-1">上市前一年净利润</div>
+                  <div className={`text-2xl font-bold ${(selectedCompany.last_full_year.net_profit || 0) >= 0 ? "text-blue-400" : "text-red-400"}`}>
                     {formatNumber(selectedCompany.last_full_year.net_profit)}
                   </div>
+                  <div className="text-xs text-slate-500 mt-1">净利率: {selectedCompany.last_full_year.net_profit && selectedCompany.last_full_year.revenue ? 
+                    ((selectedCompany.last_full_year.net_profit / selectedCompany.last_full_year.revenue) * 100).toFixed(2) + "%" : "-"}</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-3">
-                  <div className="text-xs text-slate-500">上市前一年毛利率</div>
-                  <div className="text-lg font-bold text-purple-400">{formatPercent(selectedCompany.last_full_year.gross_margin)}</div>
+                <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-1">上市前一年毛利率</div>
+                  <div className="text-2xl font-bold text-purple-400">{formatPercent(selectedCompany.last_full_year.gross_margin)}</div>
+                  <div className="text-xs text-slate-500 mt-1">毛利率=毛利/营收</div>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-3">
-                  <div className="text-xs text-slate-500">上市前一年ROE</div>
-                  <div className={`text-lg font-bold ${(selectedCompany.last_full_year.roe || 0) >= 0 ? "text-amber-400" : "text-red-400"}`}>
+                <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-1">上市前一年ROE</div>
+                  <div className={`text-2xl font-bold ${(selectedCompany.last_full_year.roe || 0) >= 0 ? "text-amber-400" : "text-red-400"}`}>
                     {formatPercent(selectedCompany.last_full_year.roe)}
+                  </div>
+                  <div className="text-xs text-slate-500 mt-1">净资产收益率</div>
+                </div>
+              </div>
+
+              {/* Three-year average */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 rounded-lg p-4 border border-cyan-800">
+                  <div className="text-sm text-cyan-400 mb-1">上市前三年平均营收</div>
+                  <div className="text-xl font-bold text-cyan-300">{formatNumber(selectedCompany.avg_3y.revenue)}</div>
+                </div>
+                <div className="bg-gradient-to-br from-blue-900/30 to-blue-900/10 rounded-lg p-4 border border-blue-800">
+                  <div className="text-sm text-blue-400 mb-1">上市前三年平均净利润</div>
+                  <div className={`text-xl font-bold ${(selectedCompany.avg_3y.net_profit || 0) >= 0 ? "text-blue-300" : "text-red-300"}`}>
+                    {formatNumber(selectedCompany.avg_3y.net_profit)}
+                  </div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-900/30 to-purple-900/10 rounded-lg p-4 border border-purple-800">
+                  <div className="text-sm text-purple-400 mb-1">上市前三年平均毛利率</div>
+                  <div className="text-xl font-bold text-purple-300">{formatPercent(selectedCompany.avg_3y.gross_margin)}</div>
+                </div>
+                <div className="bg-gradient-to-br from-amber-900/30 to-amber-900/10 rounded-lg p-4 border border-amber-800">
+                  <div className="text-sm text-amber-400 mb-1">上市前三年平均ROE</div>
+                  <div className={`text-xl font-bold ${(selectedCompany.avg_3y.roe || 0) >= 0 ? "text-amber-300" : "text-red-300"}`}>
+                    {formatPercent(selectedCompany.avg_3y.roe)}
                   </div>
                 </div>
               </div>
 
               {/* Charts */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card className="bg-slate-800/50 border-slate-700">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-sm text-slate-300">营收与净利润趋势</CardTitle>
+                    <CardTitle className="text-base text-slate-200">📈 营收与净利润趋势（上市前）</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ResponsiveContainer width="100%" height={250}>
+                    <ResponsiveContainer width="100%" height={350}>
                       <BarChart data={companyChartData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                        <XAxis dataKey="year" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                        <XAxis dataKey="year" tick={{ fill: '#94a3b8', fontSize: 13 }} />
                         <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} tickFormatter={v => formatNumber(v)} />
                         <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: 8 }} formatter={(v: number) => formatNumber(v)} />
                         <Legend />
-                        <Bar dataKey="营业收入" fill="#06b6d4" />
-                        <Bar dataKey="净利润" fill="#3b82f6" />
+                        <Bar dataKey="营业收入" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="净利润" fill="#3b82f6" radius={[4, 4, 0, 0]} />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
@@ -986,43 +1015,107 @@ export default function PreIPOFinancial() {
 
                 <Card className="bg-slate-800/50 border-slate-700">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-sm text-slate-300">毛利率与ROE趋势</CardTitle>
+                    <CardTitle className="text-base text-slate-200">📊 毛利率与ROE趋势（上市前）</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ResponsiveContainer width="100%" height={250}>
+                    <ResponsiveContainer width="100%" height={350}>
                       <BarChart data={companyChartData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                        <XAxis dataKey="year" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                        <XAxis dataKey="year" tick={{ fill: '#94a3b8', fontSize: 13 }} />
                         <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} tickFormatter={v => v + "%"} />
                         <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: 8 }} formatter={(v: number) => v + "%"} />
                         <Legend />
-                        <Bar dataKey="毛利率" fill="#8b5cf6" />
-                        <Bar dataKey="ROE" fill="#f59e0b" />
+                        <Bar dataKey="毛利率" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="ROE" fill="#f59e0b" radius={[4, 4, 0, 0]} />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
                 </Card>
               </div>
 
+              {/* Company info */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-2">🏢 公司基本信息</div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">公司全称</span>
+                      <span className="text-white">{selectedCompany.name}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">股票代码</span>
+                      <span className="text-cyan-400 font-mono">{selectedCompany.code}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">上市日期</span>
+                      <span className="text-white">{selectedCompany.listing_date}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">上市年份</span>
+                      <span className="text-white">{selectedCompany.listing_year}年</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-2">🏭 行业分类</div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">证监会行业</span>
+                      <span className="text-white text-right max-w-[150px] truncate" title={selectedCompany.industry}>{selectedCompany.industry}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">东财行业</span>
+                      <span className="text-cyan-400 text-right max-w-[150px] truncate" title={selectedCompany.em_industry}>{selectedCompany.em_industry}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">所在地区</span>
+                      <span className="text-white">{selectedCompany.region}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">数据年数</span>
+                      <span className="text-white">{selectedCompany.data_years_count}年</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-sm text-slate-400 mb-2">📊 股本信息</div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">总股本</span>
+                      <span className="text-white">{selectedCompany.total_shares ? formatNumber(selectedCompany.total_shares) : "-"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">流通股本</span>
+                      <span className="text-cyan-400">{selectedCompany.float_shares ? formatNumber(selectedCompany.float_shares) : "-"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">数据年份</span>
+                      <span className="text-white">{selectedCompany.data_years.join(", ")}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Detail table */}
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm text-slate-300">历年财务明细</CardTitle>
+                  <CardTitle className="text-base text-slate-200">📋 历年财务明细（上市前）</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="rounded-lg border border-slate-600 overflow-auto">
                     <Table>
                       <TableHeader>
                         <TableRow className="border-slate-600 hover:bg-slate-700/50">
-                          <TableHead className="text-slate-400">年份</TableHead>
-                          <TableHead className="text-slate-400 text-right">营业收入</TableHead>
-                          <TableHead className="text-slate-400 text-right">同比增长</TableHead>
-                          <TableHead className="text-slate-400 text-right">净利润</TableHead>
-                          <TableHead className="text-slate-400 text-right">同比增长</TableHead>
-                          <TableHead className="text-slate-400 text-right">毛利率</TableHead>
-                          <TableHead className="text-slate-400 text-right">ROE</TableHead>
-                          <TableHead className="text-slate-400 text-right">EPS</TableHead>
-                          <TableHead className="text-slate-400 text-right">每股经营现金流</TableHead>
+                          <TableHead className="text-slate-300">年份</TableHead>
+                          <TableHead className="text-slate-300 text-right">营业收入</TableHead>
+                          <TableHead className="text-slate-300 text-right">营收同比</TableHead>
+                          <TableHead className="text-slate-300 text-right">净利润</TableHead>
+                          <TableHead className="text-slate-300 text-right">利润同比</TableHead>
+                          <TableHead className="text-slate-300 text-right">毛利率</TableHead>
+                          <TableHead className="text-slate-300 text-right">ROE</TableHead>
+                          <TableHead className="text-slate-300 text-right">每股收益</TableHead>
+                          <TableHead className="text-slate-300 text-right">每股净资产</TableHead>
+                          <TableHead className="text-slate-300 text-right">每股现金流</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -1030,23 +1123,24 @@ export default function PreIPOFinancial() {
                           .sort(([a], [b]) => b.localeCompare(a))
                           .map(([year, data]) => (
                             <TableRow key={year} className="border-slate-700/50 hover:bg-slate-700/30">
-                              <TableCell className="text-white font-medium">{year}</TableCell>
+                              <TableCell className="text-white font-bold text-lg">{year}</TableCell>
                               <TableCell className="text-right text-emerald-400 font-mono">{formatNumber(data.revenue)}</TableCell>
                               <TableCell className={`text-right font-mono ${(data.revenue_yoy || 0) >= 0 ? "text-green-400" : "text-red-400"}`}>
-                                {data.revenue_yoy != null ? data.revenue_yoy.toFixed(2) + "%" : "-"}
+                                {data.revenue_yoy != null ? (data.revenue_yoy > 0 ? "+" : "") + data.revenue_yoy.toFixed(2) + "%" : "-"}
                               </TableCell>
                               <TableCell className={`text-right font-mono ${(data.net_profit || 0) >= 0 ? "text-blue-400" : "text-red-400"}`}>
                                 {formatNumber(data.net_profit)}
                               </TableCell>
                               <TableCell className={`text-right font-mono ${(data.net_profit_yoy || 0) >= 0 ? "text-green-400" : "text-red-400"}`}>
-                                {data.net_profit_yoy != null ? data.net_profit_yoy.toFixed(2) + "%" : "-"}
+                                {data.net_profit_yoy != null ? (data.net_profit_yoy > 0 ? "+" : "") + data.net_profit_yoy.toFixed(2) + "%" : "-"}
                               </TableCell>
                               <TableCell className="text-right text-purple-400 font-mono">{formatPercent(data.gross_margin)}</TableCell>
                               <TableCell className={`text-right font-mono ${(data.roe || 0) >= 0 ? "text-amber-400" : "text-red-400"}`}>
                                 {formatPercent(data.roe)}
                               </TableCell>
-                              <TableCell className="text-right text-slate-300 font-mono">{data.eps != null ? data.eps.toFixed(4) : "-"}</TableCell>
-                              <TableCell className="text-right text-slate-300 font-mono">{data.cash_per_share != null ? data.cash_per_share.toFixed(2) : "-"}</TableCell>
+                              <TableCell className="text-right text-slate-200 font-mono">{data.eps != null ? data.eps.toFixed(4) : "-"}</TableCell>
+                              <TableCell className="text-right text-slate-200 font-mono">{data.bvps != null ? data.bvps.toFixed(2) : "-"}</TableCell>
+                              <TableCell className="text-right text-slate-200 font-mono">{data.cash_per_share != null ? data.cash_per_share.toFixed(2) : "-"}</TableCell>
                             </TableRow>
                           ))}
                       </TableBody>
