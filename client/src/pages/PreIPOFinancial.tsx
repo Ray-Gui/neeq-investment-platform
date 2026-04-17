@@ -268,25 +268,22 @@ export default function PreIPOFinancial() {
   const compData = useMemo(() => {
     if (!comparisonIndustry || !comparison[comparisonIndustry]) return null;
     const indComp = comparison[comparisonIndustry];
-    const years = Object.keys(indComp).sort();
-    return years.map(year => {
-      const d = indComp[year];
-      return {
-        year,
-        "A股均值营收": d.ashare.avg_revenue,
-        "北交所均值营收": d.bse.avg_revenue,
-        "新三板均值营收": d.neeq.avg_revenue,
-        "A股毛利率": d.ashare.avg_gross_margin,
-        "北交所毛利率": d.bse.avg_gross_margin,
-        "新三板毛利率": d.neeq.avg_gross_margin,
-        "A股ROE": d.ashare.avg_roe,
-        "北交所ROE": d.bse.avg_roe,
-        "新三板ROE": d.neeq.avg_roe,
-        "A股公司数": d.ashare.count,
-        "北交所公司数": d.bse.count,
-        "新三板公司数": d.neeq.count,
-      };
-    });
+    // 数据结构是 { bse: {...}, neeq: {...}, a_stock: {...} }
+    return [{
+      year: "当前",
+      "A股均值营收": indComp.a_stock?.avg_revenue_3yr || 0,
+      "北交所均值营收": indComp.bse?.avg_revenue_3yr || 0,
+      "新三板均值营收": indComp.neeq?.avg_revenue_3yr || 0,
+      "A股毛利率": indComp.a_stock?.avg_margin_last || 0,
+      "北交所毛利率": indComp.bse?.avg_margin_last || 0,
+      "新三板毛利率": indComp.neeq?.avg_margin_last || 0,
+      "A股ROE": 0,
+      "北交所ROE": 0,
+      "新三板ROE": 0,
+      "A股公司数": indComp.a_stock?.sample_size || 0,
+      "北交所公司数": indComp.bse?.count || 0,
+      "新三板公司数": indComp.neeq?.sample_size || 0,
+    }];
   }, [comparison, comparisonIndustry]);
 
   // Radar chart data
