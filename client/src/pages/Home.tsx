@@ -10,6 +10,7 @@ import SponsorTab from "@/components/SponsorTab";
 import ProvinceTab from "@/components/ProvinceTab";
 import PETab from "@/components/PETab";
 import ResearchSummaryTab from "@/components/ResearchSummaryTab";
+import TopNav from "@/components/TopNav";
 
 const PDF_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663106941819/L3jdtkWk9JZNhxFtGdcAp9/%E5%8C%97%E4%BA%A4%E6%89%80%E4%B8%8A%E5%B8%82%E4%BC%81%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A_BSE%20Listed%20Companies%20Research%20Report_b41441e5.pdf";
 const XLSX_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663106941819/L3jdtkWk9JZNhxFtGdcAp9/%E5%8C%97%E4%BA%A4%E6%89%80%E4%B8%8A%E5%B8%82%E4%BC%81%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A_BSE%20Listed%20Companies%20Research%20Report_2622fde0.xlsx";
@@ -143,6 +144,8 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      <TopNav />
 
       {/* Main content */}
       <main className="flex-1 container py-6">

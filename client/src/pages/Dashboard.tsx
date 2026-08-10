@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import TopNav from "../components/TopNav";
 import {
   ArrowRight,
   TrendingUp,
@@ -324,6 +325,8 @@ export default function Dashboard() {
           </div>
         </div>
       </header>
+
+      <TopNav />
 
       {/* ── Body ── */}
       <div className="flex flex-1 container mx-auto px-6 py-8 gap-8">
