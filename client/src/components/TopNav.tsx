@@ -4,7 +4,6 @@ const NAV_ITEMS = [
   { href: "/", label: "仪表盘" },
   { href: "/neeq", label: "企业库" },
   { href: "/bse", label: "北交所" },
-  { href: "/industry-research", label: "行业研究" },
   { href: "/bse_policy_impact.html", label: "政策研究", external: true },
 ];
 
