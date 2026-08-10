@@ -31,11 +31,14 @@ import TransferSimilarity from "./pages/TransferSimilarity";
 import BusinessProfile from "./pages/BusinessProfile";
 import PreIPOFinancial from "./pages/PreIPOFinancial";
 import PasswordProtect from "./pages/PasswordProtect";
+import TopNav from "./components/TopNav";
 import { useState, useEffect } from "react";
 
 function Router() {
   return (
-    <Switch>
+    <>
+      <TopNav />
+      <Switch>
       <Route path={"/"} component={Dashboard} />
       <Route path={"/bse"} component={Home} />
       <Route path={"/neeq"} component={NEEQCompanies} />
@@ -64,7 +67,8 @@ function Router() {
       <Route path={"/pre-ipo-financial"} component={PreIPOFinancial} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
-    </Switch>
+      </Switch>
+    </>
   );
 }
 

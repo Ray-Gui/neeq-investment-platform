@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import TopNav from "../components/TopNav";
 import {
   ArrowRight,
   TrendingUp,
@@ -13,6 +12,7 @@ import {
   Target,
   AlertTriangle,
   BookOpen,
+  FileText,
   Scale,
   History,
   GitCompare,
@@ -248,6 +248,23 @@ const MODULES = {
       },
     ],
   },
+  policy_research: {
+    label: "政策研究",
+    icon: FileText,
+    color: "cyan",
+    desc: "北交所政策变动的行业传导与影响",
+    items: [
+      {
+        href: "/bse_policy_impact.html",
+        icon: "📑",
+        title: "北交所政策影响分析",
+        desc: "北交所政策变动对相关行业的传导与影响动态分析（自包含交互报告）",
+        tags: ["政策影响", "行业传导", "动态分析"],
+        color: "cyan",
+        external: true,
+      },
+    ],
+  },
   compliance: {
     label: "合规管理",
     icon: Shield,
@@ -326,8 +343,6 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <TopNav />
-
       {/* ── Body ── */}
       <div className="flex flex-1 container mx-auto px-6 py-8 gap-8">
 
@@ -370,7 +385,7 @@ export default function Dashboard() {
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">功能模块</span>
-                <span className="text-white font-semibold">23 个</span>
+                <span className="text-white font-semibold">24 个</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">监管制度</span>
@@ -395,25 +410,28 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {section.items.map((item) => {
               const c = colorMap[item.color] || colorMap["cyan"];
-              return (
-                <Link key={item.href} href={item.href}>
-                  <a className={`flex flex-col p-5 rounded-xl border ${c.bg} ${c.border} hover:brightness-125 transition-all group cursor-pointer`}>
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{item.icon}</span>
-                        <h3 className="font-semibold text-white text-base">{item.title}</h3>
-                      </div>
-                      <ArrowRight size={16} className={`${c.text} group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1`} />
+              const card = (
+                <a
+                  key={item.href}
+                  className={`flex flex-col p-5 rounded-xl border ${c.bg} ${c.border} hover:brightness-125 transition-all group cursor-pointer`}
+                  {...(item.external ? { href: item.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{item.icon}</span>
+                      <h3 className="font-semibold text-white text-base">{item.title}</h3>
                     </div>
-                    <p className="text-sm text-gray-400 mb-3 leading-relaxed">{item.desc}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.tags.map((tag) => (
-                        <span key={tag} className={`text-xs px-2 py-0.5 rounded-full ${c.tag} ${c.tagText}`}>{tag}</span>
-                      ))}
-                    </div>
-                  </a>
-                </Link>
+                    <ArrowRight size={16} className={`${c.text} group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1`} />
+                  </div>
+                  <p className="text-sm text-gray-400 mb-3 leading-relaxed">{item.desc}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className={`text-xs px-2 py-0.5 rounded-full ${c.tag} ${c.tagText}`}>{tag}</span>
+                    ))}
+                  </div>
+                </a>
               );
+              return item.external ? card : <Link key={item.href} href={item.href}>{card}</Link>;
             })}
           </div>
 
