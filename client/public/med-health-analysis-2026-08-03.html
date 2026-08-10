@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新三板医疗健康行业深度研究 · 2026-08-03</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+ max-width:1120px;margin:0 auto;padding:0 24px 40px;background:#fff;color:#1f2430;line-height:1.78;-webkit-font-smoothing:antialiased}
+/* 报告头 */
+.masthead{background:#0f1f3d;color:#fff;margin:0 -24px 0;padding:22px 28px 18px}
+.masthead .inst{font-size:13px;letter-spacing:2px;color:#9db4e0;font-weight:600}
+.masthead .cat{display:inline-block;margin-top:8px;background:#1d3a6e;color:#cfe0ff;font-size:12px;padding:3px 10px;border-radius:4px}
+.masthead h1{font-size:25px;margin:12px 0 4px;font-weight:800;letter-spacing:-.3px;line-height:1.3}
+.masthead .sub{color:#b9c6e0;font-size:13.5px}
+.masthead .meta{margin-top:10px;font-size:12.5px;color:#9db4e0;display:flex;gap:18px;flex-wrap:wrap}
+.stamp{position:float;float:right;background:#059669;color:#fff;font-weight:800;font-size:15px;
+ padding:10px 16px;border-radius:8px;text-align:center;line-height:1.25;box-shadow:0 4px 14px rgba(5,150,105,.4)}
+.stamp small{display:block;font-size:11px;font-weight:500;opacity:.9}
+/* 评级定义 */
+.rdef{font-size:11.5px;color:#6b7280;margin:6px 0 0}
+/* 摘要卡 */
+.summary-card{background:#f6f9ff;border:1px solid #e3ebfb;border-radius:12px;padding:20px 22px;margin:22px 0}
+.summary-card h2{margin:0 0 12px;font-size:16px;color:#0f1f3d}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #edf0f4}
+th{background:#f3f5f9;font-weight:600;color:#374151;font-size:12.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:hover td{background:#fafbfc}
+.pos{color:#059669;font-weight:600}.neg{color:#dc2626;font-weight:600}.warn{color:#d97706;font-weight:600}
+/* 投资要点 */
+.takeaways{background:#fffdf5;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+.takeaways h2{margin:0 0 10px;font-size:16px;color:#0f1f3d}
+.takeaways ol{margin:0;padding-left:22px}
+.takeaways li{margin-bottom:9px;font-size:14px}
+.takeaways li b{color:#0f1f3d}
+/* 章节 */
+.section{margin-top:30px}
+.sec-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid #0f1f3d;padding-bottom:6px;margin-bottom:14px}
+.sec-head .no{background:#0f1f3d;color:#fff;font-size:13px;font-weight:700;padding:2px 9px;border-radius:4px}
+.sec-head h2{margin:0;font-size:18px;color:#0f1f3d;font-weight:800}
+.sec-body p{font-size:14px;color:#374151;margin:10px 0}
+.sec-body ul.clean{padding-left:20px;margin:10px 0}
+.sec-body ul.clean li{margin-bottom:7px;font-size:14px}
+/* 图表卡 */
+.chart-card{background:#fff;border:1px solid #edf0f3;border-radius:12px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.chart-card h3{margin:0 0 4px;font-size:15.5px;font-weight:700;color:#0f1f3d}
+.chart-card .cap{color:#6b7280;font-size:12.5px;margin-bottom:14px}
+.chart-wrap{position:relative;height:340px}
+.chart-wrap.tall{height:400px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+/* callout */
+.callout{border-left:3px solid #6366f1;background:#f8f9ff;padding:12px 15px;border-radius:0 8px 8px 0;margin:13px 0;font-size:13.5px;color:#374151}
+.callout.red{border-color:#ef4444;background:#fef7f7}
+.callout.amber{border-color:#f59e0b;background:#fffbf3}
+.callout.green{border-color:#10b981;background:#f2fdf8}
+.callout b{display:block;margin-bottom:4px;color:#111827}
+/* 风险提示 */
+.risk-box{background:#fff5f5;border:1px solid #fbd5d5;border-radius:10px;padding:16px 20px;margin:16px 0}
+.risk-box h2{margin:0 0 10px;font-size:15.5px;color:#b91c1c}
+.risk-box ul{padding-left:20px;margin:0}
+.risk-box li{margin-bottom:7px;font-size:13.5px;color:#7f1d1d}
+.disclaimer{color:#6b7280;font-size:12.5px;padding:18px 4px 0;margin-top:30px;border-top:1px solid #e5e7eb;line-height:1.7}
+.src{font-size:11.5px;color:#9ca3af;margin-top:6px}
+h4.mini{font-size:14px;margin:16px 0 6px;color:#111827;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="inst">TRADINGAGENTTEAM 证券研究所 · 策略组</div>
+  <span class="cat">行业深度研究 / 专题策略</span>
+  <div style="overflow:hidden">
+    <div style="float:right;margin-top:8px">
+      <div class="stamp">买入 BUY<small>首次覆盖</small></div>
+    </div>
+    <h1>新三板医疗健康行业：精选转板期权，分层把握左侧机会</h1>
+    <div class="sub">—— 流动性与转板期权负相关下的结构化配置框架</div>
+  </div>
+  <div class="meta">
+    <span>分析师：何执舟（首席策略官）及 12 人研究团队</span>
+    <span>报告日期：2026-08-03</span>
+    <span>样本：新三板医疗健康 386 家（含医药制造 28 家）</span>
+    <span>数据源：NeoData 金融数据服务</span>
+  </div>
+</div>
+<div class="rdef">评级定义：买入（BUY）= 预期 6–12 个月相对基准代理有明确超额收益且风险可控；增持 = 中性偏多；持有 = 区间震荡；减持/卖出 = 风险大于收益。本报告采用分层配置，非整体下注。</div>
+
+<!-- ===== 投资评级与估值摘要 ===== -->
+<div class="summary-card">
+  <h2>投资评级与估值摘要</h2>
+  <table>
+    <tr><th>项目</th><th>内容</th><th>项目</th><th>内容</th></tr>
+    <tr><td><b>投资评级</b></td><td class="pos">买入（BUY）· 分层配置</td><td><b>建议总敞口</b></td><td class="num">8–10%</td></tr>
+    <tr><td><b>当前价（基准代理）</b></td><td class="num">北证50 1076.17<br>中证医疗 6465.83</td><td><b>目标价（中证医疗）</b></td><td class="num">6680 → 6936</td></tr>
+    <tr><td><b>预期空间（中线）</b></td><td class="pos">+3.3% ~ +7.3%</td><td><b>清仓线（北证50）</b></td><td class="num">984.10</td></tr>
+    <tr><td><b>信心水平</b></td><td>中</td><td><b>风险等级</b></td><td class="warn">中高</td></tr>
+    <tr><td><b>风险调整后评分</b></td><td class="num">5.0 / 10</td><td><b>现金储备</b></td><td class="num">15–20%</td></tr>
+  </table>
+</div>
+
+<!-- ===== 投资要点 ===== -->
+<div class="takeaways">
+  <h2>投资要点（Key Takeaways）</h2>
+  <ol>
+    <li><b>行业具备独立配置价值，但必须分层。</b>医疗健康的价值在于"精选转板期权 + 北交所/科创板头部质量"，而非把 386 家新三板当作一个仓位整体下注。</li>
+    <li><b>核心洞察：流动性与转板期权负相关。</b>有流动性的（北交所头部）期权已行权完毕，有期权的（386 家未转板）几乎无流动性。激进方与保守方各自想象的"理想标的"都不存在，必须 L1/L2/L3 分层。</li>
+    <li><b>政策强正面、支付端逆风并存。</b>北交所改革、转板常态化、创新药 License-out 持续放量构成制度红利；但医保支付端连续下滑（6 月 −13.3%，三连降）压制仿制药/IVD/低端耗材。</li>
+    <li><b>当前是左侧窗口，非右侧趋势。</b>中证医疗技术面短中期多头，北证50 仍趋势性下跌（YTD −25.29%）；两者 20 日窗口相关性为负，止损必须"双条件"，单边触发不动作。</li>
+    <li><b>执行方案：L1 现在买、L2 等确认、L3 按归零配置。</b>L1 中证医疗 ETF 5–6%（完全可逆）；L2 北交所头部 2–3%（等 MA20 确认）；L3 新三板精选 1–1.5%（纯期权、不可逆、按本金归零假设）。</li>
+  </ol>
+</div>
+
+<!-- ===== 一、行业概况与基准代理 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">01</span><h2>行业概况与基准代理方法</h2></div>
+  <div class="sec-body">
+    <p>新三板医疗健康板块共 <b>386 家</b>，其中医药制造类新三板样本 <b>28 家</b>，另有若干已登陆北交所的医疗头部企业。相较于 A 股医药（56 家样本），新三板样本平均营收仅为前者的 <b>1/6</b>（2.92 亿 vs 18.5 亿），结构分化极大：头部（创新药出海、高端器械、CXO）盈利质量优秀，尾部（普通仿制药、传统 IVD、低端耗材）持续承压。</p>
+    <p><b>为什么用基准代理？</b>新三板/北交所个股流动性差、缺乏可靠连续行情，无法对全板块做个股级技术刻画。本报告采用双基准代理：<b>北证50（899050.BJ）</b> 表征交易场所的环境与流动性，<b>中证医疗（399989.SZ）</b> 表征行业景气。需要特别提示的是，两者 20 日窗口相关性实测为<b>负</b>——行业景气短多、而交易场所环境趋势性下跌，这一代理偏差已在止损设计中以"双条件"处理。</p>
+    <div class="chart-card">
+      <h3>图表1　基准代理价格走势（61 个交易日真实数据）</h3>
+      <div class="cap">2026-05-06 ~ 2026-08-03 ｜ 逐日收盘价经 NeoData 分窗口实拉，自算 SMA20 与官方值完全吻合（北证50 1106.89 / 中证医疗 6338.74）</div>
+      <div class="chart-wrap tall"><canvas id="priceChart"></canvas></div>
+      <div class="src">左轴：北证50（899050.BJ，环境/流动性代理）｜右轴：中证医疗（399989.SZ，景气代理）。虚线为 SMA20 / SMA60 及关键参考位。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 二、市场表现与技术面 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">02</span><h2>市场表现与技术面</h2></div>
+  <div class="sec-body">
+    <div class="callout red"><b>数据质量说明（重要）</b>
+    本报告在复核阶段修正了初版三处技术数据错误（经独立复拉全部成立）：① 北证50 SMA60 实为 <b>1233.92</b>（非初版误写的 1076），高于现价 14.66%，价格从未触及；② 北证50 实为<b>趋势性下跌</b>（YTD −25.29%），非"弱势震荡"；③ 中证医疗现价 <b>6465.83</b>、YTD <b>−4.35%</b>（负收益）。以下结论均基于修正后数据。</div>
+    <table>
+      <tr><th>指标</th><th>北证50（899050.BJ）</th><th>中证医疗（399989.SZ）</th></tr>
+      <tr><td>现价</td><td class="num">1076.17</td><td class="num">6465.83</td></tr>
+      <tr><td>均线结构</td><td class="neg">全空头，仅站 MA5/MA10</td><td class="pos">MA5&gt;MA10&gt;MA20&gt;MA30&gt;MA60 多头</td></tr>
+      <tr><td>MA20 / MA60</td><td class="num">1106.89 / 1233.92</td><td class="num">6338.74 / 6214.45</td></tr>
+      <tr><td>MA120 / MA250</td><td class="num">1312.67 / 1411.00</td><td class="num">6489.89 / 6936.92</td></tr>
+      <tr><td>布林上轨 / 下轨</td><td class="num">— / 984.10</td><td class="num">6679.45 / 5997.79</td></tr>
+      <tr><td>MACD 柱</td><td class="pos">+8.299（转正）</td><td class="pos">+8.769（转正）</td></tr>
+      <tr><td>RSI(14) / KDJ-J</td><td class="num">39.19 / 80.73</td><td class="num">57.51 / 78.21</td></tr>
+      <tr><td>PE(TTM)</td><td class="neg">42.94</td><td class="num">29.81</td></tr>
+      <tr><td>YTD</td><td class="neg">−25.29%</td><td class="neg">−4.35%</td></tr>
+    </table>
+    <div class="callout amber"><b>核心矛盾</b>行业景气代理（中证医疗）短中期多头 vs 交易场所环境（北证50）趋势性下跌。这一负相关直接推翻了"单条件止损"设计——必须双条件联动。</div>
+    <div class="callout green"><b>意外验证</b>交易员给出的三个价位经复核全部精确对应技术位：止损 984 = 布林下轨 984.10；目标一 6680 = 布林上轨 6679.45；目标二 6936 = MA250 6936.92。</div>
+  </div>
+</div>
+
+<!-- ===== 三、政策环境与催化剂 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">03</span><h2>政策环境与催化剂（新闻面）</h2></div>
+  <div class="sec-body">
+    <p>新闻面综合评分 <b>8.0/10</b>（政策强正、支付端逆风）。</p>
+    <ul class="clean">
+      <li><b>政策强正面：</b>北交所深化改革推进、转板机制常态化、专精特新支持加大、创新药 License-out 持续放量。</li>
+      <li class="neg"><b>医保控费逆风：</b>医保支付端 6 月 <b>−13.3%</b>，已三连降，压制仿制药 / 传统耗材 / IVD。</li>
+      <li class="warn"><b>公募医药持仓降至十年新低 6.73%</b>——双刃剑：既是筹码出清的左侧信号，也是"无人接盘"的流动性警示（该子维度单独评分仅 4.0）。</li>
+    </ul>
+    <div class="callout amber"><b>对 6.73% 的裁定</b>判断标准是"筹码出清时基本面改善还是同步恶化"。结论是<b>结构分化，不是整体信号</b>：创新药出海是左侧信号（License-out 放量 + 头部毛利 70–89%），仿制药/IVD/低端耗材是价值陷阱（医保三连降）。用一个总量数字论证整个赛道，无论多空都是统计陷阱。</div>
+  </div>
+</div>
+
+<!-- ===== 四、基本面与估值 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">04</span><h2>基本面与估值分析</h2></div>
+  <div class="sec-body">
+    <p>基本面综合评分 <b>6.3/10</b>（结构性优质、整体平庸）。</p>
+    <ul class="clean">
+      <li><b>转板重估效应真实存在：</b>新三板 → 北交所历史重估区间 <b>2–4 倍</b>（流动性溢价 + 估值体系切换）。</li>
+      <li><b>头部盈利质量优秀，且原有口径严重失真：</b>锦波生物毛利率约 <b>89%</b>、德源药业约 <b>84%</b>、星昊医药约 <b>70%</b>。原网站背景数据"北交所医药制造平均毛利率 18.06%"口径失真，已勘误。</li>
+      <li><b>结构分化极大：</b>头部（创新药出海、高端器械、CXO）优质；尾部（普通仿制药、传统 IVD、低端耗材）盈利承压。</li>
+      <li><b>规模差距 6 倍以上：</b>新三板 28 家样本平均营收 2.92 亿 / 净利 4290 万 / 毛利率 16.37%；A 股 56 家平均营收 18.5 亿 / 净利 2.19 亿 / 毛利率 18.63%。</li>
+    </ul>
+    <div class="callout"><b>结论</b>选对细分赛道是唯一有效路径，"买赛道"在这里不成立。</div>
+  </div>
+</div>
+
+<!-- ===== 五、资金面与情绪面 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">05</span><h2>资金面与情绪面</h2></div>
+  <div class="sec-body">
+    <p>情绪面综合评分 <b>4.0/10</b>（冰点），是本次分析最弱的一环，也是"左侧"定性的主要来源。</p>
+    <ul class="clean">
+      <li>主力资金持续净流出，北交所整体成交萎缩（07-31 约 181 亿，vs 年初单日约 260 亿）。</li>
+      <li>机构评级覆盖稀少，新三板标的几乎无卖方覆盖。</li>
+      <li>无融资融券 / 北向资金有效通道。</li>
+      <li>市场情绪冰点，缺乏赚钱效应；个别标的存在无基本面支撑的投机脉冲。</li>
+    </ul>
+    <div class="callout red"><b>投资性提示</b>短期缺乏催化、情绪冰点，意味着这是左侧布局而非右侧趋势，须以低暴露、分批、严格风控为前提。</div>
+  </div>
+</div>
+
+<!-- ===== 六、多空辩论与核心分歧 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">06</span><h2>多空辩论与核心分歧</h2></div>
+  <div class="sec-body">
+    <h4 class="mini">6.1　研究主管裁决：SELECTIVE BUY（左侧低暴露）</h4>
+    <p>多头最强论点为<b>制度红利（权重 9）与转板估值期权（权重 9）</b>；空头最强论点为<b>流动性枯竭（权重 9）与重估概率不确定（权重 9）</b>。研究主管裁定：政策制度红利 + 转板期权压过流动性风险，但因情绪面 4.0 与资金离场，必须<b>低暴露、左侧、分批</b>。原始方案：首仓 3–5%、上限 10%，优先创新药（出海）→ 高端器械（出海）→ CXO，回避 IVD 与尾部。</p>
+
+    <h4 class="mini">6.2　三方风险辩论的核心交锋</h4>
+    <div class="callout green"><b>中性方的决定性洞察：流动性与转板期权负相关</b>
+    实查锦波生物（920982.BJ，<b>已转板</b>）日成交 8403 万、换手 1.17%。这一个数据点同时打穿双方：
+    • 打穿保守方"流动性枯竭"——北交所头部日成交 8400 万，2% 仓位根本不是约束；
+    • 打穿激进方"转板 2–4x 明牌期权"——<b>锦波已经转板，期权已行权完毕</b>；
+    • 真正还带期权的是 386 家未转板主体，而它们日成交 0–50 万、无法退出。
+    <b>结论：有流动性的已没期权，有期权的没流动性。必须分层。</b></div>
+
+    <div class="callout"><b>转板期权的期望值测算（中性方）</b>
+    盈亏平衡概率 p* = L/(G+L)：乐观 4x → 9.1%；中枢 3x → <b>16.7%</b>；保守 2x → 33.3%。
+    实际概率：随机在 386 家撒网约 <b>3–6%</b>（远低于门槛，<span class="neg">负期望</span>）；精选（创新层 + 已进辅导期 + 满足北交所财务标准）后 <b>20–40%</b>（<span class="pos">正期望</span>）。
+    <b>明牌的是赔率，不明牌的是概率</b>——概率完全取决于选股能力，买赛道拿不到。</div>
+
+    <div class="callout red"><b>保守方的"范畴错误"反击（部分成立）</b>
+    锦波流通市值 68.93 亿，是星昊（17.94 亿）的 3.8 倍、诺思兰德（14.71 亿）的 4.7 倍。即便换手率相近，后者日成交也仅约 1800 万 / 1470 万。用最不缺流动性的样本去否定最缺流动性的样本，是以偏概全。
+    <b>风险主管裁定：流动性权重分层给——L2 头部降至 5–6（保守让步成立），L3 未转板维持 9（保守正确）。</b></div>
+
+    <div class="callout amber"><b>保守方的终极质疑与回答</b>
+    质疑：若最优组合最大仓位是 A 股医药 ETF（不买新三板也能拿到），那"新三板主题"分析的独立价值在哪？
+    回答：独立价值在<b>精选转板期权 + 北交所头部质量</b>，不在 L3 总量。三条依据：
+    (a) 精选后转板概率 20–40% 跨越 17% 门槛，正期望；(b) 锦波 89%、德源 84% 毛利的头部标的<b>不在中证医疗 ETF 成分内</b>；(c) "多中证医疗 / 低配北证50"的相对价值判断本身就是产出。<b>"精选而非 blanket"正是这项工作的全部意义。</b></div>
+
+    <h4 class="mini">6.3　九大分歧的最终裁定</h4>
+    <table>
+      <tr><th>分歧</th><th>三方立场</th><th>风险主管裁定</th></tr>
+      <tr><td>总敞口</td><td>激进 15–20% / 中性 8–12% / 保守 ≤5%</td><td class="pos"><b>8–10%</b>，落中性下沿</td></tr>
+      <tr><td>现金比例</td><td>交易员 30–40% / 中性 15–20% / 保守 ≥50%</td><td><b>15–20%</b>，采纳中性</td></tr>
+      <tr><td>L1/L2/L3 分层</td><td>中性提出</td><td class="pos"><b>采纳，本裁决方法论基石</b></td></tr>
+      <tr><td>"范畴错误"指控</td><td>保守 vs 中性</td><td><b>部分成立</b>，流动性权重分层给</td></tr>
+      <tr><td>止损机制</td><td>单条件 / 双条件 / 收紧版</td><td class="pos"><b>采纳双条件</b>，负相关证据充分</td></tr>
+      <tr><td>入场时点</td><td>中性"现在" / 保守"等 MA20"</td><td><b>L1 现在买，L2/L3 等确认</b></td></tr>
+      <tr><td>747 目标位</td><td>保守提出</td><td><b>压力测试情景</b>，概率 15–20%</td></tr>
+      <tr><td>主题独立价值</td><td>保守质疑</td><td><b>在精选期权 + 头部质量</b></td></tr>
+      <tr><td>医保 / 赛道排序</td><td>保守要求下调</td><td><b>排序维持，加注约束</b></td></tr>
+    </table>
+
+    <div class="chart-card">
+      <h3>图表2　多空论点权重对比</h3>
+      <div class="cap">多头 8 条 vs 空头 8 条，权重 1–10 由研究主管在 Phase 2 辩论裁决时给出</div>
+      <div class="chart-wrap tall"><canvas id="debateChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 七、风险评估 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">07</span><h2>风险评估</h2></div>
+  <div class="sec-body">
+    <p>风险主管最终裁定：机会 <b>6.0</b> / 风险 <b>7.5</b>（越高越危险）/ 风险调整后吸引力 <b>5.0</b>。三方独立评分如下：激进方机会 8.5（未提供风险/调整后维度）；中性方机会 6.5 / 风险 7.0 / 调整后 5.5；保守方机会 3.5 / 风险 8.0 / 调整后 3.0。</p>
+    <div class="chart-card">
+      <h3>图表3　三方风险评分对比</h3>
+      <div class="cap">激进 / 中性 / 保守三方独立评分 + 风险主管最终裁定</div>
+      <div class="chart-wrap"><canvas id="riskChart"></canvas></div>
+    </div>
+    <div class="two-col">
+      <div class="chart-card">
+        <h3>图表4　五维综合评分</h3>
+        <div class="cap">技术 7.0 / 基本面 6.3 / 新闻 8.0 / 情绪 4.0 / 风险可控度 4.0</div>
+        <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+      </div>
+      <div style="align-self:center">
+        <div class="callout amber"><b>风险评估结论</b>机会主要来自制度红利与精选转板期权；风险主要来自流动性陷阱、系统性 Beta（北证50 YTD −25.29%）与医保/集采尾部。综合为<b>中高风险、中等机会</b>，适合以分层 + 低暴露 + 双条件止损的结构化方式参与。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 八、投资建议与配置策略 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">08</span><h2>投资建议与配置策略</h2></div>
+  <div class="sec-body">
+    <h4 class="mini">8.1　L1 / L2 / L3 分层执行方案</h4>
+    <table>
+      <tr><th>层级</th><th>载体</th><th>配置</th><th>承担什么</th><th>风控手段</th></tr>
+      <tr><td>L1 流动性层</td><td>中证医疗 ETF / A 股医药龙头</td><td class="pos"><b>5–6%</b></td><td>行业景气 β，完全可逆</td><td>常规止损，MA60 6214.45 下方</td></tr>
+      <tr><td>L2 半流动层</td><td>北交所已上市医疗头部 3–4 只</td><td><b>2–3%</b>（首仓 1.5%）</td><td>北交所 β + 已兑现溢价</td><td>双条件止损</td></tr>
+      <tr><td>L3 期权层</td><td>新三板未转板精选 6–10 只</td><td><b>1–1.5%</b></td><td>纯转板期权，不可逆</td><td class="warn">不设止损，按归零配置</td></tr>
+      <tr><td>现金</td><td>—</td><td><b>15–20%</b></td><td>组合干火药</td><td>—</td></tr>
+      <tr style="background:#f3f5f9"><td><b>总敞口</b></td><td>—</td><td class="pos"><b>8–10%</b></td><td>—</td><td>—</td></tr>
+    </table>
+
+    <h4 class="mini">8.2　分批规则</h4>
+    <ul class="clean">
+      <li><b>第一批（现在可执行）：</b>L1 建 3–4% + L2 首仓 1.5%。触发条件：北证50 现价 1076.17 ∈ [1007.64, 1106.89] <b>且</b> MACD 柱 +8.299 已转正——<span class="pos">两条件今日均满足</span>。</li>
+      <li><b>第二批：</b>L1 +1–2%（中证医疗回踩 MA20 6338.74 或 MA60 6214.45，<b>不追高</b>，现距布林上轨仅 +3.32%）；L2 +0.5–1%（北证50 放量站回 MA20 1106.89 满三日，成交较 20 日均值放大 20%）。</li>
+      <li><b>第三批：</b>L2 +1%（北证50 收复 MA60 1233.92，或出现首个明确医疗标的转板过会案例）；L1 至多加至 6%。</li>
+    </ul>
+
+    <h4 class="mini">8.3　止损机制（双条件，否决单条件）</h4>
+    <ul class="clean">
+      <li><b>减仓（L1/L2 各减 50%）：</b>北证50 破 <b>1007.64</b> <b>且</b> 中证医疗同步破 MA20 <b>6338.74</b>。<span class="warn">单一条件成立不触发，仅降低加仓速度。</span></li>
+      <li><b>清仓：</b>北证50 破 <b>984.10</b>（布林下轨）。</li>
+      <li><b>L3 特殊处理：</b>不设止损（流动性上无法执行），按归零配置；<b>时间止损</b>——24 个月未进入辅导期则停止追加并按 −50% 减记。</li>
+    </ul>
+
+    <h4 class="mini">8.4　仓位上限与赛道优先级</h4>
+    <ul class="clean">
+      <li>L1 单标的 ≤3%；L2 单名 ≤0.5–1%；<b>L3 单标 ≤0.3%（硬上限）</b>；L3 总额 ≤1.5%，不因浮盈加仓；单赛道 ≤4%。</li>
+      <li><b>赛道优先级：</b>创新药（出海 / License-out 驱动）→ 高端器械（<b>回避骨科、冠脉等集采扩围子行业</b>）→ CXO（最小且延后）。</li>
+      <li><b>排除清单：</b>IVD 全行业；连续亏损且无产品上市；*ST 标的；纯概念炒作无基本面；普通仿制药尾部；L3 中连续竞价成交为 0 无法退出者。转亏即剔除。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== 九、催化剂、风险事件与证伪条件 ===== -->
+<div class="section">
+  <div class="sec-head"><span class="no">09</span><h2>催化剂、风险事件与证伪条件</h2></div>
+  <div class="sec-body">
+    <div class="two-col">
+      <div>
+        <h4 class="mini" style="color:#059669">上行催化剂</h4>
+        <ul class="clean">
+          <li>北证50 放量站回 MA20 <b>1106.89</b> 满三日 → L2/L3 提速加仓</li>
+          <li>公募医药持仓回升至 <b>7.5%+</b> → 左侧确认</li>
+          <li>首个医疗标的<b>转板过会案例</b> → L3 期权兑现、第三批触发</li>
+          <li>创新药 License-out 金额同比转正 → 出海逻辑强化</li>
+          <li>医保单月支出增速转正 → 控费逆转</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mini" style="color:#dc2626">下行风险事件</h4>
+        <ul class="clean">
+          <li>北证50 有效破 <b>984.10</b> 且成交不放大 → 流动性螺旋（清仓线）</li>
+          <li>医保第 4 / 5 次连降且降幅扩大 → L3 全面暂停<br><span style="color:#6b7280;font-size:12px">（保守方估第四次概率 60–70%、第五次 45–55%）</span></li>
+          <li>集采扩至高端器械（神经外科 / 内镜）→ 重估器械排序</li>
+          <li>Biosecure 升级或全球生物医药融资再冻 → CXO 逆风</li>
+          <li>北证50 PE 向中证医疗收敛至 ~747 → 估值底测试（概率 15–20%）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout red"><b>投资论点证伪条件</b>
+    ① 未来 2 季度公募医药持仓跌破 6.0% <b>且</b> License-out 金额同比转负 → 左侧论证伪；
+    ② 医保第 4/5 次连降且降幅扩大 → L3 全面暂停；
+    ③ 北证50 有效跌破 984.10 且成交不放大 → 流动性螺旋，整体证伪；
+    ④ <b>反向确认</b>：公募持仓回升至 7.5%+ <b>且</b> 北证50 站上 MA20 1106.89 → 左侧成立，可提速加仓。</div>
+  </div>
+</div>
+
+<!-- ===== 十、风险提示 ===== -->
+<div class="risk-box">
+  <h2>风险提示</h2>
+  <ul>
+    <li><b>流动性风险：</b>新三板与北交所市场流动性显著低于主板，存在无法及时成交、无法执行止损的现实风险；L3 层配置应按<b>本金归零</b>假设进行。</li>
+    <li><b>系统性 Beta 风险：</b>北证50 仍处趋势性下跌（YTD −25.29%），若有效跌破清仓线 984.10，行业整体回撤将被放大。</li>
+    <li><b>政策与集采尾部风险：</b>医保支付端连续下滑、集采扩围至高端器械等，可能冲击相关子行业利润与估值。</li>
+    <li><b>转板概率风险：</b>转板为期权而非承诺，随机撒网为负期望；只有精选（创新层 + 辅导期 + 满足财务标准）后概率才跨越盈亏平衡门槛。</li>
+    <li><b>代理偏差风险：</b>本报告采用基准代理法，北证50 与中证医疗 20 日窗口相关性为负，结论对代理选择敏感，不应直接外推至单一标的。</li>
+    <li><b>情绪与资金风险：</b>当前情绪面冰点（评分 4.0），短期缺乏催化，左侧布局需承受阶段性浮亏。</li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <b>数据来源</b>：NeoData 金融数据服务（唯一数据源）。行情数据为 2026-08-03 盘中 12:05 口径；估值快照最新至 2026-07-31；
+  K 线序列 2026-05-06 ~ 2026-08-03 共 61 个交易日，经分窗口实拉获取真实逐日收盘价，自算 SMA20 与官方值完全吻合（北证50 1106.89、中证医疗 6338.74）。<br><br>
+  <b>分析方法</b>：TradingAgentTeam 12 人协作，5 阶段工作流 —— Phase 1 四维并行分析 → Phase 2 多空辩论与研究主管裁决 → Phase 3 交易员方案
+  → Phase 4 三方风险辩论与风险主管裁决 → Phase 5 汇编。因新三板/北交所个股流动性差、缺乏可靠连续行情，价格分析采用基准代理法
+  （北证50 表征交易场所环境，中证医疗表征行业景气），该方法存在代理偏差，两者 20 日窗口相关性实测为负，已在止损设计中作双条件处理。<br><br>
+  ⚠️ <b>免责声明</b>：以上内容由 AI 基于公开信息整理生成，仅供参考，不构成任何投资建议或个股推荐。报告中提及的具体标的仅为数据示例与流动性对照，非推荐标的。
+  投资有风险，决策需谨慎。
+</div>
+
+<script>
+const CD = {"dates": ["2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-03", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-01", "2026-07-02", "2026-07-03", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-03"], "bj": [1363.29, 1404.94, 1436.36, 1426.31, 1419.4, 1438.46, 1384.78, 1378.3, 1356.95, 1364.83, 1349.37, 1323.84, 1327.26, 1316.74, 1284.27, 1253.75, 1285.7, 1244.1, 1249.73, 1246.24, 1299.07, 1316.31, 1337.93, 1295.6, 1252.3, 1242.57, 1263.84, 1276.81, 1280.25, 1265.16, 1271.45, 1281.21, 1295.95, 1277.69, 1266.9, 1225.48, 1251.2, 1264.94, 1266.22, 1287.82, 1245.97, 1236.08, 1204.04, 1209.37, 1209.15, 1127.22, 1152.56, 1131.83, 1101.8, 1076.38, 1045.2, 1079.04, 1074.45, 1075.02, 1031.72, 1055.92, 1055.27, 1064.29, 1049.07, 1083.27, 1076.17], "mh": [6687.11, 6732.37, 6703.62, 6794.95, 6721.85, 6715.71, 6540.58, 6522.84, 6413.74, 6457.96, 6392.38, 6459.85, 6387.65, 6407.2, 6364.28, 6312.91, 6235.54, 6222.63, 6180.87, 6033.98, 5935.05, 5797.3, 5771.56, 5779.35, 5780.22, 5894.47, 5888.59, 5803.85, 5796.75, 5849.7, 5892.19, 5881.32, 5935.64, 5980.04, 5827.57, 6127.38, 6049.63, 6222.21, 6139.79, 6254.41, 6253.18, 6049.32, 5994.13, 6075.41, 6236.12, 6128.38, 6309.96, 6573.07, 6591.05, 6276.19, 6432.1, 6483.61, 6472.02, 6433.14, 6225.94, 6370.69, 6310.17, 6429.62, 6403.35, 6514.63, 6465.83], "bj_sma20": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1342.73, 1339.52, 1335.09, 1330.17, 1323.63, 1315.28, 1305.48, 1299.43, 1294.36, 1290.53, 1285.54, 1281.65, 1279.51, 1277.95, 1276.0, 1275.13, 1273.71, 1271.99, 1273.03, 1273.86, 1275.93, 1273.28, 1269.27, 1262.57, 1258.26, 1256.11, 1250.34, 1244.77, 1237.52, 1228.6, 1219.16, 1207.85, 1197.74, 1186.67, 1176.53, 1164.77, 1156.3, 1146.5, 1136.47, 1125.61, 1115.38, 1106.89], "bj_sma60": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1244.68, 1239.9], "mh_sma20": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6464.4, 6426.8, 6380.04, 6333.44, 6282.66, 6235.58, 6194.52, 6161.92, 6125.97, 6095.12, 6064.71, 6039.7, 6010.77, 5988.17, 5966.81, 5939.98, 5930.7, 5921.4, 5921.38, 5919.33, 5930.35, 5946.26, 5958.86, 5969.99, 5984.79, 6007.59, 6019.28, 6040.35, 6078.81, 6118.52, 6139.85, 6166.85, 6196.96, 6223.78, 6246.43, 6266.35, 6278.52, 6291.54, 6301.91, 6315.09, 6328.1, 6338.74], "mh_sma60": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6240.95, 6237.26]};
+const AX = {grid:{color:'#f0f2f5'},ticks:{color:'#6b7280',font:{size:11}}};
+Chart.defaults.font.family = '-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif';
+Chart.defaults.color = '#4b5563';
+
+/* 五维雷达 */
+new Chart(document.getElementById('radarChart'), {
+  type:'radar',
+  data:{labels:['技术面','基本面','新闻面','情绪面','风险可控度'],
+    datasets:[{label:'综合评分',data:[7.0,6.3,8.0,4.0,4.0],
+      backgroundColor:'rgba(16,185,129,.16)',borderColor:'#059669',borderWidth:2,
+      pointBackgroundColor:'#059669',pointRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:10,ticks:{stepSize:2,color:'#9ca3af',backdropColor:'transparent',font:{size:10}},
+      grid:{color:'#e8ebee'},angleLines:{color:'#e8ebee'},
+      pointLabels:{color:'#374151',font:{size:12.5,weight:'600'}}}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.raw+' / 10'}}}}
+});
+
+/* 三方风险评分 */
+new Chart(document.getElementById('riskChart'), {
+  type:'radar',
+  data:{labels:['机会评分','风险评分（越高越危险）','风险调整后吸引力'],
+    datasets:[
+      {label:'激进',data:[8.5,null,null],borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.10)',borderWidth:2,pointRadius:4,spanGaps:false},
+      {label:'中性',data:[6.5,7.0,5.5],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.10)',borderWidth:2,pointRadius:4},
+      {label:'保守',data:[3.5,8.0,3.0],borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,.10)',borderWidth:2,pointRadius:4},
+      {label:'风险主管裁定',data:[6.0,7.5,5.0],borderColor:'#059669',backgroundColor:'rgba(5,150,105,.16)',borderWidth:3,pointRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:10,ticks:{stepSize:2,color:'#9ca3af',backdropColor:'transparent',font:{size:10}},
+      grid:{color:'#e8ebee'},angleLines:{color:'#e8ebee'},
+      pointLabels:{color:'#374151',font:{size:11.5,weight:'600'}}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:12,font:{size:12}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.raw==null?'未提供':c.raw+' / 10')}}}}
+});
+
+/* 价格走势（双轴 + 参考线） */
+const refLines = {id:'refLines',afterDraw(chart){
+  const {ctx,chartArea:{left,right},scales:{y,y1}} = chart;
+  const lines = [
+    {v:1106.89,ax:y, c:'#f59e0b',t:'北证50 MA20 1106.89（第二批触发）',dash:[5,4]},
+    {v:1007.64,ax:y, c:'#dc2626',t:'北证50 1007.64（减仓条件之一）',dash:[6,3]},
+    {v:984.10, ax:y, c:'#991b1b',t:'北证50 984.10 清仓线（布林下轨）',dash:[2,2]},
+    {v:6679.45,ax:y1,c:'#059669',t:'中证医疗 6679.45 目标一（布林上轨）',dash:[6,3]},
+    {v:6338.74,ax:y1,c:'#0891b2',t:'中证医疗 MA20 6338.74（减仓条件之二）',dash:[5,4]}
+  ];
+  ctx.save();
+  lines.forEach(L=>{
+    const yp = L.ax.getPixelForValue(L.v);
+    if(yp < chart.chartArea.top || yp > chart.chartArea.bottom) return;
+    ctx.beginPath();ctx.setLineDash(L.dash);ctx.strokeStyle=L.c;ctx.lineWidth=1.3;
+    ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.setLineDash([]);ctx.fillStyle=L.c;ctx.font='600 10.5px -apple-system,sans-serif';
+    ctx.textAlign='left';ctx.fillText(L.t,left+6,yp-4);
+  });
+  ctx.restore();
+}};
+new Chart(document.getElementById('priceChart'), {
+  type:'line',
+  data:{labels:CD.dates,
+    datasets:[
+      {label:'北证50 收盘',data:CD.bj,borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.05)',borderWidth:2.2,pointRadius:0,tension:.15,yAxisID:'y',fill:true},
+      {label:'北证50 SMA20',data:CD.bj_sma20,borderColor:'#f59e0b',borderWidth:1.4,pointRadius:0,tension:.2,yAxisID:'y',borderDash:[4,3]},
+      {label:'北证50 SMA60',data:CD.bj_sma60,borderColor:'#a16207',borderWidth:1.4,pointRadius:0,tension:.2,yAxisID:'y',borderDash:[8,4]},
+      {label:'中证医疗 收盘',data:CD.mh,borderColor:'#059669',backgroundColor:'rgba(5,150,105,.05)',borderWidth:2.2,pointRadius:0,tension:.15,yAxisID:'y1',fill:true},
+      {label:'中证医疗 SMA20',data:CD.mh_sma20,borderColor:'#10b981',borderWidth:1.4,pointRadius:0,tension:.2,yAxisID:'y1',borderDash:[4,3]},
+      {label:'中证医疗 SMA60',data:CD.mh_sma60,borderColor:'#047857',borderWidth:1.4,pointRadius:0,tension:.2,yAxisID:'y1',borderDash:[8,4]}]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{...AX,ticks:{...AX.ticks,maxTicksLimit:12,autoSkip:true}},
+      y:{position:'left',title:{display:true,text:'北证50（点）',color:'#dc2626',font:{size:11.5,weight:'600'}},grid:{color:'#f0f2f5'},ticks:{color:'#dc2626',font:{size:11}}},
+      y1:{position:'right',title:{display:true,text:'中证医疗（点）',color:'#059669',font:{size:11.5,weight:'600'}},grid:{drawOnChartArea:false},ticks:{color:'#059669',font:{size:11}}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:14,padding:10,font:{size:11.5},usePointStyle:true}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.raw==null?'—':c.raw.toFixed(2))}}}},
+  plugins:[refLines]
+});
+
+/* 多空论点权重 */
+new Chart(document.getElementById('debateChart'), {
+  type:'bar',
+  data:{labels:['制度红利 / 流动性枯竭','转板估值期权 / 重估概率不确定','逆市配置价值 / 医保逆风','产业景气 / 资金持续离场','优质储备充足 / 尾部风险','左侧筹码出清 / 基准代理偏差','政策催化 / 估值缺口','新股效应 / 投机过热'],
+    datasets:[
+      {label:'多头权重',data:[9,9,8,8,7,7,7,6],backgroundColor:'rgba(5,150,105,.82)',borderRadius:4,barPercentage:.82},
+      {label:'空头权重',data:[-9,-9,-8,-8,-8,-7,-7,-6],backgroundColor:'rgba(220,38,38,.82)',borderRadius:4,barPercentage:.82}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    scales:{x:{min:-10,max:10,grid:{color:'#f0f2f5'},ticks:{color:'#6b7280',font:{size:11},callback:v=>Math.abs(v)}},
+      y:{grid:{display:false},ticks:{color:'#374151',font:{size:11.5}}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:12,font:{size:12}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+Math.abs(c.raw)+' / 10'}}}}
+});
+</script>
+</body>
+</html>

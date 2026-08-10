@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新能源主题投资分析报告 · 2026-08-04</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+ max-width:1120px;margin:0 auto;padding:0 24px 40px;background:#fff;color:#1f2430;line-height:1.78;-webkit-font-smoothing:antialiased}
+/* 报告头 */
+.masthead{color:#fff;margin:0 -24px 0;padding:22px 28px 18px}
+.masthead .inst{font-size:13px;letter-spacing:2px;font-weight:600;opacity:.75}
+.masthead .cat{display:inline-block;margin-top:8px;font-size:12px;padding:3px 10px;border-radius:4px;background:rgba(255,255,255,.14)}
+.masthead h1{font-size:25px;margin:12px 0 4px;font-weight:800;letter-spacing:-.3px;line-height:1.3}
+.masthead .sub{font-size:13.5px;opacity:.82}
+.masthead .meta{margin-top:10px;font-size:12.5px;opacity:.72;display:flex;gap:18px;flex-wrap:wrap}
+.stamp{float:right;color:#fff;font-weight:800;font-size:15px;padding:10px 16px;border-radius:8px;text-align:center;line-height:1.25}
+.stamp small{display:block;font-size:11px;font-weight:500;opacity:.9}
+.rdef{font-size:11.5px;color:#6b7280;margin:6px 0 0}
+/* 目录 */
+.toc{background:#fafbfd;border:1px solid #eef1f6;border-radius:10px;padding:14px 20px;margin:20px 0;font-size:12.8px;columns:2;column-gap:32px}
+.toc a{color:#374151;text-decoration:none;display:block;padding:2.5px 0;break-inside:avoid}
+.toc a:hover{color:#1d4ed8;text-decoration:underline}
+@media(max-width:760px){.toc{columns:1}}
+/* 摘要卡 */
+.summary-card{background:#f6f9ff;border:1px solid #e3ebfb;border-radius:12px;padding:20px 22px;margin:22px 0}
+.summary-card h2{margin:0 0 12px;font-size:16px;color:#0f1f3d}
+table{width:100%;border-collapse:collapse;font-size:13.2px;margin:12px 0}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid #edf0f4;vertical-align:top}
+th{background:#f3f5f9;font-weight:600;color:#374151;font-size:12.2px;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:hover td{background:#fafbfc}
+table.compact{font-size:12.4px}
+table.compact th,table.compact td{padding:6px 8px}
+.tbl-scroll{overflow-x:auto;margin:12px 0}
+.tbl-scroll table{margin:0;min-width:760px}
+.pos{color:#059669;font-weight:600}.neg{color:#dc2626;font-weight:600}.warn{color:#d97706;font-weight:600}.mut{color:#9ca3af}
+/* 投资要点 */
+.takeaways{background:#fffdf5;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+.takeaways h2{margin:0 0 10px;font-size:16px;color:#0f1f3d}
+.takeaways ol{margin:0;padding-left:22px}
+.takeaways li{margin-bottom:9px;font-size:14px}
+.takeaways li b{color:#0f1f3d}
+/* 章节 */
+.section{margin-top:32px;scroll-margin-top:12px}
+.sec-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid #0f1f3d;padding-bottom:6px;margin-bottom:14px}
+.sec-head .no{background:#0f1f3d;color:#fff;font-size:13px;font-weight:700;padding:2px 9px;border-radius:4px;white-space:nowrap}
+.sec-head h2{margin:0;font-size:18px;color:#0f1f3d;font-weight:800}
+.sec-body p{font-size:14px;color:#374151;margin:10px 0}
+.sec-body ul.clean{padding-left:20px;margin:10px 0}
+.sec-body ul.clean li{margin-bottom:7px;font-size:14px}
+h4.mini{font-size:14px;margin:18px 0 6px;color:#111827;font-weight:700;border-left:3px solid #cbd5e1;padding-left:9px}
+/* 图表卡 */
+.chart-card{background:#fff;border:1px solid #edf0f3;border-radius:12px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.chart-card h3{margin:0 0 4px;font-size:15.5px;font-weight:700;color:#0f1f3d}
+.chart-card .cap{color:#6b7280;font-size:12.5px;margin-bottom:14px}
+.chart-wrap{position:relative;height:340px}
+.chart-wrap.tall{height:420px}
+.chart-wrap.short{height:270px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+/* callout */
+.callout{border-left:3px solid #6366f1;background:#f8f9ff;padding:12px 15px;border-radius:0 8px 8px 0;margin:13px 0;font-size:13.5px;color:#374151}
+.callout.red{border-color:#ef4444;background:#fef7f7}
+.callout.amber{border-color:#f59e0b;background:#fffbf3}
+.callout.green{border-color:#10b981;background:#f2fdf8}
+.callout.blue{border-color:#3b82f6;background:#f5f9ff}
+.callout b{display:block;margin-bottom:4px;color:#111827}
+/* KPI 条 */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:#fafbfd;border:1px solid #eef1f6;border-radius:9px;padding:11px 13px}
+.kpi .k{font-size:11.5px;color:#6b7280;margin-bottom:3px}
+.kpi .v{font-size:18px;font-weight:800;color:#0f1f3d;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:11.5px;margin-top:2px}
+/* 分层配置卡 */
+.tier{border:1px solid #e5e9f0;border-radius:10px;padding:14px 16px;margin:11px 0;background:#fff}
+.tier .th{display:flex;align-items:center;gap:9px;margin-bottom:7px;flex-wrap:wrap}
+.tier .badge{font-size:11.5px;font-weight:700;color:#fff;padding:2.5px 9px;border-radius:5px}
+.tier .tname{font-weight:700;font-size:14.5px;color:#111827}
+.tier .alloc{margin-left:auto;font-size:12.5px;color:#6b7280;font-variant-numeric:tabular-nums}
+.tier p{margin:5px 0;font-size:13.3px;color:#4b5563}
+/* 评分条 */
+.score-line{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+.score-line .lbl{width:88px;color:#4b5563;flex-shrink:0}
+.score-line .bar{flex:1;height:9px;background:#eef1f5;border-radius:5px;overflow:hidden}
+.score-line .bar i{display:block;height:100%;border-radius:5px}
+.score-line .val{width:44px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:#111827}
+/* 风险提示 */
+.risk-box{background:#fff5f5;border:1px solid #fbd5d5;border-radius:10px;padding:16px 20px;margin:16px 0}
+.risk-box h2{margin:0 0 10px;font-size:15.5px;color:#b91c1c}
+.risk-box ul{padding-left:20px;margin:0}
+.risk-box li{margin-bottom:7px;font-size:13.5px;color:#7f1d1d}
+.disclaimer{color:#6b7280;font-size:12.5px;padding:18px 4px 0;margin-top:30px;border-top:1px solid #e5e7eb;line-height:1.7}
+.src{font-size:11.5px;color:#9ca3af;margin-top:6px}
+details{margin:9px 0;border:1px solid #eef1f5;border-radius:8px;padding:9px 13px;background:#fcfdfe}
+details summary{cursor:pointer;font-weight:600;font-size:13.5px;color:#0f1f3d}
+details[open] summary{margin-bottom:8px}
+
+.masthead{background:linear-gradient(135deg,#0f1f3d 0%,#1b3562 100%)}
+.stamp{background:#b45309;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="inst">交易分析团队 · TradingAgentTeam</div>
+  <span class="cat">行业主题深度研究</span>
+  <div style="overflow:hidden">
+    <div style="float:right;margin-top:8px">
+      <div class="stamp">中性<small>HOLD · 3%</small></div>
+    </div>
+    <h1>新能源：逻辑通，执行难</h1>
+    <div class="sub">赔率漂亮但胜率仅两成——北交所新能源主题的流动性天花板与环境否决线</div>
+  </div>
+  <div class="meta"><span>分析日期：2026-08-04</span><span>数据截至：2026-08-03</span><span>覆盖范围：A股/北交所新能源产业链</span><span>样本：14 只流动性标的 / 24 家财务横截面 / 4 个指数代理</span><span>数据源：NeoData 金融数据服务</span><span>流程：5 阶段 · 12 角色</span></div>
+</div>
+<div class="rdef">评级定义：<b>看好</b>＝建议超配，预期显著跑赢基准；<b>中性</b>＝结构性观察或标配，等待触发条件；<b>看淡</b>＝建议低配或规避。本次评级为<b>主题层配置建议</b>，不构成个股买卖推荐。</div>
+
+<div class="toc"><b style="display:block;margin-bottom:5px;color:#0f1f3d;font-size:12.5px">目录</b><a href="#s1">一、研究框架与方法论</a><a href="#s2">二、主题界定与样本构成</a><a href="#s3">三、价格走势与技术面诊断</a><a href="#s4">四、综合评分与五维透视</a><a href="#s5">五、基本面横截面：盈利质量与集中度</a><a href="#s6">六、估值水平与历史分位</a><a href="#s7">七、细分赛道景气度图谱</a><a href="#s8">八、新闻面与政策催化</a><a href="#s9">九、情绪面与资金行为</a><a href="#s10">十、流动性分层与容量约束</a><a href="#s11">十一、多空辩论：论点权重裁决</a><a href="#s12">十二、情景分析与期望收益</a><a href="#s13">十三、交易方案：价位、仓位与节奏</a><a href="#s14">十四、三方风险辩论与风险主管裁决</a><a href="#s15">十五、监控清单与置信度边界</a></div>
+
+<div class="summary-card">
+  <h2>投资评级与估值摘要</h2>
+  <div class="tbl-scroll"><table><thead><tr><th>项目</th><th>结论</th><th>项目</th><th>结论</th></tr></thead><tbody><tr><td><b>最终决策</b></td><td><b style='color:#b45309;font-size:15px'>🟡 HOLD（结构性轻仓观察）</b></td><td><b>建议仓位</b></td><td><b>3%</b>（现金 ≥97%）</td></tr><tr><td><b>信心水平</b></td><td>中</td><td><b>风险等级</b></td><td><b class='neg'>中高</b></td></tr><tr><td><b>入场（新能车）</b></td><td>3635 – 3753（低吸挂单，禁止现价追入）</td><td><b>入场（光伏）</b></td><td>2324 – 2406</td></tr><tr><td><b>目标（新能车）</b></td><td><b class='pos'>4345 – 4536（+14%~+19%）</b></td><td><b>目标（光伏）</b></td><td><b class='pos'>2789 – 2911（+14%~+19%）</b></td></tr><tr><td><b>止损（新能车）</b></td><td><b class='neg'>3600.93</b>（前低 3400）</td><td><b>止损（光伏）</b></td><td><b class='neg'>2325.34</b>（前低 2130）</td></tr><tr><td><b>硬熔断</b></td><td><b class='neg'>北证50 收盘 &lt; 1007.64 → 全清</b></td><td><b>有效风险收益比</b></td><td>1.2 – 1.5 : 1（概率加权后）</td></tr><tr><td><b>多空裁决</b></td><td>空头 7.9 : 多头 4.4</td><td><b>三情景概率</b></td><td>乐观 20% / 中性 50% / 悲观 30%</td></tr><tr><td><b>进池标的</b></td><td>同力股份(≤2.25%)、长虹能源(≤0.75%)、开发科技(0仓观察)</td><td><b>升级条件</b></td><td>四项全满足，当前 <b>0 / 4</b></td></tr></tbody></table></div>
+</div>
+
+<div class="takeaways">
+  <h2>投资要点（Key Takeaways）</h2>
+  <ol><li><b>维持 HOLD，仓位定格 3%。</b>研究主管裁决多空权重为空头 7.9 : 多头 4.4，风险主管在三方分歧（激进 12–15% / 保守 ≤1% / 中性 3–4%）中裁定为 <b>3%</b>，理由是流动性可执行边界与期望收益共同约束。</li><li><b>问题不在主题对错，而在能否以可接受成本进出。</b>基本面 6.0、新闻面 6.0 构成合理性底座，但技术面 4.5、情绪面 3.5、流动性 3.0 构成执行天花板——典型的「逻辑通、执行难」。</li><li><b>α 存在但不可交易，比值 6.67 : 1。</b>高 ROE 子集以 25.2% 市值贡献 88.2% 利润、加权 PE 仅 13.45x，但其可承载资金仅 3269 万；而成交额前 3 名（PE 233/68/71 倍）可承载 2.18 亿。买得到的最贵，想买的买不到。</li><li><b>赔率被系统性高估 5–10 倍。</b>交易员提案的 7–14:1 在严格主止损口径下机械正确，但概率加权后<b>有效 RR 仅 1.2–1.5:1</b>。真正的约束是 20% 的胜率，不是漂亮的赔率。</li><li><b>「便宜」是分位数幻觉。</b>中证新能源 PE 到 p25 仅 −0.32%（IQR 仅 3.04），到近 3 年 min 却是 −60.98%；光伏 PB 1.99 恰<b>等于</b> p25 而非低于，且分母正被 H1 亏损 183–214 亿持续侵蚀。</li><li><b>环境是唯一 swing factor。</b>北证50 PB 3.77 仍高于近 3 年中位（72.7% 分位），未跌透；若回落至 p25 对应 999.0 点，恰落入历史成交为 0 的 950–1000「无人区」。<b>收盘破 1007.64 即无条件全清</b>。</li><li><b>景气度极端分化，配置集中在下游。</b>下游矿卡与电网/储能各 8 分、风电材料与电芯各 7 分；而光伏硅片组件仅 2 分、硅料与光伏设备各 3 分。进池标的全部来自应用侧，光伏制造链整体规避。</li><li><b>最大信息缺口是开发科技 2026 中报。</b>该股 2026Q1 归母 −74%，代入后高 ROE 子集 PE 在股价不动的情况下自动从 13.45x 升至 18.02x。中报转正是升级 BUY 的必要条件之一，当前四项触发器 <b>0 / 4</b>。</li><li><b>禁止现价建仓。</b>现价入场 EV 为负（新能车 −1.4% / 光伏 −2.1%），仅低吸区挂单方能将期望拉回约零。入场只能被动挂单成交，不得主动追价。</li><li><b>升级路径物理不可执行。</b>主题日成交额仅 7.62 亿，组合容量天花板约 6%；激进派建议的 12–15% 需将 51.1%–70.7% 资金外溢至高估值标的，与其自身逻辑自相矛盾。</li></ol>
+</div>
+
+<div class="section" id="s1"><div class="sec-head"><span class="no">一</span><h2>研究框架与方法论</h2></div><div class="sec-body">
+<p>本报告为<b>行业主题级</b>（非个股）研究，覆盖 A股/北交所「新能源」板块。采用五阶段结构化流程，由 12 位独立分析角色分工产出，全部结论经交叉验证与权重裁决后形成。</p>
+<div class="tbl-scroll"><table><thead><tr><th>阶段</th><th>参与角色</th><th>产出</th><th>状态</th></tr></thead><tbody><tr><td>Phase 1 数据收集（并行）</td><td>技术 / 基本面 / 新闻 / 情绪 分析师</td><td>四维分析报告 + 估值箱体 + 流动性分层</td><td>✅ 完成</td></tr><tr><td>Phase 2 多空辩论（串行）</td><td>多头研究员 → 空头研究员 → 研究主管</td><td>多空论证各10条 + 权重裁定表 + 投资计划</td><td>✅ 完成</td></tr><tr><td>Phase 3 交易决策</td><td>交易员</td><td>FINAL TRANSACTION PROPOSAL（三价+仓位）</td><td>✅ 完成</td></tr><tr><td>Phase 4 风险评估（并行+裁决）</td><td>激进 / 保守 / 中性 风险分析师 → 风险主管</td><td>三方风险论证 + 最终交易决策</td><td>✅ 完成</td></tr><tr><td>Phase 5 汇编</td><td>首席策略官</td><td>本报告</td><td>✅ 完成</td></tr></tbody></table></div>
+<div class="callout"><b>方法论纪律。</b>①单一数据源：全部行情、财务、估值数据仅取自 NeoData 金融数据服务，不掺杂其他源；②派生值可复算：凡「自算/验证」标注的数字均由原始数据加减乘除得出，算式在正文给出；③对抗式检验：多头论证须经空头独立算术复核，研究主管对双方自报权重做逐条调整；④三方风险制衡：激进/保守/中性同时出具，由风险主管裁决而非取均值。</div>
+<p><b>结论口径说明。</b>本报告结论为<b>主题层配置建议</b>，通过行业指数/ETF 及少数进池标的表达，<b>不构成个股买卖推荐</b>。个股价位均标注为「基于估值锚推算，非实盘技术位」。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s2"><div class="sec-head"><span class="no">二</span><h2>主题界定与样本构成</h2></div><div class="sec-body">
+<p>「新能源」在本报告中界定为覆盖<b>上游资源与硅料、中游材料与电芯、下游整车与电网储能、以及光伏/锂电设备</b>的完整产业链。为兼顾景气度代表性与可交易性，采用<b>双层样本</b>：</p>
+<div class="two-col">
+<div class="tier"><b>指数代理层（表景气与可交易环境）</b><p>CS新能车(399976.SZ)、光伏产业(931151.CSI)、中证新能源(399808.SZ)，叠加<b>北证50(899050.BJ)</b>作为环境/流动性基准代理。</p></div>
+<div class="tier"><b>个股横截面层（表盈利质量）</b><p>北交所新能源标的共 <b>14 只</b>（流动性样本），财务横截面覆盖 <b>24 家</b> 920xxx 公司，用于盈利质量、集中度与估值锚测算。</p></div>
+</div>
+<div class="kpi-row">
+<div class="kpi"><div class="k">流动性样本</div><div class="v">14 只</div><div class="d ">北交所新能源标的</div></div>
+<div class="kpi"><div class="k">财务横截面</div><div class="v">24 家</div><div class="d ">920xxx 公司</div></div>
+<div class="kpi"><div class="k">样本日成交额</div><div class="v">7.62 亿</div><div class="d neg">≈宁德时代单日 9.0%</div></div>
+<div class="kpi"><div class="k">指数代理</div><div class="v">4 个</div><div class="d ">3 行业 + 1 环境基准</div></div>
+</div>
+<div class="callout"><b>为何必须引入北证50 作为环境代理。</b>北交所标的的价格行为受板块整体流动性主导远大于个股基本面。空头论点 4 经独立验证成立：北证50 PB 3.77 仍高于近 3 年中位 3.69（<b>72.7% 分位</b>），意味着环境端<b>尚未跌透</b>；若 PB 回落至 p25 的 3.50，对应指数 <b>999.0 点</b>，恰落入 950–1000「无人区」（该区间历史成交天数为 0）。这构成本主题最主要的系统性约束。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s3"><div class="sec-head"><span class="no">三</span><h2>价格走势与技术面诊断</h2></div><div class="sec-body">
+<div class="chart-card"><h3>近 90 个交易日价格走势（双轴）与关键交易位</h3>
+<div class="chart-wrap" style="height:400px"><canvas id="priceChart"></canvas></div>
+<div class="src">左轴 CS新能车，右轴 光伏产业；虚线为 MA20/MA60；水平参考线为交易员提案的颈线/目标/止损位。数据来源：NeoData，2026-03-24 至 2026-08-03 共 90 个交易日真实收盘价。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>指数</th><th>现价</th><th>颈线(阻力)</th><th>距颈线</th><th>MA60</th><th>MA250</th><th>高置信目标区</th><th>前低</th></tr></thead><tbody><tr><td>CS新能车 399976.SZ</td><td>3811.38</td><td>3873.92</td><td>+1.64%</td><td>4358.33</td><td>4274.77</td><td>4345–4536</td><td>3400</td></tr><tr><td>光伏产业 931151.CSI</td><td>2446.44</td><td>2491.40</td><td>+1.84%</td><td>2911–2913（MA60/250 重合带）</td><td>—</td><td>2789–2911</td><td>2130</td></tr><tr><td>北证50 899050.BJ</td><td>1076.07</td><td>1101.26</td><td>+2.34%</td><td>—</td><td>—</td><td>—</td><td>风险位 1007.64（−6.36%）</td></tr></tbody></table></div>
+<p><b>技术面评分 4.5 / 10（偏弱）。</b>核心矛盾在于「位置不差、动能不足」：</p>
+<ul>
+<li><b>价格贴近颈线但量能严重不足</b>——有效突破需成交额较当前放大 <b>+51.7%（新能车）/ +85.5%（光伏）/ +37.2%（北证50）</b>，在当前缩量格局下门槛极高。</li>
+<li><b>MACD 零轴下方金叉</b>——技术分析师原文定义为「<b>反弹而非反转</b>」，不应作为趋势逆转证据引用。</li>
+<li><b>ADX 57–61 显示强趋势，但 −DI 32.58 显著高于 +DI 14.16</b>，方向仍在空方。</li>
+<li><b>KDJ 的 J 值 87.30</b>，技术分析师原文标注「<b>短线过热</b>」。</li>
+<li>技术分析师给出的概率分配为<b>破位 30% &gt; 突破 20%</b>，多头论证仅引用后者，属选择性引用（已在权重裁决中扣分）。</li>
+</ul>
+<div class="callout"><b>技术面裁决。</b>颈线距离虽仅 1.6%–1.8%，但突破所需量能与当前缩量事实之间存在数量级差距；下方 3450–3560 为真空区（历史成交稀薄），一旦北证50 走弱易快速滑落。故技术面<b>不支持右侧追入，仅支持左侧低吸挂单</b>。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s4"><div class="sec-head"><span class="no">四</span><h2>综合评分与五维透视</h2></div><div class="sec-body">
+<div class="chart-card"><h3>五维综合评分雷达（0–10）</h3>
+<div class="chart-wrap" style="height:340px"><canvas id="radarChart"></canvas></div>
+<div class="src">技术/基本面/新闻/情绪四维由 Phase 1 对应分析师直接给出；风险面为「安全度」口径，由风险主管「风险等级：中高」映射。</div></div>
+<div class="score-line"><span class="lbl">技术面</span><span class="bar"><i style="width:45.0%;background:#dc2626"></i></span><span class="val">4.5</span></div>
+<div class="score-line"><span class="lbl">基本面</span><span class="bar"><i style="width:60.0%;background:#f59e0b"></i></span><span class="val">6.0</span></div>
+<div class="score-line"><span class="lbl">新闻面</span><span class="bar"><i style="width:60.0%;background:#f59e0b"></i></span><span class="val">6.0</span></div>
+<div class="score-line"><span class="lbl">情绪面</span><span class="bar"><i style="width:35.0%;background:#dc2626"></i></span><span class="val">3.5</span></div>
+<div class="score-line"><span class="lbl">流动性（单列）</span><span class="bar"><i style="width:30.0%;background:#dc2626"></i></span><span class="val">3.0</span></div>
+<div class="score-line"><span class="lbl">风险面（安全度）</span><span class="bar"><i style="width:35.0%;background:#dc2626"></i></span><span class="val">3.5</span></div>
+<p><b>评分结构解读。</b>基本面与新闻面（各 6.0）构成主题的「合理性底座」，而技术面（4.5）、情绪面（3.5）与流动性（3.0）三项共同构成「<b>可执行性天花板</b>」。这种「逻辑通、执行难」的组合，正是本报告最终给出 HOLD 而非 BUY 的结构性原因——<b>问题不在于这个主题对不对，而在于当前能否以可接受的成本参与并全身而退</b>。</p>
+<div class="callout"><b>关键洞察：流动性与转板/主题期权价值负相关。</b>北交所新能源标的中，基本面质量最高的资产恰恰最难买到——盈利质量前列的高 ROE 子集可承载资金仅 <b>3269 万</b>，而成交额前 3 名（PE 分别为 233 / 68 / 71 倍）却可承载 <b>2.18 亿</b>，两者比值达 <b>6.67 : 1</b>。这意味着「买得到的最贵、想买的买不到」，α 在流动性维度上被系统性抵消。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s5"><div class="sec-head"><span class="no">五</span><h2>基本面横截面：盈利质量与集中度</h2></div><div class="sec-body">
+<p><b>基本面评分 6.0 / 10。</b>24 家北交所新能源公司 2026Q1 横截面显示：<b>归母净利同比增长者仅 6 / 23</b>，<b>毛利率改善者仅 8 / 23</b>，复苏并不普遍。</p>
+<div class="tbl-scroll"><table><thead><tr><th>观察维度</th><th>数值</th><th>含义</th></tr></thead><tbody><tr><td>归母同比增长家数</td><td>6 / 23</td><td>仅约 26% 实现盈利增长，复苏不普遍</td></tr><tr><td>毛利率改善家数</td><td>8 / 23</td><td>约 35%，价格战压力仍在</td></tr><tr><td>亏损或 PE&gt;40x 市值占比</td><td>582.57 亿 / 52.9%</td><td>过半市值属低质量或高估值，合计归母 −7.75 亿</td></tr><tr><td>高 ROE 子集市值占比</td><td>25.2%</td><td>以四分之一市值贡献……</td></tr><tr><td>高 ROE 子集利润占比</td><td>88.2%</td><td>……近九成利润（多头核心论据）</td></tr><tr><td>高 ROE 子集加权 PE</td><td>13.45x（2025FY 口径）</td><td>表观极具吸引力</td></tr><tr><td>其中同力+开发科技利润占比</td><td>74.9%</td><td>极端集中，双点故障风险</td></tr><tr><td>开发科技 2026Q1 归母同比</td><td>−74%</td><td>代入后子集 PE 由 13.45x 自动升至 18.02x</td></tr><tr><td>剔除两家后剩余三家加权 PE</td><td>24.54x</td><td>高于宁德时代 21.5x，折价论反转</td></tr></tbody></table></div>
+<div class="callout"><b>多空在此处的正面交锋，空头胜。</b>多头以「25.2% 市值 / 88.2% 利润 / PE 13.45x」立论（自报权重 10），该组数字经复核<b>在 2025FY 口径下真实</b>。但空头指出三点并被独立验证成立：①<b>74.9% 利润集中于两家</b>，其中开发科技 2026Q1 已 −74%，代入后 PE 在<b>股价不动的情况下自动升至 18.02x</b>；②13.45x 为调和平均，掩盖了子集内民士达 PE 51.5 / PB 8.07（占子集 23.6% 市值却仅 6.15% 利润）；③长虹能源负债率 74%、权益乘数 3.85，<b>去杠杆后 ROE 仅 6.5%</b>。研究主管据此将多头该条权重由 10 下调至 <b>7</b>，空头对应条目上调至 <b>10</b>。</p></div>
+<p><b>数据时效性缺口。</b>多头 α 论证主要依赖 2025FY 年报数据，距报告日已<b>陈旧约 7 个月</b>，而 2026Q1 已出现实质恶化信号。<b>开发科技 2026 年中报是本主题最大的单一信息缺口</b>，直接决定 α 逻辑成立与否。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s6"><div class="sec-head"><span class="no">六</span><h2>估值水平与历史分位</h2></div><div class="sec-body">
+<div class="chart-card"><h3>PB 估值箱体与当前位置（近 3 年，2023-08 至 2026-08）</h3>
+<div class="chart-wrap" style="height:330px"><canvas id="valChart"></canvas></div>
+<div class="src">柱体为近 3 年 PB 最小值→最大值区间，红色菱形为当前值。统一采用 PB 口径：光伏产业 PE(TTM) 因成份股大面积亏损持续为负（如 −412）已失真不可用。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>指数</th><th>PE 当前</th><th>PE 分位</th><th>PB 当前</th><th>PB 区间(min–max)</th><th>PB 分位</th><th>解读</th></tr></thead><tbody><tr><td>中证新能源 399808.SZ</td><td>34.16x</td><td>34.3%</td><td>2.57</td><td>1.89 – 3.03</td><td>57.1%</td><td>PE 偏低但 PB 居中</td></tr><tr><td>CS新能车 399976.SZ</td><td>26.47x</td><td>37.5%</td><td>3.39</td><td>2.62 – 4.43</td><td>68.75%</td><td>PB 偏高</td></tr><tr><td>光伏产业 931151.CSI</td><td>不可用（负）</td><td>—</td><td>1.99</td><td>1.68 – 2.65</td><td><b>25.0%</b></td><td>四者中唯一近下沿</td></tr><tr><td>北证50 899050.BJ</td><td>42.94x</td><td>68.2%</td><td>3.77</td><td>2.39 – 5.38</td><td><b>72.7%</b></td><td>环境端未跌透</td></tr></tbody></table></div>
+<div class="tbl-scroll"><table><thead><tr><th>对照基准</th><th>PE</th><th>PB</th></tr></thead><tbody><tr><td>沪深300</td><td>14.43x</td><td>1.47</td></tr><tr><td>中证1000</td><td>42.16x</td><td>2.28</td></tr><tr><td>创业板指</td><td>42.16x</td><td>5.57</td></tr></tbody></table></div><div class="src">横向对照用，同一采样体系。</div>
+<div class="callout"><b>「便宜」是分位数幻觉——空头论点 5，裁决权重 8，采信。</b>分位数度量的是<b>排名而非距离</b>。中证新能源 PE 从当前跌至 p25 仅需 <b>−0.32%</b>（因 IQR 仅 3.04，箱体极窄），而跌至近 3 年最小值需 <b>−60.98%</b>——「34.3% 分位」并不意味着下方只有 34.3% 的空间。光伏 PB 1.99 恰好<b>等于</b> p25 而非低于，若继续跌向 min 1.68，对应指数 2065.3 点，<b>已击穿多头所依赖的 2100–2200 筹码带</b>。横向看，隆基 PB 1.95 低于光伏指数 1.99，北交所海泰新能 PB 2.21 反而更贵，「板块性低估」缺乏个体印证。</div>
+<p><b>估值裁决。</b>低分位确实封杀了「纯板块无量下跌」的大部分空间，但<b>不等于安全垫</b>：光伏行业上半年亏损 183–214 亿，正在持续侵蚀净资产，<b>PB 的分母本身在缩小</b>，意味着 1.99 的「底」并不牢固。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s7"><div class="sec-head"><span class="no">七</span><h2>细分赛道景气度图谱</h2></div><div class="sec-body">
+<div class="chart-card"><h3>12 个细分环节景气度评分（0=极冷 10=极热）</h3>
+<div class="chart-wrap" style="height:420px"><canvas id="sectorChart"></canvas></div>
+<div class="src">悬停查看各环节支撑证据。评分由基本面分析师基于 2026Q1 营收/净利/毛利率/ROE 实际数据给出。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>环节</th><th>评分</th><th>支撑证据</th></tr></thead><tbody><tr><td>上游-资源(锂/化工)</td><td><b>5</b></td><td>一诺威+9.4%/净利率2.5%；康普化学净利-72.5%</td></tr><tr><td>上游-硅料</td><td><b>3</b></td><td>硅烷科技营收-32.8%/毛利率-2.5%/ROE-7.0%</td></tr><tr><td>中游-锂电材料</td><td><b>5</b></td><td>贝特瑞+19.3%/ROE7.1%；安达科技毛利率仅1.8%仍亏</td></tr><tr><td>中游-电芯</td><td><b>7</b></td><td>长虹能源净利率5.6%/ROE25.1%/OCF-NP=2.6</td></tr><tr><td>中游-零部件</td><td><b>6</b></td><td>林泰新材净利+74.2%/ROE27.6%；骏创科技-28.9%</td></tr><tr><td>中游-光伏(硅片/组件)</td><td><b>2</b></td><td>海泰新能营收-55.6%/净利率-40.9%/ROE-64.1%</td></tr><tr><td>设备-光伏</td><td><b>3</b></td><td>连城数控营收-61.4%/净利-75.1%</td></tr><tr><td>设备-锂电</td><td><b>4</b></td><td>纳科诺尔营收-7.1%/净利-59.3%</td></tr><tr><td>下游-整车(矿卡)</td><td><b>8</b></td><td>同力股份净利率13.1%/ROE25.0%；6月渗透率63.6%</td></tr><tr><td>下游-电网/储能/节能</td><td><b>8</b></td><td>开发科技ROE22.3%；广厦环能净利率24.6%</td></tr><tr><td>风电材料</td><td><b>7</b></td><td>吉林碳谷营收+58.2%/净利+90.2%</td></tr><tr><td>辅材(石英/元器件等)</td><td><b>4</b></td><td>民士达净利率28.6%；多数下滑或亏损</td></tr></tbody></table></div>
+<div class="callout"><b>景气度呈现极端分化，而非板块性复苏。</b>下游<b>整车（矿卡）8 分</b>与<b>电网/储能/节能 8 分</b>一枝独秀（同力股份净利率 13.1% / ROE 25.0%，6 月矿卡渗透率 63.6%；开发科技 ROE 22.3%；广厦环能净利率 24.6%），<b>风电材料 7 分</b>（吉林碳谷营收 +58.2% / 净利 +90.2%）、<b>中游电芯 7 分</b>（长虹能源 ROE 25.1%）次之。而<b>中游光伏（硅片/组件）仅 2 分</b>（海泰新能营收 −55.6% / 净利率 −40.9% / ROE −64.1%）、<b>上游硅料 3 分</b>、<b>光伏设备 3 分</b>（连城数控营收 −61.4% / 净利 −75.1%）处于深度出清。</div>
+<p><b>这一分化直接决定了配置结构</b>：高景气环节集中在<b>下游应用侧</b>而非传统光伏制造侧，因此进池标的全部来自矿卡、储能/电网、电芯三个方向，光伏制造链整体规避。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s8"><div class="sec-head"><span class="no">八</span><h2>新闻面与政策催化</h2></div><div class="sec-body">
+<p><b>新闻面评分 6.0 / 10。</b>政策方向明确但传导路径偏长，且出海端存在多重实质性约束。</p>
+<div class="two-col">
+<div class="tier"><b>正向催化（8–9 月窗口）</b><p>①专项债发行提速；②北交所主题 ETF 推进中；③降息预期；④产业链局部价格拐点（光伏玻璃利润改善 +11pct、组件 +1pct）；⑤下游需求侧数据强劲——储能 +85%、重卡 +78.1%。</p></div>
+<div class="tier"><b>负向约束（「出海三道锁」）</b><p>①欧盟反补贴税 45.3%；②逆变器禁令波及 14GW；③美国反规避调查；④<b>电池护照 2027-02-18 生效</b>；⑤出口退税归零；⑥人民币升值 +3.35% 侵蚀出口利润。新闻分析师据此扣分 −1.5。</p></div>
+</div>
+<div class="tbl-scroll"><table><thead><tr><th>催化项</th><th>量级</th><th>裁决权重</th><th>关键约束</th></tr></thead><tbody><tr><td>北交所主题 ETF</td><td>拟 200 亿</td><td>4</td><td>仅为北证50 总市值 <b>7.35%</b>，且<b>尚未获批</b></td></tr><tr><td>降息预期</td><td>—</td><td>4</td><td>LPR 已连续 <b>14 个月不变</b>，美联储偏鹰</td></tr><tr><td>专项债提速</td><td>—</td><td>4</td><td>「事件发生」≠「股价上涨」，传导需 1–2 季度</td></tr><tr><td>产业链价格拐点</td><td>玻璃 +11pct</td><td>3</td><td>同批数据中恶化 4 项（多晶−3/硅片−5/电池−5/胶膜−8）vs 改善 2 项；库存仍 50 天</td></tr><tr><td>下游需求高增</td><td>储能+85%/重卡+78.1%</td><td>7</td><td>量真实但<b>传导断裂</b>——承载 74.9% 利润的两家营收仅 +3.68%</td></tr></tbody></table></div>
+<div class="callout"><b>需求高增已被交易过。</b>SW 电池指数 YTD 曾达 <b>+21.19%</b>（截至 5/8）随后回吐，情绪分析师原文判断为「<b>利好已反映、风险转向高位兑现</b>」。同时多头论证略去了反向数据：1Q26 国内新能源汽车 <b>−5%</b>、风电 H1 新增装机 <b>−24.9%</b>、电池片产量 <b>−14.2%</b>。故需求端叙事不宜再作为增量买入理由。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s9"><div class="sec-head"><span class="no">九</span><h2>情绪面与资金行为</h2></div><div class="sec-body">
+<p><b>情绪面评分 3.5 / 10（全维度最低之一），流动性风险评分 3.0 / 10。</b></p>
+<div class="kpi-row">
+<div class="kpi"><div class="k">情绪触发器</div><div class="v">0 / 7 满足</div><div class="d neg">情绪分析师建议维持低仓位观察</div></div>
+<div class="kpi"><div class="k">主力资金</div><div class="v">−874.86 亿 / 5日</div><div class="d neg">持续净流出</div></div>
+<div class="kpi"><div class="k">亢奋顶部信号</div><div class="v">0 / 5</div><div class="d pos">拥挤度确为零</div></div>
+<div class="kpi"><div class="k">量价背离</div><div class="v">7 / 7 全看空</div><div class="d neg">无一项矛盾</div></div>
+</div>
+<div class="tbl-scroll"><table><thead><tr><th>背离项</th><th>现象</th><th>方向</th></tr></thead><tbody><tr><td>价量关系</td><td>价升量缩</td><td>看空</td></tr><tr><td>板块与主力</td><td>板块上涨但主力净流出（散户恰好对冲）</td><td>看空</td></tr><tr><td>普涨结构</td><td>缩量普涨，缺乏承接</td><td>看空</td></tr><tr><td>ETF 行为</td><td>价格上涨但份额下降（赎回）</td><td>看空</td></tr><tr><td>融资盘</td><td>高位买入但净额未同步放大</td><td>看空</td></tr><tr><td>商品联动</td><td>碳酸锂价格下跌、产业资本减仓</td><td>看空</td></tr><tr><td>龙头量能</td><td>贝特瑞换手率仅 <b>0.29%</b></td><td>看空</td></tr></tbody></table></div>
+<div class="callout"><b>「零拥挤是资产还是约束」——多空核心分歧之一。</b>多头论点 6 主张亢奋顶部信号 0/5 意味着筹码干净、下跌风险已释放（自报权重 6）。研究主管裁定为<b>部分采信、权重下调至 4</b>：零拥挤属实，但情绪分析师原文（G4）明确写道「7 项触发器 0 项满足，建议<b>维持低仓位观察而非中间地带建仓</b>」；G3 进一步指出「<b>无恐慌则无便宜筹码，已磨 11 个月</b>」。多头「边际卖压已耗尽」的推论被主力净流出 −874.86 亿等 4 组数据直接反驳。空头对应条目权重上调至 <b>7</b>。</div>
+<p><b>裁决者原创验证：钱正流向低景气环节。</b>将 14 只流动性样本按其所属环节景气度评分加权，可交易换手率加权情绪显著<b>低于</b>等权情绪——即成交量集中在景气度差的环节，进一步印证「买得到的不是想买的」。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s10"><div class="sec-head"><span class="no">十</span><h2>流动性分层与容量约束</h2></div><div class="sec-body">
+<div class="chart-card"><h3>流动性三层分布：标的数量占比 vs 成交额占比</h3>
+<div class="chart-wrap" style="height:320px"><canvas id="liqChart"></canvas></div>
+<div class="src">北交所新能源标的 14 只，合计日成交额 7.62 亿元，约为宁德时代单日成交额的 9.0%。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>层级</th><th>定义标准</th><th>标的数</th><th>数量占比</th><th>成交额</th><th>成交额占比</th><th>单标的容量</th></tr></thead><tbody><tr><td><b>L1 可参与</b></td><td>日均成交额 > 3000万</td><td>8 只</td><td>57.1%</td><td>6.741 亿</td><td>88.4%</td><td>单标的 1,900万~9,500万（中位约2,400万）</td></tr><tr><td><b>L2 谨慎</b></td><td>500万 ≤ 日均成交额 ≤ 3000万</td><td>5 只</td><td>35.7%</td><td>0.8384 亿</td><td>11.0%</td><td>单标的 255万~1,450万（中位约640万）</td></tr><tr><td><b>L3 规避</b></td><td>日均成交额 < 500万</td><td>1 只</td><td>7.1%</td><td>0.0451 亿</td><td>0.6%</td><td>单标的 <250万（实务上视为不可建仓）</td></tr></tbody></table></div>
+<div class="tbl-scroll"><table><thead><tr><th>代码</th><th>名称</th><th>产业链环节</th><th>日成交额(万)</th><th>换手率</th><th>层级</th><th>5%容量(万)</th></tr></thead><tbody><tr><td>920576.BJ</td><td>天力复合</td><td>—</td><td>18,950</td><td>4.01%</td><td>L1</td><td>9,475</td></tr><tr><td>920368.BJ</td><td>连城数控</td><td>光伏单晶炉设备</td><td>12,410</td><td>2.29%</td><td>L1</td><td>6,205</td></tr><tr><td>920522.BJ</td><td>纳科诺尔</td><td>锂电极片轧机</td><td>12,240</td><td>3.09%</td><td>L1</td><td>6,120</td></tr><tr><td>920185.BJ</td><td>贝特瑞</td><td>锂电负极材料</td><td>6,960</td><td>0.29%</td><td>L1</td><td>3,480</td></tr><tr><td>920809.BJ</td><td>安达科技</td><td>磷酸铁锂正极</td><td>4,740</td><td>1.33%</td><td>L1</td><td>2,370</td></tr><tr><td>920402.BJ</td><td>硅烷科技</td><td>电子级硅烷/光伏</td><td>4,160</td><td>1.79%</td><td>L1</td><td>2,080</td></tr><tr><td>920077.BJ</td><td>吉林碳谷</td><td>碳纤维/风电叶片</td><td>4,100</td><td>0.97%</td><td>L1</td><td>2,050</td></tr><tr><td>920599.BJ</td><td>同力股份</td><td>新能源矿卡</td><td>3,850</td><td>0.64%</td><td>L1</td><td>1,925</td></tr><tr><td>920533.BJ</td><td>骏创科技</td><td>新能源车零部件</td><td>2,908</td><td>2.21%</td><td>L2</td><td>1,454</td></tr><tr><td>920239.BJ</td><td>长虹能源</td><td>锂电/碱电</td><td>2,688</td><td>0.66%</td><td>L2</td><td>1,344</td></tr><tr><td>920469.BJ</td><td>富恒新材</td><td>改性塑料/新能源车</td><td>1,273</td><td>2.24%</td><td>L2</td><td>636</td></tr><tr><td>920033.BJ</td><td>康普化学</td><td>铜萃取剂</td><td>1,005</td><td>0.88%</td><td>L2</td><td>502</td></tr><tr><td>920195.BJ</td><td>三祥科技</td><td>汽车胶管</td><td>510</td><td>0.59%</td><td>L2</td><td>255</td></tr><tr><td>920703.BJ</td><td>广厦环能</td><td>节能环保换热</td><td>451</td><td>0.88%</td><td>L3</td><td>226</td></tr></tbody></table></div>
+<div class="callout"><b>容量是本主题的硬约束，而非软性提示。</b>整个主题日成交额仅 <b>7.62 亿</b>。按「单日买入不超过标的日均成交额 5%、分 10 个交易日」的标准建仓纪律，进池标的的有效容量上限为：<b>同力股份 1925 万、长虹能源 640 万</b>。这意味着即便判断完全正确，主题层可部署资金也存在明确天花板——保守派据此测算<b>组合仓位上限约 6%</b>，而激进派建议的 12–15% 需要将 51.1%–70.7% 的资金外溢至估值昂贵的高成交标的（成交额前 3 名 PE 分别为 233 / 68 / 71 倍），<b>升级路径在物理上不可执行</b>。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s11"><div class="sec-head"><span class="no">十一</span><h2>多空辩论：论点权重裁决</h2></div><div class="sec-body">
+<div class="chart-card"><h3>八大议题多空权重对照（研究主管裁决后）</h3>
+<div class="chart-wrap" style="height:360px"><canvas id="debateChart"></canvas></div>
+<div class="src">按议题配对，取各方在该议题上的最高裁决权重。多头自报加权均值 6.6 → 裁决 <b>4.4</b>；空头自报 7.8 → 裁决 <b>7.9</b>。</div></div>
+<p><b>裁决结果：空头 7.9 : 多头 4.4，空头显著占优。</b>多头 10 条论点中被完整采信的仅 3 条（均降至权重 7），4 条被判定为「否」或推论错误；空头 10 条中 <b>9 条获权重 ≥7</b>，其中 3 条经独立算术验证后<b>上调</b>。</p>
+<div class="tbl-scroll"><table><thead><tr><th>议题</th><th>多头论点（裁决权重）</th><th>空头论点（裁决权重）</th><th>裁决归属</th></tr></thead><tbody><tr><td>盈利质量与集中度</td><td>高 ROE 子集 25.2% 市值 / 88.2% 利润 / PE 13.45x（<b>7</b>）</td><td>集中度风险 + 数据陈旧 7 个月，开发科技 Q1 −74% 使 PE→18.02x（<b>10</b>）</td><td>空头</td></tr><tr><td>α 可交易性</td><td>跌幅是流动性事故非景气事故，RS 为正（<b>7</b>）</td><td>α 不可交易：可承载 2.18亿 vs 3269万 = <b>6.67:1</b>（<b>9</b>）</td><td>空头</td></tr><tr><td>估值倍数水平</td><td>下游需求真实高增、与光伏解耦（<b>7</b>）</td><td>13.45x 为调和平均，剔两家后剩余三家 24.54x &gt; 宁德 21.5x（<b>9</b>）</td><td>空头</td></tr><tr><td>估值分位与赔率</td><td>估值与位置赔率不对称（<b>4</b>）</td><td>分位数幻觉：到 p25 仅 −0.32%，到 min −60.98%（<b>8</b>）</td><td>空头</td></tr><tr><td>环境位置</td><td>催化剂窗口与技术窗口重叠（<b>4</b>）</td><td>环境没跌透：北证50 PB 3.77 &gt; 中位，跌透即入无人区（<b>8</b>）</td><td>空头</td></tr><tr><td>技术面信号</td><td>多维共振、颈线在咫尺（<b>3</b>）</td><td>选择性引用 + 突破量能门槛不可达（<b>7</b>）</td><td>空头</td></tr><tr><td>情绪与拥挤度</td><td>拥挤度为零 = 情绪 3.5 分是资产（<b>4</b>）</td><td>情绪是约束非资产，7 项背离全看空（<b>7</b>）</td><td>空头</td></tr><tr><td>催化剂兑现</td><td>产业链已现第一批价格拐点（<b>3</b>）</td><td>需求高增已交易过，宏观进不了报表（<b>6</b>）</td><td>空头</td></tr></tbody></table></div>
+<div class="callout"><b>研究主管投资计划（Phase 2 产出）：HOLD 结构性观察，置信度 57。</b>进池标的仅 <b>3 只</b>——同力股份(920599.BJ)、长虹能源(920239.BJ)、开发科技（后者仅观察）。升级 BUY 需<b>四条件同时满足</b>：①北证50 守住 1007.64；②带量突破颈线；③开发科技中报归母转正；④主力净流入连续 10 日为正。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s12"><div class="sec-head"><span class="no">十二</span><h2>情景分析与期望收益</h2></div><div class="sec-body">
+<div class="chart-card"><h3>三情景：目标空间与发生概率</h3>
+<div class="chart-wrap" style="height:330px"><canvas id="scenarioChart"></canvas></div>
+<div class="src">柱状为相对现价空间（以 CS新能车 3811.38 为基准），折线为中性风险分析师给出的发生概率。悬停查看对应目标位。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>情景</th><th>概率</th><th>触发条件</th><th>目标位</th><th>相对空间</th></tr></thead><tbody><tr><td><b>乐观</b>：带量突破颈线</td><td>20%</td><td>成交额放大 +51.7%（新能车）/ +85.5%（光伏），北证50 同步走强</td><td>新能车 4345–4536<br>光伏 2789–2911</td><td><b class='pos'>+14% ~ +19%</b></td></tr><tr><td><b>中性</b>：缩量震荡</td><td>50%</td><td>量能不足，指数在颈线下方反复</td><td>新能车 3700–3900</td><td>约 0%</td></tr><tr><td><b>悲观</b>：破位入无人区</td><td>30%</td><td>北证50 收盘破 1007.64，行业指数跟随破前低</td><td>新能车 3400 / 光伏 2130<br>北证50 950–1000</td><td><b class='neg'>−10.8% ~ −12.9%</b></td></tr></tbody></table></div>
+<p><b>期望收益（EV）测算，这是本报告最关键的量化结论：</b></p>
+<div class="tbl-scroll"><table><thead><tr><th>入场方式</th><th>EV（新能车）</th><th>EV（光伏）</th><th>结论</th></tr></thead><tbody><tr><td>现价入场（3811.38 / 2446.44）</td><td><b class='neg'>−1.4%</b></td><td><b class='neg'>−2.1%</b></td><td>期望为负，<b>禁止现价建仓</b></td></tr><tr><td>仅低吸区挂单（3635–3753 / 2324–2406）</td><td><b>+0.1%</b></td><td><b>−0.4%</b></td><td>期望约零，可作极轻仓结构性期权</td></tr><tr><td>颈线放量突破后追入</td><td><b class='pos'>+2.33%</b></td><td>—</td><td>EV 最优，但需环境同步确认</td></tr></tbody></table></div>
+<div class="callout"><b>赔率被系统性高估 5–10 倍。</b>交易员提案的风险收益比 <b>7.0–9.1 : 1（新能车）/ 10.7–13.8 : 1（光伏）</b>在「严格主止损」口径下机械正确，经复算可复现（7.00 / 10.72 : 1）。但中性分析师指出，<b>概率加权后的有效 RR 仅 1.2–1.5 : 1</b>（胜率 20%、损失概率 30%、下行取前低），生存性修正后为 1.9–2.0 : 1。<b>本交易的真正约束是 20% 的胜率，而非漂亮的赔率</b>。风险主管采信此项裁决。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s13"><div class="sec-head"><span class="no">十三</span><h2>交易方案：价位、仓位与节奏</h2></div><div class="sec-body">
+<p><b>FINAL TRANSACTION PROPOSAL：HOLD（结构性轻仓观察）</b>——交易员提案 ≤5%，经风险主管裁决后<b>下调定格为 3%</b>。</p>
+<div class="kpi-row">
+<div class="kpi"><div class="k">最终方向</div><div class="v">HOLD</div><div class="d ">结构性轻仓观察</div></div>
+<div class="kpi"><div class="k">最终仓位</div><div class="v">3%</div><div class="d ">≤6% 容量天花板</div></div>
+<div class="kpi"><div class="k">现金比例</div><div class="v">≥97%</div><div class="d pos">保留主动权</div></div>
+<div class="kpi"><div class="k">硬熔断</div><div class="v">北证50 &lt; 1007.64</div><div class="d neg">收盘破位无条件全清</div></div>
+</div>
+<div class="tbl-scroll"><table><thead><tr><th>标的层</th><th>入场区间（低吸挂单）</th><th>目标区</th><th>主止损</th><th>备注</th></tr></thead><tbody><tr><td>CS新能车（指数/ETF 代理）</td><td><b>3635 – 3753</b>（−4.6% ~ −1.5%）</td><td>4345 – 4536（+14% ~ +19%）</td><td><b>3600.93</b>；前低 3400</td><td>与 7/29 抬高低点交叉验证重合</td></tr><tr><td>光伏产业（指数/ETF 代理）</td><td><b>2324 – 2406</b>（−5.0% ~ −1.7%）</td><td>2789 – 2911（+14% ~ +19%）</td><td><b>2325.34</b>；前低 2130</td><td>PB 1.99 已贴 p25 下沿</td></tr></tbody></table></div>
+<div class="callout" style="border-left-color:#dc2626"><b>明确禁止「现价建第一批」。</b>风险主管在裁决中特别否决了交易员方案里的现价建仓选项——现价入场 EV 为负（新能车 −1.4% / 光伏 −2.1%），仅低吸区挂单才能把期望拉回约零。<b>入场只能通过挂单被动成交，不得主动追价</b>。</div>
+<div class="tbl-scroll"><table><thead><tr><th>进池个股</th><th>层级</th><th>入场区间（估值锚推算）</th><th>目标</th><th>硬止损</th><th>仓位上限</th></tr></thead><tbody><tr><td>同力股份 920599.BJ</td><td>L1 主仓</td><td>市值 76.95 – 72.76 亿<br>（PE 9.15 – 8.65x）</td><td>PE 11 – 12x<br>(+16.7% ~ +27.3%)</td><td>−13%</td><td>组合 <b>≤2.25%</b>；有效容量 1925 万</td></tr><tr><td>长虹能源 920239.BJ</td><td>L2 卫星仓</td><td>市值 39.86 – 37.69 亿<br>（PE 15.96 – 15.09x）</td><td>PE 18 – 18.9x<br>(+9.8% ~ +15.3%)</td><td>−13%</td><td>组合 <b>≤0.75%</b>；有效容量 640 万</td></tr><tr><td>开发科技</td><td>观察</td><td><b>不给交易位</b></td><td>—</td><td>—</td><td><b>0 仓</b>，待 2026 中报归母转正解锁</td></tr></tbody></table></div>
+<div class="src">⚠ 个股价位<b>基于估值锚（PE/PB/ROE 横截面）+ 行业指数代理位推算，非实盘技术位</b>。长虹目标 PE 锚定宁德时代 21.5x 并给予 ≥12% 折价。</div>
+<p><b>执行纪律：</b>①分 <b>10 个交易日</b>梯次建仓；②单标的单日买入 ≤ 其日均成交额 <b>5%</b>（同力 ≤192.5 万 / 长虹 ≤134.4 万）；③保留现金 ≥97%；④北证50 收盘跌破 1007.64 <b>无条件全清</b>，不设缓冲。</p>
+<p><b>升级 BUY 的四把钥匙（须同时满足，当前 0/4）：</b>① 北证50 守住 1007.64 ✗；② 量能突破颈线（新能车 +51.7% / 光伏 +85.5%）✗；③ 开发科技 2026 中报归母转正 ✗（未披露）；④ 主力资金连续 10 日净流入 ✗。<b>风险主管修正</b>：③④ 由「建仓前置条件」改为「<b>加仓解锁条件</b>」，①② 仍为前置。</p>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s14"><div class="sec-head"><span class="no">十四</span><h2>三方风险辩论与风险主管裁决</h2></div><div class="sec-body">
+<div class="chart-card"><h3>三方风险立场对比（0–10）</h3>
+<div class="chart-wrap" style="height:340px"><canvas id="riskChart"></canvas></div>
+<div class="src">「风险程度评分」已统一为「分数越高＝风险越大」口径（激进派原始 7.5 分为「机会大/风险可控」，取补数 2.5）；「论证质量分」由风险主管评定，衡量严谨度而非立场；「仓位激进度」＝建议仓位 ÷ 15 × 10。</div></div>
+<div class="tbl-scroll"><table><thead><tr><th>立场</th><th>建议仓位</th><th>风险评分</th><th>论证质量分</th><th>最强论点</th><th>被裁决扣分点</th></tr></thead><tbody><tr><td><b>激进派</b></td><td>12 – 15%</td><td>2.5 / 10（风险可控）</td><td><b>7.0</b></td><td>建仓时机洞察——等四条件全亮时价格已越过颈线，「确认」等于追高</td><td>两个 headline 数字算术错误：R:R 塌缩测算未随突破上移止损（正确值 2.57–14:1）；「+2.48% 躺平税」概率修正后方向反转为 −0.13%</td></tr><tr><td><b>保守派</b></td><td>≤1%（优先 0%）</td><td>8.58 / 10（风险大）</td><td><b>8.0</b></td><td>流动性/退出/升级路径不可执行——应激下（ADV 腰斩）2 日可全身而退的仓位上限仅 0.93%</td><td>§5.1 冲击成本模型与 §2.2 零冲击自律前提互斥，致 ≤1% 过苛；β=1.3 偏高（RS 系数仅 0.579）</td></tr><tr><td><b>中性派</b></td><td>3 – 4%</td><td>6.0 / 10（中高）</td><td><b>8.5</b></td><td>正确锁定唯一 swing factor：北证50 环境 + 开发科技中报；EV 与有效 RR 自洽</td><td>沿用交易员退出框架，未充分吸收保守派对流动性的攻击</td></tr></tbody></table></div>
+<p><b>风险主管逐条裁决五大分歧：</b></p>
+<div class="tbl-scroll"><table><thead><tr><th>#</th><th>分歧</th><th>裁决</th><th>依据</th></tr></thead><tbody><tr><td>1</td><td>仓位：12–15% vs ≤1% vs 3–4%</td><td><b>定格 3%</b></td><td>拒激进（多配 15pp 完整期望 = −0.18%，为期望为负的暴露）；拒保守（0.93% 源自与自身模型互斥的前提）；采纳中性方向。3% 下退出测试：零冲击 4.7/8.2 日、15% 参与率 1.6/2.7 日；容量天花板 min(7.33%, 5.95%) ≈ 6%</td></tr><tr><td>2</td><td>赔率 7–14:1 是否有效</td><td><b>采信中性</b></td><td>机械口径可复现（7.00/10.72:1），但概率加权有效 RR 仅 1.2–1.5:1；约束是 20% 胜率而非赔率。保守派条件成交 EV 方向成立（复现 −3.04%/−3.84%）</td></tr><tr><td>3</td><td>流动性能否支撑退出</td><td><b>保守方向正确，幅度过苛</b></td><td>5% 名义仓在应激情景确实退不掉，但 0.93% 过严；以 <b>3% 作为流动性可执行边界</b></td></tr><tr><td>4</td><td>升级触发是否过严</td><td><b>否决激进</b></td><td>其 1.98:1 塌缩测算有两处错误；更根本地，应比较 EV 而非 R:R——颈线突破 EV +2.33% ≫ 低吸 +0.14%。同时采纳保守派「升级路径物理不可执行」（15%/25% 仓需外溢 51.1%/70.7% 至贵票）</td></tr><tr><td>5</td><td>低估值是否等于安全垫</td><td><b>否</b></td><td>低分位封杀纯板块无量下跌空间，但真正尾部在北证50 环境与盈利陈旧（开发科技 Q1 −74% 使子集 PE 股价不动即 13.45x→18.02x）；光伏 PB 底正被 H1 亏损 183–214 亿侵蚀</td></tr></tbody></table></div>
+<div class="callout" style="border-left-color:#059669"><b>[最终交易决策] HOLD（结构性轻仓观察）· 仓位 3% · 风险等级中高 · 置信度中。</b>在赔率漂亮、胜率仅 20%、环境否决线近在咫尺（−6.36%）、流动性冰点（3.0/10）、盈利集中且信息陈旧的叠加下，最优解是<b>以 3% 极轻仓于低吸区挂单观察，以北证50 守住 1007.64 为生命线，以开发科技中报与量能突破为唯二升级开关</b>——不赌方向，只买「可承受、可退出、可证伪」的结构性期权。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div><div class="section" id="s15"><div class="sec-head"><span class="no">十五</span><h2>监控清单与置信度边界</h2></div><div class="sec-body">
+<div class="tbl-scroll"><table><thead><tr><th>#</th><th>监控指标</th><th>阈值</th><th>触发动作</th><th>当前状态</th></tr></thead><tbody><tr><td>1</td><td>北证50 收盘价</td><td>&lt; 1007.64</td><td><b>无条件全清</b>（硬熔断）</td><td>1076.07 ✅ 尚安全（缓冲 6.36%）</td></tr><tr><td>2</td><td>北证50 收盘价</td><td>&lt; 950</td><td>系统性减仓，主题整体退出观察</td><td>✅ 未触发</td></tr><tr><td>3</td><td>成交额突破倍数</td><td>新能车 +51.7% / 光伏 +85.5%</td><td>升级信号①，可加仓</td><td>✗ 未达</td></tr><tr><td>4</td><td>开发科技 2026 中报归母</td><td>转正 → 解锁；续亏 → 降至 0 仓</td><td>升级信号② / 降级触发</td><td>⏳ 未披露（最大信息缺口）</td></tr><tr><td>5</td><td>主力资金净流入</td><td>连续 10 日为正</td><td>升级信号③</td><td>✗ 当前 −874.86 亿 / 5 日</td></tr><tr><td>6</td><td>光伏产业 PB</td><td>&lt; 1.68（近 3 年 min）</td><td>止损，出清右侧证伪</td><td>1.99 ✅（缓冲 15.6%）</td></tr><tr><td>7</td><td>贝特瑞换手率 / L3 占比</td><td>换手 &lt; 0.20%</td><td>暂停建仓（流动性进一步恶化）</td><td>0.29% ⚠ 接近阈值</td></tr><tr><td>8</td><td>同力 / 长虹 日均成交额</td><td>较基准腰斩</td><td>下调有效容量上限</td><td>同力 3850 万 / 长虹 —</td></tr><tr><td>9</td><td>电池护照生效倒计时</td><td>2027-02-18</td><td>出海尾部风险，持续压制估值</td><td>⏳ 约 18 个月</td></tr></tbody></table></div>
+<p><b>置信度边界——本报告哪些结论稳健、哪些依赖未验证假设：</b></p>
+<div class="two-col">
+<div class="tier"><b>✅ 高置信（多方交叉验证一致）</b><p>① 方向为 HOLD（研究主管、交易员、风险主管三方一致，激进派亦未主张 BUY）；② 赔率被高估，有效 RR 仅 1.2–1.5:1；③ 升级至 12%+ 的路径物理不可执行（容量天花板 ≈6%）；④ 流动性双向锁死——买不到想买的、卖不掉持有的；⑤ 北证50 环境是唯一 swing factor。</p></div>
+<div class="tier"><b>⚠ 中低置信（依赖未验证假设）</b><p>① <b>3% 这一具体刻度</b>依赖 ADV 快照与「冲击成本可支付」假设；② <b>开发科技 2026 中报走向</b>——最大信息缺口，直接决定 α 逻辑存亡；③ 政策催化能否兑现（ETF 未获批、LPR 已 14 个月不变）；④ 光伏是否已至出清右侧——PB 1.99 的底正被净资产侵蚀持续下移；⑤ 触发条件的时序修正（③④ 由前置改为解锁）。</p></div>
+</div>
+<div class="callout"><b>数据纪律声明。</b>本报告全部数字来自 NeoData 金融数据服务，经 Phase 1 四位分析师采集、Phase 2 多空双方独立复核、Phase 4 三方风险交叉检验、风险主管两轮脚本复算（<code>/tmp/risk_calc.py</code>、<code>/tmp/risk_calc2.py</code>，均 Exit 0）。凡派生值均给出算式，未引入任何外部数据源。Phase 3–4 全程离线执行，未调用网络接口。</div>
+<div class="src">数据来源：NeoData 金融数据服务；采样截至 2026-08-03</div></div></div>
+
+<div class="risk-box">
+  <h2>⚠ 风险提示</h2>
+  <ul><li><b>环境系统性风险（最高优先级）</b>：北证50 收盘跌破 1007.64（距现价仅 −6.36%）将触发全主题否决；若进一步跌向 950–1000「无人区」，该区间历史成交天数为 0，届时或面临无买盘承接。</li><li><b>流动性枯竭与退出风险</b>：主题日成交额仅 7.62 亿（约宁德时代单日的 9.0%），L3 层 1 只标的实务上不可建仓；应激情景（ADV 腰斩）下退出耗时显著拉长，冲击成本可能吞噬全部预期收益。</li><li><b>盈利集中度双点故障</b>：高 ROE 子集 74.9% 利润集中于同力股份与开发科技两家，后者 2026Q1 归母已 −74%。任一家中报继续恶化，α 逻辑广度减半。</li><li><b>数据时效性风险</b>：多头 α 论证主要基于 2025FY 年报，距报告日陈旧约 7 个月，而 2026Q1 已出现实质恶化信号。</li><li><b>光伏出清的 L 型陷阱</b>：开工率降至 50% 是产能「停」而非「死」，复产即压价；头部逆势扩产 200 亿、新增 &gt;700GWh 对冲出清进程。H1 亏损 183–214 亿持续侵蚀净资产，PB 1.99 的底并不牢固。</li><li><b>出海三道锁</b>：欧盟反补贴税 45.3%、逆变器禁令波及 14GW、美国反规避调查；叠加电池护照 2027-02-18 生效、出口退税归零、人民币升值 +3.35%。</li><li><b>催化剂落空风险</b>：北交所主题 ETF 拟 200 亿（仅为北证50 市值 7.35%）尚未获批；LPR 已连续 14 个月不变，降息预期受美联储偏鹰制约。</li><li><b>技术面破位概率高于突破</b>：技术分析师给出破位 30% &gt; 突破 20%；下方 3450–3560 为成交真空区，破位后易加速下滑。</li><li><b>模型与假设风险</b>：3% 仓位刻度依赖 ADV 快照与冲击成本可支付假设；个股价位系基于估值锚推算而非实盘技术位，实际成交价可能显著偏离。</li></ul>
+</div>
+
+<div class="disclaimer">⚠ <b>免责声明</b>：本报告由 AI 分析团队基于 NeoData 金融数据服务的公开信息自动生成，仅供研究参考，<b>不构成任何投资建议、要约或个股推荐</b>。报告中的价位、评分、概率与期望收益均为模型测算结果，个股价位系基于估值锚推算而非实盘技术位，可能与实际市场情况存在显著偏差。历史数据不代表未来表现，任何依据本报告作出的投资决策及其后果由投资者自行承担。投资有风险，决策需谨慎。<br><br>报告生成日期：2026-08-04 ｜ 数据采样截至：2026-08-03 ｜ 分析流程：5 阶段 12 角色协作 ｜ 数据源：NeoData 金融数据服务（唯一）</div>
+
+<script>
+
+const D = {"price": {"dates": ["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-01", "2026-07-02", "2026-07-03", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-03"], "a": {"name": "CS新能车(399976.SZ)", "close": [4326.18, 4400.13, 4424.5, 4560.42, 4547.68, 4418.81, 4439.42, 4381.59, 4288.09, 4296.25, 4460.85, 4438.54, 4604.28, 4681.13, 4793.72, 4699.25, 4838.79, 4835.32, 4809.2, 4885.11, 4884.67, 4784.73, 4910.96, 4955.31, 4851.67, 5101.94, 5086.64, 5252.29, 5203.89, 5091.13, 5108.62, 5018.01, 5021.69, 4861.67, 4854.38, 4852.34, 4830.29, 4897.21, 4828.65, 4904.15, 4815.29, 4820.95, 4774.74, 4755.89, 4642.93, 4608.8, 4632.29, 4572.47, 4487.12, 4451.67, 4325.48, 4451.96, 4341.71, 4362.22, 4444.68, 4547.15, 4645.97, 4619.86, 4579.83, 4689.85, 4478.19, 4548.95, 4495.85, 4215.8, 4267.88, 4393.97, 4441.29, 4406.87, 4467.31, 4359.16, 4311.43, 4082.34, 4062.19, 3966.17, 3800.26, 3872.7, 3849.34, 3796.69, 3676.74, 3600.93, 3747.67, 3682.73, 3813.84, 3698.56, 3793.99, 3721.62, 3788.47, 3785.43, 3814.02, 3811.38], "sma20": [4444.96, 4434.18, 4428.71, 4429.74, 4432.31, 4436.18, 4442.16, 4443.22, 4439.82, 4435.13, 4434.89, 4428.0, 4430.24, 4435.48, 4446.35, 4457.63, 4478.09, 4504.94, 4527.2, 4556.46, 4584.39, 4603.62, 4627.94, 4647.68, 4662.88, 4697.04, 4729.4, 4772.94, 4818.73, 4858.47, 4890.86, 4919.83, 4940.7, 4949.73, 4952.76, 4960.42, 4959.99, 4963.09, 4964.06, 4965.01, 4961.54, 4963.35, 4956.54, 4946.57, 4936.14, 4911.48, 4888.76, 4854.77, 4818.93, 4786.96, 4747.8, 4719.5, 4685.5, 4660.53, 4640.04, 4624.78, 4615.57, 4601.7, 4589.26, 4578.54, 4561.69, 4548.09, 4534.14, 4507.14, 4488.39, 4477.64, 4468.09, 4459.82, 4458.82, 4454.2, 4453.5, 4435.02, 4421.04, 4401.24, 4369.02, 4335.29, 4295.46, 4254.3, 4209.15, 4154.7, 4118.18, 4074.87, 4040.77, 4014.9, 3991.21, 3957.59, 3924.95, 3893.88, 3861.21, 3833.82], "sma60": [4483.28, 4486.66, 4489.29, 4492.83, 4495.55, 4495.86, 4494.85, 4494.27, 4490.89, 4488.06, 4486.1, 4482.4, 4481.73, 4483.45, 4486.46, 4487.64, 4491.27, 4495.78, 4498.55, 4502.67, 4506.75, 4510.26, 4514.68, 4520.72, 4522.97, 4530.9, 4539.61, 4551.35, 4563.58, 4575.38, 4589.17, 4599.86, 4609.88, 4618.92, 4626.56, 4633.4, 4640.12, 4647.03, 4651.98, 4658.88, 4663.63, 4667.05, 4671.06, 4674.67, 4677.11, 4681.57, 4686.77, 4690.31, 4692.49, 4693.52, 4691.18, 4689.11, 4685.48, 4681.91, 4679.72, 4680.94, 4684.55, 4689.91, 4693.51, 4700.01, 4702.54, 4705.02, 4706.21, 4700.47, 4695.8, 4695.39, 4695.42, 4695.84, 4698.83, 4699.88, 4697.39, 4691.45, 4682.41, 4670.5, 4653.94, 4640.16, 4623.67, 4606.36, 4587.49, 4566.09, 4547.14, 4528.77, 4510.48, 4489.54, 4471.91, 4448.9, 4427.27, 4402.82, 4379.66, 4358.33]}, "b": {"name": "光伏产业(931151.CSI)", "close": [3349.74, 3383.29, 3296.21, 3293.82, 3179.23, 3075.52, 3096.46, 2997.56, 2925.78, 2928.05, 3064.47, 3024.16, 3088.8, 3143.1, 3163.59, 3151.86, 3186.34, 3190.42, 3232.82, 3228.37, 3229.9, 3213.31, 3164.38, 3136.45, 3099.35, 3157.1, 3161.09, 3230.74, 3275.35, 3263.56, 3339.39, 3341.72, 3416.93, 3360.74, 3295.52, 3279.56, 3322.46, 3351.81, 3249.19, 3308.26, 3343.03, 3315.49, 3336.62, 3352.96, 3203.11, 3173.94, 3140.46, 3162.77, 3171.49, 3091.38, 2928.02, 3017.5, 2973.84, 2955.04, 2950.86, 3022.16, 3074.68, 3059.53, 3021.45, 3100.96, 2961.15, 2962.66, 2992.62, 2975.51, 3003.02, 3100.58, 3036.34, 2885.65, 2841.63, 2775.33, 2745.65, 2657.44, 2705.1, 2656.84, 2516.15, 2531.91, 2514.98, 2445.92, 2351.58, 2325.34, 2414.72, 2424.28, 2487.89, 2399.83, 2452.95, 2392.17, 2403.49, 2365.18, 2403.34, 2446.44], "sma20": [3373.13, 3375.6, 3374.42, 3370.14, 3360.26, 3348.95, 3338.84, 3321.57, 3300.31, 3276.38, 3256.95, 3232.66, 3211.03, 3194.63, 3183.77, 3175.32, 3167.8, 3162.7, 3154.96, 3149.98, 3143.99, 3135.49, 3128.9, 3121.03, 3117.03, 3121.11, 3124.35, 3136.0, 3153.48, 3170.26, 3184.0, 3199.88, 3216.29, 3227.17, 3233.77, 3240.15, 3246.96, 3255.03, 3255.85, 3259.84, 3265.5, 3270.61, 3279.22, 3290.04, 3295.23, 3296.07, 3295.04, 3291.64, 3286.45, 3277.84, 3257.27, 3241.06, 3218.91, 3198.62, 3181.39, 3168.52, 3156.13, 3141.52, 3130.13, 3119.76, 3100.67, 3083.03, 3065.83, 3046.96, 3036.95, 3033.28, 3028.08, 3014.22, 2997.73, 2981.93, 2972.81, 2954.8, 2941.37, 2926.46, 2904.72, 2880.21, 2852.22, 2821.54, 2788.05, 2749.27, 2721.95, 2695.03, 2669.79, 2641.01, 2613.51, 2578.09, 2546.44, 2520.42, 2498.5, 2482.06], "sma60": [3206.55, 3216.54, 3224.63, 3232.5, 3237.79, 3241.02, 3243.72, 3245.0, 3245.59, 3246.76, 3249.43, 3250.21, 3251.76, 3253.66, 3256.02, 3257.18, 3259.19, 3261.01, 3263.15, 3264.6, 3264.99, 3266.56, 3267.5, 3267.29, 3262.95, 3260.07, 3256.77, 3255.91, 3256.33, 3257.73, 3260.89, 3261.05, 3260.67, 3262.39, 3262.66, 3260.7, 3260.34, 3260.99, 3259.25, 3260.19, 3260.87, 3260.56, 3260.84, 3260.4, 3257.51, 3255.38, 3252.74, 3249.74, 3246.75, 3241.49, 3232.74, 3224.54, 3215.41, 3206.81, 3199.64, 3194.66, 3190.29, 3186.42, 3180.31, 3176.53, 3170.05, 3163.04, 3157.98, 3152.68, 3149.74, 3150.16, 3149.15, 3147.29, 3145.89, 3143.34, 3138.03, 3131.92, 3125.52, 3117.42, 3106.63, 3096.29, 3085.1, 3072.7, 3058.01, 3042.96, 3029.37, 3016.22, 3004.95, 2992.67, 2981.9, 2969.15, 2956.52, 2942.09, 2927.56, 2913.94]}, "refs": [{"axis": "y", "value": 3873.92, "color": "#f59e0b", "label": "新能车颈线 3873.92"}, {"axis": "y", "value": 4440.5, "color": "#059669", "label": "新能车目标中枢 4440.5"}, {"axis": "y", "value": 3600.93, "color": "#dc2626", "label": "新能车主止损 3600.93"}, {"axis": "y1", "value": 2491.4, "color": "#a16207", "label": "光伏颈线 2491.40"}, {"axis": "y1", "value": 2325.34, "color": "#b91c1c", "label": "光伏主止损 2325.34"}]}, "radar": {"labels": ["技术面", "基本面", "新闻面", "情绪面", "风险面(安全度)"], "values": [4.5, 6.0, 6.0, 3.5, 3.5]}, "debate": {"labels": ["盈利质量与集中度", "α 可交易性", "估值倍数水平", "估值分位与赔率", "环境(北证50)位置", "技术面信号", "情绪与拥挤度", "催化剂兑现"], "bull": [7, 7, 7, 4, 3, 3, 4, 4], "bear": [-10, -9, -9, -8, -8, -7, -7, -6]}, "risk": {"labels": ["风险程度评分(统一口径)", "论证质量分(风险主管评)", "仓位激进度(建议仓位/15×10)"], "series": [{"name": "激进派 (建议12–15%)", "data": [2.5, 7.0, 9.0], "color": "#dc2626", "fill": "rgba(220,38,38,.14)"}, {"name": "保守派 (建议≤1%)", "data": [8.6, 8.0, 0.7], "color": "#2563eb", "fill": "rgba(37,99,235,.14)"}, {"name": "中性派 (建议3–4%)", "data": [6.0, 8.5, 2.3], "color": "#059669", "fill": "rgba(5,150,105,.14)", "dash": [5, 3]}]}, "sector": {"labels": ["上游-资源(锂/化工)", "上游-硅料", "中游-锂电材料", "中游-电芯", "中游-零部件", "中游-光伏(硅片/组件)", "设备-光伏", "设备-锂电", "下游-整车(矿卡)", "下游-电网/储能/节能", "风电材料", "辅材(石英/元器件等)"], "values": [5, 3, 5, 7, 6, 2, 3, 4, 8, 8, 7, 4], "notes": ["一诺威+9.4%/净利率2.5%；康普化学净利-72.5%", "硅烷科技营收-32.8%/毛利率-2.5%/ROE-7.0%", "贝特瑞+19.3%/ROE7.1%；安达科技毛利率仅1.8%仍亏", "长虹能源净利率5.6%/ROE25.1%/OCF-NP=2.6", "林泰新材净利+74.2%/ROE27.6%；骏创科技-28.9%", "海泰新能营收-55.6%/净利率-40.9%/ROE-64.1%", "连城数控营收-61.4%/净利-75.1%", "纳科诺尔营收-7.1%/净利-59.3%", "同力股份净利率13.1%/ROE25.0%；6月渗透率63.6%", "开发科技ROE22.3%；广厦环能净利率24.6%", "吉林碳谷营收+58.2%/净利+90.2%", "民士达净利率28.6%；多数下滑或亏损"]}, "scenario": {"labels": ["乐观：带量破颈线", "中性：缩量震荡", "悲观：破位入无人区"], "upside": [16.5, 0.0, -10.8], "prob": [20, 50, 30], "targets": ["新能车 4345–4536 / 光伏 2789–2911", "新能车 3700–3900 区间", "新能车 3400 前低 / 北证50 950–1000"]}, "valuation": {"labels": ["中证新能源 PB", "CS新能车 PB", "光伏产业 PB", "北证50 PB"], "low": [1.89, 2.62, 1.68, 2.39], "band": [1.14, 1.8099999999999996, 0.97, 2.9899999999999998], "cur": [2.57, 3.39, 1.99, 3.77], "pct": ["57.1%", "68.75%", "25.0%", "72.7%"]}, "liquidity": {"labels": ["L1 可参与 (8只)", "L2 谨慎 (5只)", "L3 规避 (1只)"], "count": [57.1, 35.7, 7.1], "turnover": [88.4, 11.0, 0.6]}};
+const FONT = {family:'-apple-system,PingFang SC,sans-serif'};
+Chart.defaults.font.family = FONT.family;
+Chart.defaults.color = '#4b5563';
+const has = id => document.getElementById(id);
+
+/* ---------- 参考线插件 ---------- */
+const refLines = {
+  id:'refLines',
+  afterDatasetsDraw(c,a,o){
+    if(!o || !o.lines) return;
+    const {ctx,chartArea:{left,right}} = c;
+    o.lines.forEach(L=>{
+      const ax = c.scales[L.axis||'y']; if(!ax) return;
+      const y = ax.getPixelForValue(L.value);
+      if(y<c.chartArea.top||y>c.chartArea.bottom) return;
+      ctx.save();
+      ctx.strokeStyle=L.color; ctx.lineWidth=1.3; ctx.setLineDash(L.dash||[6,4]);
+      ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle=L.color; ctx.font='600 10.5px '+FONT.family; ctx.textAlign='right';
+      ctx.fillText(L.label, right-4, y-4);
+      ctx.restore();
+    });
+  }
+};
+
+/* ---------- 1. 价格双轴 ---------- */
+if(has('priceChart') && D.price){
+  const P=D.price;
+  const ds=[
+    {label:P.a.name,data:P.a.close,borderColor:'#dc2626',backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:.15,yAxisID:'y'},
+    {label:P.a.name+' MA20',data:P.a.sma20,borderColor:'#f97316',borderWidth:1.2,pointRadius:0,borderDash:[5,3],tension:.15,yAxisID:'y'},
+    {label:P.b.name,data:P.b.close,borderColor:'#059669',backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:.15,yAxisID:'y1'},
+    {label:P.b.name+' MA20',data:P.b.sma20,borderColor:'#34d399',borderWidth:1.2,pointRadius:0,borderDash:[5,3],tension:.15,yAxisID:'y1'}
+  ];
+  if(P.a.sma60) ds.splice(2,0,{label:P.a.name+' MA60',data:P.a.sma60,borderColor:'#9ca3af',borderWidth:1.1,pointRadius:0,borderDash:[2,3],tension:.15,yAxisID:'y'});
+  if(P.b.sma60) ds.push({label:P.b.name+' MA60',data:P.b.sma60,borderColor:'#a7f3d0',borderWidth:1.1,pointRadius:0,borderDash:[2,3],tension:.15,yAxisID:'y1'});
+  new Chart(has('priceChart'),{type:'line',data:{labels:P.dates,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{boxWidth:16,font:{size:11}}},refLines:{lines:P.refs||[]},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.parsed.y==null?'-':c.parsed.y.toLocaleString())}}},
+      scales:{
+        y:{position:'left',title:{display:true,text:P.a.name,font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',title:{display:true,text:P.b.name,font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{ticks:{maxTicksLimit:12,font:{size:10}},grid:{display:false}}
+      }},plugins:[refLines]});
+}
+
+/* ---------- 2. 五维雷达 ---------- */
+if(has('radarChart') && D.radar){
+  new Chart(has('radarChart'),{type:'radar',
+    data:{labels:D.radar.labels,datasets:[{label:'评分',data:D.radar.values,
+      borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.16)',borderWidth:2,pointBackgroundColor:'#2563eb',pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:10}},pointLabels:{font:{size:12.5,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.r+' / 10'}}}}});
+}
+
+/* ---------- 3. 多空对比水平柱 ---------- */
+if(has('debateChart') && D.debate){
+  new Chart(has('debateChart'),{type:'bar',
+    data:{labels:D.debate.labels,datasets:[
+      {label:'多头论点权重',data:D.debate.bull,backgroundColor:'rgba(5,150,105,.82)',borderRadius:3},
+      {label:'空头论点权重',data:D.debate.bear,backgroundColor:'rgba(220,38,38,.82)',borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{min:-10,max:10,ticks:{callback:v=>Math.abs(v),font:{size:10.5}},grid:{color:'#f1f3f6'},
+        title:{display:true,text:'← 空头权重    |    多头权重 →',font:{size:11}}},
+        y:{ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Math.abs(c.parsed.x)}}}}});
+}
+
+/* ---------- 4. 风险三方雷达 ---------- */
+if(has('riskChart') && D.risk){
+  new Chart(has('riskChart'),{type:'radar',
+    data:{labels:D.risk.labels,datasets:D.risk.series.map(s=>({
+      label:s.name,data:s.data,borderColor:s.color,backgroundColor:s.fill,borderWidth:2,
+      pointRadius:3.5,borderDash:s.dash||[]}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:10}},pointLabels:{font:{size:12,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}}}}});
+}
+
+/* ---------- 5. 细分赛道景气度 ---------- */
+if(has('sectorChart') && D.sector){
+  new Chart(has('sectorChart'),{type:'bar',
+    data:{labels:D.sector.labels,datasets:[{label:'景气度评分',data:D.sector.values,
+      backgroundColor:D.sector.values.map(v=>v>=7?'rgba(5,150,105,.85)':v>=5?'rgba(245,158,11,.85)':'rgba(220,38,38,.8)'),
+      borderRadius:4}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{min:0,max:10,ticks:{stepSize:2,font:{size:10.5}},grid:{color:'#f1f3f6'},
+        title:{display:true,text:'景气度评分（0=极冷 10=极热）',font:{size:11}}},
+        y:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{afterLabel:c=>D.sector.notes?D.sector.notes[c.dataIndex]:''}}}}});
+}
+
+/* ---------- 6. 情景分析：目标位 + 概率 ---------- */
+if(has('scenarioChart') && D.scenario){
+  const S=D.scenario;
+  new Chart(has('scenarioChart'),{type:'bar',
+    data:{labels:S.labels,datasets:[
+      {type:'bar',label:'目标位相对现价空间(%)',data:S.upside,yAxisID:'y',
+        backgroundColor:S.upside.map(v=>v>=0?'rgba(5,150,105,.8)':'rgba(220,38,38,.8)'),borderRadius:4,order:2},
+      {type:'line',label:'发生概率(%)',data:S.prob,yAxisID:'y1',borderColor:'#6366f1',
+        backgroundColor:'#6366f1',borderWidth:2,pointRadius:5,tension:.2,order:1}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'相对现价空间 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:100,title:{display:true,text:'概率 %',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{afterLabel:c=>c.datasetIndex===0&&S.targets?('目标位 '+S.targets[c.dataIndex]):''}}}}});
+}
+
+/* ---------- 7. 估值分位 ---------- */
+if(has('valChart') && D.valuation){
+  const V=D.valuation;
+  new Chart(has('valChart'),{type:'bar',
+    data:{labels:V.labels,datasets:[
+      {label:'历史区间下沿',data:V.low,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'历史区间',data:V.band,backgroundColor:'rgba(99,102,241,.22)',stack:'s',borderRadius:3},
+      {type:'line',label:'当前值',data:V.cur,borderColor:'#dc2626',backgroundColor:'#dc2626',
+        borderWidth:0,pointRadius:7,pointStyle:'rectRot',showLine:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'倍数',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{filter:i=>i.dataset.label!=='历史区间下沿',
+          callbacks:{afterLabel:c=>c.dataset.label==='当前值'&&V.pct?('历史分位 '+V.pct[c.dataIndex]):''}}}}});
+}
+
+/* ---------- 8. 流动性分层 ---------- */
+if(has('liqChart') && D.liquidity){
+  const L=D.liquidity;
+  new Chart(has('liqChart'),{type:'bar',
+    data:{labels:L.labels,datasets:[
+      {label:'标的数量占比(%)',data:L.count,backgroundColor:'rgba(37,99,235,.78)',borderRadius:4},
+      {label:'成交额占比(%)',data:L.turnover,backgroundColor:'rgba(245,158,11,.82)',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'占比 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}}}}});
+}
+
+</script>
+</body>
+</html>

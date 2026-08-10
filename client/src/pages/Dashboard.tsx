@@ -231,6 +231,22 @@ const MODULES = {
       },
     ],
   },
+  industry_research: {
+    label: "行业研究",
+    icon: BookOpen,
+    color: "cyan",
+    desc: "三行业券商级结论与核心数据：医疗 / 新能源 / 人工智能",
+    items: [
+      {
+        href: "/industry-research",
+        icon: "📚",
+        title: "行业研究报告",
+        desc: "医疗健康(BUY) · 新能源(HOLD) · 人工智能(SELL) 三行业结论、细分赛道、代表公司、多空与情景",
+        tags: ["券商加厚版", "买卖结论", "多空辩论"],
+        color: "cyan",
+      },
+    ],
+  },
   compliance: {
     label: "合规管理",
     icon: Shield,
@@ -351,7 +367,7 @@ export default function Dashboard() {
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">功能模块</span>
-                <span className="text-white font-semibold">22 个</span>
+                <span className="text-white font-semibold">23 个</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">监管制度</span>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新三板/北交所 人工智能行业主题投资分析报告（券商加厚版）· 2026-08-05</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+ max-width:1180px;margin:0 auto;padding:0 24px 108px;background:#fff;color:#1f2430;line-height:1.78;-webkit-font-smoothing:antialiased}
+
+/* ============ 封面页 ============ */
+.cover{margin:0 -24px;padding:52px 56px 40px;background:linear-gradient(135deg,#0b1020 0%,#12172b 42%,#6b1220 100%);color:#fff;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,.28),transparent 68%)}
+.cover .inst{font-size:13px;letter-spacing:3px;font-weight:600;opacity:.78}
+.cover .line{width:56px;height:3px;background:#dc2626;margin:16px 0 22px;border-radius:2px}
+.cover .cat{display:inline-block;font-size:12px;padding:4px 12px;border-radius:5px;background:rgba(255,255,255,.13);letter-spacing:.5px}
+.cover h1{font-size:38px;margin:18px 0 8px;font-weight:800;letter-spacing:-.8px;line-height:1.24;max-width:760px}
+.cover h2.subt{font-size:16px;font-weight:500;margin:0 0 6px;opacity:.88;max-width:760px;line-height:1.6}
+.cover .edition{display:inline-block;margin-top:10px;font-size:12.5px;padding:3px 11px;border-radius:4px;background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.35)}
+.cover-grid{display:grid;grid-template-columns:1fr 250px;gap:34px;align-items:start;margin-top:34px}
+.cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:0;border-top:1px solid rgba(255,255,255,.16)}
+.cover-meta div{padding:13px 16px 13px 0;border-right:1px solid rgba(255,255,255,.09)}
+.cover-meta div:last-child{border-right:0}
+.cover-meta .k{font-size:11px;opacity:.6;letter-spacing:.6px;margin-bottom:3px}
+.cover-meta .v{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.bigstamp{background:#dc2626;border-radius:14px;padding:26px 18px;text-align:center;box-shadow:0 12px 34px rgba(220,38,38,.36)}
+.bigstamp .r{font-size:52px;font-weight:900;letter-spacing:-1.5px;line-height:1}
+.bigstamp .s{font-size:13px;font-weight:600;margin-top:8px;opacity:.95}
+.bigstamp .t{font-size:11.5px;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.28);opacity:.92;line-height:1.6}
+.cover-sign{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);font-size:12.5px;opacity:.72;display:flex;gap:26px;flex-wrap:wrap}
+@media(max-width:860px){.cover{padding:34px 22px}.cover h1{font-size:27px}.cover-grid{grid-template-columns:1fr}}
+
+.rdef{font-size:11.5px;color:#6b7280;margin:10px 0 0;padding:9px 12px;background:#fafbfd;border:1px solid #eef1f6;border-radius:7px}
+
+/* ============ 通用 ============ */
+.toc{background:#fafbfd;border:1px solid #eef1f6;border-radius:10px;padding:16px 22px;margin:22px 0;font-size:12.8px;columns:3;column-gap:30px}
+.toc a{color:#374151;text-decoration:none;display:block;padding:2.5px 0;break-inside:avoid}
+.toc a:hover{color:#1d4ed8;text-decoration:underline}
+.toc a.sub{padding-left:15px;font-size:12.1px;color:#6b7280}
+@media(max-width:980px){.toc{columns:2}}
+@media(max-width:680px){.toc{columns:1}}
+.summary-card{background:#f6f9ff;border:1px solid #e3ebfb;border-radius:12px;padding:20px 22px;margin:22px 0}
+.summary-card h2{margin:0 0 12px;font-size:16px;color:#0f1f3d}
+table{width:100%;border-collapse:collapse;font-size:13.2px;margin:12px 0}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid #edf0f4;vertical-align:top}
+th{background:#f3f5f9;font-weight:600;color:#374151;font-size:12.2px;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:hover td{background:#fafbfc}
+table.compact{font-size:12.4px}
+table.compact th,table.compact td{padding:6px 8px}
+.tbl-scroll{overflow-x:auto;margin:12px 0}
+.tbl-scroll table{margin:0;min-width:760px}
+.pos{color:#059669;font-weight:600}.neg{color:#dc2626;font-weight:600}.warn{color:#d97706;font-weight:600}.mut{color:#9ca3af}
+.takeaways{background:#fffdf5;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+.takeaways h2{margin:0 0 10px;font-size:16px;color:#0f1f3d}
+.takeaways ol{margin:0;padding-left:22px}
+.takeaways li{margin-bottom:9px;font-size:14px}
+.takeaways li b{color:#0f1f3d}
+.section{margin-top:34px;scroll-margin-top:16px}
+.sec-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid #0f1f3d;padding-bottom:6px;margin-bottom:14px}
+.sec-head .no{background:#0f1f3d;color:#fff;font-size:13px;font-weight:700;padding:2px 9px;border-radius:4px;white-space:nowrap}
+.sec-head h2{margin:0;font-size:18px;color:#0f1f3d;font-weight:800}
+.sec-body p{font-size:14px;color:#374151;margin:10px 0}
+.sec-body ul.clean{padding-left:20px;margin:10px 0}
+.sec-body ul.clean li{margin-bottom:7px;font-size:14px}
+h4.mini{font-size:14px;margin:20px 0 6px;color:#111827;font-weight:700;border-left:3px solid #cbd5e1;padding-left:9px;scroll-margin-top:16px}
+h5.mini2{font-size:13.2px;margin:15px 0 5px;color:#374151;font-weight:700}
+.chart-card{background:#fff;border:1px solid #edf0f3;border-radius:12px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.chart-card h3{margin:0 0 4px;font-size:15.5px;font-weight:700;color:#0f1f3d}
+.chart-card .cap{color:#6b7280;font-size:12.5px;margin-bottom:14px}
+.chart-wrap{position:relative;height:340px}
+.chart-wrap.tall{height:420px}
+.chart-wrap.xtall{height:500px}
+.chart-wrap.short{height:270px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+.callout{border-left:3px solid #6366f1;background:#f8f9ff;padding:12px 15px;border-radius:0 8px 8px 0;margin:13px 0;font-size:13.5px;color:#374151}
+.callout.red{border-color:#ef4444;background:#fef7f7}
+.callout.amber{border-color:#f59e0b;background:#fffbf3}
+.callout.green{border-color:#10b981;background:#f2fdf8}
+.callout.blue{border-color:#3b82f6;background:#f5f9ff}
+.callout b{display:block;margin-bottom:4px;color:#111827}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:#fafbfd;border:1px solid #eef1f6;border-radius:9px;padding:11px 13px}
+.kpi .k{font-size:11.5px;color:#6b7280;margin-bottom:3px}
+.kpi .v{font-size:18px;font-weight:800;color:#0f1f3d;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:11.5px;margin-top:2px}
+.tier{border:1px solid #e5e9f0;border-radius:10px;padding:14px 16px;margin:11px 0;background:#fff}
+.score-line{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+.score-line .lbl{width:88px;color:#4b5563;flex-shrink:0}
+.score-line .bar{flex:1;height:9px;background:#eef1f5;border-radius:5px;overflow:hidden}
+.score-line .bar i{display:block;height:100%;border-radius:5px}
+.score-line .val{width:44px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:#111827}
+.risk-box{background:#fff5f5;border:1px solid #fbd5d5;border-radius:10px;padding:16px 20px;margin:16px 0}
+.risk-box h2{margin:0 0 10px;font-size:15.5px;color:#b91c1c}
+.risk-box ul{padding-left:20px;margin:0}
+.risk-box li{margin-bottom:7px;font-size:13.5px;color:#7f1d1d}
+.disclaimer{color:#6b7280;font-size:12.5px;padding:18px 4px 0;margin-top:30px;border-top:1px solid #e5e7eb;line-height:1.7}
+.src{font-size:11.5px;color:#9ca3af;margin-top:6px}
+details{margin:9px 0;border:1px solid #eef1f5;border-radius:8px;padding:9px 13px;background:#fcfdfe}
+details summary{cursor:pointer;font-weight:600;font-size:13.5px;color:#0f1f3d}
+details[open] summary{margin-bottom:8px}
+/* 溯源标记 */
+.srcpill{display:inline-block;font-size:10.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#eef2ff;color:#4338ca;
+ border:1px solid #e0e7ff;border-radius:4px;padding:1px 6px;margin-left:5px;vertical-align:1px;white-space:nowrap}
+.srcpill.ext{background:#ecfdf5;color:#047857;border-color:#d1fae5}
+.srcpill.na{background:#f3f4f6;color:#6b7280;border-color:#e5e7eb}
+code{background:#f4f5f7;padding:1px 5px;border-radius:3px;font-size:12.2px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+/* 附录 */
+.appendix{margin-top:40px;padding-top:8px;border-top:3px double #d1d5db}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.gloss div{background:#fafbfd;border:1px solid #eef1f6;border-radius:8px;padding:10px 13px;font-size:12.6px}
+.gloss b{display:block;color:#0f1f3d;margin-bottom:2px;font-size:13px}
+/* 固定页底免责 */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:99;background:rgba(15,31,61,.965);color:#e5e7eb;
+ font-size:11.6px;line-height:1.55;padding:9px 20px;border-top:2px solid #dc2626;backdrop-filter:blur(6px)}
+.stickybar b{color:#fca5a5}
+.stickybar .wrap{max-width:1180px;margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.stickybar .tag{background:#dc2626;color:#fff;font-weight:800;padding:2px 9px;border-radius:4px;font-size:11.5px;white-space:nowrap}
+@media(max-width:700px){.stickybar{font-size:10.6px;padding:7px 12px}}
+.backtop{position:fixed;right:18px;bottom:74px;z-index:98;background:#0f1f3d;color:#fff;border-radius:50%;
+ width:40px;height:40px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;
+ box-shadow:0 4px 14px rgba(0,0,0,.22);opacity:.82}
+.backtop:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ==================== 封面 ==================== -->
+<div class="cover" id="top">
+  <div class="inst">TRADING ANALYSIS TEAM ｜ 交易分析团队</div>
+  <div class="line"></div>
+  <span class="cat">行业主题深度研究 · 人工智能（新三板 / 北交所）</span>
+  <div class="cover-grid">
+    <div>
+      <h1>算力盛宴的门外：<br>当 86.1% 的公司没有一个成交价</h1>
+      <h2 class="subt">新三板 / 北交所人工智能行业 1,342 家企业主题级投资分析<br>—— 五阶段十二角色协作研究 · 券商加厚版</h2>
+      <span class="edition">BROKERAGE-GRADE EXPANDED EDITION ｜ 加厚版（在 2026-08-04 版基础上扩写）</span>
+    </div>
+    <div class="bigstamp">
+      <div class="r">SELL</div>
+      <div class="s">主题级低配 / 回避</div>
+      <div class="t">建议敞口 <b>0%</b><br>条件性预留 1.0%<br>硬上限 1.5%</div>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <div><div class="k">行　　业</div><div class="v">人工智能</div></div>
+    <div><div class="k">报告日期</div><div class="v">2026-08-05</div></div>
+    <div><div class="k">数据截至日</div><div class="v">2026-08-03</div></div>
+    <div><div class="k">财务基准年</div><div class="v">2024（n=1,310）</div></div>
+    <div><div class="k">样本口径</div><div class="v">1,342 家</div></div>
+    <div><div class="k">置信度折扣</div><div class="v">38%</div></div>
+  </div>
+  <div class="cover-sign">
+    <span>署名：交易分析团队（Trading Analysis Team）</span>
+    <span>数据源：NeoData 金融数据服务 + 本地新三板/北交所企业库（38 个 JSON）</span>
+    <span>底稿版本：ai-analysis-2026-08-04.html</span>
+  </div>
+</div>
+
+<div class="rdef"><b>评级定义</b>　BUY = 超配（相对基准显著加仓）｜HOLD = 标配/观望（维持基准权重）｜SELL = 低配/回避（相对基准显著减仓或不参与）。
+本报告为<b>行业主题级</b>研究，不含任何个股买卖评级；文中出现的公司名称仅作为<b>数据样本与证据</b>引用。
+<b>加厚版说明</b>：本版在 2026-08-04 底稿基础上扩写，新增细分赛道拆分、代表公司深研、可比矩阵、估值三法、情景敏感性与 11 张新图表；
+底稿全部核心结论与三处已修正数字原样保留，未作方向性改动。</div>
+
+<!-- ==================== 执行摘要 ==================== -->
+<div class="section" id="es"><div class="sec-head"><span class="no">摘要</span><h2>执行摘要（Executive Summary）</h2></div><div class="sec-body">
+
+<div class="kpi-row">
+<div class="kpi"><div class="k">最终评级</div><div class="v neg">SELL</div><div class="d neg">主题级低配 / 回避</div></div>
+<div class="kpi"><div class="k">建议敞口</div><div class="v">0%</div><div class="d warn">预留 1.0%｜硬上限 1.5%</div></div>
+<div class="kpi"><div class="k">概率加权期望</div><div class="v neg">−3.67%</div><div class="d neg">扣摩擦 −5.15%~−6.53%</div></div>
+<div class="kpi"><div class="k">赔率</div><div class="v neg">0.51 : 1</div><div class="d neg">机构门槛通常 ≥2:1</div></div>
+<div class="kpi"><div class="k">无成交价占比</div><div class="v neg">86.1%</div><div class="d neg">1,155 家 / 占市值 66.0%</div></div>
+<div class="kpi"><div class="k">信心水平</div><div class="v">7.5 / 10</div><div class="d">置信度折扣 38%</div></div>
+</div>
+
+<h4 class="mini">核心论点（Thesis）</h4>
+<p><b>这个主题的问题不是"贵"，而是"没法交易"。</b>1,342 家样本中 <b>86.1%（1,155 家）在企业库中无可观测成交价，占名义市值 66.0%</b>；
+其中<b>仅约 21%（±2%，247 家）严格等于 <code>净利润 × 21.978</code> 模型公式</b>，其余 908 家的定价方法<b>既非市场成交、也无法被验证</b>——
+这与"66% 市值均为模型定价"是两个完全不同的命题，本报告严格区分。当分母的三分之二既不是成交价、也不是可复现的模型价时，
+"高估还是低估"这个问题在本主题上<b>先天不成立</b>；能讨论的只有剩下 34.0%（2,737.4 亿元）的可承保市值。
+在这 34% 上，真实二级定价给出的答案是分裂的：920 组（78 家，占真实定价市值 68.4%）隐含 PE 43.20x、较 A 股可比溢价 +96.56%，
+而一级半真实成交组（60 家可算 PE）只有 12.105x。</p>
+
+<h4 class="mini">关键数字（Key Figures）</h4>
+<div class="tbl-scroll"><table class="compact">
+<tr><th>维度</th><th>数值</th><th>口径与来源</th></tr>
+<tr><td>样本 / 名义市值</td><td class="num">1,342 家 / 8,054.2 亿元</td><td>industry == 人工智能<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>可承保市值</td><td class="num warn">2,737.4 亿元（34.0%）</td><td>剔除 66 条重复 + 1,155 家无价<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>合计营收 CAGR (2022→2024)</td><td class="num neg">−3.07%</td><td>3,893.5 → 3,657.9 亿元<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>合计净利 CAGR (2022→2024)</td><td class="num neg">−14.83%</td><td>230.2 → 185.5 亿元<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>中位营收 (2022→2024)</td><td class="num pos">1.18 → 1.26 亿元（+3.3%）</td><td><b>逆势微增</b>，与盈利面背离<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>中位净利 (2022→2024)</td><td class="num neg">727.6 → 374.6 万元（−48.5%）</td><td>两年腰斩<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>亏损面 (2022/23/24)</td><td class="num neg">26.3% → 27.7% → 32.0%</td><td>五年线性 R²=0.9022<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>ROE 中位 (2020→2024)</td><td class="num neg">10.79% → 4.75%</td><td>五年腰斩<span class="srcpill">ai_universe.json</span></td></tr>
+<tr><td>转板重估倍数（无量纲重算）</td><td class="num neg">1.59x（原标 10.34x，虚高 6.50 倍）</td><td>上市首日收盘 ÷ 最后一轮价，n=184<span class="srcpill">data_v4_fixed.json</span></td></tr>
+<tr><td>β 池（唯一允许交易）</td><td class="num">59 家 / 1,445.8 亿元</td><td>占家数 4.40%、名义市值 17.95%<span class="srcpill">ai_universe + inventory-risk</span></td></tr>
+<tr><td>现金流字段覆盖</td><td class="num neg">0 / 1,252</td><td>本报告最大盲区<span class="srcpill">全数据集</span></td></tr>
+</table></div>
+
+<h4 class="mini">主要风险（Top Risks）</h4>
+<ul class="clean">
+<li><b>价格发现一次性重估</b>：主题级折价中枢 −18.6%（区间 −13.12% ~ −24.05%），叠加流动性冲击后 −27.85% 可达；压力矩阵中该单因子占总影响 <b>49.8%</b>，且无任何预警信号。</li>
+<li><b>盈利面继续塌陷</b>：亏损面线性外推 2026E 达 37.10%；若计提 5% 应收坏账，2024 口径亏损面即跳升至 <b>42.7%</b>（128 家由盈转亏）。</li>
+<li><b>现金流零覆盖</b>：全部盈利质量判断无法交叉验证；唯一代理指标应收账款周转 P50 120 天 / P75 217 天 / P90 345 天，信号偏负面。</li>
+<li><b>容量悖论</b>：可交易区间（5–85 亿 AUM）与经济划算区间（AUM ≥164.8 亿）<b>没有交集</b>。</li>
+<li><b>元数据失真</b>：已证实 <code>bse_listing_status</code> / <code>market_cap_method</code> / <code>layer</code> 三处字段失真，本版另发现 <code>first_day_return_pct</code> 量纲混用与 <code>bse_industry_stats</code> 行业归类错配（详见 2.3）。</li>
+</ul>
+
+<h4 class="mini">关键催化（Catalysts）</h4>
+<div class="tbl-scroll"><table class="compact">
+<tr><th>方向</th><th>催化事项</th><th>观测指标</th><th>时点</th></tr>
+<tr><td class="pos">正向</td><td>2025 年报密集披露，price 字段与现金流字段补齐</td><td>price 覆盖率 13.93% → ≥30% / ≥50%</td><td>约 T+6 个月</td></tr>
+<tr><td class="pos">正向</td><td>北交所审核提速（442→365 天）+ 五周年改革与北证 50 ETF 增量</td><td>全市场年上市 ≥50 家且堰塞湖 ≤9x</td><td>2026H2</td></tr>
+<tr><td class="pos">正向</td><td>发改委"十五五"算力网 4 万亿投资落地、智能算力同比 +177%</td><td>本池中位企业营收弹性（现测约 1%）</td><td>持续</td></tr>
+<tr><td class="neg">负向</td><td>北证 50 跌破 1,031.72（距 2026-08-03 收盘仅 −4.12%）</td><td>北证 50 收盘价</td><td>随时</td></tr>
+<tr><td class="neg">负向</td><td>分层调整继续（2026-06-08 已有 90 家调出创新层）</td><td>硬触发标的 233 家（18.25%）</td><td>季度</td></tr>
+<tr><td class="neg">负向</td><td>中美 AI 技术管制升级落地</td><td>概率 6%、影响 −45%（保守派尾部估计）</td><td>未落地</td></tr>
+</table></div>
+
+<div class="callout red" style="font-size:14.5px"><b>一句话结论</b>
+维持 <b>SELL（主题级低配 / 回避）</b>。当前部署 <b>0%</b>，条件性预留 1.0%，硬上限 1.5%；α 腿（新三板买入 → 北交所卖出）本轮<b>全面禁止</b>，
+仅允 β 腿在 78 家 920 代码内买卖。U1–U6 六项翻多条件满足 3 项 → 选择性参与，满足 5 项 → 改 BUY，最快窗口约 T+6 个月。</div>
+</div></div>
+
+
+<!-- ==================== 目录 ==================== -->
+<div class="section" id="toc"><div class="sec-head"><span class="no">目录</span><h2>章节导航（点击跳转）</h2></div>
+<div class="toc">
+<a href="#es"><b>摘要</b>　执行摘要</a>
+<a href="#s1"><b>1.</b>　研究框架与方法论</a>
+<a class="sub" href="#s1-1">1.1 五阶段十二角色流程</a>
+<a class="sub" href="#s1-2">1.2 口径铁律</a>
+<a class="sub" href="#s1-3">1.3 数据溯源总表</a>
+<a href="#s2"><b>2.</b>　主题界定与样本构成</a>
+<a class="sub" href="#s2-1">2.1 市值三层剥离与瀑布</a>
+<a class="sub" href="#s2-2">2.2 模型定价假说的严格检验</a>
+<a class="sub" href="#s2-3">2.3 元数据字段失真（五处）</a>
+<a href="#s3"><b>3.</b>　细分赛道拆分与景气图谱</a>
+<a class="sub" href="#s3-1">3.1 五大赛道映射与样本量</a>
+<a class="sub" href="#s3-2">3.2 七条原生赛道景气度</a>
+<a class="sub" href="#s3-3">3.3 区域集聚与转板兑现率</a>
+<a href="#s4"><b>4.</b>　代表公司深研与可比矩阵</a>
+<a class="sub" href="#s4-1">4.1 五家代表标的快照</a>
+<a class="sub" href="#s4-2">4.2 可比公司矩阵</a>
+<a class="sub" href="#s4-3">4.3 A 股可比估值锚</a>
+<a href="#s5"><b>5.</b>　基本面横截面</a>
+<a class="sub" href="#s5-1">5.1 面板总量与五年趋势</a>
+<a class="sub" href="#s5-2">5.2 横截面分位</a>
+<a class="sub" href="#s5-3">5.3 跨行业基准对照</a>
+<a class="sub" href="#s5-4">5.4 集中度：哑铃结构</a>
+<a class="sub" href="#s5-5">5.5 前瞻信号</a>
+<a href="#s6"><b>6.</b>　估值三法与失效边界</a>
+<a class="sub" href="#s6-1">6.1 法一 可比 PE / PB / PS</a>
+<a class="sub" href="#s6-2">6.2 法二 简版盈余折现</a>
+<a class="sub" href="#s6-3">6.3 法三 规模阶梯 / 重置视角</a>
+<a class="sub" href="#s6-4">6.4 代理指数估值分位</a>
+<a href="#s7"><b>7.</b>　价格走势与技术面诊断</a>
+<a href="#s8"><b>8.</b>　综合评分与五维透视</a>
+<a href="#s9"><b>9.</b>　新闻面与政策催化</a>
+<a href="#s10"><b>10.</b>　情绪面与资金行为</a>
+<a href="#s11"><b>11.</b>　流动性分层与容量约束</a>
+<a href="#s12"><b>12.</b>　多空辩论：论点权重裁决</a>
+<a href="#s13"><b>13.</b>　情景分析与敏感性</a>
+<a class="sub" href="#s13-1">13.1 主题三情景</a>
+<a class="sub" href="#s13-2">13.2 三大核心假设区间</a>
+<a class="sub" href="#s13-3">13.3 敏感性龙卷风</a>
+<a class="sub" href="#s13-4">13.4 α 腿情景重建</a>
+<a href="#s14"><b>14.</b>　交易方案：仓位与纪律</a>
+<a href="#s15"><b>15.</b>　三方风险辩论与裁决</a>
+<a href="#s16"><b>16.</b>　监控清单与升级路径</a>
+<a href="#apA"><b>附录 A</b>　术语表</a>
+<a href="#apB"><b>附录 B</b>　样本口径与覆盖度</a>
+<a href="#apC"><b>附录 C</b>　数据溯源总表</a>
+<a href="#apD"><b>附录 D</b>　置信度折扣明细</a>
+<a href="#risk"><b>附</b>　风险提示与免责声明</a>
+</div></div>
+
+<div class="summary-card">
+  <h2>投资评级与估值摘要</h2>
+<div class="tbl-scroll"><table>
+<tr><th style="width:22%">项目</th><th>结论</th></tr>
+<tr><td><b>最终决策</b></td><td><span style="color:#dc2626;font-weight:800;font-size:16px">🔴 SELL</span>
+　主题级低配 / 回避（Theme-level Underweight / Avoid）</td></tr>
+<tr><td><b>信心水平</b></td><td>中高（7.5/10）——
+三条独立路径（β 腿凯利为负 / α 腿幸存者修正后 12 情景仅 3 正 / 组合贡献 1.52bp 每年）互不依赖地指向同一结论</td></tr>
+<tr><td><b>风险等级</b></td><td><b class="neg">高 High</b>——86.1% 的公司在企业库中无可观测成交价（占市值 66.0%），其中仅约 21%(±2%) 严格等于 <code>净利润 × 21.978</code> 模型公式；
+94.2% 无二级流动性、现金流字段 0% 覆盖、多处字段已证实失真、一次性重估尾部 −13.12%~−24.05% 且无预警信号</td></tr>
+<tr><td><b>建议敞口</b></td><td>当前部署 <b>0%</b>｜条件性预留 <b>1.0%</b>｜硬上限 <b>1.5%</b>（较交易员方案下调）
+｜单标的 ≤0.25% NAV 且 ≤0.35% 自由流通</td></tr>
+<tr><td><b>可交易范围</b></td><td>仅 β 腿（78 家 920 代码内买卖）；<b class="neg">α 腿（新三板买入→北交所卖出）本轮全面禁止</b></td></tr>
+<tr><td><b>β 池</b></td><td><b>59 家 / 1,445.8 亿元</b>（占样本家数 4.40%、名义市值 17.95%）</td></tr>
+<tr><td><b>入场触发</b></td><td>T1–T6 六项触发器<b class="neg">当前 0/6 满足</b>；β 腿需 T1/T2/T3 中 ≥2 项</td></tr>
+<tr><td><b>止损 / 退出</b></td><td>主题止损 −20%（≈3.2 ATR）；三道流动性熔断（ADV&lt;15亿×5日 / 日成交&lt;0.6亿 / 价差&gt;3.0%）</td></tr>
+<tr><td><b>风险预算</b></td><td>最大回撤 25 bp（NAV）｜绝对上限 42 bp</td></tr>
+<tr><td><b>期望收益</b></td><td>概率加权 <b class="neg">−3.67%</b>，扣摩擦后 <b class="neg">−5.15% ~ −6.53%</b>；赔率 <b class="neg">0.51 : 1</b>（机构门槛通常 ≥2:1）</td></tr>
+<tr><td><b>置信度折扣</b></td><td><b>38%</b>（市值口径 25.08% + 重复计数 7.02% + 现金流 5.0% + 元数据 5.0%，乘法复合 37.13%）</td></tr>
+<tr><td><b>翻多路径</b></td><td>U1–U6 六项条件，满足 3 项 → 选择性参与；满足 5 项 → BUY。最快解锁窗口约 T+6 个月（2025 年报密集披露后）</td></tr>
+</table></div>
+</div>
+
+<div class="takeaways">
+  <h2>投资要点（Key Takeaways）</h2>
+  <ol>
+  <li><b>这个主题不是"贵"，是"没法交易"。</b>名义市值 8,054.2 亿元中，<b>86.1% 的公司（1,155 家）在企业库中无可观测成交价，占市值 66.0%（5,316.8 亿）</b>；
+  该无价组隐含 PE 中位数 21.978，<b>其中仅约 21%(±2%)（247 家）严格等于 <code>净利润 × 21.978</code> 模型公式</b>，其余 908 家定价不可验证。
+  可承保市值只有 2,737.4 亿元（34.0%），其中 412 家 2024 年亏损公司仍被赋予正市值合计 1,518.6 亿元（无价子集口径 242 家 / 385.9 亿）。</li>
+  <li><b>转板期权被高估 6.50 倍，且对三分之二的可定价市值已经失效。</b>企业库中的 10.34x 重估倍数系量纲错配（<code>last_round_valuation_wan</code> 实为每股价×1000，
+  经 166 条记录抽验，其中 39 条可精确验证该等式），四口径重算无量纲中位数仅 <b>1.59x</b>（n=184），满一年回落 <b>1.40x</b>（n=183），
+  上市首日即跌破最后一轮价者 21.74%、满一年 28.96%，全样本破发率 27.85%。同时 78 家已持 920xxx 代码在北交所交易（占真实定价市值 68.4%）——期权已行权。</li>
+  <li><b>质量核心每年换血四成，"稳定优质池"是筛选过拟合的产物。</b>多头 59 家漏斗被一分不差复现，但含 10 条重复实体，去重后真实 49 家；
+  同一规则换基准年得 2022/23/24 = 25/42/49 家，隔年 Jaccard 仅 19.4%，2024 名单 42.9% 为一年性入选，三年连贯核心仅 <b>11 家 / 191.7 亿元</b>。</li>
+  <li><b>盈利面（净利润、ROE）五年单调恶化，但营收中位数逆势微增。</b>2022–2024 营收合计 CAGR <b>−3.07%</b>（中位数 1.18→1.26 亿元，+3.3%，以价换量）、
+  净利合计 CAGR −14.83%，亏损面 26.3% → 27.7% → 32.0%（五年线性 R²=0.9022，2026E 外推 37.10%），中位净利润两年腰斩 −48.5%，ROE 中位数从 10.79% 跌至 4.75%。
+  在现金流字段 0% 覆盖的情况下，仅需 5% 坏账计提即有 128 家（15.61%）由盈转亏。</li>
+  <li><b>容量悖论：可交易区间与经济划算区间没有交集。</b>&lt;5 亿 AUM 主题预算太小（α 腿贡献恒为 +0.0091 pct）；5–85 亿 AUM 时 α 腿（3 家 / 15.7 亿）撑不起敞口；
+  &gt;85 亿 AUM 时整池装不下 1.75% 仓位。要覆盖 50 万/年运营成本需 AUM ≥164.8 亿，而 α 腿容量上限仅 4.5 亿。</li>
+  <li><b>新闻面是唯一亮点，但传导链条四级衰减。</b>4 万亿算力网投资、智能算力同比 +177%、北交所审核 442→365 天、2026H1 新增上市占 A 股逾半，
+  报告期内无一条方向性利空政策（新闻面 7.0/10，四维最高）。但中位企业营收仅 1.26 亿元，经四级分包后单笔订单约百万级，营收弹性约 1%——政策利好 ≠ 这些公司受益。</li>
+  <li><b>最终敞口不是三方取平均。</b>激进 3.0% / 中性 2.0% / 保守 0.0%，算术平均 1.67% 被明确拒绝（"最懒也最危险的答案"）。
+  由分腿凯利框架导出：β 腿净期望 −15.77%、凯利值 −109.64%；α 腿三年期望 −6.79%（本版独立重建得 −6.69%，互为校验）。
+  五维评分映射路径（4.26/10 → 1.28% → ×62% → 0.79%）独立得到相符量级。</li>
+  <li><b>SELL 附带明确的翻多路径。</b>U1–U6 六项条件（price 覆盖率 ≥50%、可交易标的 ≥150 家或 ADV ≥60 亿、2025 年报覆盖 ≥80% 且亏损面 ≤27% 且 ROE ≥7%、
+  北证 50 PE ≤40% 分位且站上 MA60、现金流字段补齐、全市场年上市 ≥50 家且堰塞湖 ≤9x），满足 3 项即上调至选择性参与，满足 5 项即改 BUY。最快窗口约 T+6 个月。</li>
+  </ol>
+</div>
+
+<!-- ==================== 1 ==================== -->
+<div class="section" id="s1"><div class="sec-head"><span class="no">1</span><h2>研究框架与方法论</h2></div><div class="sec-body">
+<p>本报告为<b>行业主题级</b>研究，覆盖新三板与北交所企业库中归类为「人工智能」的 <b>1,342 家</b>企业，
+不含任何个股买卖评级。研究由 12 名角色分工的分析团队按五阶段流程完成，每一阶段的产出均为下一阶段的强制输入，
+所有定量结论要求可回溯至原始字段与筛选条件。</p>
+
+<h4 class="mini" id="s1-1">1.1 五阶段十二角色流程</h4>
+<div class="tbl-scroll"><table class="compact">
+<tr><th>阶段</th><th>参与角色</th><th>核心产出</th><th>关键量化结论</th></tr>
+<tr><td>Phase 1 数据收集（并行）</td><td>技术 / 基本面 / 新闻 / 情绪 四位分析师</td><td>四份独立分析报告</td>
+<td>技术 3.5 · 基本面 3.8 · 新闻 7.0 · 情绪 4.5（满分 10）</td></tr>
+<tr><td>Phase 2 多空辩论（串行）</td><td>多头 → 空头 → 研究主管</td><td>[投资计划]</td>
+<td>三大争议 <b class="neg">空头 3:0 全胜</b>，方向定为 SELL</td></tr>
+<tr><td>Phase 3 交易决策</td><td>交易员</td><td>[交易员决策]</td>
+<td>实际部署 0%、EV −3.67%、赔率 0.51:1</td></tr>
+<tr><td>Phase 4 风险评估（并行+裁决）</td><td>激进 / 保守 / 中性 三方 → 风险主管</td><td>[最终交易决策]</td>
+<td>敞口 0%（硬上限 1.5%）、信心折扣 38%</td></tr>
+<tr><td>Phase 5 汇编</td><td>首席策略官</td><td>底稿报告（15 章 / 8 图）</td><td>ai-analysis-2026-08-04.html</td></tr>
+<tr style="background:#f0f9ff"><td><b>Phase 6 加厚扩写（本版）</b></td><td>卖方行业研究员</td><td><b>本报告</b></td>
+<td><b>16 章 + 4 附录 / 19 张交互图表 / 新增赛道拆分·代表公司·估值三法·敏感性</b></td></tr>
+</table></div>
+
+<h4 class="mini" id="s1-2">1.2 口径铁律（全队统一，见 README_AI.md）</h4>
+<ul class="clean">
+<li><b>基准年 2024</b>，有效样本 n=1,310；2025 财年披露率仅 8.57%（115/1,342），全报告不用 2025 数据做横向结论。</li>
+<li><b>只用中位数与分位数，禁用算术均值。</b>本池比率型指标存在极端离群（如工业软件 <code>avg_roe</code> 达 127.7%、AI 应用 <code>avg_net_margin</code> 达 −315.9%），
+均值会被单点污染。凡出现均值的地方均已标注并说明。</li>
+<li><b>单位区分</b>：原始字段 <code>revenue</code> / <code>net_profit</code> / <code>market_cap_wan</code> 单位为万元；<code>revenue_yi</code> / <code>net_profit_yi</code> 单位为亿元。报告中带「亿」后缀者已换算。</li>
+<li><b>加总口径分离</b>：算行业总量用求和，算"典型公司"用中位数，两者不可混用；本报告在同一张表内同时给出时会显式标注。</li>
+<li><b>样本量强制标注</b>：任何统计数字后带 <code>(n=xxx)</code>；缺失字段一律写 <b>N/A</b>，不做插值、不做估计替代。</li>
+<li><b>数据源唯一</b>：行情、估值、新闻通过 NeoData 金融数据服务获取；企业基本面来自本地新三板/北交所企业库 JSON。全流程未使用任何第三方财经数据源。</li>
+</ul>
+
+<h4 class="mini" id="s1-3">1.3 数据溯源总表（关键图表 / 数字 → 来源）</h4>
+<p>本版为每一张图表与每一组关键数字标注来源。<span class="srcpill">本地文件</span> 表示本地企业库 JSON；<span class="srcpill ext">NeoData</span> 表示外部金融数据服务；
+<span class="srcpill na">N/A</span> 表示数据缺失、已明示缺口。完整清单见 <a href="#apC">附录 C</a>。</p>
+<div class="tbl-scroll"><table class="compact">
+<tr><th>图表 / 数字</th><th>字段与筛选条件</th><th>来源</th><th class="num">样本 n</th></tr>
+<tr><td>样本 1,342 家、名义市值 8,054.2 亿</td><td><code>industry=="人工智能"</code>；<code>market_cap_wan</code> 求和 ÷ 1e4</td><td><span class="srcpill">ai_universe.json</span></td><td class="num">1,342 / 1,327</td></tr>
+<tr><td>无成交价 1,155 家 / 5,316.8 亿 / 66.01%</td><td><code>price</code> 为空</td><td><span class="srcpill">ai_universe.json</span></td><td class="num">1,155</td></tr>
+<tr><td>严格模型定价 247 家（±2%）</td><td>无价组 ∩ <code>net_profit(2024)&gt;0</code> ∩ <code>|mc/np ÷ 21.978 − 1| ≤ 2%</code></td><td><span class="srcpill">ai_universe.json</span></td><td class="num">247 / 751</td></tr>
+<tr><td>图 1 价格双轴（CS人工智 / 北证50）</td><td>近 90 交易日收盘、MA20、MA60</td><td><span class="srcpill ext">NeoData</span></td><td class="num">90</td></tr>
+<tr><td>图 3 估值分位（PE / PB）</td><td>指数 PE(TTM) / PB，北证 50 近 3 年 22 个月末采样</td><td><span class="srcpill ext">NeoData</span></td><td class="num">10 / 22</td></tr>
+<tr><td>图 9–10 细分赛道</td><td><code>sector=="人工智能"</code> 的 7 条赛道 <code>company_count / avg_gross_margin / avg_net_margin / avg_score</code></td><td><span class="srcpill">src_sub-track-data.json</span></td><td class="num">7 条 / 1,389</td></tr>
+<tr><td>图 11–13 代表公司</td><td>按 <code>market_cap_wan</code> 排序取 920 组与无价组头部，逐年 <code>financial_data</code></td><td><span class="srcpill">ai_universe.json</span></td><td class="num">5</td></tr>
+<tr><td>图 15 跨行业基准</td><td>三行业 P10/P25/P50/P75/P90</td><td><span class="srcpill">industry-benchmark-data.json</span></td><td class="num">1,303/384/154</td></tr>
+<tr><td>图 16 转板倍数分布</td><td><code>listing_close_price ÷ last_round_price</code>、<code>one_year_close_price ÷ last_round_price</code></td><td><span class="srcpill">data_v4_fixed.json</span></td><td class="num">184 / 183</td></tr>
+<tr><td>图 17 区域分布</td><td><code>sector_distribution["人工智能"]</code>、<code>transfer_rate</code></td><td><span class="srcpill">src_geo-distribution-data.json</span></td><td class="num">20 省 / 1,389</td></tr>
+<tr><td>A 股可比锚 PE 33.5x / PB 5.2 / PS 6.5</td><td><code>industry_stats["人工智能"]</code></td><td><span class="srcpill">src_a-comparable-data.json</span></td><td class="num">12（含 1 家未上市）</td></tr>
+<tr><td>现金流相关全部指标</td><td><code>cashflow_ratio</code></td><td><span class="srcpill na">N/A · 覆盖 0/1,252</span></td><td class="num">0</td></tr>
+<tr><td>省份 / 主营 / 挂牌层级（主表）</td><td><code>province / main_business / neeq_layer</code> 全为 None</td><td><span class="srcpill na">N/A · 已改用替代文件</span></td><td class="num">0</td></tr>
+</table></div>
+
+<div class="callout amber"><b>本报告的最大方法论争议已被内部裁决</b>
+激进派提出"在偏度 +5.61 的分布上用中位数叙事是方法论错误"，这是本轮最尖锐的单点批评。风险主管反解其数据后确认：
+该偏度来自 <code>one_year_close / issue_price</code>（打新中签者口径，n=70，均值 +29.91%），
+而二级市场买入者<b>根本执行不了这个口径</b>。换成可执行口径 <code>one_year_close / listing_close</code>（n=70）后，
+均值转为 <b class="neg">−11.37%</b>，且篮子化把亏损概率从 k=1 的 70.84% <b>推高</b>至 k=11 的 76.28%。
+<b>方法论判给激进派，应用与结论判给保守派。</b>
+<br><br><b style="display:inline">本版补充的全样本复算（见 4.2 图 12 下表）：</b>在 298 家北交所上市案例全样本上重算，
+打新口径一年收益均值 <b>+43.46%</b>、中位 +3.60%、亏损率 47.53%（n=263）；换成可执行口径后均值 <b class="neg">−2.70%</b>、
+中位 <b class="neg">−12.92%</b>、亏损率升至 <b class="neg">64.64%</b>（n=263）。样本从 70 扩到 263 后，
+<b>口径切换导致的符号翻转依然成立</b>，裁决结论得到独立支持。</div>
+</div></div>
+
+<!-- ==================== 2 ==================== -->
+<div class="section" id="s2"><div class="sec-head"><span class="no">2</span><h2>主题界定与样本构成：8,054 亿里有多少是真的</h2></div><div class="sec-body">
+<p>本主题名义总市值 <b>8,054.2 亿元</b>，但这个数字在三个层面被高估，逐层剥离后的<b>可承保市值只剩 2,737.4 亿元（34.0%）</b>。
+这是理解本报告全部结论的起点。</p>
+
+<div class="kpi-row">
+<div class="kpi"><div class="k">样本企业</div><div class="v">1,342 家</div><div class="d">industry == 人工智能</div></div>
+<div class="kpi"><div class="k">名义总市值</div><div class="v">8,054.2 亿</div><div class="d">企业库 market_cap_wan 汇总</div></div>
+<div class="kpi"><div class="k">去重后市值</div><div class="v">7,449.3 亿</div><div class="d neg">剔除 66 条「(已切换)」重复 604.9 亿</div></div>
+<div class="kpi"><div class="k">有真实成交价</div><div class="v">187 家 / 13.9%</div><div class="d neg">其余 1,155 家 price 字段为空</div></div>
+<div class="kpi"><div class="k">可承保市值</div><div class="v">2,737.4 亿</div><div class="d warn">占名义 34.0%</div></div>
+<div class="kpi"><div class="k">已在北交所交易</div><div class="v">78 家 / 1,871.6 亿</div><div class="d pos">占真实定价市值 68.4%</div></div>
+</div>
+
+<h4 class="mini" id="s2-1">2.1 市值三层剥离与瀑布</h4>
+<div class="chart-card">
+  <h3>图 9 · 名义市值 → 可承保市值 瀑布分解</h3>
+  <div class="cap">从 8,054.2 亿名义市值出发，逐层剔除重复实体与无成交价标的。
+  数据来源：<span class="srcpill">ai_universe.json</span>（<code>market_cap_wan</code> / <code>price</code> / <code>name</code> 含「(已切换)」）。</div>
+  <div class="chart-wrap"><canvas id="waterfallChart"></canvas></div>
+</div>
+
+<div class="tbl-scroll"><table>
+<tr><th>剥离步骤</th><th class="num">家数</th><th class="num">市值（亿元）</th><th class="num">占名义</th><th>依据</th></tr>
+<tr><td>名义口径</td><td class="num">1,342</td><td class="num">8,054.2</td><td class="num">100%</td><td>企业库原始汇总（<code>market_cap_wan</code> 有值 1,327 家）</td></tr>
+<tr><td>① 剔除「(已切换)」重复实体</td><td class="num">−66</td><td class="num neg">−604.9</td><td class="num">−7.51%</td>
+<td>同一公司在库中存在新旧两条记录，市值被计两次（实测 66 条，合计 604.9 亿）</td></tr>
+<tr><td>② 剔除无成交价标的</td><td class="num">−1,155</td><td class="num neg">−5,316.8</td><td class="num">−66.01%</td>
+<td><code>price</code> 字段为空，无可观测成交价；无价组隐含 PE 中位 21.978（n=751）</td></tr>
+<tr style="background:#f0f9ff"><td><b>可承保市值</b></td><td class="num"><b>187</b></td><td class="num"><b>2,737.4</b></td><td class="num"><b>34.0%</b></td>
+<td>有连续或至少一次真实成交价（920 组 78 家 1,871.6 亿 + 非 920 有价组 109 家 865.8 亿）</td></tr>
+</table></div>
+<p class="src">注：①②两步在家数上存在交叉（部分「(已切换)」记录本身也无成交价），因此两步的市值扣减不可简单相加；
+表中"可承保市值 2,737.4 亿"是按 <code>price</code> 非空直接求和得到的独立口径，与 8,054.2 − 604.9 − 5,316.8 = 2,132.5 亿的机械减法结果不同，
+差额 604.9 亿即为重复计数与无价标的的交集。<b>本报告统一采用 2,737.4 亿。</b>
+来源：<span class="srcpill">ai_universe.json</span>，筛选条件 <code>price is not None</code>。</p>
+
+<h4 class="mini" id="s2-2">2.2 模型定价假说的严格检验：21% 而不是 66%</h4>
+<p>研究主管独立反解 1,155 家无成交价标的的隐含 PE，得到中位数 <b>21.978</b>（n=751，即无价组中 2024 年净利润为正的子集），
+而理论锚定值（A 股 AI 可比 PE 33.5× 打 35% 流动性折价 = 21.775）偏离仅 <b>0.93%</b>。
+<b>但"中位数等于某个值"与"每一家都由这个公式生成"是两个完全不同的命题</b>，本版对此做了严格分层检验：</p>
+
+<div class="tbl-scroll"><table>
+<tr><th>检验口径</th><th class="num">家数</th><th class="num">占无价组 1,155</th><th class="num">占正利润子集 751</th><th>判定</th></tr>
+<tr><td><code>|隐含PE ÷ 21.978 − 1| ≤ 2%</code>（严格）</td><td class="num">247</td><td class="num warn"><b>21.4%</b></td><td class="num">32.9%</td><td class="warn">可判定为模型定价</td></tr>
+<tr><td><code>|隐含PE ÷ 21.978 − 1| ≤ 5%</code>（宽松）</td><td class="num">263</td><td class="num">22.8%</td><td class="num">35.0%</td><td>边缘可判定</td></tr>
+<tr><td>2024 净利润为正但不落在 ±5% 内</td><td class="num">488</td><td class="num">42.2%</td><td class="num">65.0%</td><td class="neg">定价方法不可验证</td></tr>
+<tr><td>2024 净利润 ≤0 或无 2024 财务</td><td class="num">404</td><td class="num">35.0%</td><td class="num mut">—</td><td class="neg">公式在数学上不适用</td></tr>
+<tr style="background:#fff5f5"><td><b>合计不可验证</b></td><td class="num neg"><b>908</b></td><td class="num neg"><b>78.6%</b></td><td class="num mut">—</td><td class="neg"><b>定价来源无法追溯</b></td></tr>
+</table></div>
+<p class="src">来源：<span class="srcpill">ai_universe.json</span>，筛选条件：<code>price is None</code> ∩ <code>financial_data.fiscal_year==2024</code>；
+隐含 PE = <code>market_cap_wan ÷ net_profit</code>。底稿记为"约 245 家"，本版按 ±2% 严格重算得 <b>247 家</b>，
+差异源于舍入口径，<b>21%(±2%) 这一结论不变</b>。</p>
+
+<div class="callout red"><b>致命发现：86.1% 的公司无可观测成交价，其中仅约 21% 可判定为模型定价</b>
+<b>86.1% 的公司在企业库中无可观测成交价（占市值 66.0%）；其中仅约 21%(±2%) 严格等于 <code>净利润 × 21.978</code> 模型公式。</b>
+33.1% 的样本紧贴 21.978 聚集，提示存在模型锚定的痕迹；但严格落在 ±2% 内的只有 247 家，
+其余 <b>908 家（占无价组 78.6%）的定价方法既非市场成交、也无法被复现验证</b>。
+无论哪种情况，用这些"市值"讨论"高估还是低估"都缺乏市场成交支撑。
+更严重的是：<b>2024 年净利润为负、却仍被赋予正市值的公司达 412 家，合计 1,518.6 亿元</b>（其中无价子集 242 家 / 385.9 亿元）。</div>
+
+<div class="callout blue"><b>一个可验证的实例（不构成个股观点）</b>
+连城数控在企业库中存在两条记录：<code>920368.OC</code>（有成交价 33.99 元，市值 79.80 亿）与 <code>835368.OC 连城数控(已切换)</code>（无成交价，市值 74.72 亿）。
+后者 2024 净利润 3.40 亿元，隐含 PE = 74.72 ÷ 3.40 = <b>21.978</b>，<b>精确落在模型公式上</b>；
+而前者按真实成交价计算的 PE 为 <b>23.47x</b>，两者相差 6.4%。
+这一条记录同时体现了本报告的两个核心问题：<b>①「(已切换)」重复实体虚增市值 74.72 亿；②模型定价确实存在，但只覆盖一小部分样本。</b>
+数据来源：<span class="srcpill">ai_universe.json</span>（code / name / price / market_cap_wan / financial_data[2024]）。</div>
+
+<h4 class="mini" id="s2-3">2.3 元数据字段失真（本版扩展至五处）</h4>
+<div class="tbl-scroll"><table class="compact">
+<tr><th>字段</th><th>标称值</th><th>实测</th><th>影响</th><th>发现方</th></tr>
+<tr><td><code>bse_listing_status</code></td><td>1,342 家全部"未上市"</td>
+<td class="neg">78 家持 920xxx 北交所代码、有连续成交价</td><td>"全员转板期权"前提在 2/3 真实定价市值上不成立</td><td>底稿·研究主管</td></tr>
+<tr><td><code>market_cap_method</code></td><td>98.9% 标注 "real"</td>
+<td class="neg">实际仅 13.9% 有价格支撑</td><td>直接导致市值口径误判</td><td>底稿·空头</td></tr>
+<tr><td><code>layer</code>（spread-analysis）</td><td>100% "基础层"</td>
+<td class="neg">与已上市 78 家矛盾</td><td>分层统计不可用，已改用自建评分分层</td><td>底稿·情绪分析师</td></tr>
+<tr><td><code>cashflow_ratio</code></td><td>—</td><td class="neg">覆盖率 0 / 1,252</td>
+<td>盈利质量完全无法交叉验证，本报告最大盲区</td><td>底稿·保守派</td></tr>
+<tr style="background:#fffbf3"><td><code>first_day_return_pct</code></td><td>首日涨幅（百分比）</td>
+<td class="neg">量纲混用：298 条中部分为比率（0.5556 = +0.56%）、部分为百分数（407.23 = +407%），直接取均值得 <b>8,188.93</b></td>
+<td>不可直接使用；本报告全部首日/一年收益均由 <code>issue_price</code> / <code>listing_close_price</code> / <code>one_year_close_price</code> <b>重算</b></td>
+<td class="warn"><b>本版新发现</b></td></tr>
+<tr style="background:#fffbf3"><td><code>bse_industry_stats.json</code> 行业归类</td><td>"软件和信息技术服务业" 12 家</td>
+<td class="neg">名单内含"山东悦龙橡塑""山东农大肥业""苏州江天包装"等明显非软件企业</td>
+<td>该文件行业分组不可用，本报告未采用其任何统计量</td><td class="warn"><b>本版新发现</b></td></tr>
+</table></div>
+<p class="src">来源：<span class="srcpill">ai_universe.json</span> / <span class="srcpill">data_v4_fixed.json</span> /
+<span class="srcpill">src_spread-analysis-data.json</span> / <span class="srcpill">bse_industry_stats.json</span> 交叉验证。
+前四处由底稿三方独立复现；后两处为本版扩写时新发现，<b>已按铁律排除相关字段的使用，未据此改变任何方向性结论</b>。</p>
+</div></div>
+
+<!-- ==================== 第 3 章 细分赛道拆分与景气图谱 ==================== -->
+<div class="section" id="s3"><div class="sec-head"><span class="no">3</span><h2>细分赛道拆分与景气图谱</h2></div><div class="sec-body">
+
+<p>将 1,342 家 AI 主体按主营归类到 <b>5 大板块</b>与 <b>7 条原生赛道</b>。由于企业常跨赛道经营，赛道层归属合计 1,389 条（&gt;1,342 主体），下文凡涉及赛道计数均按"赛道归属"口径标注，避免与主体口径混淆。</p>
+
+<h3 id="s3-1">3.1 五大赛道映射与样本量</h3>
+<div class="chart-card">
+  <h3>图 9 · 五大板块：样本量、毛利率、净利率与综合评分</h3>
+  <div class="chart-wrap tall"><canvas id="bucketChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">src_sub-track-data.json</span>（板块汇总）。毛利率/净利率为板块内企业均值（%），综合评分为 avg_score。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>板块</th><th>归属数</th><th>毛利率%</th><th>净利率%</th><th>综合评分</th><th>景气分</th><th>解读</th></tr>
+<tr><td>算力基础设施</td><td class="num">199</td><td class="num">40.4</td><td class="pos num">+8.9</td><td class="num">60.4</td><td class="num">97.9</td><td>政策顺风最强、唯一双正盈利板块之一</td></tr>
+<tr><td>数据服务</td><td class="num">142</td><td class="num">37.4</td><td class="neg num">−33.7</td><td class="num">57.2</td><td class="num">83.4</td><td>毛利高于行业中位，盈利尚未跑通</td></tr>
+<tr><td>智能硬件</td><td class="num">162</td><td class="num">33.3</td><td class="neg num">−61.6</td><td class="num">54.6</td><td class="num">75.3</td><td>重资产+价格战，净利率最差之一</td></tr>
+<tr><td>AI应用与SaaS</td><td class="num">506</td><td class="num">18.43</td><td class="neg num">−248.78</td><td class="num">42.87</td><td class="num">74.39</td><td>数量最大、评分最低、亏损最重</td></tr>
+<tr><td>基础软件与安全</td><td class="num">380</td><td class="num">44.17</td><td class="pos num">+4.28</td><td class="num">58.36</td><td class="num">66.14</td><td>毛利最高，但景气分最低</td></tr>
+</table>
+<p class="mut">注：板块毛利率/净利率为板块内企业算术均值，受小分母与小样本扰动，仅作方向性参考；主题级结论一律以中位数为准（见第 5 章）。</p>
+
+<h3 id="s3-2">3.2 七条原生赛道景气度</h3>
+<div class="chart-card">
+  <h3>图 10 · 七条原生赛道：毛利率 vs 净利率（含综合评分线）</h3>
+  <div class="chart-wrap tall"><canvas id="track7Chart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">src_sub-track-data.json</span>。净利率为 avg_net_margin（%），综合评分为 avg_score。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>赛道</th><th>归属数</th><th>毛利率%</th><th>净利率%</th><th>综合评分</th><th>景气分</th></tr>
+<tr><td>工业软件</td><td class="num">164</td><td class="num">60.6</td><td class="pos num">+22.7</td><td class="num">67.4</td><td class="num">8</td></tr>
+<tr><td>AI芯片</td><td class="num">199</td><td class="num">40.4</td><td class="pos num">+8.9</td><td class="num">60.4</td><td class="num">7</td></tr>
+<tr><td>大数据服务</td><td class="num">142</td><td class="num">37.4</td><td class="neg num">−33.7</td><td class="num">57.2</td><td class="num">6</td></tr>
+<tr><td>智能制造</td><td class="num">162</td><td class="num">33.3</td><td class="neg num">−61.6</td><td class="num">54.6</td><td class="num">4</td></tr>
+<tr><td>网络安全</td><td class="num">216</td><td class="num">31.7</td><td class="neg num">−9.7</td><td class="num">51.5</td><td class="num">5</td></tr>
+<tr><td>企业服务SaaS</td><td class="num">203</td><td class="num">31.9</td><td class="neg num">−148.6</td><td class="num">47.6</td><td class="num">3</td></tr>
+<tr><td>AI应用</td><td class="num">303</td><td class="num">9.4</td><td class="neg num">−315.9</td><td class="num">39.7</td><td class="num">2</td></tr>
+</table>
+<p>赛道呈"<b>软件高、应用低</b>"的盈利梯度：工业软件（毛利率 60.6%、净利率 +22.7%）与 AI 芯片为仅有的两条正净利率赛道；AI 应用（毛利率仅 9.4%、净利率 −315.9%）盈利质量最弱，且归属数达 303 家居首，构成主题"<b>以弱充多</b>"的隐忧。</p>
+
+<h3 id="s3-3">3.3 区域集聚与转板兑现率</h3>
+<div class="chart-card">
+  <h3>图 11 · 区域分布：企业数（柱）与有成交价覆盖率（线）</h3>
+  <div class="chart-wrap tall"><canvas id="geoChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">src_geo-distribution-data.json</span>。rate 为各省 price 字段非空占比（%）。</p>
+</div>
+<p>区域高度集聚于<b>广东（332）、北京（235）、浙江（155）、江苏（154）、上海（133）</b>五地（合计 1,009 家，占 75.0%）。但价格覆盖率与区域规模倒挂：覆盖率最高的是陕西（34.2%）、河南（34.3%）、山东（33.8%），而企业最密集的广东（12.5%）、上海（11.5%）覆盖率最低——说明高密度区域更多由"无价模型定价"主体堆砌。</p>
+<div class="chart-card">
+  <h3>图 12 · 转板重估倍数：无量纲重算 vs 原始口径（10.34x 失真）</h3>
+  <div class="chart-wrap"><canvas id="multChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">data_v4_fixed.json</span>。listing=上市日收盘/最后一轮；oneyear=一年后/最后一轮；raw 为原始 ipo_vs_last_round_multiple（量纲错配）。</p>
+</div>
+<p>底稿曾引用"转板重估倍数 10.34x"，本版无量纲重算（上市日/最后一轮）P50 仅 <b>1.592x</b>（n=184）、一年期 P50 1.403x（n=183），原始口径较真实值<b>高估约 6.50 倍</b>。这是"<b>转板期权溢价</b>"叙事的关键修正：转板带来的估值抬升远非十倍，且一年期相对上市首日收盘中位数 −12.92%（破发率 64.64%），期权实际多为水下。</p>
+</div></div>
+
+<!-- ==================== 第 4 章 代表公司与可比矩阵 ==================== -->
+<div class="section" id="s4"><div class="sec-head"><span class="no">4</span><h2>代表公司与可比矩阵</h2></div><div class="sec-body">
+
+<h3 id="s4-1">4.1 五家代表标的快照</h3>
+<p>从 ai_universe.json 抽取 5 家规模居前或具代表性的企业，并严格区分"<b>真实成交价</b>"与"<b>模型定价</b>"（price 字段为空者市值由净利润×隐含 PE 推得，可信度低）。</p>
+<div class="chart-card">
+  <h3>图 13 · 代表标的：营收与净利润（亿元）</h3>
+  <div class="chart-wrap"><canvas id="repChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span>。净利润负值以红色标注；杰理科技、宸芯科技无成交价（模型定价）。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>公司</th><th>营收(亿)</th><th>净利(亿)</th><th>ROE%</th><th>市值(亿)</th><th>PE</th><th>最新价</th><th>定价属性</th></tr>
+<tr><td>开发科技</td><td class="num">29.33</td><td class="pos num">5.89</td><td class="num">32.49</td><td class="num">112.69</td><td class="num">19.13</td><td class="num">81.14</td><td class="pos">真实成交价</td></tr>
+<tr><td>并行科技</td><td class="num">6.55</td><td class="pos num">0.121</td><td class="num">3.51</td><td class="num">85.01</td><td class="warn num">705.07</td><td class="num">142.37</td><td class="pos">真实成交价</td></tr>
+<tr><td>连城数控</td><td class="num">56.69</td><td class="pos num">3.40</td><td class="num">8.55</td><td class="num">79.80</td><td class="num">23.47</td><td class="num">33.99</td><td class="pos">真实成交价</td></tr>
+<tr><td>杰理科技</td><td class="num">31.20</td><td class="pos num">7.91</td><td class="num">24.21</td><td class="num">160.38</td><td class="num">20.28</td><td class="mut num">—</td><td class="neg">模型定价（无成交价）</td></tr>
+<tr><td>宸芯科技</td><td class="num">3.44</td><td class="neg num">−0.832</td><td class="num">−3.42</td><td class="num">393.55</td><td class="mut num">—</td><td class="mut num">—</td><td class="neg">模型定价（无成交价）</td></tr>
+</table>
+<p class="callout warn">5 家中仅 <b>3 家</b>（开发/并行/连城）有真实成交价支撑；<b>杰理科技</b>（市值 160 亿、净利 7.91 亿居首）与<b>宸芯科技</b>（市值 393 亿、全样本最大）均无成交价，其市值完全由模型推得。宸芯科技自身亏损（ROE −3.42%），模型仍赋予其最高市值，是"<b>无价即虚高</b>"的典型。并行科技 PE 705 反映微利下的估值脆弱。</p>
+
+<h3 id="s4-2">4.2 可比公司矩阵（五维雷达）</h3>
+<div class="chart-card">
+  <h3>图 14 · 代表标的五维能力雷达（对数化、0–10 分）</h3>
+  <div class="chart-wrap tall"><canvas id="repRadarChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span> + 自建评分。维度：营收规模(对数)、ROE水平、营收成长、低杠杆度、定价可信度（有真实成交价=10，否则=0）。</p>
+</div>
+<p>雷达图直观暴露<b>定价可信度</b>维度的两极分化：开发/并行/连城在"定价可信度"维度满分，杰理/宸芯为 0。若仅看规模与 ROE，杰理科技（ROE 24.21）看似优质，但其市值缺乏价格锚定，在可比估值中不可与有价标的同权。</p>
+
+<h3 id="s4-3">4.3 A 股可比估值锚与"真价 vs 模型价"散点</h3>
+<div class="chart-card">
+  <h3>图 15 · 市值-ROE 散点：红色=真实成交价（β池59），灰色=模型定价（无价组抽样59）</h3>
+  <div class="chart-wrap tall"><canvas id="scatterChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span>。x=ROE%，y=市值(亿元)；红点为 920 代码有价 β 池，灰点为无价组按市值抽样。</p>
+</div>
+<p>红色（真实价）点群集中在中低市值、正 ROE 区间，与基本面吻合；灰色（模型价）点群中出现了市值高达 393 亿（宸芯）、165 亿（先临三维）的"大市值低/负 ROE"离群点，且无成交价验证——这正是主题市值"<b>平均数虚高</b>"的结构性来源。A 股 AI 可比 PE 中位 33.5、PS 6.5、PB 5.2（src_a-comparable-data.json），可作为有价标的的横向锚，但对无价组不适用。</p>
+</div></div>
+
+<!-- ==================== 第 5 章 基本面横截面 ==================== -->
+<div class="section" id="s5"><div class="sec-head"><span class="no">5</span><h2>基本面横截面：盈利面五年恶化与哑铃结构</h2></div><div class="sec-body">
+
+<h3 id="s5-1">5.1 面板总量与五年趋势</h3>
+<div class="chart-card">
+  <h3>图 16 · 2020–2024 面板：营收合计、净利合计、ROE中位与亏损面</h3>
+  <div class="chart-wrap tall"><canvas id="trendChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span>（base year 2024, n=1310）。营收/净利为合计（亿元）；ROE、亏损面为中位数/占比（%）。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>年份</th><th>营收合计(亿)</th><th>净利合计(亿)</th><th>ROE中位%</th><th>亏损面%</th><th>营收中位(亿)</th><th>净利中位(万)</th></tr>
+<tr><td>2020</td><td class="num">5356.5</td><td class="num">148.2</td><td class="num">10.79</td><td class="num">21.77</td><td class="num">0.9439</td><td class="num">598.9</td></tr>
+<tr><td>2021</td><td class="num">4106.7</td><td class="num">165.0</td><td class="num">10.94</td><td class="num">20.94</td><td class="num">1.13</td><td class="num">783.1</td></tr>
+<tr><td>2022</td><td class="num">3893.5</td><td class="num">230.2</td><td class="num">9.17</td><td class="num">26.27</td><td class="num">1.18</td><td class="num">727.6</td></tr>
+<tr><td>2023</td><td class="num">3894.0</td><td class="num">212.7</td><td class="num">7.44</td><td class="num">27.66</td><td class="num">1.25</td><td class="num">613.5</td></tr>
+<tr><td>2024</td><td class="num">3657.9</td><td class="num">185.5</td><td class="num">4.75</td><td class="num">32.04</td><td class="num">1.26</td><td class="num">374.6</td></tr>
+</table>
+<div class="callout red"><b>核心结论（保留修正口径）</b>：盈利面（净利润、ROE）五年单调恶化，但<b>营收中位数逆势微增</b>（1.18→1.26 亿，+3.3%）。合计营业收入 2022→2024 CAGR = <b>−3.07%</b>（非 −7.22%）。亏损面由 26.27% 升至 32.04%，净利中位由 727.6 万降至 374.6 万，盈利质量持续摊薄。</div>
+
+<h3 id="s5-2">5.2 横截面分位</h3>
+<p>以 2024 年中位数为锚，盈利呈"<b>长尾亏损</b>"：ROE 中位仅 4.75%、净利中位 374.6 万，而均值受少数高盈利企业拉动失真，故全报告坚持"中位+分位"叙事，不报算术均值。</p>
+
+<h3 id="s5-3">5.3 跨行业基准对照</h3>
+<div class="chart-card">
+  <h3>图 17 · 三大主题 P50 基本面对照（人工智能 vs 医疗健康 vs 新能源）</h3>
+  <div class="chart-wrap tall"><canvas id="benchChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">industry-benchmark-data.json</span>。各指标为 P50（中位），营收/净利单位万元。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>主题</th><th>n</th><th>营收P50(万)</th><th>净利P50(万)</th><th>毛利率P50%</th><th>净利率P50%</th><th>ROE P50%</th><th>负债率P50%</th></tr>
+<tr><td>人工智能</td><td class="num">1303</td><td class="num">12900</td><td class="num">394.15</td><td class="num">29.42</td><td class="num">3.55</td><td class="num">5.11</td><td class="num">44.72</td></tr>
+<tr><td>医疗健康</td><td class="num">384</td><td class="num">16300</td><td class="num">734.29</td><td class="num">40.0</td><td class="num">4.91</td><td class="num">5.33</td><td class="num">37.76</td></tr>
+<tr><td>新能源</td><td class="num">154</td><td class="num">20500</td><td class="num">1006.94</td><td class="num">24.87</td><td class="num">5.62</td><td class="num">6.50</td><td class="num">46.86</td></tr>
+</table>
+<p>AI 主题在毛利率（29.42%）、净利率（3.55%）、ROE（5.11%）三项均<b>弱于</b>医疗与新能源，仅负债率居中。意味着同等宏观与利率环境下，AI 主题的单位资产回报最薄，估值却因叙事获得溢价——溢价缺乏盈利面支撑。</p>
+
+<h3 id="s5-4">5.4 集中度：哑铃结构</h3>
+<p>市值呈"<b>哑铃型</b>"：一端是 78 家 920 代码（有连续成交价、构成 β 池，合计 1,445.8 亿），另一端是大量无价小微主体。可交易区间（单标 AUM 5–85 亿）与经济划算区间（AUM ≥164.8 亿）经测算<b>没有交集</b>——即"能买的太小、够大的买不动"，是容量约束的核心矛盾（详见第 12 章）。</p>
+
+<h3 id="s5-5">5.5 前瞻信号</h3>
+<ul class="clean">
+<li><b>现金流零覆盖</b>：cashflow_ratio 覆盖率 0/1,252，盈利质量无法交叉验证，为本报告最大盲区。</li>
+<li><b>应收周转偏慢</b>：应收账款周转 P50 120 天 / P75 217 天 / P90 345 天，对净利质量构成负面信号。</li>
+<li><b>若计提 5% 应收坏账</b>，2024 口径亏损面即由 32.04% 跳升至 <b>42.7%</b>（约 128 家由盈转亏）。</li>
+</ul>
+</div></div>
+
+<!-- ==================== 第 6 章 估值水平与三种方法 ==================== -->
+<div class="section" id="s6"><div class="sec-head"><span class="no">6</span><h2>估值水平与三种方法</h2></div><div class="sec-body">
+
+<h3 id="s6-1">6.1 法一：可比 PE / PB / PS</h3>
+<div class="chart-card">
+  <h3>图 18 · 六组可比估值：PE / PS / PB</h3>
+  <div class="chart-wrap tall"><canvas id="val3Chart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span>（全池/β池59/920组78/非920有价109/无价组1155）+ <span class="srcpill">src_a-comparable-data.json</span>（A股AI可比）。PE 含微利离群（并行科技 705）。</p>
+</div>
+<table class="compact tbl-scroll">
+<tr><th>分组</th><th>PE</th><th>PS</th><th>PB</th><th>说明</th></tr>
+<tr><td>全池(n=1342)</td><td class="num">21.978</td><td class="num">1.442</td><td class="num">2.136</td><td>PE=隐含模型 PE，环形论证</td></tr>
+<tr><td>β池59</td><td class="num">41.641</td><td class="num">4.562</td><td class="num">4.457</td><td>唯可交易子集</td></tr>
+<tr><td>920组(n=78)</td><td class="num">43.20</td><td class="num">4.95</td><td class="num">4.457</td><td>有连续价</td></tr>
+<tr><td>非920有价(n=109)</td><td class="num">12.105</td><td class="num">0.909</td><td class="num">1.17</td><td>偏低，样本小</td></tr>
+<tr><td>无价组(n=1155)</td><td class="num">21.978</td><td class="num">1.385</td><td class="num">2.013</td><td>模型推导，不可信</td></tr>
+<tr><td>A股AI可比</td><td class="num">33.5</td><td class="num">6.5</td><td class="num">5.2</td><td>横向锚</td></tr>
+</table>
+<p class="callout warn">关键提醒：全池 PE 21.978 恰等于模型隐含 PE（净利润×21.978），属<b>循环论证</b>；且无价组占 1,155/1,342（86.1%），其 PE/PB 由模型推得，不可用于估值结论。真正可交易的是 β 池 59 家（PE 41.6、PS 4.6、PB 4.5），相对 A 股 AI 可比（PE 33.5）并不便宜。</p>
+
+<h3 id="s6-2">6.2 法二：简版盈余折现（DCF）</h3>
+<div class="chart-card">
+  <h3>图 19 · 简版永续 DCF：2024 合计净利 185.5 亿的不同 g/r 假设</h3>
+  <div class="chart-wrap"><canvas id="dcfChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">ai_universe.json</span> 2024 合计净利 + 自建折现。mc=β池59 市值合计 1,445.8 亿（对照线）。</p>
+</div>
+<table class="compact">
+<tr><th>假设</th><th>g</th><th>r</th><th>内在价值(亿)</th></tr>
+<tr><td>保守</td><td class="num">−3%</td><td class="num">12%</td><td class="num">264.1</td></tr>
+<tr><td>中性</td><td class="num">0%</td><td class="num">12%</td><td class="num">340.3</td></tr>
+<tr><td>乐观A</td><td class="num">+3%</td><td class="num">15%</td><td class="num">350.5</td></tr>
+<tr><td>乐观B</td><td class="num">+3%</td><td class="num">10%</td><td class="num">600.9</td></tr>
+<tr><td>最乐观</td><td class="num">+5%</td><td class="num">12%</td><td class="num">612.5</td></tr>
+</table>
+<p>即便取最乐观假设（g=+5%、r=12%），全主题 DCF 内在价值上限 <b>612.5 亿</b>，仍不足 β 池 59 家市值合计 <b>1,445.8 亿</b>的 43%。若计入 86.1% 无价主体的模型市值，全口径透支更为夸张。<b>结论：可交易子集已显著高估。</b></p>
+
+<h3 id="s6-3">6.3 法三：规模阶梯 / 重置视角</h3>
+<p>以"重置成本+规模阶梯"估值：AI 应用类企业（毛利 9.4%、轻资产）重置门槛低，规模效应弱，边际新增供给会持续压制估值；算力/芯片类虽有一定壁垒，但资本开支强度大、折旧重。综合看，主题内多数企业缺乏"护城河溢价"的重置支撑，法三同样不支持当前市值。</p>
+
+<h3 id="s6-4">6.4 代理指数估值分位</h3>
+<div class="chart-card">
+  <h3>图 20 · 代理指数 PE 与历史区间</h3>
+  <div class="chart-wrap"><canvas id="valChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(valuation)</span>。3 年分位因样本不足不可算，仅列 10 日观测区间。</p>
+</div>
+<p>CS人工智 PE 56.7、中证AI产业 PE 58.19 处于近期区间上沿；北证50 PE 42.94（3 年分位 68.2%）。代理指数层面估值不低，但与第 2 章"86.1% 无价"结合看，指数 PE 本身也受模型定价干扰。</p>
+</div></div>
+
+<!-- ==================== 第 7 章 价格走势与技术面 ==================== -->
+<div class="section" id="s7"><div class="sec-head"><span class="no">7</span><h2>价格走势与技术面诊断</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 21 · AI 主题代理指数 vs 北证 50（近 90 个交易日，双轴）</h3>
+  <div class="chart-wrap tall"><canvas id="priceChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(price)</span>。红线=主题冻结线 5527.69；熊市目标 4944.71（−16.6%）；北证50 停新增线 1031.72；MA60 1233.92。</p>
+</div>
+<p>主题代理指数（ai1）在 5,527.69 处形成"<b>冻结线</b>"，上方套牢盘厚重；熊市目标 4,944.71 对应 −16.6%。北证 50 距"停新增"触发线 1,031.72 仅 −4.12%，一旦跌破将冻结主题新增部署。技术面与基本面、流动性结论一致指向 defensive。</p>
+</div></div>
+
+<!-- ==================== 第 8 章 综合评分与五维透视 ==================== -->
+<div class="section" id="s8"><div class="sec-head"><span class="no">8</span><h2>综合评分与五维透视</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 22 · 五维综合评分雷达</h3>
+  <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(radar)</span>。五维满分 10：技术面 3.5 / 基本面 3.8 / 新闻面 7.0 / 情绪面 4.5 / 风险可控度 2.5。</p>
+</div>
+<p>五维中仅<b>新闻面（7.0）</b>为正分项，系"十五五"算力网 4 万亿投资、北交所改革等政策顺风；<b>风险可控度（2.5）</b>最低，对应元数据失真、流动性陷阱与价格发现风险。综合评分指向低配。</p>
+</div></div>
+
+<!-- ==================== 第 9 章 细分赛道景气度图谱 ==================== -->
+<div class="section" id="s9"><div class="sec-head"><span class="no">9</span><h2>细分赛道景气度图谱</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 23 · 七条细分赛道景气度评分（0=极冷 10=极热）</h3>
+  <div class="chart-wrap"><canvas id="sectorChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(sector)</span> + <span class="srcpill">src_sub-track-data.json</span>。工业软件(8) &gt; AI芯片(7) &gt; 大数据(6) &gt; 网络安全(5) &gt; 智能制造(4) &gt; SaaS(3) &gt; AI应用(2)。</p>
+</div>
+<p>景气梯度与 3.2 盈利梯度互为印证：上游软件/芯片景气最高且盈利为正，下游应用景气最低且深亏。但需注意，景气最高的工业软件/AI芯片占主体比重有限，无法对冲 AI 应用（303 家）的拖累。</p>
+</div></div>
+
+<!-- ==================== 第 10 章 新闻面与政策催化 ==================== -->
+<div class="section" id="s10"><div class="sec-head"><span class="no">10</span><h2>新闻面与政策催化：四维中唯一的正分项</h2></div><div class="sec-body">
+<ul class="clean">
+<li><b>发改委"十五五"算力网</b>：4 万亿投资落地、智能算力同比 +177%，为板块提供需求侧弹性（本池中位企业营收弹性现测约 1%，需观察兑现）。</li>
+<li><b>北交所改革</b>：审核提速（442→365 天）、五周年改革与北证 50 ETF 带来增量资金；全市场年上市 ≥50 家且堰塞湖 ≤9x 为观察阈值（2026H2）。</li>
+<li><b>年报披露</b>：2025 年报密集披露有望补齐 price 与现金流字段（price 覆盖率 13.93% → ≥30% / ≥50% 为翻多信号之一，时点约 T+6 个月）。</li>
+</ul>
+<p class="mut">催化多为"<b>慢变量</b>"，且需 price 字段补齐才能被定价；在 86.1% 无价结构下，政策利好短期难以转化为可交易收益。</p>
+</div></div>
+
+<!-- ==================== 第 11 章 情绪面与资金行为 ==================== -->
+<div class="section" id="s11"><div class="sec-head"><span class="no">11</span><h2>情绪面与资金行为：没有市场，就没有情绪</h2></div><div class="sec-body">
+<p>主题日均成交约 <b>1.14 亿</b>，86.1% 主体无连续成交价，情绪指标在绝大多数标的上<b>无样本可测</b>。即便有价的 β 池 59 家，其成交也集中于少数标的，"情绪"本质是流动性溢价的镜像，而非独立 Alpha 来源。本维度评分 4.5，中性偏弱。</p>
+</div></div>
+
+<!-- ==================== 第 12 章 流动性分层与容量约束 ==================== -->
+<div class="section" id="s12"><div class="sec-head"><span class="no">12</span><h2>流动性分层与容量约束：本主题的真正杀手</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 24 · 流动性三档分层：标的数量占比 vs 成交额占比</h3>
+  <div class="chart-wrap"><canvas id="liqChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(liquidity)</span>。L1 可参与 23.0%（成交 81.2%）、L2 谨慎 33.8%（14.1%）、L3 规避 43.1%（4.7%）。</p>
+</div>
+<table class="compact">
+<tr><th>层级</th><th>数量占比%</th><th>成交额占比%</th><th>含义</th></tr>
+<tr><td>L1 可参与</td><td class="num">23.0</td><td class="num">81.2</td><td>实际可配置资金集中于此处</td></tr>
+<tr><td>L2 谨慎</td><td class="num">33.8</td><td class="num">14.1</td><td>仅小仓位可进出</td></tr>
+<tr><td>L3 规避</td><td class="num">43.1</td><td class="num">4.7</td><td>实质不可交易</td></tr>
+</table>
+<p class="callout red"><b>容量悖论</b>：可交易区间（单标 AUM 5–85 亿）与经济划算区间（AUM ≥164.8 亿）<b>没有交集</b>。即能够流畅交易的标的规模不够、规模足够的标的无法在不冲击价格的前提下建仓。这是 SELL 结论的硬约束之一。</p>
+</div></div>
+
+<!-- ==================== 第 13 章 多空辩论 ==================== -->
+<div class="section" id="s13"><div class="sec-head"><span class="no">13</span><h2>多空辩论：论点权重裁决</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 25 · 多空论点权重对比（研究主管复核后调整值）</h3>
+  <div class="chart-wrap" style="height:560px"><canvas id="debateChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(debate)</span>。空头论点权重经复核上调；原空②标签（旧版曾误称"市值为模型定价"）已按修正口径改为"86.1%无成交价(占市值66.0%)"。</p>
+</div>
+<p>空方在 8 条论点上全面占优（权重 −6 至 −10），多方仅"算力政策顺风""北交所提速"两条权重较高。关键修正：空②由旧版"市值为模型定价"表述改为"<b>86.1% 公司无成交价（占市值 66.0%），仅约 21%(±2%) 严格等于净利润×21.978 模型公式</b>"——即市值的"可验证部分"远小于 66%，模型定价并非真实定价。</p>
+</div></div>
+
+<!-- ==================== 第 14 章 情景分析与敏感性 ==================== -->
+<div class="section" id="s14"><div class="sec-head"><span class="no">14</span><h2>情景分析与敏感性</h2></div><div class="sec-body">
+
+<h3 id="s13-1">14.1 主题三情景</h3>
+<div class="chart-card">
+  <h3>图 26 · 三情景目标空间与发生概率</h3>
+  <div class="chart-wrap"><canvas id="scenarioChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(scenario)</span>。乐观 +18.0%(20%) / 中性 −0.5%(55%) / 悲观 −28.0%(25%)。</p>
+</div>
+
+<h3 id="s13-2">14.2 三大核心假设区间</h3>
+<table class="compact">
+<tr><th>核心假设</th><th>悲观区间</th><th>中性</th><th>乐观区间</th></tr>
+<tr><td>主题级折价幅度</td><td class="num">−24.05% ~ −13.12%</td><td class="num">−18.6%</td><td class="num">—</td></tr>
+<tr><td>悲观情景概率</td><td class="num">14% ~ 33%</td><td class="num">25%</td><td class="num">—</td></tr>
+<tr><td>乐观情景幅度</td><td class="num">—</td><td class="num">+1.74%</td><td class="num">+18.0%</td></tr>
+</table>
+
+<h3 id="s13-3">14.3 敏感性龙卷风</h3>
+<div class="chart-card">
+  <h3>图 27 · EV 毛口径敏感性龙卷风（基准 −3.675）</h3>
+  <div class="chart-wrap tall"><canvas id="tornadoChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_N.json(tornado)</span>。各因子取区间上下沿对基准 EV 的边际影响。</p>
+</div>
+<p>龙卷风显示<b>悲观情景幅度（−13.12%~−39.50%）</b>与<b>乐观情景概率（20%~10%）</b>对 EV 影响最大（下沿分别 −6.55 / −5.88），价格发现一次性重估单因子占总影响约 49.8% 且无预警信号，是下行风险的绝对主导。</p>
+
+<h3 id="s13-4">14.4 α 腿情景重建</h3>
+<div class="chart-card">
+  <h3>图 28 · α 腿 vs 主题β 三情景期望收益</h3>
+  <div class="chart-wrap"><canvas id="alphaChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_N.json(scenRange / alpha)</span>。α腿=新三板买入→北交所卖出（已禁止）；主题β=920代码内买卖。</p>
+</div>
+<table class="compact">
+<tr><th>腿</th><th>悲观</th><th>中性</th><th>乐观</th><th>期望EV</th></tr>
+<tr><td>α腿（禁止）</td><td class="num">−10.93%</td><td class="num">−6.69%</td><td class="num">+11.12%</td><td class="mut">n/a</td></tr>
+<tr><td>主题β（920内）</td><td class="num">−28.0%</td><td class="num">−0.5%</td><td class="num">+18.0%</td><td class="mut">n/a</td></tr>
+</table>
+<p>α 腿三情景 EV 算术均值约 −2.17%，且依赖"新三板买入→北交所卖出"的跨市场套利，本版<b>全面禁止</b>；主题β 仅限 78 家 920 代码内买卖，中性情景近乎零收益。两种路径均无稳健正期望，进一步支撑回避。</p>
+</div></div>
+
+<!-- ==================== 第 15 章 交易方案 ==================== -->
+<div class="section" id="s15"><div class="sec-head"><span class="no">15</span><h2>交易方案：仓位、节奏与纪律</h2></div><div class="sec-body">
+<table class="compact tbl-scroll">
+<tr><th>项目</th><th>设定</th><th>说明</th></tr>
+<tr><td>当前部署</td><td class="num">0%</td><td>主题级低配/回避</td></tr>
+<tr><td>条件性预留</td><td class="num">1.0%</td><td>仅 β 腿、920 代码内</td></tr>
+<tr><td>硬上限</td><td class="num">1.5%</td><td>触发即强制停止加仓</td></tr>
+<tr><td>α 腿</td><td class="neg">全面禁止</td><td>跨市场套利无稳健正期望</td></tr>
+<tr><td>可交易域</td><td class="num">78 家 920 代码</td><td>β 池 59 / 920 组 78</td></tr>
+</table>
+<p><b>翻多条件（U1–U6）</b>：满足 3 项→选择性参与；满足 5 项→改 BUY。当前满足 3 项。关键阈值：price 覆盖率 13.93%→≥30%；北证 50 站回 MA60（1,233.92）；主题代理指数突破冻结线 5,527.69；DCF 内在价值/市值比显著修复；亏损面回落；现金流字段补齐。</p>
+</div></div>
+
+<!-- ==================== 第 16 章 三方风险辩论 ==================== -->
+<div class="section" id="s16"><div class="sec-head"><span class="no">16</span><h2>三方风险辩论与风险主管裁决</h2></div><div class="sec-body">
+<div class="chart-card">
+  <h3>图 29 · 三方论证质量评分（五维雷达，满分 50）</h3>
+  <div class="chart-wrap tall"><canvas id="riskChart"></canvas></div>
+  <p class="src">来源：<span class="srcpill">_D.json(risk)</span>。</p>
+</div>
+<p>风险主管裁决：三方（保守派/空头/情绪分析师）一致将"<b>价格发现一次性重估</b>"列为一号风险（占压力矩阵总影响 49.8%），"<b>盈利面继续塌陷</b>""<b>现金流零覆盖</b>""<b>容量悖论</b>""<b>元数据失真</b>"依次为二至五号。无一方给出可推翻 SELL 的论证。</p>
+</div></div>
+
+<!-- ==================== 附录 ==================== -->
+<div class="section" id="apA"><div class="sec-head"><span class="no">附A</span><h2>术语表</h2></div><div class="sec-body">
+<table class="compact tbl-scroll">
+<tr><th>术语</th><th>定义</th></tr>
+<tr><td>920 代码</td><td>北交所上市公司代码段（920xxx），本主题内有 78 家持此代码并有连续成交价。</td></tr>
+<tr><td>β 池</td><td>具真实成交价、可交易的 59 家（市值合计 1,445.8 亿），是唯一可交易子集。</td></tr>
+<tr><td>α 腿</td><td>"新三板买入→北交所卖出"跨市场套利路径，本版因无稳健正期望而禁止。</td></tr>
+<tr><td>模型定价</td><td>price 字段为空时，由净利润×隐含 PE（21.978）推得的市值，非真实成交价。</td></tr>
+<tr><td>哑铃结构</td><td>市值一端集中 78 家 920 代码、另一端为大量无价小微主体，中间断档。</td></tr>
+<tr><td>主题级折价</td><td>无价主体相对有价可比的估值折价中枢 −18.6%（区间 −13.12%~−24.05%）。</td></tr>
+<tr><td>置信度折扣</td><td>因市值口径/去重/现金流/元数据四类缺陷，对主题结论施加的综合可信度折减（约 38%）。</td></tr>
+</table>
+</div></div>
+
+<div class="section" id="apB"><div class="sec-head"><span class="no">附B</span><h2>1,342 样本说明</h2></div><div class="sec-body">
+<ul class="clean">
+<li>样本范围：新三板/北交所 AI 主题企业，bse_listing_status 100% 标注"未上市"（1,342 家）。</li>
+<li>价格覆盖：price 非空 187 家（13.93%）；无成交价 1,155 家（86.07%，占市值 66.01%）。</li>
+<li>市值口径：market_cap_wan 合计 8,054.2 亿，中位 1.70 亿；98.9% 标注 market_cap_method="real"，但仅 13.9% 有价格支撑。</li>
+<li>财务覆盖：financial_data 97.9%；基准年 2024（n=1,310），never 使用 2025 年做行业均值。</li>
+<li>920 代码：78 家（1,871.6 亿），构成 β 池来源；其中 59 家进入 β 池。</li>
+</ul>
+</div></div>
+
+<div class="section" id="apC"><div class="sec-head"><span class="no">附C</span><h2>38% 置信度折扣明细</h2></div><div class="sec-body">
+<p>因四类系统性缺陷，主题级结论的可信度需打折扣。各分项（按不重复计算重叠后合成约 38%）：</p>
+<table class="compact">
+<tr><th>缺陷维度</th><th>折扣分量</th><th>依据</th></tr>
+<tr><td>市值口径失真</td><td class="num">25.08%</td><td>86.1% 无价主体市值由模型推得</td></tr>
+<tr><td>重复计量（"已切换"）</td><td class="num">7.02%</td><td>66 条重复记录（604.9 亿）需剔除</td></tr>
+<tr><td>现金流零覆盖</td><td class="num">5%</td><td>cashflow_ratio 覆盖率 0/1,252</td></tr>
+<tr><td>元数据字段失真</td><td class="num">5%</td><td>listing_status/method/layer 三处 + 本版新发现两处</td></tr>
+</table>
+<p class="mut">说明：四分项简单加总为 42.1%，但因"去重"与"无价"集合存在重叠（8,054.2−604.9−5,316.8 不等于 2,737.4），按不重复覆盖合成后综合置信度折扣约 <b>38%</b>。即主题结论方向可信，但具体数值精确度受限。</p>
+</div></div>
+
+<div class="section" id="apD"><div class="sec-head"><span class="no">附D</span><h2>数据来源与口径</h2></div><div class="sec-body">
+<table class="compact tbl-scroll">
+<tr><th>文件</th><th>用途</th><th>备注</th></tr>
+<tr><td>README_AI.md</td><td>样本总定义与铁律</td><td>1,342 家、base year 2024</td></tr>
+<tr><td>ai_universe.json</td><td>主体级财务/价格/市值</td><td>主数据库</td></tr>
+<tr><td>data_v4_fixed.json</td><td>转板/上市收益</td><td>重算首日/一年收益，修正 10.34x</td></tr>
+<tr><td>src_sub-track-data.json</td><td>7 赛道/5 板块</td><td>景气与盈利</td></tr>
+<tr><td>src_a-comparable-data.json</td><td>A 股 AI 可比</td><td>PE 33.5 / PB 5.2 / PS 6.5</td></tr>
+<tr><td>industry-benchmark-data.json</td><td>跨行业 P10–P90</td><td>AI/医疗/新能源</td></tr>
+<tr><td>liquidity-score / spread / inventory-risk</td><td>流动性/分层/风险</td><td>已匹配 1,342</td></tr>
+<tr><td>src_geo / transfer-similarity</td><td>区域/转板相似度</td><td>—</td></tr>
+<tr><td>bse_industry_stats.json</td><td>（已弃用）</td><td>行业归类错配，本版新发现，未采用</td></tr>
+</table>
+</div></div>
+
+<!-- ==================== 风险提示（固定底部） ==================== -->
+<div class="section" id="risk"><div class="sec-head"><span class="no">⚠</span><h2>风险提示</h2></div><div class="sec-body">
+<ul class="clean">
+<li>本报告基于企业数据库与代理指数，<b>86.1% 主体无成交价</b>，相关市值由模型推得，结论方向可信但具体数值精确度受 38% 置信度折扣限制。</li>
+<li>价格发现一次性重估（单因子影响占比 49.8%）无预警信号；北证 50 跌破 1,031.72 将冻结主题新增部署。</li>
+<li>盈利面五年恶化、亏损面升至 32.04%、现金流零覆盖，盈利质量无法交叉验证。</li>
+<li>容量悖论使可交易区间与经济划算区间无交集；α 腿跨市场套利已禁止。</li>
+<li>元数据字段失真（含本版新发现 two 处）可能导致个别统计量偏差，相关字段已排除。</li>
+</ul>
+</div></div>
+
+<div class="stickybar">
+  <span class="sb-r">评级 <b>SELL</b></span>
+  <span class="sb-m">新三板/北交所 人工智能行业主题 · 数据截至 2026-08-03 · 基准年 2024</span>
+  <span class="sb-d">本报告仅为研究交流，不构成投资建议。市场有风险，投资需谨慎。</span>
+</div>
+<a href="#toc" class="backtop">↑ 目录</a>
+
+<script>
+const N = {"bucket": {"labels": ["算力基础设施", "数据服务", "智能硬件", "AI应用与SaaS", "基础软件与安全"], "n": [199, 142, 162, 506, 380], "gm": [40.4, 37.4, 33.3, 18.43, 44.17], "nm": [8.9, -33.7, -61.6, -248.78, 4.28], "score": [60.4, 57.2, 54.6, 42.87, 58.36], "prosp": [97.9, 83.4, 75.3, 74.39, 66.14]}, "track7": {"labels": ["工业软件", "AI芯片", "大数据服务", "智能制造", "网络安全", "企业服务SaaS", "AI应用"], "n": [164, 199, 142, 162, 216, 203, 303], "gm": [60.6, 40.4, 37.4, 33.3, 31.7, 31.9, 9.4], "score": [67.4, 60.4, 57.2, 54.6, 51.5, 47.6, 39.7], "nm": [22.7, 8.9, -33.7, -61.6, -9.7, -148.6, -315.9]}, "rep": {"labels": ["开发科技", "并行科技", "连城数控", "杰理科技", "宸芯科技"], "rev": [29.33, 6.55, 56.69, 31.2, 3.44], "np": [5.89, 0.121, 3.4, 7.91, -0.832], "roe": [32.49, 3.51, 8.55, 24.21, -3.42], "mc": [112.69, 85.01, 79.8, 160.38, 393.55], "pe": [19.13, 705.07, 23.47, 20.28, null], "gm": [36.03, 32.87, 28.72, 35.77, 71.03], "px": [81.14, 142.37, 33.99, null, null]}, "repRadar": {"labels": ["营收规模(对数)", "ROE水平", "营收成长", "低杠杆度", "定价可信度"], "series": [{"name": "开发科技", "color": "#dc2626", "data": [9.46, 9.28, 6.88, 6.42, 10]}, {"name": "并行科技", "color": "#f59e0b", "data": [8.34, 1.0, 9.01, 2.35, 10]}, {"name": "连城数控", "color": "#2563eb", "data": [9.96, 2.44, 4.31, 4.88, 10]}, {"name": "杰理科技", "color": "#059669", "data": [9.51, 6.92, 5.81, 9.16, 0]}, {"name": "宸芯科技", "color": "#7c3aed", "data": [7.85, 0, 2.79, 8.91, 0]}]}, "scatter": {"scatter_real": [{"x": 13.18, "y": 17.77, "r": 6, "n": "铁大科技"}, {"x": 1.28, "y": 29.71, "r": 6, "n": "路桥信息"}, {"x": 8.74, "y": 16.97, "r": 6, "n": "旺成科技"}, {"x": 20.01, "y": 19.39, "r": 6, "n": "宏海科技"}, {"x": 1.82, "y": 21.67, "r": 6, "n": "天润科技"}, {"x": 4.32, "y": 12.91, "r": 6, "n": "三友科技"}, {"x": 10.19, "y": 22.51, "r": 6, "n": "美登科技"}, {"x": 5.06, "y": 11.63, "r": 6, "n": "汉维科技"}, {"x": 13.6, "y": 33.18, "r": 6, "n": "基康技术"}, {"x": 20.68, "y": 35.33, "r": 6, "n": "聚星科技"}, {"x": 2.87, "y": 21.03, "r": 6, "n": "联迪信息"}, {"x": 4.39, "y": 9.63, "r": 6, "n": "前进科技"}, {"x": 13.62, "y": 12.3, "r": 6, "n": "鸿智科技"}, {"x": 11.84, "y": 15.76, "r": 6, "n": "捷众科技"}, {"x": 5.83, "y": 48.01, "r": 6, "n": "鼎智科技"}, {"x": 4.28, "y": 33.16, "r": 6, "n": "星辰科技"}, {"x": 20.57, "y": 22.56, "r": 6, "n": "通领科技"}, {"x": 25.51, "y": 66.39, "r": 6, "n": "广信科技"}, {"x": 15.28, "y": 28.91, "r": 6, "n": "骏创科技"}, {"x": 12.67, "y": 13.13, "r": 6, "n": "雷特科技"}, {"x": 4.55, "y": 14.55, "r": 6, "n": "龙竹科技"}, {"x": 7.57, "y": 24.54, "r": 6, "n": "九菱科技"}, {"x": 20.85, "y": 11.18, "r": 6, "n": "迅安科技"}, {"x": 4.21, "y": 12.07, "r": 6, "n": "浩淼科技"}, {"x": 19.74, "y": 29.66, "r": 6, "n": "青矩技术"}, {"x": 17.26, "y": 20.81, "r": 6, "n": "视声智能"}, {"x": 15.08, "y": 16.11, "r": 6, "n": "天铭科技"}, {"x": 9.09, "y": 18.06, "r": 6, "n": "三祥科技"}, {"x": 15.89, "y": 23.19, "r": 6, "n": "南特科技"}, {"x": 26.97, "y": 14.54, "r": 6, "n": "朗鸿科技"}, {"x": 16.43, "y": 69.9, "r": 6, "n": "艾融软件"}, {"x": 26.22, "y": 23.88, "r": 6, "n": "江天科技"}, {"x": 2.54, "y": 21.47, "r": 6, "n": "雷神科技"}, {"x": 13.13, "y": 22.1, "r": 6, "n": "中裕科技"}, {"x": 6.9, "y": 13.09, "r": 6, "n": "乐创技术"}, {"x": 11.38, "y": 36.41, "r": 6, "n": "国子软件"}, {"x": 14.23, "y": 19.53, "r": 6, "n": "爱得科技"}, {"x": 11.5, "y": 14.08, "r": 6, "n": "三维装备"}, {"x": 8.55, "y": 79.8, "r": 6, "n": "连城数控"}, {"x": 32.49, "y": 112.69, "r": 6, "n": "开发科技"}, {"x": 2.65, "y": 16.47, "r": 6, "n": "海能技术"}, {"x": 0.75, "y": 9.0, "r": 6, "n": "花溪科技"}, {"x": 7.7, "y": 15.12, "r": 6, "n": "许昌智能"}, {"x": 19.59, "y": 15.39, "r": 6, "n": "建邦科技"}, {"x": 7.13, "y": 18.59, "r": 6, "n": "同享科技"}, {"x": 36.04, "y": 24.57, "r": 6, "n": "酉立智能"}, {"x": 7.23, "y": 15.69, "r": 6, "n": "西磁科技"}, {"x": 0.62, "y": 14.44, "r": 6, "n": "慧为智能"}, {"x": 4.2, "y": 17.33, "r": 6, "n": "泓禧科技"}, {"x": 6.36, "y": 13.3, "r": 6, "n": "绿亨科技"}, {"x": 15.52, "y": 16.03, "r": 6, "n": "力佳科技"}, {"x": 20.33, "y": 23.84, "r": 6, "n": "瑞华技术"}, {"x": 9.41, "y": 21.49, "r": 6, "n": "广脉科技"}, {"x": 10.6, "y": 14.62, "r": 6, "n": "佳合科技"}, {"x": 3.94, "y": 15.39, "r": 6, "n": "派诺科技"}, {"x": 29.45, "y": 31.97, "r": 6, "n": "农大科技"}, {"x": 17.02, "y": 27.81, "r": 6, "n": "利通科技"}, {"x": 36.86, "y": 23.96, "r": 6, "n": "觅睿科技"}, {"x": 23.28, "y": 21.15, "r": 6, "n": "悦龙科技"}], "scatter_model": [{"x": -3.42, "y": 393.55, "r": 6, "n": "宸芯科技"}, {"x": 14.69, "y": 165.36, "r": 6, "n": "先临三维"}, {"x": 24.21, "y": 160.38, "r": 6, "n": "杰理科技"}, {"x": 8.71, "y": 76.69, "r": 6, "n": "有屋智能"}, {"x": 8.55, "y": 74.72, "r": 6, "n": "连城数控(已切换)"}, {"x": 18.47, "y": 63.38, "r": 6, "n": "鑫宇科技"}, {"x": 34.13, "y": 48.35, "r": 6, "n": "千岸科技"}, {"x": 13.78, "y": 42.21, "r": 6, "n": "富士智能"}, {"x": 9.74, "y": 42.2, "r": 6, "n": "嘉拓智能"}, {"x": 19.74, "y": 40.44, "r": 6, "n": "青矩技术(已切换)"}, {"x": 23.88, "y": 39.78, "r": 6, "n": "广规科技"}, {"x": 35.35, "y": 36.48, "r": 6, "n": "澳构科技"}, {"x": 25.65, "y": 36.26, "r": 6, "n": "沛城科技"}, {"x": 32.14, "y": 35.49, "r": 6, "n": "锐翔智能"}, {"x": 15.14, "y": 35.38, "r": 6, "n": "嘉乐智能"}, {"x": 25.4, "y": 33.85, "r": 6, "n": "海昌智能"}, {"x": 12.27, "y": 31.55, "r": 6, "n": "像素软件"}, {"x": 29.75, "y": 29.88, "r": 6, "n": "彩客科技"}, {"x": 11.42, "y": 29.85, "r": 6, "n": "辛帕智能"}, {"x": 16.76, "y": 29.32, "r": 6, "n": "映日科技"}, {"x": -4.79, "y": 29.02, "r": 6, "n": "华精科技"}, {"x": 17.11, "y": 28.75, "r": 6, "n": "八环科技"}, {"x": 14.88, "y": 28.67, "r": 6, "n": "卓海科技"}, {"x": 7.47, "y": 26.37, "r": 6, "n": "鼎镁科技"}, {"x": 33.08, "y": 26.15, "r": 6, "n": "华晟智能"}, {"x": 24.81, "y": 25.93, "r": 6, "n": "龙鑫智能"}, {"x": 19.65, "y": 25.49, "r": 6, "n": "利星科技"}, {"x": 11.59, "y": 25.27, "r": 6, "n": "顶立科技"}, {"x": -9.47, "y": 24.76, "r": 6, "n": "元潮科技"}, {"x": 10.57, "y": 23.74, "r": 6, "n": "博涛智能"}, {"x": 19.59, "y": 23.52, "r": 6, "n": "建邦科技(已切换)"}, {"x": 17.02, "y": 23.52, "r": 6, "n": "利通科技(已切换)"}, {"x": 13.13, "y": 23.08, "r": 6, "n": "中裕科技(已切换)"}, {"x": 16.03, "y": 22.64, "r": 6, "n": "汉峰科技"}, {"x": 31.58, "y": 22.05, "r": 6, "n": "优云科技"}, {"x": 10.79, "y": 21.82, "r": 6, "n": "尚航科技"}, {"x": 23.45, "y": 21.71, "r": 6, "n": "澳维科技"}, {"x": 23.11, "y": 21.4, "r": 6, "n": "弥富科技"}, {"x": 19.91, "y": 21.11, "r": 6, "n": "博奇科技"}, {"x": 39.05, "y": 21.01, "r": 6, "n": "中源技术"}, {"x": -32.14, "y": 20.93, "r": 6, "n": "安达科技(已切换)"}, {"x": 28.88, "y": 20.91, "r": 6, "n": "铭沣科技"}, {"x": 11.34, "y": 20.62, "r": 6, "n": "国贵科技"}, {"x": 28.64, "y": 20.48, "r": 6, "n": "航材科技"}, {"x": 8.44, "y": 20.06, "r": 6, "n": "新纳科技"}, {"x": 14.46, "y": 19.97, "r": 6, "n": "维琪科技"}, {"x": 20.77, "y": 19.2, "r": 6, "n": "德硕科技"}, {"x": 13.44, "y": 19.06, "r": 6, "n": "原力数字"}, {"x": -682.73, "y": 19.0, "r": 6, "n": "华夏科技"}, {"x": 55.13, "y": 18.84, "r": 6, "n": "辛巴科技"}, {"x": 13.24, "y": 17.9, "r": 6, "n": "龙辰科技"}, {"x": 40.36, "y": 17.68, "r": 6, "n": "华汇智能"}, {"x": 14.4, "y": 17.61, "r": 6, "n": "铁近科技"}, {"x": 24.21, "y": 17.41, "r": 6, "n": "恒道科技"}, {"x": 18.73, "y": 17.3, "r": 6, "n": "晨泰科技"}, {"x": 4.61, "y": 17.07, "r": 6, "n": "硅烷科技(已切换)"}, {"x": 13.86, "y": 17.05, "r": 6, "n": "兢强科技"}, {"x": 13.99, "y": 17.01, "r": 6, "n": "美亚科技"}, {"x": 8.56, "y": 17.01, "r": 6, "n": "赞同科技"}]}, "tornado": {"base": -3.675, "labels": ["悲观情景幅度 (-13.12% ~ -39.50%)", "悲观情景概率 (14% ~ 33%)", "中性情景幅度 (+1.74% ~ -7.86%)", "乐观情景幅度 (+18.0% ~ +1.74%)", "乐观情景概率 (20% ~ 10%)"], "hi": [3.72, 3.025, 1.232, 0.0, 0.0], "lo": [-2.875, -2.2, -4.048, -3.252, -1.85], "hiabs": [0.05, -0.65, -2.44, -3.67, -3.67], "loabs": [-6.55, -5.88, -7.72, -6.93, -5.53]}, "alpha": [{"k": "悲观", "p1": 1.0999999999999999, "P3": 3.26, "M": 1.034, "ev": -10.93}, {"k": "中性", "p1": 2.4, "P3": 7.03, "M": 1.592, "ev": -6.69}, {"k": "乐观", "p1": 4.5, "P3": 12.9, "M": 2.68, "ev": 11.12}], "scenRange": {"labels": ["α腿·悲观", "α腿·中性", "α腿·乐观", "主题β·悲观", "主题β·中性", "主题β·乐观"], "v": [-10.93, -6.69, 11.12, -28.0, -0.5, 18.0]}, "trend": {"years": [2020, 2021, 2022, 2023, 2024], "rev": [5356.5, 4106.7, 3893.5, 3894.0, 3657.9], "np": [148.2, 165.0, 230.2, 212.7, 185.5], "roe": [10.79, 10.94, 9.17, 7.44, 4.75], "loss": [21.77, 20.94, 26.27, 27.66, 32.04], "n": [1154, 1199, 1265, 1311, 1310], "revmed": [0.9439, 1.13, 1.18, 1.25, 1.26], "npmed": [598.9, 783.1, 727.6, 613.5, 374.6]}, "waterfall": {"labels": ["名义市值", "剔除已切换重复", "剔除无成交价", "可承保市值"], "base": [0, 7105.3, 2737.4, 0], "delta": [8054.2, 948.9, 4367.9, 2737.4], "vals": [8054.2, -604.9, -5316.8, 2737.4], "cum": [8054.2, 7449.3, 2737.4, 2737.4]}, "bench": {"labels": ["营收P50(万元)", "净利P50(万元)", "毛利率P50(%)", "净利率P50(%)", "ROE P50(%)", "负债率P50(%)"], "series": [{"name": "人工智能(n=1303)", "color": "#dc2626", "data": [12900.0, 394.15, 29.42, 3.55, 5.11, 44.72]}, {"name": "医疗健康(n=384)", "color": "#2563eb", "data": [16300.0, 734.29, 40.0, 4.91, 5.33, 37.76]}, {"name": "新能源(n=154)", "color": "#059669", "data": [20500.0, 1006.94, 24.87, 5.62, 6.5, 46.86]}]}, "geo": {"labels": ["广东", "北京", "浙江", "江苏", "上海", "湖北", "山东", "四川", "福建", "安徽", "陕西", "河南"], "n": [332, 235, 155, 154, 133, 52, 50, 47, 35, 31, 30, 28], "rate": [12.5, 13.9, 17.6, 12.6, 11.5, 26.6, 33.8, 18.8, 20.0, 20.0, 34.2, 34.3], "gm": [32.1, 34.1, 34.5, 34.6, 27.7, 36.5, 30.5, 35.9, 32.3, 30.2, 33.1, 38.2]}, "mult": {"labels": ["P10", "P25", "P50", "P75", "P90"], "listing": [0.755, 1.034, 1.592, 2.68, 5.075], "oneyear": [0.665, 0.954, 1.403, 2.262, 3.56], "raw_p25": 6.23, "raw_p50": 10.335, "raw_p75": 17.117}, "entry": {"labels": ["首日(相对发行价)", "一年(相对发行价)", "一年(相对上市首日收盘)"], "mean": [81.89, 43.46, -2.7], "median": [17.67, 3.6, -12.92], "n": [298, 263, 263], "lossrate": [27.85, 47.53, 64.64]}, "val3": {"labels": ["全池(n=1342)", "β池59", "920组(n=78)", "非920有价(n=109)", "无价组(n=1155)", "A股AI可比"], "pe": [21.978, 41.641, 43.2, 12.105, 21.978, 33.5], "ps": [1.442, 4.562, 4.95, 0.909, 1.385, 6.5], "pb": [2.136, 4.457, 4.457, 1.17, 2.013, 5.2]}, "dcf": {"labels": ["g=-3% r=12%", "g=0% r=12%", "g=+3% r=15%", "g=+3% r=10%", "g=+5% r=12%"], "val": [264.1, 340.3, 350.5, 600.9, 612.5], "mc": 1445.8}};
+const D = {"price": {"dates": ["2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-01", "2026-07-02", "2026-07-03", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-03"], "a": {"name": "CS人工智(930713)", "close": [5087.24, 5224.5, 5089.91, 5078.16, 5059.61, 4944.71, 5115.4, 4953.74, 4990.3, 5042.82, 5402.18, 5380.05, 5514.78, 5551.92, 5671.23, 5629.85, 5798.3, 5912.75, 5999.35, 5936.22, 6130.81, 6085.36, 5998.24, 6058.65, 5952.84, 6002.61, 6160.15, 6388.27, 6551.02, 6509.38, 6717.54, 6769.96, 7010.49, 6875.12, 6719.81, 6760.48, 6868.07, 6892.53, 6639.87, 6809.77, 7082.64, 7030.69, 6904.29, 7031.44, 6767.57, 6597.31, 6786.34, 7008.36, 6960.28, 6712.81, 6464.9, 6681.89, 6538.51, 6375.71, 6377.77, 6743.89, 6757.85, 6931.54, 7261.28, 7338.48, 7064.77, 7241.28, 7506.26, 7159.45, 7265.29, 7668.91, 7492.21, 6996.29, 7030.2, 6987.16, 6958.18, 7054.55, 7501.43, 7278.33, 7063.02, 7186.42, 6995.86, 6821.05, 6274.36, 6418.56, 6905.75, 6813.68, 6645.97, 6527.45, 6617.92, 6147.58, 6128.13, 5771.85, 6072.57, 5926.48], "sma20": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5369.15, 5421.33, 5464.37, 5509.79, 5558.81, 5603.48, 5656.37, 5708.61, 5780.33, 5858.37, 5931.7, 5997.47, 6066.96, 6141.75, 6207.91, 6260.34, 6316.87, 6370.36, 6419.35, 6451.37, 6495.05, 6542.64, 6589.91, 6635.21, 6683.85, 6724.59, 6754.32, 6785.63, 6816.63, 6837.1, 6847.27, 6834.64, 6830.23, 6806.63, 6781.66, 6764.56, 6763.73, 6758.22, 6760.17, 6791.24, 6817.68, 6816.78, 6827.31, 6857.41, 6863.81, 6888.7, 6942.28, 6977.57, 6976.97, 6980.46, 6994.18, 7018.85, 7037.48, 7085.63, 7130.76, 7165.02, 7187.15, 7199.05, 7193.52, 7144.18, 7098.18, 7090.23, 7068.85, 7025.83, 6994.23, 6961.87, 6885.8, 6817.6, 6756.37, 6708.49, 6655.46], "sma60": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 6227.29, 6260.25, 6293.86, 6334.14, 6368.83, 6405.59, 6450.99, 6490.6, 6524.65, 6558.64, 6591.05, 6616.98, 6644.89, 6678.0, 6706.78, 6729.97, 6755.92, 6775.87, 6791.01, 6795.6, 6803.64, 6816.55, 6828.69, 6839.49, 6847.3, 6858.38, 6860.8, 6860.27, 6849.99, 6842.02, 6832.3]}, "b": {"name": "北证50(899050)", "close": [1268.13, 1286.94, 1266.68, 1271.41, 1260.71, 1248.29, 1278.12, 1281.91, 1254.68, 1250.41, 1307.43, 1286.3, 1307.67, 1308.25, 1323.5, 1323.08, 1340.82, 1404.8, 1420.5, 1398.96, 1421.21, 1378.03, 1370.22, 1361.47, 1325.39, 1331.74, 1330.09, 1363.29, 1404.94, 1436.36, 1426.31, 1419.4, 1438.46, 1384.78, 1378.3, 1356.95, 1364.83, 1349.37, 1323.84, 1327.26, 1316.74, 1284.27, 1253.75, 1285.7, 1244.1, 1249.73, 1252.21, 1246.24, 1230.26, 1299.07, 1316.31, 1337.93, 1295.6, 1252.3, 1242.57, 1263.84, 1276.81, 1280.25, 1265.16, 1271.45, 1281.21, 1295.95, 1277.69, 1266.9, 1225.48, 1251.2, 1264.94, 1266.22, 1287.82, 1245.97, 1236.08, 1204.04, 1209.37, 1209.15, 1127.22, 1152.56, 1131.83, 1101.8, 1076.38, 1045.2, 1079.04, 1074.45, 1075.02, 1031.72, 1055.92, 1055.27, 1064.29, 1049.07, 1083.27, 1076.07], "sma20": [1406.38, 1393.36, 1379.45, 1366.17, 1355.42, 1347.07, 1340.41, 1333.14, 1324.51, 1317.32, 1311.62, 1304.58, 1299.41, 1294.99, 1291.58, 1289.43, 1287.7, 1291.46, 1296.68, 1304.43, 1312.08, 1316.64, 1321.82, 1326.32, 1329.55, 1333.72, 1336.32, 1340.39, 1347.9, 1357.2, 1363.15, 1369.8, 1376.34, 1380.17, 1382.91, 1384.6, 1385.8, 1383.03, 1378.2, 1374.61, 1369.39, 1364.7, 1358.88, 1355.09, 1351.02, 1346.92, 1343.03, 1337.18, 1328.44, 1321.58, 1316.08, 1312.0, 1304.86, 1298.24, 1291.45, 1286.8, 1282.39, 1278.94, 1276.0, 1273.21, 1271.44, 1272.02, 1273.22, 1272.28, 1271.35, 1271.42, 1272.06, 1273.06, 1275.93, 1273.28, 1269.27, 1262.57, 1258.26, 1256.11, 1250.34, 1244.77, 1237.52, 1228.6, 1219.16, 1207.85, 1197.74, 1186.67, 1176.53, 1164.77, 1156.3, 1146.5, 1136.47, 1125.61, 1115.38, 1106.89], "sma60": [1479.84, 1477.19, 1474.14, 1471.34, 1468.26, 1464.76, 1461.68, 1458.77, 1455.5, 1452.34, 1449.69, 1446.24, 1443.1, 1439.76, 1436.42, 1431.7, 1427.96, 1425.02, 1422.95, 1420.46, 1418.34, 1416.01, 1413.52, 1410.71, 1406.32, 1402.42, 1398.51, 1395.19, 1393.0, 1391.42, 1390.18, 1388.01, 1386.34, 1384.3, 1381.93, 1378.85, 1376.06, 1373.13, 1369.64, 1366.26, 1362.62, 1358.23, 1353.38, 1349.19, 1345.33, 1342.57, 1339.92, 1336.9, 1333.62, 1332.03, 1330.28, 1328.8, 1326.87, 1324.46, 1321.98, 1320.28, 1318.63, 1317.81, 1316.96, 1317.42, 1317.64, 1317.79, 1317.97, 1317.9, 1317.31, 1317.36, 1317.14, 1316.88, 1317.43, 1317.35, 1316.16, 1314.79, 1313.16, 1311.5, 1308.23, 1305.39, 1301.91, 1296.86, 1291.12, 1285.23, 1279.52, 1274.46, 1269.54, 1264.05, 1259.56, 1254.95, 1250.52, 1245.28, 1239.92, 1233.92]}, "refs": [{"value": 5527.69, "axis": "y", "label": "主题冻结线 5527.69", "color": "#dc2626"}, {"value": 4944.71, "axis": "y", "label": "熊市目标 4944.71 (-16.6%)", "color": "#991b1b", "dash": [3, 3]}, {"value": 1031.72, "axis": "y1", "label": "北证50 停新增 1031.72", "color": "#d97706"}, {"value": 1233.92, "axis": "y1", "label": "北证50 MA60 1233.92", "color": "#059669", "dash": [2, 3]}]}, "radar": {"labels": ["技术面", "基本面", "新闻面", "情绪面", "风险可控度"], "values": [3.5, 3.8, 7.0, 4.5, 2.5]}, "debate": {"labels": ["多① 4万亿算力政策顺风", "多② 北交所审核提速+543高潜", "多③ 214家质量核心占60%净利", "多④ 高毛利赛道护城河", "多⑤ 高估+50.5%是测算幻觉", "多⑥ 稀缺溢价+转板期权", "空① 质量漏斗跨年不稳定", "空② 86.1%无成交价(占市值66.0%)", "空③ 转板倍数量纲错配6.5倍", "空④ 盈利质量五年单调恶化", "空⑤ 流动性陷阱 1.14亿/日", "空⑥ 数据缺陷系统性偏乐观", "空⑦ 哑铃型市值结构", "空⑧ 降层/摘牌趋严"], "bull": [6, 4, 6, 7, 2, 2, null, null, null, null, null, null, null, null], "bear": [null, null, null, null, null, null, -9, -10, -10, -10, -8, -10, -8, -6]}, "risk": {"labels": ["证据强度", "逻辑严密", "计算充分", "诚实度", "可执行性"], "series": [{"name": "激进派（总分34）", "data": [7, 6, 8, 8, 5], "color": "#dc2626", "fill": "rgba(220,38,38,.10)"}, {"name": "保守派（总分43）", "data": [9, 7, 9, 10, 8], "color": "#2563eb", "fill": "rgba(37,99,235,.12)"}, {"name": "中性派（总分36）", "data": [7, 8, 7, 8, 6], "color": "#059669", "fill": "rgba(5,150,105,.10)", "dash": [5, 3]}]}, "sector": {"labels": ["工业软件", "AI芯片", "大数据服务", "网络安全", "智能制造", "企业服务SaaS", "AI应用"], "values": [8, 7, 6, 5, 4, 3, 2], "notes": ["7条赛道唯一正净利率(+22.7%)且毛利60.6%为行业中位29.5%的2.05倍(n=164)；综合评分67.4最高；但avg_roe=127.7%系离…", "毛利40.4%、净利率+8.9%为仅有的两个正净利率赛道之一(n=199)；综合评分60.4次高；但龙头宏银信息/上元智能2024净利同比-64.8%/-1…", "毛利37.4%高于行业中位8个百分点、综合评分57.2居中(n=142)；净利率-33.7%显示盈利尚未跑通，avg_roe57.2%为小分母失真…", "净利率-9.7%为负值赛道中最轻、毛利31.7%贴近行业中位(n=216)；龙头旋荣科技营收+39.1%/净利+11.9%/ROE22.8验证有真实盈利样本…", "毛利33.3%尚可但净利率-61.6%显示重资产+价格战(n=162)；综合评分54.6，三家龙头中两家不在AI主表、一家无2024数据，证据链最弱…", "prosperity_score48.7为7条赛道最低、净利率-148.6%、综合评分47.6(n=203)；龙头成德科技营收3.59亿仍亏279.9万、负…", "毛利仅9.4%为行业中位29.5%的0.32倍、净利率-315.9%、综合评分39.7全场最低(n=303)；龙头弘高科技净利同比-414.7%/ROE-5…"]}, "scenario": {"labels": ["乐观情景", "中性情景", "悲观情景"], "upside": [18.0, -0.5, -28.0], "prob": [20, 55, 25], "targets": ["ai1 6993 / 北证50 收复MA60", "ai1 5897 区间震荡", "ai1 4944.71"]}, "valuation": {"labels": ["CS人工智 PE", "中证AI产业 PE", "北证50 PE"], "low": [55.27, 56.88, 17.74], "band": [11.97, 12.98, 54.05], "cur": [56.7, 58.19, 42.94], "pct": ["10日观测区间（3年分位不可算）", "10日观测区间（3年分位不可算）", "68.2%（近3年22个采样点）"]}, "liquidity": {"labels": ["L1 可参与", "L2 谨慎", "L3 规避"], "count": [23.0, 33.8, 43.1], "turnover": [81.2, 14.1, 4.7]}};
+if(D&&D.debate&&D.debate.labels[7])D.debate.labels[7]='空② 86.1%无成交价(占市值66.0%)';
+
+const C={red:'#dc2626',redL:'rgba(220,38,38,.82)',grn:'#059669',grnL:'rgba(5,150,105,.82)',blu:'#2563eb',bluL:'rgba(37,99,235,.80)',amb:'#d97706',ambL:'rgba(245,158,11,.82)',ind:'#6366f1',gra:'#6b7280',graL:'rgba(107,114,128,.7)'};
+function hexA(h,a){h=h.replace('#','');if(h.length===3)h=h.split('').map(x=>x+x).join('');const n=parseInt(h,16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';}
+
+
+const FONT = {family:'-apple-system,PingFang SC,sans-serif'};
+Chart.defaults.font.family = FONT.family;
+Chart.defaults.color = '#4b5563';
+const has = id => document.getElementById(id);
+
+/* ---------- 参考线插件 ---------- */
+const refLines = {
+  id:'refLines',
+  afterDatasetsDraw(c,a,o){
+    if(!o || !o.lines) return;
+    const {ctx,chartArea:{left,right}} = c;
+    o.lines.forEach(L=>{
+      const ax = c.scales[L.axis||'y']; if(!ax) return;
+      const y = ax.getPixelForValue(L.value);
+      if(y<c.chartArea.top||y>c.chartArea.bottom) return;
+      ctx.save();
+      ctx.strokeStyle=L.color; ctx.lineWidth=1.3; ctx.setLineDash(L.dash||[6,4]);
+      ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle=L.color; ctx.font='600 10.5px '+FONT.family; ctx.textAlign='right';
+      ctx.fillText(L.label, right-4, y-4);
+      ctx.restore();
+    });
+  }
+};
+if(has('priceChart') && D.price){
+  const P=D.price;
+  const ds=[
+    {label:P.a.name,data:P.a.close,borderColor:'#dc2626',backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:.15,yAxisID:'y'},
+    {label:P.a.name+' MA20',data:P.a.sma20,borderColor:'#f97316',borderWidth:1.2,pointRadius:0,borderDash:[5,3],tension:.15,yAxisID:'y'},
+    {label:P.b.name,data:P.b.close,borderColor:'#059669',backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:.15,yAxisID:'y1'},
+    {label:P.b.name+' MA20',data:P.b.sma20,borderColor:'#34d399',borderWidth:1.2,pointRadius:0,borderDash:[5,3],tension:.15,yAxisID:'y1'}
+  ];
+  if(P.a.sma60) ds.splice(2,0,{label:P.a.name+' MA60',data:P.a.sma60,borderColor:'#9ca3af',borderWidth:1.1,pointRadius:0,borderDash:[2,3],tension:.15,yAxisID:'y'});
+  if(P.b.sma60) ds.push({label:P.b.name+' MA60',data:P.b.sma60,borderColor:'#a7f3d0',borderWidth:1.1,pointRadius:0,borderDash:[2,3],tension:.15,yAxisID:'y1'});
+  new Chart(has('priceChart'),{type:'line',data:{labels:P.dates,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{boxWidth:16,font:{size:11}}},refLines:{lines:P.refs||[]},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.parsed.y==null?'-':c.parsed.y.toLocaleString())}}},
+      scales:{
+        y:{position:'left',title:{display:true,text:P.a.name,font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',title:{display:true,text:P.b.name,font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{ticks:{maxTicksLimit:12,font:{size:10}},grid:{display:false}}
+      }},plugins:[refLines]});
+}
+
+/* ---------- 2. 五维雷达 ---------- */
+if(has('radarChart') && D.radar){
+  new Chart(has('radarChart'),{type:'radar',
+    data:{labels:D.radar.labels,datasets:[{label:'评分',data:D.radar.values,
+      borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.16)',borderWidth:2,pointBackgroundColor:'#2563eb',pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:10}},pointLabels:{font:{size:12.5,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.r+' / 10'}}}}});
+}
+
+/* ---------- 3. 多空对比水平柱 ---------- */
+if(has('debateChart') && D.debate){
+  new Chart(has('debateChart'),{type:'bar',
+    data:{labels:D.debate.labels,datasets:[
+      {label:'多头论点权重',data:D.debate.bull,backgroundColor:'rgba(5,150,105,.82)',borderRadius:3},
+      {label:'空头论点权重',data:D.debate.bear,backgroundColor:'rgba(220,38,38,.82)',borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{min:-10,max:10,ticks:{callback:v=>Math.abs(v),font:{size:10.5}},grid:{color:'#f1f3f6'},
+        title:{display:true,text:'← 空头权重    |    多头权重 →',font:{size:11}}},
+        y:{ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Math.abs(c.parsed.x)}}}}});
+}
+
+/* ---------- 4. 风险三方雷达 ---------- */
+if(has('riskChart') && D.risk){
+  new Chart(has('riskChart'),{type:'radar',
+    data:{labels:D.risk.labels,datasets:D.risk.series.map(s=>({
+      label:s.name,data:s.data,borderColor:s.color,backgroundColor:s.fill,borderWidth:2,
+      pointRadius:3.5,borderDash:s.dash||[]}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:10}},pointLabels:{font:{size:12,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}}}}});
+}
+
+/* ---------- 5. 细分赛道景气度 ---------- */
+if(has('sectorChart') && D.sector){
+  new Chart(has('sectorChart'),{type:'bar',
+    data:{labels:D.sector.labels,datasets:[{label:'景气度评分',data:D.sector.values,
+      backgroundColor:D.sector.values.map(v=>v>=7?'rgba(5,150,105,.85)':v>=5?'rgba(245,158,11,.85)':'rgba(220,38,38,.8)'),
+      borderRadius:4}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{min:0,max:10,ticks:{stepSize:2,font:{size:10.5}},grid:{color:'#f1f3f6'},
+        title:{display:true,text:'景气度评分（0=极冷 10=极热）',font:{size:11}}},
+        y:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{afterLabel:c=>D.sector.notes?D.sector.notes[c.dataIndex]:''}}}}});
+}
+
+/* ---------- 6. 情景分析：目标位 + 概率 ---------- */
+if(has('scenarioChart') && D.scenario){
+  const S=D.scenario;
+  new Chart(has('scenarioChart'),{type:'bar',
+    data:{labels:S.labels,datasets:[
+      {type:'bar',label:'目标位相对现价空间(%)',data:S.upside,yAxisID:'y',
+        backgroundColor:S.upside.map(v=>v>=0?'rgba(5,150,105,.8)':'rgba(220,38,38,.8)'),borderRadius:4,order:2},
+      {type:'line',label:'发生概率(%)',data:S.prob,yAxisID:'y1',borderColor:'#6366f1',
+        backgroundColor:'#6366f1',borderWidth:2,pointRadius:5,tension:.2,order:1}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'相对现价空间 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:100,title:{display:true,text:'概率 %',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{afterLabel:c=>c.datasetIndex===0&&S.targets?('目标位 '+S.targets[c.dataIndex]):''}}}}});
+}
+
+/* ---------- 7. 估值分位 ---------- */
+if(has('valChart') && D.valuation){
+  const V=D.valuation;
+  new Chart(has('valChart'),{type:'bar',
+    data:{labels:V.labels,datasets:[
+      {label:'历史区间下沿',data:V.low,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'历史区间',data:V.band,backgroundColor:'rgba(99,102,241,.22)',stack:'s',borderRadius:3},
+      {type:'line',label:'当前值',data:V.cur,borderColor:'#dc2626',backgroundColor:'#dc2626',
+        borderWidth:0,pointRadius:7,pointStyle:'rectRot',showLine:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'倍数',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{filter:i=>i.dataset.label!=='历史区间下沿',
+          callbacks:{afterLabel:c=>c.dataset.label==='当前值'&&V.pct?('历史分位 '+V.pct[c.dataIndex]):''}}}}});
+}
+
+/* ---------- 8. 流动性分层 ---------- */
+if(has('liqChart') && D.liquidity){
+  const L=D.liquidity;
+  new Chart(has('liqChart'),{type:'bar',
+    data:{labels:L.labels,datasets:[
+      {label:'标的数量占比(%)',data:L.count,backgroundColor:'rgba(37,99,235,.78)',borderRadius:4},
+      {label:'成交额占比(%)',data:L.turnover,backgroundColor:'rgba(245,158,11,.82)',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'占比 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}}}}});
+}
+
+/* ===================== 新增图（基于 N） ===================== */
+/* 9. 市值瀑布（s2-1）—— 仿 valChart 骨架 */
+if(has('waterfallChart') && N.waterfall){
+  const W=N.waterfall, ends=W.cum, L=W.labels.length;
+  const floats=[], cols=[];
+  for(let i=0;i<L;i++){
+    if(i===0) floats.push([0,ends[0]]);
+    else if(i===L-1) floats.push([0,ends[L-1]]);
+    else floats.push([ends[i],ends[i-1]]);
+    cols.push(i===0?C.bluL:(i===L-1?C.grnL:C.redL));
+  }
+  const wlabs=W.labels.map((t,i)=>{
+    if(i===0) return t+'('+W.vals[0].toFixed(1)+'亿)';
+    if(i===L-1) return t+'('+W.vals[L-1].toFixed(1)+'亿)';
+    return t+'(Δ'+(W.vals[i]>=0?'+':'')+W.vals[i].toFixed(1)+')';
+  });
+  new Chart(has('waterfallChart'),{type:'bar',
+    data:{labels:wlabs,datasets:[
+      {label:'历史区间下沿',data:floats,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'市值(亿)',data:floats,backgroundColor:cols,stack:'s',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'亿元',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{callbacks:{label:c=>'市值区间 '+c.raw[0].toLocaleString()+' ~ '+c.raw[1].toLocaleString()+' 亿'}}}}});
+}
+/* 10. 五大板块：样本量 + 综合评分 —— 仿 valChart 骨架（含双轴 line） */
+if(has('bucketChart') && N.bucket){
+  const B=N.bucket;
+  new Chart(has('bucketChart'),{type:'bar',
+    data:{labels:B.labels,datasets:[
+      {label:'历史区间下沿',data:B.n,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'归属数',data:B.n,backgroundColor:C.bluL,stack:'s',borderRadius:3},
+      {type:'line',label:'综合评分',data:B.score,yAxisID:'y1',borderColor:C.amb,borderWidth:2,pointRadius:5,tension:.2},
+      {type:'line',label:'景气分',data:B.prosp,yAxisID:'y1',borderColor:C.grn,borderWidth:2,pointRadius:4,borderDash:[5,3],tension:.2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'归属数',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:100,title:{display:true,text:'评分',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y}}}}});
+}
+/* 11. 七条赛道：毛利率/净利率 + 综合评分 —— 仿 valChart 骨架 */
+if(has('track7Chart') && N.track7){
+  const T=N.track7;
+  new Chart(has('track7Chart'),{type:'bar',
+    data:{labels:T.labels,datasets:[
+      {label:'历史区间下沿',data:T.gm,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'毛利率%',data:T.gm,backgroundColor:C.bluL,stack:'s',borderRadius:3},
+      {label:'净利率%',data:T.nm,backgroundColor:T.nm.map(v=>v>=0?C.grnL:C.redL),stack:'s',borderRadius:3},
+      {type:'line',label:'综合评分',data:T.score,yAxisID:'y1',borderColor:C.amb,borderWidth:2,pointRadius:4,tension:.2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'利润率 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:80,title:{display:true,text:'综合评分',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:10.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+'%'}}}}});
+}
+/* 12. 区域：企业数 + 价格覆盖率 —— 仿 valChart 骨架 */
+if(has('geoChart') && N.geo){
+  const G=N.geo;
+  new Chart(has('geoChart'),{type:'bar',
+    data:{labels:G.labels,datasets:[
+      {label:'历史区间下沿',data:G.n,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'企业数',data:G.n,backgroundColor:C.bluL,stack:'s',borderRadius:3},
+      {type:'line',label:'有价覆盖率%',data:G.rate,yAxisID:'y1',borderColor:C.grn,borderWidth:2,pointRadius:4,tension:.2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'企业数',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:40,title:{display:true,text:'覆盖率 %',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:10}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y}}}}});
+}
+/* 13. 转板重估倍数：无量纲 vs 原始失真 —— 仿 liqChart 骨架（水平柱） */
+if(has('multChart') && N.mult){
+  const M=N.mult;
+  new Chart(has('multChart'),{type:'bar',
+    data:{labels:['P25','P50','P75'],datasets:[
+      {label:'上市日/末轮',data:[M.listing[1],M.listing[2],M.listing[3]],backgroundColor:C.bluL,borderRadius:3},
+      {label:'一年/末轮',data:[M.oneyear[1],M.oneyear[2],M.oneyear[3]],backgroundColor:C.grnL,borderRadius:3},
+      {label:'原始口径(失真10.34x)',data:[M.raw_p25,M.raw_p50,M.raw_p75],backgroundColor:C.redL,borderRadius:3,borderDash:[4,3]}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'重估倍数 (x)',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:11.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.x+'x'}}}}});
+}
+/* 14. 代表标的：营收/净利 —— 仿 liqChart 骨架 */
+if(has('repChart') && N.rep){
+  const R=N.rep;
+  new Chart(has('repChart'),{type:'bar',
+    data:{labels:R.labels,datasets:[
+      {label:'营收(亿)',data:R.rev,backgroundColor:C.bluL,borderRadius:3},
+      {label:'净利(亿)',data:R.np,backgroundColor:R.np.map(v=>v>=0?C.grnL:C.redL),borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'亿元',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        x:{ticks:{font:{size:10.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+' 亿'}}}}});
+}
+/* 15. 代表标的五维雷达 —— 仿 riskChart 骨架 */
+if(has('repRadarChart') && N.repRadar){
+  const RR=N.repRadar;
+  new Chart(has('repRadarChart'),{type:'radar',
+    data:{labels:RR.labels,datasets:RR.series.map(s=>({
+      label:s.name,data:s.data,borderColor:s.color,backgroundColor:hexA(s.color,.10),borderWidth:2,pointRadius:3}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:9}},pointLabels:{font:{size:11,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.r+' / 10'}}}}});
+}
+/* 16. 真价 vs 模型价 散点 —— 仿 liqChart 骨架 */
+if(has('scatterChart') && N.scatter){
+  new Chart(has('scatterChart'),{type:'bubble',
+    data:{datasets:[
+      {label:'真实成交价(β池59)',data:N.scatter.scatter_real,backgroundColor:C.redL,borderColor:C.red,pointRadius:4},
+      {label:'模型定价(无价组抽样59)',data:N.scatter.scatter_model,backgroundColor:C.graL,borderColor:C.gra,pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{title:{display:true,text:'ROE %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y:{title:{display:true,text:'市值(亿元)',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5},callback:v=>v.toLocaleString()}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.raw.n+' ROE '+c.raw.x+'% / 市值 '+c.raw.y+'亿'}}}}});
+}
+/* 17. 五年趋势 —— 仿 priceChart 双轴骨架 */
+if(has('trendChart') && N.trend){
+  const T=N.trend;
+  new Chart(has('trendChart'),{type:'line',
+    data:{labels:T.years,datasets:[
+      {label:'营收合计(亿)',data:T.rev,yAxisID:'y',borderColor:C.blu,backgroundColor:'transparent',borderWidth:2,pointRadius:3,tension:.15},
+      {type:'line',label:'ROE中位%',data:T.roe,yAxisID:'y1',borderColor:C.amb,borderWidth:2,pointRadius:4,tension:.2},
+      {type:'line',label:'亏损面%',data:T.loss,yAxisID:'y1',borderColor:C.red,borderWidth:2,pointRadius:4,borderDash:[5,3],tension:.2},
+      {type:'line',label:'营收中位(×100)',data:T.revmed.map(v=>v*100),yAxisID:'y1',borderColor:C.grn,borderWidth:1.6,pointRadius:3,borderDash:[2,3],tension:.2}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      scales:{y:{position:'left',title:{display:true,text:'营收合计(亿)',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:40,title:{display:true,text:'ROE/亏损面 %（营收中位×100）',font:{size:10}},grid:{drawOnChartArea:false},ticks:{font:{size:10}}},
+        x:{ticks:{font:{size:11}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+' : '+(c.parsed.y/100).toFixed(3)+' / '+c.parsed.y+'%'}}}}});
+}
+/* 18. 跨行业基准雷达（按轴归一化） —— 仿 riskChart 骨架 */
+if(has('benchChart') && N.bench){
+  const B=N.bench;
+  const raw=B.series.map(s=>s.data);
+  const labels=B.labels;
+  const maxv=labels.map((_,j)=>Math.max(...raw.map(r=>r[j])));
+  const norm=raw.map(r=>r.map((v,j)=>+(v/maxv[j]*100).toFixed(1)));
+  new Chart(has('benchChart'),{type:'radar',
+    data:{labels:labels,datasets:B.series.map((s,i)=>({
+      label:s.name,data:norm[i],borderColor:s.color,backgroundColor:hexA(s.color,.12),borderWidth:2,pointRadius:3}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:100,ticks:{stepSize:20,font:{size:9}},pointLabels:{font:{size:10.5,weight:'600'}},grid:{color:'#e8ebf0'}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+raw[c.datasetIndex][c.dataIndex]+'（归一 '+c.parsed.r+'）'}}}}});
+}
+/* 19. 三法估值：PE/PS/PB —— 仿 valChart 骨架（双轴） */
+if(has('val3Chart') && N.val3){
+  const V=N.val3;
+  new Chart(has('val3Chart'),{type:'bar',
+    data:{labels:V.labels,datasets:[
+      {label:'历史区间下沿',data:V.pe,backgroundColor:'rgba(0,0,0,0)',stack:'s'},
+      {label:'PE',data:V.pe,backgroundColor:V.pe.map(v=>v>100?C.redL:C.bluL),stack:'s',borderRadius:3},
+      {label:'PS',data:V.ps,backgroundColor:C.grnL,stack:'s',borderRadius:3},
+      {label:'PB',data:V.pb,backgroundColor:C.ambL,stack:'s',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{position:'left',title:{display:true,text:'PE（>100 红）',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5}}},
+        y1:{position:'right',min:0,max:8,title:{display:true,text:'PS / PB',font:{size:11}},grid:{drawOnChartArea:false},ticks:{font:{size:10.5}}},
+        x:{stacked:true,ticks:{font:{size:10}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11},filter:i=>i.text!=='历史区间下沿'}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y}}}}});
+}
+/* 20. 简版 DCF —— 仿 liqChart 骨架 */
+if(has('dcfChart') && N.dcf){
+  const Dc=N.dcf;
+  new Chart(has('dcfChart'),{type:'bar',
+    data:{labels:Dc.labels,datasets:[
+      {label:'DCF内在价值(亿)',data:Dc.val,backgroundColor:C.bluL,borderRadius:4},
+      {type:'line',label:'β池59市值合计(亿)',data:Dc.labels.map(()=>Dc.mc),borderColor:C.red,borderWidth:2,pointRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'亿元',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5},callback:v=>v.toLocaleString()}},
+        x:{ticks:{font:{size:9.5}},grid:{display:false}}},
+      plugins:{legend:{labels:{boxWidth:14,font:{size:11}}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+' 亿'}}}}});
+}
+/* 27. 敏感性龙卷风 —— 仿 liqChart 骨架（水平柱） */
+if(has('tornadoChart') && N.tornado){
+  const T=N.tornado;
+  const floats=T.hiabs.map((h,i)=>[Math.min(h,T.loabs[i]),Math.max(h,T.loabs[i])]);
+  new Chart(has('tornadoChart'),{type:'bar',
+    data:{labels:T.labels,datasets:[{label:'EV 毛口径影响',data:floats,
+      backgroundColor:floats.map(f=>f[1]<=T.base?C.redL:C.ambL),borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{title:{display:true,text:'EV 毛口径（基准 '+T.base+'）',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10}},
+        suggestedMin:-8,suggestedMax:1},
+        y:{ticks:{font:{size:10}},grid:{display:false}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>'区间 '+c.raw[0].toFixed(2)+' ~ '+c.raw[1].toFixed(2)}}}}});
+}
+/* 28. α腿 vs 主题β 情景 —— 仿 liqChart 骨架 */
+if(has('alphaChart') && N.scenRange){
+  const S=N.scenRange;
+  new Chart(has('alphaChart'),{type:'bar',
+    data:{labels:S.labels,datasets:[{label:'期望收益%',data:S.v,
+      backgroundColor:S.labels.map(l=>l.indexOf('α')>=0?C.graL:C.redL),borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'情景期望收益 %',font:{size:11}},grid:{color:'#f1f3f6'},ticks:{font:{size:10.5},callback:v=>v+'%'}},
+        x:{ticks:{font:{size:10}},grid:{display:false}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+(c.parsed.y>=0?'+':'')+c.parsed.y+'%'}}}}});
+}
+
+
+</script>
+</body>
+</html>

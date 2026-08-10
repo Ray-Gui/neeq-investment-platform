@@ -1,0 +1,594 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-10",
+    "dataAsOf": "2026-08-03",
+    "fiscalYear": 2024,
+    "source": "交易分析团队 行业研究报告（标准版 + 券商加厚版）",
+    "disclaimer": "本页面数据由 AI 基于公开/半公开信息整理，仅供内部研究参考，不构成任何投资建议。部分新三板企业无可观测成交价，相关估值/价格为模型推算或缺失，请以原始报告与官方披露为准。"
+  },
+  "industries": [
+    {
+      "id": "medical",
+      "name": "医疗健康",
+      "nameEn": "Medical & Health",
+      "icon": "🏥",
+      "rating": "BUY",
+      "ratingColor": "green",
+      "confidence": "中",
+      "riskLevel": "中",
+      "recommendedExposure": "8-10%",
+      "sampleSize": 386,
+      "thesis": "精选转板期权 + 北交所头部质量，左侧低暴露分层配置，而非整体下注 386 家。",
+      "execSummary": [
+        "行业具备独立配置价值，但必须分层：L1 中证医疗ETF(5-6%)、L2 北交所头部(2-3%)、L3 新三板精选(1-1.5%纯期权)。",
+        "政策强正面（北交所改革/转板常态化/创新药 License-out）与支付端逆风（医保6月 -13.3% 三连降）并存。",
+        "当前是左侧窗口非右侧趋势：中证医疗短中期多头，北证50 仍趋势性下跌(YTD -25.29%)，负相关须双条件止损。",
+        "敞口 8-10% 决定组合量级有限，三情景组合贡献 -1.36pp ~ +1.52pp（中性 +0.13pp），是期权配置非收益引擎。"
+      ],
+      "keyMetrics": [
+        {
+          "label": "样本企业",
+          "value": "386 家"
+        },
+        {
+          "label": "建议敞口",
+          "value": "8-10%"
+        },
+        {
+          "label": "头部PE中位",
+          "value": "17.6x"
+        },
+        {
+          "label": "三情景组合贡献",
+          "value": "-1.36~+1.52pp"
+        },
+        {
+          "label": "数据置信度",
+          "value": "中（含口径风险）"
+        }
+      ],
+      "radar": {
+        "技术面": 7.0,
+        "基本面": 6.3,
+        "新闻面": 8.0,
+        "情绪面": 4.0,
+        "风险面": 4.0
+      },
+      "subSectors": [
+        {
+          "name": "创新药",
+          "count": null,
+          "feature": "出海/License-out 驱动，优先级最高；头部毛利 70-89%"
+        },
+        {
+          "name": "医疗器械",
+          "count": null,
+          "feature": "高端器械出海；回避骨科/冠脉等集采扩围子行业"
+        },
+        {
+          "name": "CRO·CDMO",
+          "count": null,
+          "feature": "最小且延后配置的赛道"
+        },
+        {
+          "name": "医疗服务",
+          "count": null,
+          "feature": "结构性机会，需甄别"
+        },
+        {
+          "name": "IVD",
+          "count": null,
+          "feature": "价值陷阱（医保三连降），全行业排除"
+        }
+      ],
+      "companies": [
+        {
+          "name": "锦波生物",
+          "code": null,
+          "revenue": 15.95,
+          "profit": null,
+          "roe": 34.44,
+          "valuation": "PE 13.0-22.8x",
+          "priceType": "real",
+          "note": "北交所已上市；毛利率约89%，头部质量最优"
+        },
+        {
+          "name": "德源药业",
+          "code": "920735.BJ",
+          "revenue": 10.58,
+          "profit": 2.37,
+          "roe": 18.13,
+          "valuation": "PE 13.0x / PS 2.36x",
+          "priceType": "real",
+          "note": "中高ROE/低PE，性价比最优象限"
+        },
+        {
+          "name": "星昊医药",
+          "code": null,
+          "revenue": 6.5,
+          "profit": null,
+          "roe": 6.23,
+          "valuation": null,
+          "priceType": "real",
+          "note": "北交所已上市；毛利率约70%"
+        },
+        {
+          "name": "诺思兰德",
+          "code": null,
+          "revenue": 0.66,
+          "profit": null,
+          "roe": -16.45,
+          "valuation": null,
+          "priceType": "real",
+          "note": "北交所已上市；流通市值口径分歧 14.71亿 vs 30.69亿"
+        }
+      ],
+      "bullPoints": [
+        {
+          "text": "制度红利：北交所深化改革、转板机制常态化（权重9）",
+          "weight": 9
+        },
+        {
+          "text": "转板估值期权：新三板→北交所历史重估 2-4 倍（权重9）",
+          "weight": 9
+        },
+        {
+          "text": "头部质量已被财报证实且估值未透支：盈利头部 PE 13-22.8x 低于北证50整体 42.94",
+          "weight": 8
+        },
+        {
+          "text": "创新药 License-out 持续放量，政策强正",
+          "weight": 8
+        },
+        {
+          "text": "公募医药持仓降至十年新低 6.73%，筹码出清的左侧信号",
+          "weight": 6
+        }
+      ],
+      "bearPoints": [
+        {
+          "text": "流动性枯竭：北交所成交萎缩至181亿(vs年初260亿)，-30.4%（权重9）",
+          "weight": 9
+        },
+        {
+          "text": "重估概率不确定，转板为期权非承诺（权重9）",
+          "weight": 9
+        },
+        {
+          "text": "折价本身是流动性折价的市场定价，不等于低估",
+          "weight": 7
+        },
+        {
+          "text": "医保支付端三连降，压制仿制药/IVD/低端耗材",
+          "weight": 7
+        },
+        {
+          "text": "情绪面冰点(评分4.0)，左侧布局需承受阶段性浮亏",
+          "weight": 6
+        }
+      ],
+      "scenarios": {
+        "optimistic": {
+          "label": "乐观",
+          "range": "组合贡献 +1.52pp",
+          "desc": "中证医疗上行 + 转板期权兑现"
+        },
+        "neutral": {
+          "label": "中性",
+          "range": "组合贡献 +0.13pp",
+          "desc": "现行敞口下的基准情形"
+        },
+        "pessimistic": {
+          "label": "悲观",
+          "range": "组合贡献 -1.36pp",
+          "desc": "压力测试情景（概率15-20%）"
+        }
+      },
+      "risks": [
+        "流动性陷阱：有流动性的已转板、有期权的无流动性，负相关",
+        "系统性 Beta：北证50 YTD -25.29%，清仓线距现价仅 -8.56%",
+        "医保/集采尾部：支付端连续下滑、集采扩围至高端器械",
+        "转板概率风险：随机撒网为负期望，仅精选后概率跨越门槛",
+        "代理偏差：北证50 与中证医疗 20日相关性为负，结论对代理选择敏感",
+        "数据口径：三种年度口径并存（指数2026-08-03/财务2024/公司2025-FY）"
+      ],
+      "catalysts": [
+        "北交所深化改革推进、转板机制常态化",
+        "创新药 License-out 持续放量",
+        "公募持仓降至十年新低 6.73%（左侧筹码出清信号）"
+      ],
+      "report": {
+        "standardHtml": "med-health-analysis-2026-08-03.html",
+        "standardPdf": "med-health-analysis-2026-08-03.pdf",
+        "brokerageHtml": "med-health-analysis-2026-08-03-brokerage.html",
+        "brokeragePdf": "med-health-analysis-2026-08-03-brokerage.pdf"
+      }
+    },
+    {
+      "id": "newenergy",
+      "name": "新能源",
+      "nameEn": "New Energy",
+      "icon": "⚡",
+      "rating": "HOLD",
+      "ratingColor": "yellow",
+      "confidence": "中",
+      "riskLevel": "中高",
+      "recommendedExposure": "3%",
+      "sampleSize": 159,
+      "thesis": "结构性轻仓观察，利润极端集中（74.9%于两家），敞口定格 3%，不赌方向只买结构性期权。",
+      "execSummary": [
+        "维持 HOLD，敞口定格 3%（现金≥97%）；研究主管裁决空:多权重 7.9:4.4，空头胜。",
+        "高ROE子集 25.2%市值/88.2%利润/加权 PE 13.45x 真实，但 74.9% 利润集中于同力+开发两家，开发 Q1 -74% → PE 自动升至 18.02x。",
+        "景气度分化：储能(8)/风电(7)/新能车(7) 高景气；锂电(5.25) 出清尾声；光伏(2.7) 深亏底部，制造链整体规避。",
+        "三情景 EV 中性风险口径 -1.67%（CS新能车）；升级 BUY 需四条件同时满足。"
+      ],
+      "keyMetrics": [
+        {
+          "label": "样本企业",
+          "value": "159家(新三板)"
+        },
+        {
+          "label": "建议敞口",
+          "value": "3%"
+        },
+        {
+          "label": "利润集中度",
+          "value": "74.9%"
+        },
+        {
+          "label": "高ROE子集PE",
+          "value": "13.45x"
+        },
+        {
+          "label": "三情景EV",
+          "value": "-1.67%"
+        }
+      ],
+      "radar": {
+        "技术面": 4.5,
+        "基本面": 6.0,
+        "新闻面": 6.0,
+        "情绪面": 3.5,
+        "风险面": 3.0
+      },
+      "subSectors": [
+        {
+          "name": "光伏",
+          "count": null,
+          "feature": "景气2.7，深亏出清底部，制造链整体规避"
+        },
+        {
+          "name": "锂电池",
+          "count": null,
+          "feature": "景气5.25，出清尾声/回升初期"
+        },
+        {
+          "name": "储能",
+          "count": null,
+          "feature": "景气8，高景气，配置重心"
+        },
+        {
+          "name": "风电",
+          "count": null,
+          "feature": "景气7，高景气"
+        },
+        {
+          "name": "新能源车",
+          "count": null,
+          "feature": "景气7，高景气；氢能样本内 N/A"
+        }
+      ],
+      "companies": [
+        {
+          "name": "开发科技",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": "PE 18.02x(股价不动自动升)",
+          "priceType": "real",
+          "note": "进池观察；Q1 净利 -74% 拖累 PE"
+        },
+        {
+          "name": "同力股份",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": null,
+          "priceType": "real",
+          "note": "与开发科技合计占利润 74.9%，双点故障风险"
+        },
+        {
+          "name": "长虹能源",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": 6.5,
+          "valuation": null,
+          "priceType": "real",
+          "note": "负债率74%、权益乘数3.85，去杠杆后 ROE 仅6.5%"
+        },
+        {
+          "name": "民士达",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": "PE 51.5 / PB 8.07",
+          "priceType": "real",
+          "note": "调和平均掩盖的高估值个例"
+        }
+      ],
+      "bullPoints": [
+        {
+          "text": "高ROE子集 25.2%市值/88.2%利润/加权 PE 13.45x，质量真实",
+          "weight": 7
+        },
+        {
+          "text": "储能/风电/新能车景气 8/7/7，下游应用侧高景气",
+          "weight": 7
+        },
+        {
+          "text": "估值三法显示部分环节存在修复空间",
+          "weight": 5
+        }
+      ],
+      "bearPoints": [
+        {
+          "text": "74.9% 利润集中于两家，开发 Q1 -74% → PE 自动升至 18.02x",
+          "weight": 9
+        },
+        {
+          "text": "13.45x 为调和平均，掩盖民士达 PE 51.5/PB 8.07",
+          "weight": 8
+        },
+        {
+          "text": "长虹能源负债率74%，去杠杆后 ROE 仅6.5%",
+          "weight": 7
+        },
+        {
+          "text": "流动性双向锁死，有效 RR 仅 1.2-1.5:1",
+          "weight": 7
+        },
+        {
+          "text": "光伏景气2.7深亏底部，制造链整体规避",
+          "weight": 6
+        }
+      ],
+      "scenarios": {
+        "optimistic": {
+          "label": "乐观",
+          "range": "新能车 +14%~+19%（概率20%）",
+          "desc": "带量突破颈线，催化兑现"
+        },
+        "neutral": {
+          "label": "中性",
+          "range": "三情景 EV -1.67%",
+          "desc": "CS新能车中性风险口径"
+        },
+        "pessimistic": {
+          "label": "悲观",
+          "range": "新能车 -10.8%~-12.9%（概率30%）",
+          "desc": "北证50 破 1007.64，行业跟随破前低"
+        }
+      },
+      "risks": [
+        "利润极端集中：74.9% 于同力+开发，双点故障风险",
+        "开发科技 Q1 -74%，PE 在股价不动时自动升至 18.02x",
+        "流动性双向锁死，升级至 12%+ 物理不可执行（容量≈6%）",
+        "北证50 是唯一 swing factor，破 1007.64 触发降级",
+        "光伏制造链深亏，估值向下重估空间 23-28%"
+      ],
+      "catalysts": [
+        "北证50 守住 1007.64 生命线",
+        "开发科技中报转正",
+        "主力净流入连续10日为正（升级 BUY 四条件之二）"
+      ],
+      "report": {
+        "standardHtml": "newenergy-analysis-2026-08-04.html",
+        "standardPdf": "newenergy-analysis-2026-08-04.pdf",
+        "brokerageHtml": "newenergy-analysis-2026-08-04-brokerage.html",
+        "brokeragePdf": "newenergy-analysis-2026-08-04-brokerage.pdf"
+      }
+    },
+    {
+      "id": "ai",
+      "name": "人工智能",
+      "nameEn": "Artificial Intelligence",
+      "icon": "🤖",
+      "rating": "SELL",
+      "ratingColor": "red",
+      "confidence": "低",
+      "riskLevel": "高",
+      "recommendedExposure": "0%（硬上限1.5%）",
+      "sampleSize": 1342,
+      "thesis": "主题问题不是贵而是没法交易：86.1% 无成交价，盈利五年恶化营收逆增，SELL 回避。",
+      "execSummary": [
+        "SELL（主题级低配/回避）；当前部署 0%，条件性预留 1.0%，硬上限 1.5%；α 腿本轮全面禁止。",
+        "1,342 家中 86.1%(1,155家) 无可观测成交价，占名义市值 66.0%(5,316.8亿)，其中仅约 21%(±2%) 严格等于 净利润×21.978 模型公式。",
+        "盈利面(净利、ROE)五年单调恶化，但营收中位数逆势微增(1.18→1.26亿，+3.3%)；合计营收 CAGR 2022→2024 = -3.07%（非 -7.22%）。",
+        "可交易 β 池 59 家 PE 41.6 相对 A 股 AI 可比(PE 33.5) 并不便宜；全主题 DCF 最乐观上限 612.5亿仍不足 β 池市值 1,445.8亿的 43%。"
+      ],
+      "keyMetrics": [
+        {
+          "label": "样本企业",
+          "value": "1,342 家"
+        },
+        {
+          "label": "建议敞口",
+          "value": "0%（硬上限1.5%）"
+        },
+        {
+          "label": "无成交价占比",
+          "value": "86.1%"
+        },
+        {
+          "label": "营收CAGR",
+          "value": "-3.07%"
+        },
+        {
+          "label": "数据置信度",
+          "value": "低（94.2%无流动性）"
+        }
+      ],
+      "radar": {
+        "技术面": 3.5,
+        "基本面": 3.8,
+        "新闻面": 7.0,
+        "情绪面": 4.5,
+        "风险面": 2.5
+      },
+      "subSectors": [
+        {
+          "name": "算力基础设施",
+          "count": null,
+          "feature": "十五五算力网 4 万亿投资政策顺风"
+        },
+        {
+          "name": "大模型",
+          "count": null,
+          "feature": "概念热但实际盈利弱"
+        },
+        {
+          "name": "AI应用",
+          "count": null,
+          "feature": "营收中位数微增，以价换量"
+        },
+        {
+          "name": "数据服务",
+          "count": null,
+          "feature": "依赖头部，分化明显"
+        },
+        {
+          "name": "智能硬件",
+          "count": null,
+          "feature": "部分有真实价支撑"
+        }
+      ],
+      "companies": [
+        {
+          "name": "杰理科技",
+          "code": null,
+          "revenue": 31.2,
+          "profit": 7.91,
+          "roe": 24.21,
+          "valuation": "PE 20.28 / 市值160.38亿",
+          "priceType": "model",
+          "note": "无成交价，市值完全模型推得（净利居首）"
+        },
+        {
+          "name": "宸芯科技",
+          "code": null,
+          "revenue": 3.44,
+          "profit": -0.832,
+          "roe": -3.42,
+          "valuation": "市值393.55亿",
+          "priceType": "model",
+          "note": "全样本最大市值却亏损，无成交价（无价即虚高典型）"
+        },
+        {
+          "name": "并行科技",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": "PE 705",
+          "priceType": "real",
+          "note": "微利下估值脆弱，真实成交价"
+        },
+        {
+          "name": "连城数控",
+          "code": "920368.OC",
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": "33.99元/市值79.80亿",
+          "priceType": "real",
+          "note": "真实成交价；另有(已切换)无价记录 74.72亿"
+        },
+        {
+          "name": "开发科技",
+          "code": null,
+          "revenue": null,
+          "profit": null,
+          "roe": null,
+          "valuation": null,
+          "priceType": "real",
+          "note": "真实成交价支撑（同时属新能源池）"
+        }
+      ],
+      "bullPoints": [
+        {
+          "text": "十五五算力网 4 万亿投资、北交所改革等政策顺风（新闻面7.0）",
+          "weight": 7
+        },
+        {
+          "text": "营收中位数逆势微增(+3.3%)，以价换量保规模",
+          "weight": 5
+        },
+        {
+          "text": "β 池 59 家有真实成交价，可交易子集存在结构性机会",
+          "weight": 5
+        }
+      ],
+      "bearPoints": [
+        {
+          "text": "86.1% 无成交价(占市值66%)，仅 21% 可判模型定价——没法交易",
+          "weight": 10
+        },
+        {
+          "text": "盈利面五年单调恶化：净利 CAGR -14.83%，ROE 中位 10.79%→4.75%",
+          "weight": 9
+        },
+        {
+          "text": "可交易 β 池 PE 41.6 相对 A 股 AI 可比 33.5 并不便宜，已高估",
+          "weight": 8
+        },
+        {
+          "text": "全主题 DCF 最乐观上限 612.5亿仍不足 β 池市值 1,445.8亿的 43%",
+          "weight": 8
+        },
+        {
+          "text": "94.2% 无二级流动性、现金流 0% 覆盖、字段失真——数据置信度低",
+          "weight": 8
+        }
+      ],
+      "scenarios": {
+        "optimistic": {
+          "label": "乐观",
+          "range": "DCF 内在价值上限 612.5亿（g+5%/r12%）",
+          "desc": "仍不足 β 池市值 43%"
+        },
+        "neutral": {
+          "label": "中性",
+          "range": "维持 SELL，敞口0%/硬上限1.5%",
+          "desc": "基准情形"
+        },
+        "pessimistic": {
+          "label": "悲观",
+          "range": "价格发现一次性重估 -18.6%(-13.12%~-24.05%)",
+          "desc": "叠加流动性冲击 -27.85% 可达，无预警信号"
+        }
+      },
+      "risks": [
+        "86.1% 无成交价，价格发现机制缺失，退出无保障",
+        "盈利五年单调恶化，亏损面 26.3%→32.0%（2026E 外推 37.1%）",
+        "模型定价循环论证：全池 PE 21.978 恰等于 净利润×21.978",
+        "一次性重估尾部 -13.12%~-24.05% 且无任何预警信号（占影响 49.8%）",
+        "北证50 距停新增触发线仅 -4.12%，跌破冻结主题新增部署"
+      ],
+      "catalysts": [
+        "翻多路径 U1-U6：price 覆盖率≥50%、可交易≥150家或 ADV≥60亿、2025年报覆盖≥80%且亏损面≤27%且 ROE≥7%",
+        "十五五算力网 4 万亿投资落地",
+        "北交所改革提升流动性"
+      ],
+      "report": {
+        "standardHtml": "ai-analysis-2026-08-04.html",
+        "standardPdf": "ai-analysis-2026-08-04.pdf",
+        "brokerageHtml": "ai-analysis-2026-08-04-brokerage.html",
+        "brokeragePdf": "ai-analysis-2026-08-04-brokerage.pdf"
+      }
+    }
+  ]
+}

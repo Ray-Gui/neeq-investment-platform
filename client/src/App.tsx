@@ -13,6 +13,7 @@ import CompanyScoring from "./pages/CompanyScoring";
 import ListingPotential from "./pages/ListingPotential";
 import DealerOpportunities from "./pages/DealerOpportunities";
 import InvestmentDecision from "./pages/InvestmentDecision";
+import IndustryResearch from "./pages/IndustryResearch";
 import CompanyDetail from "./pages/CompanyDetail";
 import BSEListingTracker from "./pages/BSEListingTracker";
 import TrendRating from "./pages/TrendRating";
@@ -44,6 +45,7 @@ function Router() {
       <Route path={"/listing-potential"} component={ListingPotential} />
       <Route path={"/dealer-opportunities"} component={DealerOpportunities} />
       <Route path={"/investment-decision"} component={InvestmentDecision} />
+      <Route path={"/industry-research"} component={IndustryResearch} />
       <Route path={"/company/:code"} component={CompanyDetail} />
       <Route path={"/bse-listing-tracker"} component={BSEListingTracker} />
       <Route path={"/trend-rating"} component={TrendRating} />
