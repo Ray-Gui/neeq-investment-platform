@@ -405,9 +405,11 @@ export default function BSEListingTracker() {
         <div className="mt-8 bg-slate-800/30 border border-slate-700 rounded-xl p-5 text-xs text-slate-500">
           <strong className="text-slate-400">数据说明：</strong>
           北交所上市条件参考《北京证券交易所股票上市规则》财务指标要求，本系统仅作财务层面的初步筛选，不代表实际上市资格判断（实际上市还需满足挂牌满12个月、无重大违规等非财务条件）。
-          标注 <span className="text-yellow-400">*</span> 的市值为估算值（行业PE/PS中位数法），协议转让股票无连续竞价，东方财富不提供实时市值。
-          数据来源：东方财富 + akshare，财务数据截至最新年报。
+          标注 <span className="text-yellow-400">*</span> 的市值为估算值（行业PE/PS中位数法）；标注 <span className="text-amber-500/80">⚠</span> 的标的未取到最新公开报价（协议转让无连续竞价 / 已摘牌 / 长期停牌），其市值仍为 {FUNDAMENTAL_AS_OF} 快照值。
         </div>
+
+        {/* 数据时点 */}
+        <DataVintageNotice className="mt-4" />
       </div>
     </div>
   );

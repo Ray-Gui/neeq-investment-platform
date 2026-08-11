@@ -71,7 +71,7 @@ export default function Home() {
             <div className="min-w-0">
               <h1 className="text-base font-semibold text-foreground truncate">北交所上市企业研究报告</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">
-                覆盖 {companies.length} 家上市公司 · 数据截至 2026年3月
+                覆盖 {companies.length} 家上市公司 · 数据截至 2026年3月（固定快照）
               </p>
             </div>
           </div>

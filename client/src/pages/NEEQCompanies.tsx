@@ -9,6 +9,7 @@ import {
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line, ReferenceLine,
 } from "recharts";
+import { VintageBadge, DataVintageNotice, StaleQuoteMark } from "@/components/DataVintage";
 
 // ── 工具函数 ────────────────────────────────────────────────────
 const fmt = (v: number | null | undefined, suffix = "", digits = 2): string => {
@@ -617,19 +618,22 @@ export default function NEEQCompanies() {
                       <th className="text-left text-slate-400 py-3 px-3">行业</th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("cap")}>
                         市值 <SortIcon k="cap" />
-                        <span className="text-yellow-500 text-xs ml-1" title="标注*的市值为估算值（行业PE/PS法），协议转让股票无连续竞价，东方财富不提供实时市值">*估算</span>
+                        <VintageBadge kind="quote" compact />
                       </th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("revenue")}>
                         营收 <SortIcon k="revenue" />
+                        <VintageBadge kind="fundamental" compact />
                       </th>
-                      <th className="text-right text-slate-400 py-3 px-3">净利润</th>
-                      <th className="text-right text-slate-400 py-3 px-3">毛利率</th>
+                      <th className="text-right text-slate-400 py-3 px-3">净利润<VintageBadge kind="fundamental" compact /></th>
+                      <th className="text-right text-slate-400 py-3 px-3">毛利率<VintageBadge kind="fundamental" compact /></th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("roe")}>
                         ROE <SortIcon k="roe" />
+                        <VintageBadge kind="fundamental" compact />
                       </th>
-                      <th className="text-right text-slate-400 py-3 px-3">负债率</th>
+                      <th className="text-right text-slate-400 py-3 px-3">负债率<VintageBadge kind="fundamental" compact /></th>
                       <th className="text-right text-slate-400 py-3 px-3 cursor-pointer hover:text-white select-none" onClick={() => handleSort("score")}>
                         评分 <SortIcon k="score" />
+                        <VintageBadge kind="fundamental" compact />
                       </th>
                     </tr>
                   </thead>

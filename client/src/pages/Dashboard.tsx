@@ -20,6 +20,8 @@ import {
   Layers,
   ChevronRight,
 } from "lucide-react";
+import { DataVintageNotice } from "@/components/DataVintage";
+import { QUOTE_AS_OF, FUNDAMENTAL_AS_OF } from "@/lib/dataProvenance";
 
 // ─── 功能模块数据 ────────────────────────────────────────────────────────────
 
@@ -336,9 +338,16 @@ export default function Dashboard() {
               <p className="text-xs text-gray-500">新三板做市商投资决策支持系统</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-500">
+          <div
+            className="flex items-center gap-2 text-xs text-gray-500"
+            title={`行情数据（最新价、总市值）截至 ${QUOTE_AS_OF}；财务数据与评分仍为 ${FUNDAMENTAL_AS_OF} 快照，两者时点不同`}
+          >
             <Activity size={12} className="text-green-400" />
-            <span>数据截至 2026年3月</span>
+            <span className="cursor-help">
+              行情 <span className="text-sky-300">{QUOTE_AS_OF}</span>
+              <span className="mx-1.5 text-gray-700">|</span>
+              财务 <span className="text-amber-300">{FUNDAMENTAL_AS_OF}</span>
+            </span>
           </div>
         </div>
       </header>
@@ -469,10 +478,15 @@ export default function Dashboard() {
         </main>
       </div>
 
+      {/* ── 数据时点说明 ── */}
+      <div className="container mx-auto px-6 pb-8">
+        <DataVintageNotice />
+      </div>
+
       {/* ── Footer ── */}
       <footer className="border-t border-slate-700/30 py-5 bg-slate-950/50">
         <div className="container mx-auto px-6 text-center text-gray-600 text-xs">
-          新三板做市商投资研究平台 · 数据截至 2026年3月 · 仅供内部研究参考
+          新三板做市商投资研究平台 · 行情数据截至 {QUOTE_AS_OF} · 财务数据与评分截至 {FUNDAMENTAL_AS_OF} · 仅供内部研究参考
         </div>
       </footer>
     </div>

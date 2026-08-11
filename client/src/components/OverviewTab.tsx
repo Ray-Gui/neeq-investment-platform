@@ -195,7 +195,7 @@ export default function OverviewTab({ companies, analytics }: Props) {
         <div className="text-xs text-primary/70 font-medium px-1">ℹ️ 展示 {yearFrom}–{yearTo} 年间上市的 {filteredCount} 家企业数据</div>
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <StatCard label="上市公司数" value={`${filteredCount}家`} sub={isFiltered ? `${yearFrom}–${yearTo}年` : "截至2026年3月"} />
+        <StatCard label="上市公司数" value={`${filteredCount}家`} sub={isFiltered ? `${yearFrom}–${yearTo}年` : "截至2026年3月（固定快照）"} />
         <StatCard label="平均发行市値" value={fmtYi(filteredAvgCap)} sub={isFiltered ? "筛选期间" : `中位数 ${fmtYi(overview.ipo_cap.median)}`} />
         <StatCard label="总发行市値" value={`${(filteredCompanies.filter(c=>c.listing_market_cap_yi).reduce((s,c)=>s+(c.listing_market_cap_yi||0),0)).toFixed(0)}亿`} sub={`${filteredCompanies.filter(c=>c.listing_market_cap_yi).length}家有数据`} />
         <StatCard label="平均一年后变化" value={fmtPct(overview.cap_change.mean)} sub={`中位数 ${fmtPct(overview.cap_change.median)}`} color={overview.cap_change.mean > 0 ? "text-green-500" : "text-red-500"} />

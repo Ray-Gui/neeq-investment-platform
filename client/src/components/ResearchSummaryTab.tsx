@@ -350,7 +350,7 @@ export default function ResearchSummaryTab({ analytics, companies = [] }: Props)
       {/* Disclaimer */}
       <div className="border border-border/30 rounded-lg p-4 bg-muted/20">
         <p className="text-[10px] text-muted-foreground leading-relaxed">
-          <strong>免责声明：</strong>本报告所有数据均来源于公开市场信息，截至2026年3月。本报告仅供学术研究和参考用途，不构成任何投资建议。
+          <strong>免责声明：</strong>本报告所有数据均来源于公开市场信息，截至2026年3月（固定快照）。本报告仅供学术研究和参考用途，不构成任何投资建议。
           过往市场表现不代表未来收益。投资者应结合自身风险承受能力，独立做出投资决策。
         </p>
       </div>

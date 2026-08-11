@@ -432,7 +432,7 @@ export default function TrendRating() {
           <strong className="text-emerald-300">综合趋势评分</strong>由四个维度加权计算：
           营收3年CAGR（最高30分）、盈利改善评分（最高40分，含盈利持续性、趋势方向、稳定性）、ROE水平（最高20分）、现金流质量（最高10分）。
           <strong className="text-cyan-300 ml-2">现金流质量</strong>为经营现金流/净利润的近三年均值，比值越高说明利润含金量越高。
-          数据来源：东方财富，财务数据截至最新年报。
+          数据来源：东方财富，财务数据截至 2026年3月（基于当时最新披露年报，固定快照）。
         </div>
       </div>
     </div>
