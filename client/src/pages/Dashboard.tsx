@@ -144,6 +144,22 @@ const MODULES = {
         tags: ["三法估值", "可比公司", "报价区间"],
         color: "gold",
       },
+      {
+        href: "/valuation-scenario",
+        icon: "🎚️",
+        title: "估值情景分析",
+        desc: "多情景估值 · DCF内在价值 · 敏感性矩阵（纯静态框架）",
+        tags: ["多情景", "DCF", "敏感性"],
+        color: "violet",
+      },
+      {
+        href: "/trading-loop",
+        icon: "🔁",
+        title: "买卖结论闭环",
+        desc: "多空辩论 → 裁决 → 交易方案 → 风险预算（基于真实报告）",
+        tags: ["多空辩论", "交易方案", "风险预算"],
+        color: "rose",
+      },
     ],
   },
   listing: {
@@ -247,6 +263,22 @@ const MODULES = {
         desc: "医疗健康(BUY) · 新能源(HOLD) · 人工智能(SELL) 三行业结论、细分赛道、代表公司、多空与情景",
         tags: ["券商加厚版", "买卖结论", "多空辩论"],
         color: "cyan",
+      },
+      {
+        href: "/industry-aggregation",
+        icon: "🧮",
+        title: "行业级聚合研究",
+        desc: "三行业横向对比矩阵 · 五维雷达叠加 · 推荐跨行业配置 · 聚合多空与风险地图",
+        tags: ["跨行业聚合", "配置建议", "系统性风险"],
+        color: "indigo",
+      },
+      {
+        href: "/portfolio-risk",
+        icon: "🛡️",
+        title: "组合层风险",
+        desc: "以建议敞口为权重 · 集中度HHI · 情景P&L加权 · 压力测试 · 系统性/个例风险",
+        tags: ["组合风险", "压力测试", "集中度"],
+        color: "red",
       },
     ],
   },
@@ -394,7 +426,7 @@ export default function Dashboard() {
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">功能模块</span>
-                <span className="text-white font-semibold">24 个</span>
+                <span className="text-white font-semibold">28 个</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-gray-400">监管制度</span>

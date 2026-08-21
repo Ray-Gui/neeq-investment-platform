@@ -23,6 +23,10 @@ import InventoryRisk from "./pages/InventoryRisk";
 import SpreadAnalysis from "./pages/SpreadAnalysis";
 import ComplianceLibrary from "./pages/ComplianceLibrary";
 import FairValueModel from "./pages/FairValueModel";
+import ValuationScenario from "./pages/ValuationScenario";
+import TradingDecisionLoop from "./pages/TradingDecisionLoop";
+import IndustryAggregation from "./pages/IndustryAggregation";
+import PortfolioRisk from "./pages/PortfolioRisk";
 import TransferCaseDB from "./pages/TransferCaseDB";
 import AStockBenchmark from "./pages/AStockBenchmark";
 import GeoDistribution from "./pages/GeoDistribution";
@@ -58,6 +62,10 @@ function Router() {
       <Route path={"/spread-analysis"} component={SpreadAnalysis} />
       <Route path={"/compliance"} component={ComplianceLibrary} />
       <Route path={"/fair-value"} component={FairValueModel} />
+      <Route path={"/valuation-scenario"} component={ValuationScenario} />
+      <Route path={"/trading-loop"} component={TradingDecisionLoop} />
+      <Route path={"/industry-aggregation"} component={IndustryAggregation} />
+      <Route path={"/portfolio-risk"} component={PortfolioRisk} />
       <Route path={"/transfer-cases"} component={TransferCaseDB} />
       <Route path={"/a-stock-benchmark"} component={AStockBenchmark} />
       <Route path={"/geo-distribution"} component={GeoDistribution} />
