@@ -15,7 +15,7 @@
  * 修改数据时点时只需改动本文件。
  */
 
-export const QUOTE_AS_OF = "2026-08-10";
+export const QUOTE_AS_OF = "2026-11-19";
 export const FUNDAMENTAL_AS_OF = "2026-04-17";
 
 export type VintageKind = "quote" | "fundamental";
